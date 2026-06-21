@@ -1,0 +1,55 @@
+filters:
+  and:
+    - 'file.ext == "md"'
+    - 'type == "project-memory"'
+properties:
+  file.name:
+    displayName: Note
+  workspace:
+    displayName: Workspace
+  status:
+    displayName: Status
+  updated:
+    displayName: Updated
+  source_path:
+    displayName: Source Path
+  tags:
+    displayName: Tags
+views:
+  - type: table
+    name: "All Project Memories"
+    limit: 200
+    order:
+      - file.name
+      - workspace
+      - status
+      - updated
+      - source_path
+      - tags
+  - type: table
+    name: "Active Workspaces"
+    limit: 100
+    filters:
+      or:
+        - 'status == "active-heavy"'
+        - 'status == "active-ops"'
+        - 'status == "active-release"'
+        - 'status == "active-research"'
+        - 'status == "active-tooling"'
+        - 'status == "active"'
+    order:
+      - workspace
+      - status
+      - updated
+      - file.name
+  - type: table
+    name: "sys_workspace"
+    limit: 100
+    filters:
+      and:
+        - 'workspace == "sys_workspace"'
+    order:
+      - file.name
+      - status
+      - updated
+      - tags

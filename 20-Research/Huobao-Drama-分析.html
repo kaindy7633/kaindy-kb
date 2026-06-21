@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr"><head><title>Huobao-Drama-分析</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="🏠 Kaindy Knowledge Base"/><meta property="og:title" content="Huobao-Drama-分析"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Huobao-Drama-分析"/><meta name="twitter:description" content="🔥 Huobao Drama (火宝短剧) 深度竞品分析报告 分析日期：2026-06-15 | 仓库：chatfire-AI/huobao-drama | ★12,714 一、仓库概况 维度数据仓库地址github.com/chatfire-AI/huobao-dramaStars12,714Forks2,434创建时间2026-01-05最近推送2026-05-21Open Issues26代码规模TypeScript 299KB + Vue 291KB + CSS 9.5KB许可证CC BY-NC-SA 4.0（非商业友好）维护者kongweigen（主）、jensen — 位于中国南..."/><meta property="og:description" content="🔥 Huobao Drama (火宝短剧) 深度竞品分析报告 分析日期：2026-06-15 | 仓库：chatfire-AI/huobao-drama | ★12,714 一、仓库概况 维度数据仓库地址github.com/chatfire-AI/huobao-dramaStars12,714Forks2,434创建时间2026-01-05最近推送2026-05-21Open Issues26代码规模TypeScript 299KB + Vue 291KB + CSS 9.5KB许可证CC BY-NC-SA 4.0（非商业友好）维护者kongweigen（主）、jensen — 位于中国南..."/><meta property="og:image:alt" content="🔥 Huobao Drama (火宝短剧) 深度竞品分析报告 分析日期：2026-06-15 | 仓库：chatfire-AI/huobao-drama | ★12,714 一、仓库概况 维度数据仓库地址github.com/chatfire-AI/huobao-dramaStars12,714Forks2,434创建时间2026-01-05最近推送2026-05-21Open Issues26代码规模TypeScript 299KB + Vue 291KB + CSS 9.5KB许可证CC BY-NC-SA 4.0（非商业友好）维护者kongweigen（主）、jensen — 位于中国南..."/><meta property="twitter:domain" content="kaindy-kb.pages.dev"/><meta property="og:url" content="https://kaindy-kb.pages.dev/20-Research/Huobao-Drama-分析"/><meta property="twitter:url" content="https://kaindy-kb.pages.dev/20-Research/Huobao-Drama-分析"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="🔥 Huobao Drama (火宝短剧) 深度竞品分析报告 分析日期：2026-06-15 | 仓库：chatfire-AI/huobao-drama | ★12,714 一、仓库概况 维度数据仓库地址github.com/chatfire-AI/huobao-dramaStars12,714Forks2,434创建时间2026-01-05最近推送2026-05-21Open Issues26代码规模TypeScript 299KB + Vue 291KB + CSS 9.5KB许可证CC BY-NC-SA 4.0（非商业友好）维护者kongweigen（主）、jensen — 位于中国南..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUva2FpbmR5L0RvY3VtZW50cy9xdWFydHovcXVhcnR6L2NvbXBvbmVudHMvc3R5bGVzIiwic291cmNlcyI6WyJtZXJtYWlkLmlubGluZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFHRjtFQUNFOzs7QUFLRjtFQUNFO0VBQ0E7OztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTs7QUFJRjtFQUNFO0VBQ0E7RUFDQSIsInNvdXJjZXNDb250ZW50IjpbIi5leHBhbmQtYnV0dG9uIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbG9hdDogcmlnaHQ7XG4gIHBhZGRpbmc6IDAuNHJlbTtcbiAgbWFyZ2luOiAwLjNyZW07XG4gIHJpZ2h0OiAwOyAvLyBOT1RFOiByaWdodCB3aWxsIGJlIHNldCBpbiBtZXJtYWlkLmlubGluZS50c1xuICBjb2xvcjogdmFyKC0tZ3JheSk7XG4gIGJvcmRlci1jb2xvcjogdmFyKC0tZGFyayk7XG4gIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgYm9yZGVyOiAxcHggc29saWQ7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgb3BhY2l0eTogMDtcbiAgdHJhbnNpdGlvbjogMC4ycztcblxuICAmID4gc3ZnIHtcbiAgICBmaWxsOiB2YXIoLS1saWdodCk7XG4gICAgZmlsdGVyOiBjb250cmFzdCgwLjMpO1xuICB9XG5cbiAgJjpob3ZlciB7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIGJvcmRlci1jb2xvcjogdmFyKC0tc2Vjb25kYXJ5KTtcbiAgfVxuXG4gICY6Zm9jdXMge1xuICAgIG91dGxpbmU6IDA7XG4gIH1cbn1cblxucHJlIHtcbiAgJjpob3ZlciA+IC5leHBhbmQtYnV0dG9uIHtcbiAgICBvcGFjaXR5OiAxO1xuICAgIHRyYW5zaXRpb246IDAuMnM7XG4gIH1cbn1cblxuI21lcm1haWQtY29udGFpbmVyIHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICBjb250YWluOiBsYXlvdXQ7XG4gIHotaW5kZXg6IDk5OTtcbiAgbGVmdDogMDtcbiAgdG9wOiAwO1xuICB3aWR0aDogMTAwdnc7XG4gIGhlaWdodDogMTAwdmg7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIGRpc3BsYXk6IG5vbmU7XG4gIGJhY2tkcm9wLWZpbHRlcjogYmx1cig0cHgpO1xuICBiYWNrZ3JvdW5kOiByZ2JhKDAsIDAsIDAsIDAuNSk7XG5cbiAgJi5hY3RpdmUge1xuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgfVxuXG4gICYgPiAjbWVybWFpZC1zcGFjZSB7XG4gICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gICAgYm9yZGVyLXJhZGl1czogNXB4O1xuICAgIHBvc2l0aW9uOiBmaXhlZDtcbiAgICB0b3A6IDUwJTtcbiAgICBsZWZ0OiA1MCU7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7XG4gICAgaGVpZ2h0OiA4MHZoO1xuICAgIHdpZHRoOiA4MHZ3O1xuICAgIG92ZXJmbG93OiBoaWRkZW47XG5cbiAgICAmID4gLm1lcm1haWQtY29udGVudCB7XG4gICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgICB0cmFuc2Zvcm0tb3JpZ2luOiAwIDA7XG4gICAgICB0cmFuc2l0aW9uOiB0cmFuc2Zvcm0gMC4xcyBlYXNlO1xuICAgICAgb3ZlcmZsb3c6IHZpc2libGU7XG4gICAgICBtaW4taGVpZ2h0OiAyMDBweDtcbiAgICAgIG1pbi13aWR0aDogMjAwcHg7XG5cbiAgICAgIHByZSB7XG4gICAgICAgIG1hcmdpbjogMDtcbiAgICAgICAgYm9yZGVyOiBub25lO1xuICAgICAgfVxuXG4gICAgICBzdmcge1xuICAgICAgICBtYXgtd2lkdGg6IG5vbmU7XG4gICAgICAgIGhlaWdodDogYXV0bztcbiAgICAgIH1cbiAgICB9XG5cbiAgICAmID4gLm1lcm1haWQtY29udHJvbHMge1xuICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgYm90dG9tOiAyMHB4O1xuICAgICAgcmlnaHQ6IDIwcHg7XG4gICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgZ2FwOiA4cHg7XG4gICAgICBwYWRkaW5nOiA4cHg7XG4gICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodCk7XG4gICAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgYm9yZGVyLXJhZGl1czogNnB4O1xuICAgICAgYm94LXNoYWRvdzogMCAycHggNHB4IHJnYmEoMCwgMCwgMCwgMC4xKTtcbiAgICAgIHotaW5kZXg6IDI7XG5cbiAgICAgIC5tZXJtYWlkLWNvbnRyb2wtYnV0dG9uIHtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICAgIHdpZHRoOiAzMnB4O1xuICAgICAgICBoZWlnaHQ6IDMycHg7XG4gICAgICAgIHBhZGRpbmc6IDA7XG4gICAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgICAgY29sb3I6IHZhcigtLWRhcmspO1xuICAgICAgICBib3JkZXItcmFkaXVzOiA0cHg7XG4gICAgICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICAgICAgZm9udC1zaXplOiAxNnB4O1xuICAgICAgICBmb250LWZhbWlseTogdmFyKC0tYm9keUZvbnQpO1xuICAgICAgICB0cmFuc2l0aW9uOiBhbGwgMC4ycyBlYXNlO1xuXG4gICAgICAgICY6aG92ZXIge1xuICAgICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIH1cblxuICAgICAgICAmOmFjdGl2ZSB7XG4gICAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDFweCk7XG4gICAgICAgIH1cblxuICAgICAgICAvLyBTdHlsZSB0aGUgcmVzZXQgYnV0dG9uIGRpZmZlcmVudGx5XG4gICAgICAgICY6bnRoLWNoaWxkKDIpIHtcbiAgICAgICAgICB3aWR0aDogYXV0bztcbiAgICAgICAgICBwYWRkaW5nOiAwIDEycHg7XG4gICAgICAgICAgZm9udC1zaXplOiAxNHB4O1xuICAgICAgICB9XG4gICAgICB9XG4gICAgfVxuICB9XG59XG4iXX0= */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://kaindy-kb.pages.dev/index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://kaindy-kb.pages.dev/20-Research/Huobao-Drama-分析-og-image.webp"/><meta property="og:image:url" content="https://kaindy-kb.pages.dev/20-Research/Huobao-Drama-分析-og-image.webp"/><meta name="twitter:image" content="https://kaindy-kb.pages.dev/20-Research/Huobao-Drama-分析-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="20-Research/Huobao-Drama-分析"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">🏠 Kaindy Knowledge Base</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>搜索</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="搜索些什么" placeholder="搜索些什么"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="暗色模式"><title>暗色模式</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="亮色模式"><title>亮色模式</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="阅读模式"><title>阅读模式</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-984"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>探索</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-984" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../20-Research/">20 Research</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>Huobao Drama 分析</a></div></nav><h1 class="article-title">Huobao-Drama-分析</h1><p show-comma="true" class="content-meta"><time datetime="2026-06-15T12:23:17.000Z">2026年6月15日</time><span>16分钟阅读</span></p></div></div><article class="popover-hint"><h1 id="-huobao-drama-火宝短剧-深度竞品分析报告">🔥 Huobao Drama (火宝短剧) 深度竞品分析报告<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-huobao-drama-火宝短剧-深度竞品分析报告" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<blockquote>
+<p>分析日期：2026-06-15 | 仓库：chatfire-AI/huobao-drama | ★12,714</p>
+</blockquote>
+<hr/>
+<h2 id="一仓库概况">一、仓库概况<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#一仓库概况" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>维度</th><th>数据</th></tr></thead><tbody><tr><td><strong>仓库地址</strong></td><td>github.com/chatfire-AI/huobao-drama</td></tr><tr><td><strong>Stars</strong></td><td>12,714</td></tr><tr><td><strong>Forks</strong></td><td>2,434</td></tr><tr><td><strong>创建时间</strong></td><td>2026-01-05</td></tr><tr><td><strong>最近推送</strong></td><td>2026-05-21</td></tr><tr><td><strong>Open Issues</strong></td><td>26</td></tr><tr><td><strong>代码规模</strong></td><td>TypeScript 299KB + Vue 291KB + CSS 9.5KB</td></tr><tr><td><strong>许可证</strong></td><td>CC BY-NC-SA 4.0（非商业友好）</td></tr><tr><td><strong>维护者</strong></td><td>kongweigen（主）、jensen — 位于中国南京</td></tr><tr><td><strong>主页/商业版</strong></td><td>drama.chatfire.site/shortvideo</td></tr><tr><td><strong>社区</strong></td><td>LINUX DO 社区认可</td></tr></tbody></table></div>
+<p><strong>仓库活跃度分析：</strong></p>
+<ul>
+<li>最近5次commit均为README更新和部署修复，核心代码稳定</li>
+<li>2026年4月完成v2.0大版本重构（Go → TypeScript全栈迁移）</li>
+<li>当前无活跃的feature开发，处于维护/推广阶段</li>
+<li>非商业许可 + 商业版独立运营的典型开源商业模式</li>
+</ul>
+<hr/>
+<h2 id="二技术架构深度分析">二、技术架构深度分析<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#二技术架构深度分析" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="21-整体架构">2.1 整体架构<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#21-整体架构" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<pre><code>┌─────────────────────────────────────────────────────────┐
+│  Frontend: Nuxt 3 + Vue 3 + TypeScript                  │
+│  (纯CSS, 无UI框架, 暗色主题, SPA模式)                     │
+│  端口: 3013 (dev) / 5679 (production)                    │
+├─────────────────────────────────────────────────────────┤
+│  Backend: Hono + Drizzle ORM + Mastra AI Agents          │
+│  端口: 5679                                              │
+│  DB: SQLite (better-sqlite3, WAL模式)                    │
+│  存储: 本地文件系统 (data/static/)                        │
+├─────────────────────────────────────────────────────────┤
+│  AI层:                                                    │
+│  - 文本: OpenAI-compatible (OpenAI/VolcEngine/Ali/..)     │
+│  - 图片: OpenAI/Gemini/MiniMax/VolcEngine/Ali             │
+│  - 视频: MiniMax/VolcEngine(Seedance)/Vidu/Ali           │
+│  - TTS: MiniMax (唯一)                                    │
+├─────────────────────────────────────────────────────────┤
+│  媒体处理: FFmpeg (fluent-ffmpeg) + Sharp (图片处理)       │
+└─────────────────────────────────────────────────────────┘
+</code></pre>
+<h3 id="22-核心依赖清单">2.2 核心依赖清单<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#22-核心依赖清单" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>后端 (backend/package.json):</strong></p>
+<ul>
+<li><code>@mastra/core</code> ^1.17.0 — AI Agent 编排框架</li>
+<li><code>@ai-sdk/openai</code> ^3.0.48 — LLM调用 (OpenAI兼容)</li>
+<li><code>@ai-sdk/google</code> ^3.0.53 — Gemini支持</li>
+<li><code>hono</code> ^4.12.9 — Web框架</li>
+<li><code>drizzle-orm</code> + <code>better-sqlite3</code> — 数据库层</li>
+<li><code>fluent-ffmpeg</code> — 视频合成/拼接</li>
+<li><code>sharp</code> — 图片处理/压缩/宫格切分</li>
+<li><code>zod</code> + <code>uuid</code> + <code>pino</code> — 辅助库</li>
+</ul>
+<p><strong>前端:</strong></p>
+<ul>
+<li><code>nuxt</code> ^3.17.5 + <code>vue</code> ^3.5.13</li>
+<li><code>lucide-vue-next</code> — 图标库</li>
+<li>零UI框架依赖（纯CSS）</li>
+</ul>
+<h3 id="23-数据库schema14张表">2.3 数据库Schema（14张表）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#23-数据库schema14张表" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>表名</th><th>用途</th></tr></thead><tbody><tr><td><code>dramas</code></td><td>短剧项目（标题、风格、状态等）</td></tr><tr><td><code>episodes</code></td><td>剧集（剧本内容、视频URL等）</td></tr><tr><td><code>characters</code></td><td>角色（外貌、性格、音色、参考图等）</td></tr><tr><td><code>scenes</code></td><td>场景（地点、时间、氛围、提示词）</td></tr><tr><td><code>storyboards</code></td><td>分镜（15+字段：景别、角度、运镜、对白等）</td></tr><tr><td><code>storyboard_characters</code></td><td>分镜-角色多对多</td></tr><tr><td><code>episode_characters</code></td><td>剧集-角色关联</td></tr><tr><td><code>episode_scenes</code></td><td>剧集-场景关联</td></tr><tr><td><code>image_generations</code></td><td>图片生成记录（含frameType等）</td></tr><tr><td><code>video_generations</code></td><td>视频生成记录（含referenceMode等）</td></tr><tr><td><code>video_merges</code></td><td>全集拼接记录</td></tr><tr><td><code>ai_service_configs</code></td><td>AI服务商配置（API Key等）</td></tr><tr><td><code>ai_service_providers</code></td><td>AI厂商预设</td></tr><tr><td><code>ai_voices</code> / <code>agent_configs</code></td><td>音色库 / Agent配置</td></tr><tr><td><code>props</code> / <code>assets</code></td><td>道具 / 素材库</td></tr></tbody></table></div>
+<h3 id="24-多厂商adapter架构">2.4 多厂商Adapter架构<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#24-多厂商adapter架构" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<pre><code>registry.ts  →  统一注册表
+
+图片Adapter (5个):
+  OpenAI / Gemini / MiniMax / VolcEngine / Ali
+  (Chatfire暂复用OpenAI)
+
+视频Adapter (4个):
+  MiniMax (OpenAI Chat格式, /v1/video_generation)
+  VolcEngine/Seedance (doubao-seedance-1-5-pro, /api/v3/...)
+  Vidu (viduq3-turbo, Token认证, Webhook回调, 无轮询)
+  Ali
+
+TTS Adapter (1个):
+  MiniMax (唯一)
+</code></pre>
+<p><strong>Seedance使用确认：</strong> 火山引擎视频Adapter默认模型 <code>doubao-seedance-1-5-pro-251215</code>，可生成带音频的视频（<code>generate_audio: true</code>），时长限制4-12秒。</p>
+<hr/>
+<h2 id="三核心管线架构11步工作流">三、核心管线架构（11步工作流）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#三核心管线架构11步工作流" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<pre><code>┌──────────────────────────────────────────────────────────────────┐
+│  第1步: 剧本输入 (Script Input)                                    │
+│  - 手动输入/粘贴小说文本到剧集                                       │
+├──────────────────────────────────────────────────────────────────┤
+│  第2步: 剧本改写 (Script Rewriting)                                │
+│  Agent: script_rewriter                                          │
+│  输入: 原始小说文本 → 输出: 格式化剧本 (场景头+动作+对白)              │
+│  格式: ## S01 | 内景 · 地点 | 时间段                                │
+├──────────────────────────────────────────────────────────────────┤
+│  第3步: 角色提取 (Character Extraction)                            │
+│  Agent: extractor                                                │
+│  自动提取角色名/外貌/性格，智能去重（同名合并）                         │
+├──────────────────────────────────────────────────────────────────┤
+│  第4步: 场景提取 (Scene Extraction)                                │
+│  Agent: extractor                                                │
+│  提取地点/时间/氛围，去重规则: 地点+时间段精确匹配                      │
+├──────────────────────────────────────────────────────────────────┤
+│  第5步: 角色图片生成 (Character Image Gen)                          │
+│  Agent: grid_prompt_generator (角色模式)                           │
+│  为每个角色生成英文提示词 → AI文生图 → 角色定妆照                       │
+├──────────────────────────────────────────────────────────────────┤
+│  第6步: 场景图片生成 (Scene Image Gen)                              │
+│  Agent: grid_prompt_generator (场景模式)                           │
+│  为每个场景生成英文提示词 → AI文生图 → 场景背景图                       │
+├──────────────────────────────────────────────────────────────────┤
+│  第7步: 分镜拆解 (Storyboard Breakdown)                            │
+│  Agent: storyboard_breaker                                       │
+│  剧本 → 镜头序列，每个镜头10-15秒                                    │
+│  填充15个字段: title/shot_type/angle/movement/action/              │
+│  dialogue/video_prompt/image_prompt/bgm/sound_effect...           │
+│  视频提示词格式: &lt;location>/&lt;role>/&lt;voice>/&lt;n> 标记                  │
+├──────────────────────────────────────────────────────────────────┤
+│  第8步: 视频生成 (Video Generation)                                │
+│  分镜图 → 图生视频 (支持3种参考模式)                                 │
+│  - single: 单图参考                                               │
+│  - first_last: 首尾帧过渡                                          │
+│  - multiple: 多参考图                                              │
+│  异步轮询(300次×10s) 或 Webhook回调(Vidu)                          │
+├──────────────────────────────────────────────────────────────────┤
+│  第9步: TTS配音 (Voice Generation)                                 │
+│  对白解析 → 角色音色匹配 → MiniMax TTS → 音频文件                     │
+├──────────────────────────────────────────────────────────────────┤
+│  第10步: 单镜头合成 (Storyboard Compose)                            │
+│  FFmpeg: 视频 + TTS音频 + SRT字幕烧录 → 合成MP4                       │
+│  libx264/AAC编码, CRF 23                                          │
+├──────────────────────────────────────────────────────────────────┤
+│  第11步: 整集导出 (Episode Merge)                                   │
+│  FFmpeg: 全部镜头按序拼接 → 完整剧集MP4                               │
+└──────────────────────────────────────────────────────────────────┘
+</code></pre>
+<h3 id="31-宫格图特色流程">3.1 宫格图特色流程<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#31-宫格图特色流程" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Huobao Drama 有一个独特的”宫格图”机制：</p>
+<ol>
+<li><strong>宫格图生成</strong>: AI生成一张包含多个格子的大图 (rows × cols)</li>
+<li><strong>宫格图切分</strong> (Sharp): 精确切割成独立的小图，分配给不同镜头</li>
+<li><strong>三种宫格模式</strong>:
+<ul>
+<li><code>first_frame</code>: 首帧风格宫格（统一风格多镜头）</li>
+<li><code>first_last</code>: 首尾帧节奏感宫格</li>
+<li><code>multi_ref</code>: 同一镜头多角度宫格</li>
+</ul>
+</li>
+</ol>
+<p>这是生产流水线的关键优化——一次API调用生成多个分镜的首帧图，降低成本。</p>
+<hr/>
+<h2 id="四mastra-agent-体系">四、Mastra Agent 体系<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#四mastra-agent-体系" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="41-agent架构">4.1 Agent架构<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#41-agent架构" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<pre><code>Mastra Agent Factory (动态创建)
+└── 每次请求根据 agent_configs 表配置 + SKILL.md 注入
+    ├── Model: 统一使用 text service 的 OpenAI-compatible provider
+    ├── Instructions: DB配置 > SKILL.md扩展 > 默认prompt
+    └── Tools: 每个Agent有专用工具集（闭包注入 episodeId/dramaId）
+</code></pre>
+<h3 id="42-五个agent详解">4.2 五个Agent详解<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#42-五个agent详解" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Agent</th><th>职责</th><th>工具数</th><th>关键能力</th></tr></thead><tbody><tr><td><code>script_rewriter</code></td><td>小说→格式化剧本</td><td>read/save</td><td>格式转换，对话驱动</td></tr><tr><td><code>extractor</code></td><td>角色+场景提取去重</td><td>read/save×2</td><td>同名合并，地点+时间段匹配</td></tr><tr><td><code>storyboard_breaker</code></td><td>剧本→分镜序列</td><td>read/save/update</td><td>15字段完整填充，视频提示词</td></tr><tr><td><code>voice_assigner</code></td><td>角色→音色分配</td><td>list/get/assign</td><td>性别/性格匹配</td></tr><tr><td><code>grid_prompt_generator</code></td><td>提示词工程</td><td>read/generate</td><td>角色/场景/宫格三模式</td></tr></tbody></table></div>
+<h3 id="43-可扩展性">4.3 可扩展性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#43-可扩展性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><code>skills/</code> 目录下每个Agent有 <code>SKILL.md</code> 文件</li>
+<li>后端 <code>skills.ts</code> 实现动态加载：<code>loadAgentSkills(type)</code> 读取并注入到instructions</li>
+<li>Agent配置存储在数据库 <code>agent_configs</code> 表中，可运行时修改prompt/model/temperature</li>
+<li>新增Agent需: ① 创建tools文件 ② 注册到 <code>DEFAULT_PROMPTS</code> ③ 创建SKILL.md</li>
+</ul>
+<hr/>
+<h2 id="五前端工作台分析">五、前端工作台分析<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#五前端工作台分析" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="51-设计哲学">5.1 设计哲学<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#51-设计哲学" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>纯CSS暗色主题</strong>，零UI框架依赖</li>
+<li><strong>11步流水线侧边栏</strong>，左侧导航+主内容区布局</li>
+<li><strong>子步骤跳转</strong>：每个大步骤下可能包含多个子操作</li>
+<li><strong>进度可视化</strong>：11/11进度条 + 各步骤完成状态</li>
+<li>约4300行代码的 <code>episode/[episodeNumber].vue</code> — 单文件包含整个工作台逻辑</li>
+</ul>
+<h3 id="52-页面路由">5.2 页面路由<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#52-页面路由" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<pre><code>/                     → 项目列表页
+/drama/:id            → 项目详情（剧集管理）
+/drama/:id/episode/:n → 工作台（核心，4300行）
+/settings             → 设置页（AI配置/音色管理等）
+</code></pre>
+<hr/>
+<h2 id="六与-jellyfish-的关键差异">六、与 Jellyfish 的关键差异<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#六与-jellyfish-的关键差异" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>维度</th><th>Huobao Drama</th><th>Jellyfish (推测)</th></tr></thead><tbody><tr><td><strong>定位</strong></td><td>短剧/短视频垂直工具</td><td>通用AI视频生产平台</td></tr><tr><td><strong>输入</strong></td><td>一句话/小说的叙事文本</td><td>更灵活的多模态输入</td></tr><tr><td><strong>输出</strong></td><td>完整短剧（MP4）</td><td>视频/短片</td></tr><tr><td><strong>管线</strong></td><td>刚性11步流水线</td><td>更灵活的DAG工作流</td></tr><tr><td><strong>角色系统</strong></td><td>一等公民，完整角色管理</td><td>可能有，但非核心</td></tr><tr><td><strong>Agent框架</strong></td><td>Mastra (较少见)</td><td>LangChain/LangGraph</td></tr><tr><td><strong>视频模型</strong></td><td>Seedance, MiniMax, Vidu</td><td>可能更多样</td></tr><tr><td><strong>UI框架</strong></td><td>纯CSS，无UI框架</td><td>可能使用成熟UI库</td></tr><tr><td><strong>数据存储</strong></td><td>SQLite本地</td><td>可能是PostgreSQL等</td></tr><tr><td><strong>语言/市场</strong></td><td>纯中文，中国市场</td><td>国际化</td></tr><tr><td><strong>商业模式</strong></td><td>开源CC BY-NC-SA + 商业版</td><td>未知</td></tr><tr><td><strong>许可证</strong></td><td>限制商业使用</td><td>待确认</td></tr></tbody></table></div>
+<hr/>
+<h2 id="七关键判断">七、关键判断<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#七关键判断" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="71-玩具还是生产工具">7.1 玩具还是生产工具？<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#71-玩具还是生产工具" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>结论：介于”演示级工具”和”半自动生产工具”之间。</strong></p>
+<p><strong>生产工具的特征：</strong></p>
+<ul>
+<li>✅ 完整的Docker部署方案，开箱即用</li>
+<li>✅ 商业版已上线运营 (drama.chatfire.site)</li>
+<li>✅ 完善的API抽象层，多厂商适配</li>
+<li>✅ 数据库持久化，任务状态追踪</li>
+<li>✅ FFmpeg专业视频处理管线</li>
+<li>✅ Webhook回调支持异步长任务</li>
+</ul>
+<p><strong>玩具/演示的特征：</strong></p>
+<ul>
+<li>⚠️ AI视频质量受限于底层模型（Seedance/MiniMax生成质量参差不齐）</li>
+<li>⚠️ 缺乏协作/团队功能</li>
+<li>⚠️ 无视频审核/人工干预机制（只能重新生成）</li>
+<li>⚠️ 单集生成而非项目管理工具</li>
+<li>⚠️ 核心4300行单文件组件，代码组织可优化</li>
+<li>⚠️ 许可限制商业用途（需购买商业版）</li>
+<li>⚠️ 无测试代码，质量保障不足</li>
+</ul>
+<p><strong>综合：这是一个可用的”AI短剧半自动生产平台”，对个人创作者和小型工作室有实用价值，但难以支撑工业化生产。</strong></p>
+<h3 id="72-技术壁垒分析">7.2 技术壁垒分析<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#72-技术壁垒分析" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>壁垒</th><th>强度</th><th>说明</th></tr></thead><tbody><tr><td><strong>多厂商适配体系</strong></td><td>★★★☆☆</td><td>Adapter模式设计良好但非独创，其他团队可复制</td></tr><tr><td><strong>Agent + Tools闭环</strong></td><td>★★★★☆</td><td>Mastra框架+自定义工具的组合有一定壁垒</td></tr><tr><td><strong>宫格图工作流</strong></td><td>★★★☆☆</td><td>降低成本的好方法，但技术上不难复制</td></tr><tr><td><strong>全管线编排</strong></td><td>★★★★☆</td><td>11步串联的领域知识是核心壁垒</td></tr><tr><td><strong>Seedance集成</strong></td><td>★★☆☆☆</td><td>使用公开API，无独家合作</td></tr><tr><td><strong>前端工作台UX</strong></td><td>★★★☆☆</td><td>纯CSS的专业UI有设计壁垒但可模仿</td></tr></tbody></table></div>
+<p><strong>核心壁垒总结：</strong> Huobao Drama的真正壁垒不在单一技术点，而在于<strong>对短剧制作领域的深入理解</strong> → 11步流程设计、角色管理体系、分镜规范、宫格图优化等，这些是领域知识壁垒而非纯技术壁垒。</p>
+<h3 id="73-威胁评估">7.3 威胁评估<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#73-威胁评估" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>对Jellyfish/我们产品的威胁等级：★★★☆☆ (中等)</strong></p>
+<p><strong>直接威胁：</strong></p>
+<ul>
+<li>同一赛道（AI视频生产工具），目标用户重叠</li>
+<li>社区增长迅速（半年12K+ stars）</li>
+<li>中文市场先发优势明显</li>
+<li>开源+商业版双轨策略成熟</li>
+</ul>
+<p><strong>可防御点：</strong></p>
+<ul>
+<li>许可限制（CC BY-NC-SA）阻止了无许可的商业化使用</li>
+<li>短剧垂直定位既是优势也是局限 — 无法覆盖通用视频制作场景</li>
+<li>依赖外部AI API，供应商锁定风险</li>
+<li>代码质量/测试/架构有提升空间</li>
+<li>无团队协作功能，不易扩展为企业级</li>
+</ul>
+<hr/>
+<h2 id="八战略启示">八、战略启示<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#八战略启示" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ol>
+<li>
+<p><strong>“一句话生成”的魔力</strong> — Huobao Drama的核心卖点是极低的输入门槛。输入一部小说就能生成完整短剧，这个”从0到1”的体验远超竞品</p>
+</li>
+<li>
+<p><strong>管路化 vs 灵活化</strong> — Huobao选择了刚性11步管线，降低了用户决策成本；Jellyfish需要权衡灵活性和易用性</p>
+</li>
+<li>
+<p><strong>角色系统的战略价值</strong> — 角色作为”跨集一致性”的锚点，是短剧质量的命门。Huobao将角色管理提升为一等公民的做法值得借鉴</p>
+</li>
+<li>
+<p><strong>成本优化创新</strong> — 宫格图切分机制体现了对AI API成本的精打细算，这种优化思路应该应用到所有AI视频工具中</p>
+</li>
+<li>
+<p><strong>中文生态壁垒</strong> — Huobao在中国市场（LINUX DO社区、百度云/阿里云集成、Seedance等国内模型）建立了生态系统，海外产品难以突破</p>
+</li>
+<li>
+<p><strong>开源商业模式</strong> — CC BY-NC-SA + 商业版双轨策略非常有效，但许可证实际上阻止了大部分商业场景下的fork使用</p>
+</li>
+</ol>
+<hr/>
+<h2 id="九附录仓库文件结构">九、附录：仓库文件结构<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#九附录仓库文件结构" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<pre><code>huobao-drama/
+├── backend/
+│   ├── src/
+│   │   ├── index.ts              # Hono服务入口
+│   │   ├── agents/
+│   │   │   ├── index.ts          # Agent工厂
+│   │   │   ├── skills.ts         # SKILL.md加载
+│   │   │   └── tools/            # 5个Agent工具集
+│   │   ├── db/
+│   │   │   ├── index.ts          # 数据库连接
+│   │   │   └── schema.ts         # 14张表定义
+│   │   ├── routes/               # 14个路由模块
+│   │   ├── services/
+│   │   │   ├── ai.ts             # AI配置读取
+│   │   │   ├── video-generation.ts
+│   │   │   ├── image-generation.ts
+│   │   │   ├── tts-generation.ts
+│   │   │   ├── ffmpeg-compose.ts # 单镜头合成
+│   │   │   ├── ffmpeg-merge.ts   # 全集拼接
+│   │   │   ├── grid-split.ts     # 宫格切分
+│   │   │   └── adapters/         # 9个厂商Adapter
+│   │   ├── middleware/
+│   │   └── utils/
+│   └── scripts/seed-voices.ts
+├── frontend/
+│   ├── app/
+│   │   ├── pages/                # 4个页面
+│   │   ├── components/
+│   │   ├── composables/
+│   │   ├── layouts/
+│   │   └── assets/
+│   └── nuxt.config.ts
+├── skills/                       # 5个Agent的SKILL.md
+├── configs/config.example.yaml
+├── docker-compose.yml
+├── Dockerfile
+└── README.md
+</code></pre>
+<hr/>
+<p><em>报告生成完毕。本分析基于2026-06-15的仓库快照，代码总行数约4300+ (backend) + 4300+ (frontend workbench) + 其他。</em></p></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>关系图谱</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-479" aria-expanded="true"><h3>目录</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#-huobao-drama-火宝短剧-深度竞品分析报告" data-for="-huobao-drama-火宝短剧-深度竞品分析报告">🔥 Huobao Drama (火宝短剧) 深度竞品分析报告</a></li><li class="depth-1"><a href="#一仓库概况" data-for="一仓库概况">一、仓库概况</a></li><li class="depth-1"><a href="#二技术架构深度分析" data-for="二技术架构深度分析">二、技术架构深度分析</a></li><li class="depth-2"><a href="#21-整体架构" data-for="21-整体架构">2.1 整体架构</a></li><li class="depth-2"><a href="#22-核心依赖清单" data-for="22-核心依赖清单">2.2 核心依赖清单</a></li><li class="depth-2"><a href="#23-数据库schema14张表" data-for="23-数据库schema14张表">2.3 数据库Schema（14张表）</a></li><li class="depth-2"><a href="#24-多厂商adapter架构" data-for="24-多厂商adapter架构">2.4 多厂商Adapter架构</a></li><li class="depth-1"><a href="#三核心管线架构11步工作流" data-for="三核心管线架构11步工作流">三、核心管线架构（11步工作流）</a></li><li class="depth-2"><a href="#31-宫格图特色流程" data-for="31-宫格图特色流程">3.1 宫格图特色流程</a></li><li class="depth-1"><a href="#四mastra-agent-体系" data-for="四mastra-agent-体系">四、Mastra Agent 体系</a></li><li class="depth-2"><a href="#41-agent架构" data-for="41-agent架构">4.1 Agent架构</a></li><li class="depth-2"><a href="#42-五个agent详解" data-for="42-五个agent详解">4.2 五个Agent详解</a></li><li class="depth-2"><a href="#43-可扩展性" data-for="43-可扩展性">4.3 可扩展性</a></li><li class="depth-1"><a href="#五前端工作台分析" data-for="五前端工作台分析">五、前端工作台分析</a></li><li class="depth-2"><a href="#51-设计哲学" data-for="51-设计哲学">5.1 设计哲学</a></li><li class="depth-2"><a href="#52-页面路由" data-for="52-页面路由">5.2 页面路由</a></li><li class="depth-1"><a href="#六与-jellyfish-的关键差异" data-for="六与-jellyfish-的关键差异">六、与 Jellyfish 的关键差异</a></li><li class="depth-1"><a href="#七关键判断" data-for="七关键判断">七、关键判断</a></li><li class="depth-2"><a href="#71-玩具还是生产工具" data-for="71-玩具还是生产工具">7.1 玩具还是生产工具？</a></li><li class="depth-2"><a href="#72-技术壁垒分析" data-for="72-技术壁垒分析">7.2 技术壁垒分析</a></li><li class="depth-2"><a href="#73-威胁评估" data-for="73-威胁评估">7.3 威胁评估</a></li><li class="depth-1"><a href="#八战略启示" data-for="八战略启示">八、战略启示</a></li><li class="depth-1"><a href="#九附录仓库文件结构" data-for="九附录仓库文件结构">九、附录：仓库文件结构</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../postscript.js" type="module" data-persist="true"></script></html>

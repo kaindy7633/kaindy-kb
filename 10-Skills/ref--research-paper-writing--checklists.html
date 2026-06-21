@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr"><head><title>ref--research-paper-writing--checklists</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="🏠 Kaindy Knowledge Base"/><meta property="og:title" content="ref--research-paper-writing--checklists"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="ref--research-paper-writing--checklists"/><meta name="twitter:description" content="Conference Paper Checklists This reference documents the mandatory checklist requirements for major ML/AI conferences."/><meta property="og:description" content="Conference Paper Checklists This reference documents the mandatory checklist requirements for major ML/AI conferences."/><meta property="og:image:alt" content="Conference Paper Checklists This reference documents the mandatory checklist requirements for major ML/AI conferences."/><meta property="twitter:domain" content="kaindy-kb.pages.dev"/><meta property="og:url" content="https://kaindy-kb.pages.dev/10-Skills/ref--research-paper-writing--checklists"/><meta property="twitter:url" content="https://kaindy-kb.pages.dev/10-Skills/ref--research-paper-writing--checklists"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Conference Paper Checklists This reference documents the mandatory checklist requirements for major ML/AI conferences."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUva2FpbmR5L0RvY3VtZW50cy9xdWFydHovcXVhcnR6L2NvbXBvbmVudHMvc3R5bGVzIiwic291cmNlcyI6WyJtZXJtYWlkLmlubGluZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFHRjtFQUNFOzs7QUFLRjtFQUNFO0VBQ0E7OztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTs7QUFJRjtFQUNFO0VBQ0E7RUFDQSIsInNvdXJjZXNDb250ZW50IjpbIi5leHBhbmQtYnV0dG9uIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbG9hdDogcmlnaHQ7XG4gIHBhZGRpbmc6IDAuNHJlbTtcbiAgbWFyZ2luOiAwLjNyZW07XG4gIHJpZ2h0OiAwOyAvLyBOT1RFOiByaWdodCB3aWxsIGJlIHNldCBpbiBtZXJtYWlkLmlubGluZS50c1xuICBjb2xvcjogdmFyKC0tZ3JheSk7XG4gIGJvcmRlci1jb2xvcjogdmFyKC0tZGFyayk7XG4gIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgYm9yZGVyOiAxcHggc29saWQ7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgb3BhY2l0eTogMDtcbiAgdHJhbnNpdGlvbjogMC4ycztcblxuICAmID4gc3ZnIHtcbiAgICBmaWxsOiB2YXIoLS1saWdodCk7XG4gICAgZmlsdGVyOiBjb250cmFzdCgwLjMpO1xuICB9XG5cbiAgJjpob3ZlciB7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIGJvcmRlci1jb2xvcjogdmFyKC0tc2Vjb25kYXJ5KTtcbiAgfVxuXG4gICY6Zm9jdXMge1xuICAgIG91dGxpbmU6IDA7XG4gIH1cbn1cblxucHJlIHtcbiAgJjpob3ZlciA+IC5leHBhbmQtYnV0dG9uIHtcbiAgICBvcGFjaXR5OiAxO1xuICAgIHRyYW5zaXRpb246IDAuMnM7XG4gIH1cbn1cblxuI21lcm1haWQtY29udGFpbmVyIHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICBjb250YWluOiBsYXlvdXQ7XG4gIHotaW5kZXg6IDk5OTtcbiAgbGVmdDogMDtcbiAgdG9wOiAwO1xuICB3aWR0aDogMTAwdnc7XG4gIGhlaWdodDogMTAwdmg7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIGRpc3BsYXk6IG5vbmU7XG4gIGJhY2tkcm9wLWZpbHRlcjogYmx1cig0cHgpO1xuICBiYWNrZ3JvdW5kOiByZ2JhKDAsIDAsIDAsIDAuNSk7XG5cbiAgJi5hY3RpdmUge1xuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgfVxuXG4gICYgPiAjbWVybWFpZC1zcGFjZSB7XG4gICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gICAgYm9yZGVyLXJhZGl1czogNXB4O1xuICAgIHBvc2l0aW9uOiBmaXhlZDtcbiAgICB0b3A6IDUwJTtcbiAgICBsZWZ0OiA1MCU7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7XG4gICAgaGVpZ2h0OiA4MHZoO1xuICAgIHdpZHRoOiA4MHZ3O1xuICAgIG92ZXJmbG93OiBoaWRkZW47XG5cbiAgICAmID4gLm1lcm1haWQtY29udGVudCB7XG4gICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgICB0cmFuc2Zvcm0tb3JpZ2luOiAwIDA7XG4gICAgICB0cmFuc2l0aW9uOiB0cmFuc2Zvcm0gMC4xcyBlYXNlO1xuICAgICAgb3ZlcmZsb3c6IHZpc2libGU7XG4gICAgICBtaW4taGVpZ2h0OiAyMDBweDtcbiAgICAgIG1pbi13aWR0aDogMjAwcHg7XG5cbiAgICAgIHByZSB7XG4gICAgICAgIG1hcmdpbjogMDtcbiAgICAgICAgYm9yZGVyOiBub25lO1xuICAgICAgfVxuXG4gICAgICBzdmcge1xuICAgICAgICBtYXgtd2lkdGg6IG5vbmU7XG4gICAgICAgIGhlaWdodDogYXV0bztcbiAgICAgIH1cbiAgICB9XG5cbiAgICAmID4gLm1lcm1haWQtY29udHJvbHMge1xuICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgYm90dG9tOiAyMHB4O1xuICAgICAgcmlnaHQ6IDIwcHg7XG4gICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgZ2FwOiA4cHg7XG4gICAgICBwYWRkaW5nOiA4cHg7XG4gICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodCk7XG4gICAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgYm9yZGVyLXJhZGl1czogNnB4O1xuICAgICAgYm94LXNoYWRvdzogMCAycHggNHB4IHJnYmEoMCwgMCwgMCwgMC4xKTtcbiAgICAgIHotaW5kZXg6IDI7XG5cbiAgICAgIC5tZXJtYWlkLWNvbnRyb2wtYnV0dG9uIHtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICAgIHdpZHRoOiAzMnB4O1xuICAgICAgICBoZWlnaHQ6IDMycHg7XG4gICAgICAgIHBhZGRpbmc6IDA7XG4gICAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgICAgY29sb3I6IHZhcigtLWRhcmspO1xuICAgICAgICBib3JkZXItcmFkaXVzOiA0cHg7XG4gICAgICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICAgICAgZm9udC1zaXplOiAxNnB4O1xuICAgICAgICBmb250LWZhbWlseTogdmFyKC0tYm9keUZvbnQpO1xuICAgICAgICB0cmFuc2l0aW9uOiBhbGwgMC4ycyBlYXNlO1xuXG4gICAgICAgICY6aG92ZXIge1xuICAgICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIH1cblxuICAgICAgICAmOmFjdGl2ZSB7XG4gICAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDFweCk7XG4gICAgICAgIH1cblxuICAgICAgICAvLyBTdHlsZSB0aGUgcmVzZXQgYnV0dG9uIGRpZmZlcmVudGx5XG4gICAgICAgICY6bnRoLWNoaWxkKDIpIHtcbiAgICAgICAgICB3aWR0aDogYXV0bztcbiAgICAgICAgICBwYWRkaW5nOiAwIDEycHg7XG4gICAgICAgICAgZm9udC1zaXplOiAxNHB4O1xuICAgICAgICB9XG4gICAgICB9XG4gICAgfVxuICB9XG59XG4iXX0= */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://kaindy-kb.pages.dev/index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://kaindy-kb.pages.dev/10-Skills/ref--research-paper-writing--checklists-og-image.webp"/><meta property="og:image:url" content="https://kaindy-kb.pages.dev/10-Skills/ref--research-paper-writing--checklists-og-image.webp"/><meta name="twitter:image" content="https://kaindy-kb.pages.dev/10-Skills/ref--research-paper-writing--checklists-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="10-Skills/ref--research-paper-writing--checklists"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">🏠 Kaindy Knowledge Base</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>搜索</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="搜索些什么" placeholder="搜索些什么"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="暗色模式"><title>暗色模式</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="亮色模式"><title>亮色模式</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="阅读模式"><title>阅读模式</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-756"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>探索</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-756" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../10-Skills/">10 Skills</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>ref  research paper writing  checklists</a></div></nav><h1 class="article-title">ref--research-paper-writing--checklists</h1><p show-comma="true" class="content-meta"><time datetime="2026-06-15T12:23:17.000Z">2026年6月15日</time><span>8分钟阅读</span></p></div></div><article class="popover-hint"><h1 id="conference-paper-checklists">Conference Paper Checklists<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#conference-paper-checklists" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>This reference documents the mandatory checklist requirements for major ML/AI conferences. All major venues now require paper checklists—missing them results in desk rejection.</p>
+<hr/>
+<h2 id="contents">Contents<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#contents" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><a href="#neurips-paper-checklist" class="internal alias">NeurIPS Paper Checklist</a></li>
+<li><a href="#icml-paper-checklist" class="internal alias">ICML Paper Checklist</a></li>
+<li><a href="#iclr-requirements" class="internal alias">ICLR Requirements</a></li>
+<li><a href="#acl-requirements" class="internal alias">ACL Requirements</a></li>
+<li><a href="#aaai-requirements" class="internal alias">AAAI Requirements</a></li>
+<li><a href="#colm-requirements" class="internal alias">COLM Requirements</a></li>
+<li><a href="#universal-pre-submission-checklist" class="internal alias">Universal Pre-Submission Checklist</a></li>
+</ul>
+<hr/>
+<h2 id="neurips-paper-checklist">NeurIPS Paper Checklist<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#neurips-paper-checklist" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="mandatory-components">Mandatory Components<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mandatory-components" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>All NeurIPS submissions must include a completed paper checklist. Papers lacking this element face <strong>automatic desk rejection</strong>. The checklist appears after references and supplemental material, outside the page limit.</p>
+<h3 id="16-required-checklist-items">16 Required Checklist Items<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#16-required-checklist-items" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="1-claims-alignment">1. Claims Alignment<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-claims-alignment" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>Authors must verify that abstract and introduction claims match theoretical and experimental results, with clearly stated contributions, assumptions, and limitations.</p>
+<p><strong>What to check:</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Abstract claims match actual results</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Introduction doesn’t overclaim</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Contributions are specific and falsifiable</li>
+</ul>
+<h4 id="2-limitations-discussion">2. Limitations Discussion<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-limitations-discussion" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>Papers should include a dedicated “Limitations” section addressing strong assumptions, robustness to violations, scope constraints, and performance-influencing factors.</p>
+<p><strong>What to include:</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Dedicated Limitations section</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Honest assessment of scope</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Conditions where method may fail</li>
+</ul>
+<h4 id="3-theory--proofs">3. Theory &amp; Proofs<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-theory--proofs" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>Theoretical contributions require full assumption statements and complete proofs (main paper or appendix with proof sketches for intuition).</p>
+<p><strong>What to check:</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> All assumptions stated formally</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Complete proofs provided (main text or appendix)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Proof sketches for intuition in main text</li>
+</ul>
+<h4 id="4-reproducibility">4. Reproducibility<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-reproducibility" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>Authors must describe steps ensuring results verification through code release, detailed instructions, model access, or checkpoints appropriate to their contribution type.</p>
+<p><strong>What to provide:</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Clear reproducibility statement</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Code availability information</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Model checkpoints if applicable</li>
+</ul>
+<h4 id="5-data--code-access">5. Data &amp; Code Access<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#5-data--code-access" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>Instructions for reproducing main experimental results should be provided (supplemental material or URLs), including exact commands and environment specifications.</p>
+<p><strong>What to include:</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Exact commands to run experiments</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Environment specifications (requirements.txt, conda env)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Data access instructions</li>
+</ul>
+<h4 id="6-experimental-details">6. Experimental Details<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#6-experimental-details" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>Papers must specify training details: data splits, hyperparameters, and selection methods in the main paper or supplementary materials.</p>
+<p><strong>What to document:</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Train/val/test split details</li>
+<li class="task-list-item"><input type="checkbox" disabled/> All hyperparameters used</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Hyperparameter selection method</li>
+</ul>
+<h4 id="7-statistical-significance">7. Statistical Significance<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#7-statistical-significance" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>Results require error bars, confidence intervals, or statistical tests with clearly stated calculation methods and underlying assumptions.</p>
+<p><strong>What to include:</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Error bars or confidence intervals</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Number of runs/seeds</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Calculation method (std dev vs std error)</li>
+</ul>
+<h4 id="8-compute-resources">8. Compute Resources<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#8-compute-resources" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>Specifications needed: compute worker types (CPU/GPU), memory, storage, execution time per run, and total project compute requirements.</p>
+<p><strong>What to document:</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> GPU type and count</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Training time per run</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Total compute used</li>
+</ul>
+<h4 id="9-ethics-code-compliance">9. Ethics Code Compliance<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#9-ethics-code-compliance" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>Authors confirm adherence to the NeurIPS Code of Ethics, noting any necessary deviations.</p>
+<p><strong>What to verify:</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Read NeurIPS Code of Ethics</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Confirm compliance</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Note any deviations with justification</li>
+</ul>
+<h4 id="10-broader-impacts">10. Broader Impacts<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#10-broader-impacts" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>Discussion of potential negative societal applications, fairness concerns, privacy risks, and possible mitigation strategies when applicable.</p>
+<p><strong>What to address:</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Potential negative applications</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Fairness considerations</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Privacy implications</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Mitigation strategies</li>
+</ul>
+<h4 id="11-safeguards">11. Safeguards<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#11-safeguards" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>High-risk models (language models, internet-scraped datasets) require controlled release mechanisms and usage guidelines.</p>
+<p><strong>What to consider:</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Release strategy for sensitive models</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Usage guidelines if needed</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Access controls if appropriate</li>
+</ul>
+<h4 id="12-license-respect">12. License Respect<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#12-license-respect" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>All existing assets require creator citations, license names, URLs, version numbers, and terms-of-service acknowledgment.</p>
+<p><strong>What to document:</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Dataset licenses cited</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Code licenses respected</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Version numbers included</li>
+</ul>
+<h4 id="13-asset-documentation">13. Asset Documentation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#13-asset-documentation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>New releases need structured templates documenting training details, limitations, consent procedures, and licensing information.</p>
+<p><strong>For new datasets/models:</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Datasheet or model card</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Training data documentation</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Known limitations</li>
+</ul>
+<h4 id="14-human-subjects">14. Human Subjects<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#14-human-subjects" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>Crowdsourcing studies must include participant instructions, screenshots, compensation details, and comply with minimum wage requirements.</p>
+<p><strong>What to include:</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Task instructions</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Compensation details</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Time estimates</li>
+</ul>
+<h4 id="15-irb-approvals">15. IRB Approvals<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#15-irb-approvals" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>Human subjects research requires documented institutional review board approval or equivalent, with risk descriptions disclosed (maintaining anonymity at submission).</p>
+<p><strong>What to verify:</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> IRB approval obtained</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Risk assessment completed</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Anonymized at submission</li>
+</ul>
+<h4 id="16-llm-declaration">16. LLM Declaration<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#16-llm-declaration" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>Usage of large language models as core methodology components requires disclosure; writing/editing use doesn’t require declaration.</p>
+<p><strong>What to disclose:</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> LLM used as core methodology component</li>
+<li class="task-list-item"><input type="checkbox" disabled/> How LLM was used</li>
+<li class="task-list-item"><input type="checkbox" disabled/> (Writing assistance doesn’t require disclosure)</li>
+</ul>
+<h3 id="response-format">Response Format<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#response-format" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Authors select “yes,” “no,” or “N/A” per question, with optional 1-2 sentence justifications.</p>
+<p><strong>Important:</strong> Reviewers are explicitly instructed not to penalize honest limitation acknowledgment.</p>
+<hr/>
+<h2 id="icml-paper-checklist">ICML Paper Checklist<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#icml-paper-checklist" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="broader-impact-statement">Broader Impact Statement<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#broader-impact-statement" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>ICML requires a Broader Impact Statement at the end of the paper, before references. This does NOT count toward the page limit.</p>
+<p><strong>Required elements:</strong></p>
+<ul>
+<li>Potential positive impacts</li>
+<li>Potential negative impacts</li>
+<li>Mitigation strategies</li>
+<li>Who may be affected</li>
+</ul>
+<h3 id="icml-specific-requirements">ICML Specific Requirements<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#icml-specific-requirements" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="reproducibility-checklist">Reproducibility Checklist<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#reproducibility-checklist" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Data splits clearly specified</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Hyperparameters listed</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Search ranges documented</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Selection method explained</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Compute resources specified</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Code availability stated</li>
+</ul>
+<h4 id="statistical-reporting">Statistical Reporting<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#statistical-reporting" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Error bars on all figures</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Standard deviation vs standard error specified</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Number of runs stated</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Significance tests if comparing methods</li>
+</ul>
+<h4 id="anonymization">Anonymization<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#anonymization" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> No author names in paper</li>
+<li class="task-list-item"><input type="checkbox" disabled/> No acknowledgments</li>
+<li class="task-list-item"><input type="checkbox" disabled/> No grant numbers</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Prior work cited in third person</li>
+<li class="task-list-item"><input type="checkbox" disabled/> No identifiable repository URLs</li>
+</ul>
+<hr/>
+<h2 id="iclr-requirements">ICLR Requirements<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#iclr-requirements" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="llm-disclosure-policy-new-for-2026">LLM Disclosure Policy (New for 2026)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#llm-disclosure-policy-new-for-2026" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>ICLR has a specific LLM disclosure requirement:</p>
+<blockquote>
+<p>“If LLMs played a significant role in research ideation and/or writing to the extent that they could be regarded as a contributor, authors must describe their precise role in a separate appendix section.”</p>
+</blockquote>
+<p><strong>When disclosure is required:</strong></p>
+<ul>
+<li>LLM used for significant research ideation</li>
+<li>LLM used for substantial writing</li>
+<li>LLM could be considered a contributor</li>
+</ul>
+<p><strong>When disclosure is NOT required:</strong></p>
+<ul>
+<li>Grammar checking</li>
+<li>Minor editing assistance</li>
+<li>Code completion tools</li>
+</ul>
+<p><strong>Consequences of non-disclosure:</strong></p>
+<ul>
+<li>Desk rejection</li>
+<li>Potential post-publication issues</li>
+</ul>
+<h3 id="iclr-specific-requirements">ICLR Specific Requirements<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#iclr-specific-requirements" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="reproducibility-statement-optional-but-recommended">Reproducibility Statement (Optional but Recommended)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#reproducibility-statement-optional-but-recommended" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>Add a statement referencing:</p>
+<ul>
+<li>Supporting materials</li>
+<li>Code availability</li>
+<li>Data availability</li>
+<li>Model checkpoints</li>
+</ul>
+<h4 id="ethics-statement-optional">Ethics Statement (Optional)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#ethics-statement-optional" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>Address potential concerns in ≤1 page. Does not count toward page limit.</p>
+<h4 id="reciprocal-reviewing">Reciprocal Reviewing<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#reciprocal-reviewing" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>Authors on 3+ papers must serve as reviewers for ≥6 papers</li>
+<li>Each submission needs ≥1 author registered to review ≥3 papers</li>
+</ul>
+<hr/>
+<h2 id="acl-requirements">ACL Requirements<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#acl-requirements" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="limitations-section-mandatory">Limitations Section (Mandatory)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#limitations-section-mandatory" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>ACL specifically requires a Limitations section:</p>
+<p><strong>What to include:</strong></p>
+<ul>
+<li>Strong assumptions made</li>
+<li>Scope limitations</li>
+<li>When method may fail</li>
+<li>Generalization concerns</li>
+</ul>
+<p><strong>Important:</strong> The Limitations section does NOT count toward the page limit.</p>
+<h3 id="acl-specific-checklist">ACL Specific Checklist<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#acl-specific-checklist" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="responsible-nlp">Responsible NLP<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#responsible-nlp" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Bias considerations addressed</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Fairness evaluated if applicable</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Dual-use concerns discussed</li>
+</ul>
+<h4 id="multilingual-considerations">Multilingual Considerations<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#multilingual-considerations" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>If applicable:</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Language diversity addressed</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Non-English languages included</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Translation quality verified</li>
+</ul>
+<h4 id="human-evaluation">Human Evaluation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#human-evaluation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>If applicable:</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Annotator details provided</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Agreement metrics reported</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Compensation documented</li>
+</ul>
+<hr/>
+<h2 id="aaai-requirements">AAAI Requirements<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#aaai-requirements" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="formatting-strictest-of-all-venues">Formatting (Strictest of All Venues)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#formatting-strictest-of-all-venues" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>AAAI enforces formatting rules more strictly than any other major venue. Papers that deviate from the template are desk-rejected.</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Use the <strong>exact</strong> AAAI style file without modification — no <code>\setlength</code>, no <code>\vspace</code> hacks, no font overrides</li>
+<li class="task-list-item"><input type="checkbox" disabled/> 7 pages main content (8 for camera-ready with author info)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Two-column format, Times font (set by template)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> References and appendices do not count toward page limit</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Abstract must be a single paragraph</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Do not modify margins, column widths, or font sizes</li>
+</ul>
+<h3 id="required-sections">Required Sections<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#required-sections" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Abstract (single paragraph, no math or citations)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Introduction with clear contribution statement</li>
+<li class="task-list-item"><input type="checkbox" disabled/> References in AAAI format (uses <code>aaai2026.bst</code>)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Appendix (optional, unlimited)</li>
+</ul>
+<h3 id="ethics-and-reproducibility">Ethics and Reproducibility<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#ethics-and-reproducibility" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Broader impact statement (encouraged but not always mandatory — check current year’s CFP)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Reproducibility details (datasets, code availability)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Acknowledge use of AI writing tools if applicable</li>
+</ul>
+<h3 id="key-differences-from-other-venues">Key Differences from Other Venues<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-differences-from-other-venues" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>No separate limitations section required</strong> (unlike ACL), but discussing limitations is recommended</li>
+<li><strong>Strictest formatting enforcement</strong> — the style checker will reject non-compliant PDFs</li>
+<li><strong>No paper checklist</strong> like NeurIPS has, but the universal checklist below still applies</li>
+<li><strong>Unified template</strong> covers main paper and supplementary in the same file</li>
+</ul>
+<hr/>
+<h2 id="colm-requirements">COLM Requirements<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#colm-requirements" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="overview">Overview<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#overview" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>COLM (Conference on Language Modeling) focuses specifically on language model research. Framing must target this community.</p>
+<h3 id="formatting">Formatting<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#formatting" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> 9 pages main content (10 for camera-ready)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Use COLM template (based on ICLR template with modifications)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Double-blind review</li>
+<li class="task-list-item"><input type="checkbox" disabled/> References and appendices unlimited</li>
+</ul>
+<h3 id="required-sections-1">Required Sections<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#required-sections-1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Abstract</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Introduction framed for language modeling community</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Conclusion</li>
+<li class="task-list-item"><input type="checkbox" disabled/> References</li>
+</ul>
+<h3 id="content-expectations">Content Expectations<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#content-expectations" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Contribution must be relevant to language models (broadly interpreted: training, evaluation, applications, theory, alignment, safety)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> If the method is general, frame with language model examples</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Baselines should include recent LM-specific methods where applicable</li>
+</ul>
+<h3 id="key-differences-from-other-venues-1">Key Differences from Other Venues<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-differences-from-other-venues-1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Narrower scope</strong> than NeurIPS/ICML — must frame for LM community</li>
+<li><strong>Template derived from ICLR</strong> — similar formatting rules</li>
+<li><strong>Newer venue</strong> — reviewer norms are still establishing; err on the side of thorough evaluation</li>
+<li><strong>No mandatory checklist</strong> like NeurIPS, but broader impact discussion is expected</li>
+<li><strong>LLM disclosure</strong>: If LLMs were used in research (code generation, data annotation, writing assistance), disclose this</li>
+</ul>
+<hr/>
+<h2 id="universal-pre-submission-checklist">Universal Pre-Submission Checklist<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#universal-pre-submission-checklist" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="before-every-submission">Before Every Submission<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#before-every-submission" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="paper-content">Paper Content<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#paper-content" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Abstract ≤ word limit (usually 250-300 words)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Main content within page limit</li>
+<li class="task-list-item"><input type="checkbox" disabled/> References complete and verified</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Limitations section included</li>
+<li class="task-list-item"><input type="checkbox" disabled/> All figures/tables have captions</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Captions are self-contained</li>
+</ul>
+<h4 id="formatting-1">Formatting<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#formatting-1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Correct template used (venue + year specific)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Margins not modified</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Font sizes not modified</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Double-blind requirements met</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Page numbers (for review) or none (camera-ready)</li>
+</ul>
+<h4 id="technical">Technical<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#technical" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> All claims supported by evidence</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Error bars included</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Baselines appropriate</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Hyperparameters documented</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Compute resources stated</li>
+</ul>
+<h4 id="reproducibility">Reproducibility<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#reproducibility" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Code will be available (or justification)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Data will be available (or justification)</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Environment documented</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Commands to reproduce provided</li>
+</ul>
+<h4 id="ethics">Ethics<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#ethics" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Broader impacts considered</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Limitations honestly stated</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Licenses respected</li>
+<li class="task-list-item"><input type="checkbox" disabled/> IRB obtained if needed</li>
+</ul>
+<h4 id="final-checks">Final Checks<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#final-checks" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> PDF compiles without errors</li>
+<li class="task-list-item"><input type="checkbox" disabled/> All figures render correctly</li>
+<li class="task-list-item"><input type="checkbox" disabled/> All citations resolve</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Supplementary material organized</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Conference checklist completed</li>
+</ul>
+<hr/>
+<h2 id="quick-reference-page-limits">Quick Reference: Page Limits<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#quick-reference-page-limits" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Conference</th><th>Main Content</th><th>References</th><th>Appendix</th></tr></thead><tbody><tr><td>NeurIPS 2025</td><td>9 pages</td><td>Unlimited</td><td>Unlimited (checklist separate)</td></tr><tr><td>ICML 2026</td><td>8 pages (+1 camera)</td><td>Unlimited</td><td>Unlimited</td></tr><tr><td>ICLR 2026</td><td>9 pages (+1 camera)</td><td>Unlimited</td><td>Unlimited</td></tr><tr><td>ACL 2025</td><td>8 pages (long)</td><td>Unlimited</td><td>Unlimited</td></tr><tr><td>AAAI 2026</td><td>7 pages (+1 camera)</td><td>Unlimited</td><td>Unlimited</td></tr><tr><td>COLM 2025</td><td>9 pages (+1 camera)</td><td>Unlimited</td><td>Unlimited</td></tr></tbody></table></div>
+<hr/>
+<h2 id="template-locations">Template Locations<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#template-locations" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>All conference templates are in the <code>templates/</code> directory:</p>
+<pre><code>templates/
+├── icml2026/       # ICML 2026 official
+├── iclr2026/       # ICLR 2026 official
+├── neurips2025/    # NeurIPS 2025
+├── acl/            # ACL style files
+├── aaai2026/       # AAAI 2026
+└── colm2025/       # COLM 2025
+</code></pre></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>关系图谱</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-340" aria-expanded="true"><h3>目录</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#conference-paper-checklists" data-for="conference-paper-checklists">Conference Paper Checklists</a></li><li class="depth-1"><a href="#contents" data-for="contents">Contents</a></li><li class="depth-1"><a href="#neurips-paper-checklist" data-for="neurips-paper-checklist">NeurIPS Paper Checklist</a></li><li class="depth-2"><a href="#mandatory-components" data-for="mandatory-components">Mandatory Components</a></li><li class="depth-2"><a href="#16-required-checklist-items" data-for="16-required-checklist-items">16 Required Checklist Items</a></li><li class="depth-2"><a href="#response-format" data-for="response-format">Response Format</a></li><li class="depth-1"><a href="#icml-paper-checklist" data-for="icml-paper-checklist">ICML Paper Checklist</a></li><li class="depth-2"><a href="#broader-impact-statement" data-for="broader-impact-statement">Broader Impact Statement</a></li><li class="depth-2"><a href="#icml-specific-requirements" data-for="icml-specific-requirements">ICML Specific Requirements</a></li><li class="depth-1"><a href="#iclr-requirements" data-for="iclr-requirements">ICLR Requirements</a></li><li class="depth-2"><a href="#llm-disclosure-policy-new-for-2026" data-for="llm-disclosure-policy-new-for-2026">LLM Disclosure Policy (New for 2026)</a></li><li class="depth-2"><a href="#iclr-specific-requirements" data-for="iclr-specific-requirements">ICLR Specific Requirements</a></li><li class="depth-1"><a href="#acl-requirements" data-for="acl-requirements">ACL Requirements</a></li><li class="depth-2"><a href="#limitations-section-mandatory" data-for="limitations-section-mandatory">Limitations Section (Mandatory)</a></li><li class="depth-2"><a href="#acl-specific-checklist" data-for="acl-specific-checklist">ACL Specific Checklist</a></li><li class="depth-1"><a href="#aaai-requirements" data-for="aaai-requirements">AAAI Requirements</a></li><li class="depth-2"><a href="#formatting-strictest-of-all-venues" data-for="formatting-strictest-of-all-venues">Formatting (Strictest of All Venues)</a></li><li class="depth-2"><a href="#required-sections" data-for="required-sections">Required Sections</a></li><li class="depth-2"><a href="#ethics-and-reproducibility" data-for="ethics-and-reproducibility">Ethics and Reproducibility</a></li><li class="depth-2"><a href="#key-differences-from-other-venues" data-for="key-differences-from-other-venues">Key Differences from Other Venues</a></li><li class="depth-1"><a href="#colm-requirements" data-for="colm-requirements">COLM Requirements</a></li><li class="depth-2"><a href="#overview" data-for="overview">Overview</a></li><li class="depth-2"><a href="#formatting" data-for="formatting">Formatting</a></li><li class="depth-2"><a href="#required-sections-1" data-for="required-sections-1">Required Sections</a></li><li class="depth-2"><a href="#content-expectations" data-for="content-expectations">Content Expectations</a></li><li class="depth-2"><a href="#key-differences-from-other-venues-1" data-for="key-differences-from-other-venues-1">Key Differences from Other Venues</a></li><li class="depth-1"><a href="#universal-pre-submission-checklist" data-for="universal-pre-submission-checklist">Universal Pre-Submission Checklist</a></li><li class="depth-2"><a href="#before-every-submission" data-for="before-every-submission">Before Every Submission</a></li><li class="depth-1"><a href="#quick-reference-page-limits" data-for="quick-reference-page-limits">Quick Reference: Page Limits</a></li><li class="depth-1"><a href="#template-locations" data-for="template-locations">Template Locations</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../postscript.js" type="module" data-persist="true"></script></html>

@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr"><head><title>ref--templates--together.ai</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="🏠 Kaindy Knowledge Base"/><meta property="og:title" content="ref--templates--together.ai"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="ref--templates--together.ai"/><meta name="twitter:description" content="Design System: Together AI Hermes Agent — Implementation Notes The original site uses proprietary fonts."/><meta property="og:description" content="Design System: Together AI Hermes Agent — Implementation Notes The original site uses proprietary fonts."/><meta property="og:image:alt" content="Design System: Together AI Hermes Agent — Implementation Notes The original site uses proprietary fonts."/><meta property="twitter:domain" content="kaindy-kb.pages.dev"/><meta property="og:url" content="https://kaindy-kb.pages.dev/10-Skills/ref--templates--together.ai"/><meta property="twitter:url" content="https://kaindy-kb.pages.dev/10-Skills/ref--templates--together.ai"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Design System: Together AI Hermes Agent — Implementation Notes The original site uses proprietary fonts."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUva2FpbmR5L0RvY3VtZW50cy9xdWFydHovcXVhcnR6L2NvbXBvbmVudHMvc3R5bGVzIiwic291cmNlcyI6WyJtZXJtYWlkLmlubGluZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFHRjtFQUNFOzs7QUFLRjtFQUNFO0VBQ0E7OztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTs7QUFJRjtFQUNFO0VBQ0E7RUFDQSIsInNvdXJjZXNDb250ZW50IjpbIi5leHBhbmQtYnV0dG9uIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbG9hdDogcmlnaHQ7XG4gIHBhZGRpbmc6IDAuNHJlbTtcbiAgbWFyZ2luOiAwLjNyZW07XG4gIHJpZ2h0OiAwOyAvLyBOT1RFOiByaWdodCB3aWxsIGJlIHNldCBpbiBtZXJtYWlkLmlubGluZS50c1xuICBjb2xvcjogdmFyKC0tZ3JheSk7XG4gIGJvcmRlci1jb2xvcjogdmFyKC0tZGFyayk7XG4gIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgYm9yZGVyOiAxcHggc29saWQ7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgb3BhY2l0eTogMDtcbiAgdHJhbnNpdGlvbjogMC4ycztcblxuICAmID4gc3ZnIHtcbiAgICBmaWxsOiB2YXIoLS1saWdodCk7XG4gICAgZmlsdGVyOiBjb250cmFzdCgwLjMpO1xuICB9XG5cbiAgJjpob3ZlciB7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIGJvcmRlci1jb2xvcjogdmFyKC0tc2Vjb25kYXJ5KTtcbiAgfVxuXG4gICY6Zm9jdXMge1xuICAgIG91dGxpbmU6IDA7XG4gIH1cbn1cblxucHJlIHtcbiAgJjpob3ZlciA+IC5leHBhbmQtYnV0dG9uIHtcbiAgICBvcGFjaXR5OiAxO1xuICAgIHRyYW5zaXRpb246IDAuMnM7XG4gIH1cbn1cblxuI21lcm1haWQtY29udGFpbmVyIHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICBjb250YWluOiBsYXlvdXQ7XG4gIHotaW5kZXg6IDk5OTtcbiAgbGVmdDogMDtcbiAgdG9wOiAwO1xuICB3aWR0aDogMTAwdnc7XG4gIGhlaWdodDogMTAwdmg7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIGRpc3BsYXk6IG5vbmU7XG4gIGJhY2tkcm9wLWZpbHRlcjogYmx1cig0cHgpO1xuICBiYWNrZ3JvdW5kOiByZ2JhKDAsIDAsIDAsIDAuNSk7XG5cbiAgJi5hY3RpdmUge1xuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgfVxuXG4gICYgPiAjbWVybWFpZC1zcGFjZSB7XG4gICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gICAgYm9yZGVyLXJhZGl1czogNXB4O1xuICAgIHBvc2l0aW9uOiBmaXhlZDtcbiAgICB0b3A6IDUwJTtcbiAgICBsZWZ0OiA1MCU7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7XG4gICAgaGVpZ2h0OiA4MHZoO1xuICAgIHdpZHRoOiA4MHZ3O1xuICAgIG92ZXJmbG93OiBoaWRkZW47XG5cbiAgICAmID4gLm1lcm1haWQtY29udGVudCB7XG4gICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgICB0cmFuc2Zvcm0tb3JpZ2luOiAwIDA7XG4gICAgICB0cmFuc2l0aW9uOiB0cmFuc2Zvcm0gMC4xcyBlYXNlO1xuICAgICAgb3ZlcmZsb3c6IHZpc2libGU7XG4gICAgICBtaW4taGVpZ2h0OiAyMDBweDtcbiAgICAgIG1pbi13aWR0aDogMjAwcHg7XG5cbiAgICAgIHByZSB7XG4gICAgICAgIG1hcmdpbjogMDtcbiAgICAgICAgYm9yZGVyOiBub25lO1xuICAgICAgfVxuXG4gICAgICBzdmcge1xuICAgICAgICBtYXgtd2lkdGg6IG5vbmU7XG4gICAgICAgIGhlaWdodDogYXV0bztcbiAgICAgIH1cbiAgICB9XG5cbiAgICAmID4gLm1lcm1haWQtY29udHJvbHMge1xuICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgYm90dG9tOiAyMHB4O1xuICAgICAgcmlnaHQ6IDIwcHg7XG4gICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgZ2FwOiA4cHg7XG4gICAgICBwYWRkaW5nOiA4cHg7XG4gICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodCk7XG4gICAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgYm9yZGVyLXJhZGl1czogNnB4O1xuICAgICAgYm94LXNoYWRvdzogMCAycHggNHB4IHJnYmEoMCwgMCwgMCwgMC4xKTtcbiAgICAgIHotaW5kZXg6IDI7XG5cbiAgICAgIC5tZXJtYWlkLWNvbnRyb2wtYnV0dG9uIHtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICAgIHdpZHRoOiAzMnB4O1xuICAgICAgICBoZWlnaHQ6IDMycHg7XG4gICAgICAgIHBhZGRpbmc6IDA7XG4gICAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgICAgY29sb3I6IHZhcigtLWRhcmspO1xuICAgICAgICBib3JkZXItcmFkaXVzOiA0cHg7XG4gICAgICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICAgICAgZm9udC1zaXplOiAxNnB4O1xuICAgICAgICBmb250LWZhbWlseTogdmFyKC0tYm9keUZvbnQpO1xuICAgICAgICB0cmFuc2l0aW9uOiBhbGwgMC4ycyBlYXNlO1xuXG4gICAgICAgICY6aG92ZXIge1xuICAgICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIH1cblxuICAgICAgICAmOmFjdGl2ZSB7XG4gICAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDFweCk7XG4gICAgICAgIH1cblxuICAgICAgICAvLyBTdHlsZSB0aGUgcmVzZXQgYnV0dG9uIGRpZmZlcmVudGx5XG4gICAgICAgICY6bnRoLWNoaWxkKDIpIHtcbiAgICAgICAgICB3aWR0aDogYXV0bztcbiAgICAgICAgICBwYWRkaW5nOiAwIDEycHg7XG4gICAgICAgICAgZm9udC1zaXplOiAxNHB4O1xuICAgICAgICB9XG4gICAgICB9XG4gICAgfVxuICB9XG59XG4iXX0= */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://kaindy-kb.pages.dev/index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://kaindy-kb.pages.dev/10-Skills/ref--templates--together.ai-og-image.webp"/><meta property="og:image:url" content="https://kaindy-kb.pages.dev/10-Skills/ref--templates--together.ai-og-image.webp"/><meta name="twitter:image" content="https://kaindy-kb.pages.dev/10-Skills/ref--templates--together.ai-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="10-Skills/ref--templates--together.ai"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">🏠 Kaindy Knowledge Base</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>搜索</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="搜索些什么" placeholder="搜索些什么"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="暗色模式"><title>暗色模式</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="亮色模式"><title>亮色模式</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="阅读模式"><title>阅读模式</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-890"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>探索</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-890" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../10-Skills/">10 Skills</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>ref  templates  together.ai</a></div></nav><h1 class="article-title">ref--templates--together.ai</h1><p show-comma="true" class="content-meta"><time datetime="2026-06-15T12:23:17.000Z">2026年6月15日</time><span>10分钟阅读</span></p></div></div><article class="popover-hint"><h1 id="design-system-together-ai">Design System: Together AI<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#design-system-together-ai" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<blockquote>
+<p><strong>Hermes Agent — Implementation Notes</strong></p>
+<p>The original site uses proprietary fonts. For self-contained HTML output, use these CDN substitutes:</p>
+<ul>
+<li><strong>Primary:</strong> <code>Inter</code> | <strong>Mono:</strong> <code>JetBrains Mono</code></li>
+<li><strong>Font stack (CSS):</strong> <code>font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;</code></li>
+<li><strong>Mono stack (CSS):</strong> <code>font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;</code></li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="html" data-theme="github-light github-dark"><code data-language="html" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">link</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> href</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap&quot;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> rel</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;stylesheet&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">></span></span></code></pre></figure>
+<p>Use <code>write_file</code> to create HTML, serve via <code>generative-widgets</code> skill (cloudflared tunnel).
+Verify visual accuracy with <code>browser_vision</code> after generating.</p>
+</blockquote>
+<h2 id="1-visual-theme--atmosphere">1. Visual Theme &amp; Atmosphere<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-visual-theme--atmosphere" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Together AI’s interface is a pastel-gradient dreamscape built for enterprise AI infrastructure — a design that somehow makes GPU clusters and model inference feel light, airy, and optimistic. The hero section blooms with soft pink-blue-lavender gradients and abstract, painterly illustrations that evoke clouds and flight, establishing a visual metaphor for the “AI-Native Cloud” proposition. Against this softness, the typography cuts through with precision: “The Future” display font at 64px with aggressive negative tracking (-1.92px) creates dense, authoritative headline blocks.</p>
+<p>The design straddles two worlds: a bright, white-canvas light side where pastel gradients and stats cards create an approachable platform overview, and a dark navy universe (<code>#010120</code> — not gray-black but a deep midnight blue) where research papers and technical content live. This dual-world approach elegantly separates the “business” messaging (light, friendly, stat-driven) from the “research” messaging (dark, serious, academic).</p>
+<p>What makes Together AI distinctive is its type system. “The Future” handles all display and body text with a geometric modernist aesthetic, while “PP Neue Montreal Mono” provides uppercase labels with meticulous letter-spacing — creating a “technical infrastructure company with taste” personality. The brand accents — magenta (<code>#ef2cc1</code>) and orange (<code>#fc4c02</code>) — appear sparingly in the gradient and illustrations, never polluting the clean UI.</p>
+<p><strong>Key Characteristics:</strong></p>
+<ul>
+<li>Soft pastel gradients (pink, blue, lavender) against pure white canvas</li>
+<li>Deep midnight blue (<code>#010120</code>) for dark/research sections — not gray-black</li>
+<li>Custom “The Future” font with aggressive negative letter-spacing throughout</li>
+<li>PP Neue Montreal Mono for uppercase technical labels</li>
+<li>Sharp geometry (4px, 8px radius) — not rounded, not pill</li>
+<li>Magenta (#ef2cc1) + orange (#fc4c02) brand accents in illustrations only</li>
+<li>Lavender (#bdbbff) as a soft secondary accent</li>
+<li>Enterprise stats prominently displayed (2x, 60%, 90%)</li>
+<li>Dark-blue-tinted shadows (rgba(1, 1, 32, 0.1))</li>
+</ul>
+<h2 id="2-color-palette--roles">2. Color Palette &amp; Roles<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-color-palette--roles" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="primary">Primary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#primary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Brand Magenta</strong> (<code>#ef2cc1</code>): The primary brand accent — a vivid pink-magenta used in gradient illustrations and the highest-signal brand moments. Never used as UI chrome.</li>
+<li><strong>Brand Orange</strong> (<code>#fc4c02</code>): The secondary brand accent — a vivid orange for gradient endpoints and warm accent moments.</li>
+<li><strong>Dark Blue</strong> (<code>#010120</code>): The primary dark surface — a deep midnight blue-black used for research sections, footer, and dark containers. Not gray, not black — distinctly blue.</li>
+</ul>
+<h3 id="secondary--accent">Secondary &amp; Accent<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#secondary--accent" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Soft Lavender</strong> (<code>#bdbbff</code>): A gentle blue-violet used for subtle accents, secondary indicators, and soft UI highlights.</li>
+<li><strong>Black 40</strong> (<code>#00000066</code>): Semi-transparent black for de-emphasized overlays and secondary text.</li>
+</ul>
+<h3 id="surface--background">Surface &amp; Background<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#surface--background" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Pure White</strong> (<code>#ffffff</code>): The primary light-section page background.</li>
+<li><strong>Dark Blue</strong> (<code>#010120</code>): Dark-section backgrounds — research, footer, technical content.</li>
+<li><strong>Glass Light</strong> (<code>rgba(255, 255, 255, 0.12)</code>): Frosted glass button backgrounds on dark sections.</li>
+<li><strong>Glass Dark</strong> (<code>rgba(0, 0, 0, 0.08)</code>): Subtle tinted surfaces on light sections.</li>
+</ul>
+<h3 id="neutrals--text">Neutrals &amp; Text<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#neutrals--text" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Pure Black</strong> (<code>#000000</code>): Primary text on light surfaces.</li>
+<li><strong>Pure White</strong> (<code>#ffffff</code>): Primary text on dark surfaces.</li>
+<li><strong>Black 8%</strong> (<code>rgba(0, 0, 0, 0.08)</code>): Borders and subtle containment on light surfaces.</li>
+<li><strong>White 12%</strong> (<code>rgba(255, 255, 255, 0.12)</code>): Borders and containment on dark surfaces.</li>
+</ul>
+<h3 id="gradient-system">Gradient System<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#gradient-system" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Pastel Cloud Gradient</strong>: Soft pink → lavender → soft blue gradients in hero illustrations. These appear in abstract, painterly forms — clouds, feathers, flowing shapes — that create visual warmth without literal meaning.</li>
+<li><strong>Hero Gradient</strong>: The hero background uses soft pastel tints layered over white, creating a dawn-like atmospheric effect.</li>
+</ul>
+<h2 id="3-typography-rules">3. Typography Rules<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-typography-rules" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="font-family">Font Family<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#font-family" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Primary</strong>: <code>The Future</code>, with fallback: <code>Arial</code></li>
+<li><strong>Monospace / Labels</strong>: <code>PP Neue Montreal Mono</code>, with fallback: <code>Georgia</code></li>
+</ul>
+<h3 id="hierarchy">Hierarchy<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#hierarchy" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Role</th><th>Font</th><th>Size</th><th>Weight</th><th>Line Height</th><th>Letter Spacing</th><th>Notes</th></tr></thead><tbody><tr><td>Display / Hero</td><td>The Future</td><td>64px (4rem)</td><td>400–500</td><td>1.00–1.10 (tight)</td><td>-1.92px</td><td>Maximum impact, dense blocks</td></tr><tr><td>Section Heading</td><td>The Future</td><td>40px (2.5rem)</td><td>500</td><td>1.20 (tight)</td><td>-0.8px</td><td>Feature section titles</td></tr><tr><td>Sub-heading</td><td>The Future</td><td>28px (1.75rem)</td><td>500</td><td>1.15 (tight)</td><td>-0.42px</td><td>Card headings</td></tr><tr><td>Feature Title</td><td>The Future</td><td>22px (1.38rem)</td><td>500</td><td>1.15 (tight)</td><td>-0.22px</td><td>Small feature headings</td></tr><tr><td>Body Large</td><td>The Future</td><td>18px (1.13rem)</td><td>400–500</td><td>1.30 (tight)</td><td>-0.18px</td><td>Descriptions, sections</td></tr><tr><td>Body / Button</td><td>The Future</td><td>16px (1rem)</td><td>400–500</td><td>1.25–1.30</td><td>-0.16px</td><td>Standard body, nav, buttons</td></tr><tr><td>Caption</td><td>The Future</td><td>14px (0.88rem)</td><td>400–500</td><td>1.40</td><td>normal</td><td>Metadata, descriptions</td></tr><tr><td>Mono Label</td><td>PP Neue Montreal Mono</td><td>16px (1rem)</td><td>500</td><td>1.00 (tight)</td><td>0.08px</td><td>Uppercase section labels</td></tr><tr><td>Mono Small</td><td>PP Neue Montreal Mono</td><td>11px (0.69rem)</td><td>500</td><td>1.00–1.40</td><td>0.055–0.08px</td><td>Small uppercase tags</td></tr><tr><td>Mono Micro</td><td>PP Neue Montreal Mono</td><td>10px (0.63rem)</td><td>400</td><td>1.40</td><td>0.05px</td><td>Smallest uppercase labels</td></tr></tbody></table></div>
+<h3 id="principles">Principles<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#principles" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Negative tracking everywhere</strong>: Every size of “The Future” uses negative letter-spacing (-0.16px to -1.92px), creating consistently tight, modern text.</li>
+<li><strong>Mono for structure</strong>: PP Neue Montreal Mono in uppercase with positive letter-spacing creates technical “label” moments that structure the page without competing with display text.</li>
+<li><strong>Weight 500 as emphasis</strong>: The system uses 400 (regular) and 500 (medium) — no bold. Medium weight marks headings and emphasis.</li>
+<li><strong>Tight line-heights throughout</strong>: Even body text uses 1.25–1.30 line-height — tighter than typical, creating a dense, information-rich feel.</li>
+</ul>
+<h2 id="4-component-stylings">4. Component Stylings<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-component-stylings" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="buttons">Buttons<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#buttons" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Glass on Dark</strong></p>
+<ul>
+<li>Background: <code>rgba(255, 255, 255, 0.12)</code> (frosted glass)</li>
+<li>Text: Pure White (<code>#ffffff</code>)</li>
+<li>Radius: sharp (4px)</li>
+<li>Opacity: 0.5</li>
+<li>Hover: transparent dark overlay</li>
+<li>Used on dark sections — subtle, glass-like</li>
+</ul>
+<p><strong>Dark Solid</strong></p>
+<ul>
+<li>Background: Dark Blue (<code>#010120</code>) or Pure Black</li>
+<li>Text: Pure White</li>
+<li>Radius: sharp (4px)</li>
+<li>The primary CTA on light surfaces</li>
+</ul>
+<p><strong>Outlined Light</strong></p>
+<ul>
+<li>Border: <code>1px solid rgba(0, 0, 0, 0.08)</code></li>
+<li>Background: transparent or subtle glass</li>
+<li>Text: Pure Black</li>
+<li>Radius: sharp (4px)</li>
+<li>Secondary actions on light surfaces</li>
+</ul>
+<h3 id="cards--containers">Cards &amp; Containers<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#cards--containers" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Background: Pure White or subtle glass tint</li>
+<li>Border: <code>1px solid rgba(0, 0, 0, 0.08)</code> on light; <code>1px solid rgba(255, 255, 255, 0.12)</code> on dark</li>
+<li>Radius: sharp (4px) for badges and small elements; comfortable (8px) for larger containers</li>
+<li>Shadow: dark-blue-tinted (<code>rgba(1, 1, 32, 0.1) 0px 4px 10px</code>) — warm and subtle</li>
+<li>Stats cards with large numbers prominently displayed</li>
+</ul>
+<h3 id="badges--tags">Badges / Tags<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#badges--tags" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Background: <code>rgba(0, 0, 0, 0.04)</code> (light) or <code>rgba(255, 255, 255, 0.12)</code> (dark)</li>
+<li>Text: Black (light) or White (dark)</li>
+<li>Padding: 2px 8px (compact)</li>
+<li>Radius: sharp (4px)</li>
+<li>Border: <code>1px solid rgba(0, 0, 0, 0.08)</code></li>
+<li>PP Neue Montreal Mono, uppercase, 16px</li>
+</ul>
+<h3 id="navigation">Navigation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#navigation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Clean horizontal nav on white/transparent</li>
+<li>Logo: Together AI wordmark</li>
+<li>Links: The Future at 16px, weight 400</li>
+<li>CTA: Dark solid button</li>
+<li>Hover: no text-decoration</li>
+</ul>
+<h3 id="image-treatment">Image Treatment<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#image-treatment" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Abstract pastel gradient illustrations (cloud/feather forms)</li>
+<li>Product UI screenshots on dark/light surfaces</li>
+<li>Team photos in editorial style</li>
+<li>Research paper cards with dark backgrounds</li>
+</ul>
+<h3 id="distinctive-components">Distinctive Components<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#distinctive-components" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Stats Bar</strong></p>
+<ul>
+<li>Large performance metrics (2x, 60%, 90%)</li>
+<li>Bold display numbers</li>
+<li>Short descriptive captions beneath</li>
+<li>Clean horizontal layout</li>
+</ul>
+<p><strong>Mono Section Labels</strong></p>
+<ul>
+<li>PP Neue Montreal Mono, uppercase, 11px, letter-spacing 0.055px</li>
+<li>Used as navigational signposts throughout the page</li>
+<li>Technical, structured feel</li>
+</ul>
+<p><strong>Research Section</strong></p>
+<ul>
+<li>Dark Blue (#010120) background</li>
+<li>White text, research paper thumbnails</li>
+<li>Creates a distinct “academic” zone</li>
+</ul>
+<p><strong>Large Footer Logo</strong></p>
+<ul>
+<li>“together” wordmark rendered at massive scale in the dark footer</li>
+<li>Creates a brand-statement closing moment</li>
+</ul>
+<h2 id="5-layout-principles">5. Layout Principles<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#5-layout-principles" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="spacing-system">Spacing System<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#spacing-system" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Base unit: 8px</li>
+<li>Scale: 1px, 2px, 4px, 8px, 10px, 12px, 16px, 20px, 24px, 32px, 44px, 48px, 80px, 100px, 120px</li>
+<li>Button/badge padding: 2px 8px (compact)</li>
+<li>Card internal padding: approximately 24–32px</li>
+<li>Section vertical spacing: generous (80–120px)</li>
+</ul>
+<h3 id="grid--container">Grid &amp; Container<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#grid--container" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Max container width: approximately 1200px, centered</li>
+<li>Hero: centered with pastel gradient background</li>
+<li>Feature sections: multi-column card grids</li>
+<li>Stats: horizontal row of metric cards</li>
+<li>Research: dark full-width section</li>
+</ul>
+<h3 id="whitespace-philosophy">Whitespace Philosophy<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#whitespace-philosophy" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Optimistic breathing room</strong>: Generous spacing between sections creates an open, inviting feel that makes enterprise AI infrastructure feel accessible.</li>
+<li><strong>Dual atmosphere</strong>: Light sections breathe with whitespace; dark sections are denser with content.</li>
+<li><strong>Stats as visual anchors</strong>: Large numbers with small captions create natural focal points.</li>
+</ul>
+<h3 id="border-radius-scale">Border Radius Scale<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#border-radius-scale" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Sharp (4px): Buttons, badges, tags, small interactive elements — the primary radius</li>
+<li>Comfortable (8px): Larger containers, feature cards</li>
+</ul>
+<p><em>This is a deliberately restrained radius system — no pills, no generous rounding. The sharp geometry contrasts with the soft pastel gradients.</em></p>
+<h2 id="6-depth--elevation">6. Depth &amp; Elevation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#6-depth--elevation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Level</th><th>Treatment</th><th>Use</th></tr></thead><tbody><tr><td>Flat (Level 0)</td><td>No shadow, no border</td><td>Page background, text blocks</td></tr><tr><td>Contained (Level 1)</td><td><code>1px solid rgba(0,0,0,0.08)</code> (light) or <code>rgba(255,255,255,0.12)</code> (dark)</td><td>Cards, badges, containers</td></tr><tr><td>Elevated (Level 2)</td><td><code>rgba(1, 1, 32, 0.1) 0px 4px 10px</code></td><td>Feature cards, hover states</td></tr><tr><td>Dark Zone (Level 3)</td><td>Dark Blue (#010120) full-width background</td><td>Research, footer, technical sections</td></tr></tbody></table></div>
+<p><strong>Shadow Philosophy</strong>: Together AI uses a single, distinctive shadow — tinted with Dark Blue (<code>rgba(1, 1, 32, 0.1)</code>) rather than generic black. This gives elevated elements a subtle blue-ish cast that ties them to the brand’s midnight-blue dark mode. The shadow is soft (10px blur, 4px offset) and always downward — creating gentle paper-hover elevation.</p>
+<h2 id="7-dos-and-donts">7. Do’s and Don’ts<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#7-dos-and-donts" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="do">Do<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#do" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Use pastel gradients (pink/blue/lavender) for hero illustrations and decorative backgrounds</li>
+<li>Use Dark Blue (#010120) for dark sections — never generic gray-black</li>
+<li>Apply negative letter-spacing on all “The Future” text (scaled by size)</li>
+<li>Use PP Neue Montreal Mono in uppercase for section labels and technical markers</li>
+<li>Keep border-radius sharp (4px) for badges and interactive elements</li>
+<li>Use the dark-blue-tinted shadow for elevation</li>
+<li>Maintain the light/dark section duality — business (light) vs research (dark)</li>
+<li>Show enterprise stats prominently with large display numbers</li>
+</ul>
+<h3 id="dont">Don’t<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#dont" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Don’t use Brand Magenta (#ef2cc1) or Brand Orange (#fc4c02) as UI colors — they’re for illustrations only</li>
+<li>Don’t use pill-shaped or generously rounded corners — the geometry is sharp</li>
+<li>Don’t use generic gray-black for dark sections — always Dark Blue (#010120)</li>
+<li>Don’t use positive letter-spacing on “The Future” — it’s always negative</li>
+<li>Don’t use bold (700+) weight — 400–500 is the full range</li>
+<li>Don’t use warm-toned shadows — always dark-blue-tinted</li>
+<li>Don’t reduce section spacing below 48px — the open feeling is core</li>
+<li>Don’t mix in additional typefaces — “The Future” + PP Neue Montreal Mono is the pair</li>
+</ul>
+<h2 id="8-responsive-behavior">8. Responsive Behavior<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#8-responsive-behavior" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="breakpoints">Breakpoints<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#breakpoints" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Name</th><th>Width</th><th>Key Changes</th></tr></thead><tbody><tr><td>Mobile</td><td>&lt;479px</td><td>Compact layout, stacked everything</td></tr><tr><td>Large Mobile</td><td>479–767px</td><td>Single column, hamburger nav</td></tr><tr><td>Tablet</td><td>768–991px</td><td>2-column grids begin</td></tr><tr><td>Desktop</td><td>992px+</td><td>Full multi-column layout</td></tr></tbody></table></div>
+<h3 id="touch-targets">Touch Targets<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#touch-targets" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Buttons with adequate padding</li>
+<li>Card surfaces as touch targets</li>
+<li>Navigation links at comfortable 16px</li>
+</ul>
+<h3 id="collapsing-strategy">Collapsing Strategy<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#collapsing-strategy" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Navigation</strong>: Collapses to hamburger on mobile</li>
+<li><strong>Hero text</strong>: 64px → 40px → 28px progressive scaling</li>
+<li><strong>Stats bar</strong>: Horizontal → stacked vertical</li>
+<li><strong>Feature grids</strong>: Multi-column → single column</li>
+<li><strong>Research section</strong>: Cards stack vertically</li>
+</ul>
+<h3 id="image-behavior">Image Behavior<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#image-behavior" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Pastel illustrations scale proportionally</li>
+<li>Product screenshots maintain aspect ratio</li>
+<li>Team photos scale within containers</li>
+</ul>
+<h2 id="9-agent-prompt-guide">9. Agent Prompt Guide<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#9-agent-prompt-guide" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="quick-color-reference">Quick Color Reference<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#quick-color-reference" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Primary Text (light): “Pure Black (#000000)”</li>
+<li>Primary Text (dark): “Pure White (#ffffff)”</li>
+<li>Page Background: “Pure White (#ffffff)”</li>
+<li>Dark Surface: “Dark Blue (#010120)”</li>
+<li>Brand Accent 1: “Brand Magenta (#ef2cc1)”</li>
+<li>Brand Accent 2: “Brand Orange (#fc4c02)”</li>
+<li>Soft Accent: “Soft Lavender (#bdbbff)”</li>
+<li>Border (light): “rgba(0, 0, 0, 0.08)“</li>
+</ul>
+<h3 id="example-component-prompts">Example Component Prompts<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#example-component-prompts" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>“Create a hero section on white with soft pastel gradients (pink → lavender → blue) as background. Headline at 64px ‘The Future’ weight 500, line-height 1.10, letter-spacing -1.92px. Pure Black text. Include a dark blue CTA button (#010120, 4px radius).”</li>
+<li>“Design a stats card: large display number (64px, weight 500) with a small caption below (14px). White background, 8px radius, dark-blue-tinted shadow (rgba(1, 1, 32, 0.1) 0px 4px 10px).”</li>
+<li>“Build a section label: PP Neue Montreal Mono, 11px, weight 500, uppercase, letter-spacing 0.055px. Black text on light, white on dark.”</li>
+<li>“Create a dark research section: Dark Blue (#010120) background. White text, section heading at 40px ‘The Future’ weight 500, letter-spacing -0.8px. Cards with rgba(255, 255, 255, 0.12) border.”</li>
+<li>“Design a badge: 4px radius, rgba(0, 0, 0, 0.04) background, 1px solid rgba(0, 0, 0, 0.08) border, ‘The Future’ 16px text. Padding: 2px 8px.”</li>
+</ul>
+<h3 id="iteration-guide">Iteration Guide<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#iteration-guide" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li>Always specify negative letter-spacing for “The Future” — it’s scaled by size</li>
+<li>Dark sections use #010120 (midnight blue), never generic black</li>
+<li>Shadows are always dark-blue-tinted: rgba(1, 1, 32, 0.1)</li>
+<li>Mono labels are always uppercase with positive letter-spacing</li>
+<li>Keep radius sharp (4px or 8px) — no pills, no generous rounding</li>
+<li>Pastel gradients are for decoration, not UI chrome</li>
+</ol></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>关系图谱</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-405" aria-expanded="true"><h3>目录</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#design-system-together-ai" data-for="design-system-together-ai">Design System: Together AI</a></li><li class="depth-1"><a href="#1-visual-theme--atmosphere" data-for="1-visual-theme--atmosphere">1. Visual Theme &amp; Atmosphere</a></li><li class="depth-1"><a href="#2-color-palette--roles" data-for="2-color-palette--roles">2. Color Palette &amp; Roles</a></li><li class="depth-2"><a href="#primary" data-for="primary">Primary</a></li><li class="depth-2"><a href="#secondary--accent" data-for="secondary--accent">Secondary &amp; Accent</a></li><li class="depth-2"><a href="#surface--background" data-for="surface--background">Surface &amp; Background</a></li><li class="depth-2"><a href="#neutrals--text" data-for="neutrals--text">Neutrals &amp; Text</a></li><li class="depth-2"><a href="#gradient-system" data-for="gradient-system">Gradient System</a></li><li class="depth-1"><a href="#3-typography-rules" data-for="3-typography-rules">3. Typography Rules</a></li><li class="depth-2"><a href="#font-family" data-for="font-family">Font Family</a></li><li class="depth-2"><a href="#hierarchy" data-for="hierarchy">Hierarchy</a></li><li class="depth-2"><a href="#principles" data-for="principles">Principles</a></li><li class="depth-1"><a href="#4-component-stylings" data-for="4-component-stylings">4. Component Stylings</a></li><li class="depth-2"><a href="#buttons" data-for="buttons">Buttons</a></li><li class="depth-2"><a href="#cards--containers" data-for="cards--containers">Cards &amp; Containers</a></li><li class="depth-2"><a href="#badges--tags" data-for="badges--tags">Badges / Tags</a></li><li class="depth-2"><a href="#navigation" data-for="navigation">Navigation</a></li><li class="depth-2"><a href="#image-treatment" data-for="image-treatment">Image Treatment</a></li><li class="depth-2"><a href="#distinctive-components" data-for="distinctive-components">Distinctive Components</a></li><li class="depth-1"><a href="#5-layout-principles" data-for="5-layout-principles">5. Layout Principles</a></li><li class="depth-2"><a href="#spacing-system" data-for="spacing-system">Spacing System</a></li><li class="depth-2"><a href="#grid--container" data-for="grid--container">Grid &amp; Container</a></li><li class="depth-2"><a href="#whitespace-philosophy" data-for="whitespace-philosophy">Whitespace Philosophy</a></li><li class="depth-2"><a href="#border-radius-scale" data-for="border-radius-scale">Border Radius Scale</a></li><li class="depth-1"><a href="#6-depth--elevation" data-for="6-depth--elevation">6. Depth &amp; Elevation</a></li><li class="depth-1"><a href="#7-dos-and-donts" data-for="7-dos-and-donts">7. Do’s and Don’ts</a></li><li class="depth-2"><a href="#do" data-for="do">Do</a></li><li class="depth-2"><a href="#dont" data-for="dont">Don’t</a></li><li class="depth-1"><a href="#8-responsive-behavior" data-for="8-responsive-behavior">8. Responsive Behavior</a></li><li class="depth-2"><a href="#breakpoints" data-for="breakpoints">Breakpoints</a></li><li class="depth-2"><a href="#touch-targets" data-for="touch-targets">Touch Targets</a></li><li class="depth-2"><a href="#collapsing-strategy" data-for="collapsing-strategy">Collapsing Strategy</a></li><li class="depth-2"><a href="#image-behavior" data-for="image-behavior">Image Behavior</a></li><li class="depth-1"><a href="#9-agent-prompt-guide" data-for="9-agent-prompt-guide">9. Agent Prompt Guide</a></li><li class="depth-2"><a href="#quick-color-reference" data-for="quick-color-reference">Quick Color Reference</a></li><li class="depth-2"><a href="#example-component-prompts" data-for="example-component-prompts">Example Component Prompts</a></li><li class="depth-2"><a href="#iteration-guide" data-for="iteration-guide">Iteration Guide</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../postscript.js" type="module" data-persist="true"></script></html>

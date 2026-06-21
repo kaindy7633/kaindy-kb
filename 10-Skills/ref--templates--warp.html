@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr"><head><title>ref--templates--warp</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="🏠 Kaindy Knowledge Base"/><meta property="og:title" content="ref--templates--warp"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="ref--templates--warp"/><meta name="twitter:description" content="Design System: Warp Hermes Agent — Implementation Notes The original site uses proprietary fonts."/><meta property="og:description" content="Design System: Warp Hermes Agent — Implementation Notes The original site uses proprietary fonts."/><meta property="og:image:alt" content="Design System: Warp Hermes Agent — Implementation Notes The original site uses proprietary fonts."/><meta property="twitter:domain" content="kaindy-kb.pages.dev"/><meta property="og:url" content="https://kaindy-kb.pages.dev/10-Skills/ref--templates--warp"/><meta property="twitter:url" content="https://kaindy-kb.pages.dev/10-Skills/ref--templates--warp"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Design System: Warp Hermes Agent — Implementation Notes The original site uses proprietary fonts."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUva2FpbmR5L0RvY3VtZW50cy9xdWFydHovcXVhcnR6L2NvbXBvbmVudHMvc3R5bGVzIiwic291cmNlcyI6WyJtZXJtYWlkLmlubGluZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFHRjtFQUNFOzs7QUFLRjtFQUNFO0VBQ0E7OztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTs7QUFJRjtFQUNFO0VBQ0E7RUFDQSIsInNvdXJjZXNDb250ZW50IjpbIi5leHBhbmQtYnV0dG9uIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbG9hdDogcmlnaHQ7XG4gIHBhZGRpbmc6IDAuNHJlbTtcbiAgbWFyZ2luOiAwLjNyZW07XG4gIHJpZ2h0OiAwOyAvLyBOT1RFOiByaWdodCB3aWxsIGJlIHNldCBpbiBtZXJtYWlkLmlubGluZS50c1xuICBjb2xvcjogdmFyKC0tZ3JheSk7XG4gIGJvcmRlci1jb2xvcjogdmFyKC0tZGFyayk7XG4gIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgYm9yZGVyOiAxcHggc29saWQ7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgb3BhY2l0eTogMDtcbiAgdHJhbnNpdGlvbjogMC4ycztcblxuICAmID4gc3ZnIHtcbiAgICBmaWxsOiB2YXIoLS1saWdodCk7XG4gICAgZmlsdGVyOiBjb250cmFzdCgwLjMpO1xuICB9XG5cbiAgJjpob3ZlciB7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIGJvcmRlci1jb2xvcjogdmFyKC0tc2Vjb25kYXJ5KTtcbiAgfVxuXG4gICY6Zm9jdXMge1xuICAgIG91dGxpbmU6IDA7XG4gIH1cbn1cblxucHJlIHtcbiAgJjpob3ZlciA+IC5leHBhbmQtYnV0dG9uIHtcbiAgICBvcGFjaXR5OiAxO1xuICAgIHRyYW5zaXRpb246IDAuMnM7XG4gIH1cbn1cblxuI21lcm1haWQtY29udGFpbmVyIHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICBjb250YWluOiBsYXlvdXQ7XG4gIHotaW5kZXg6IDk5OTtcbiAgbGVmdDogMDtcbiAgdG9wOiAwO1xuICB3aWR0aDogMTAwdnc7XG4gIGhlaWdodDogMTAwdmg7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIGRpc3BsYXk6IG5vbmU7XG4gIGJhY2tkcm9wLWZpbHRlcjogYmx1cig0cHgpO1xuICBiYWNrZ3JvdW5kOiByZ2JhKDAsIDAsIDAsIDAuNSk7XG5cbiAgJi5hY3RpdmUge1xuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgfVxuXG4gICYgPiAjbWVybWFpZC1zcGFjZSB7XG4gICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gICAgYm9yZGVyLXJhZGl1czogNXB4O1xuICAgIHBvc2l0aW9uOiBmaXhlZDtcbiAgICB0b3A6IDUwJTtcbiAgICBsZWZ0OiA1MCU7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7XG4gICAgaGVpZ2h0OiA4MHZoO1xuICAgIHdpZHRoOiA4MHZ3O1xuICAgIG92ZXJmbG93OiBoaWRkZW47XG5cbiAgICAmID4gLm1lcm1haWQtY29udGVudCB7XG4gICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgICB0cmFuc2Zvcm0tb3JpZ2luOiAwIDA7XG4gICAgICB0cmFuc2l0aW9uOiB0cmFuc2Zvcm0gMC4xcyBlYXNlO1xuICAgICAgb3ZlcmZsb3c6IHZpc2libGU7XG4gICAgICBtaW4taGVpZ2h0OiAyMDBweDtcbiAgICAgIG1pbi13aWR0aDogMjAwcHg7XG5cbiAgICAgIHByZSB7XG4gICAgICAgIG1hcmdpbjogMDtcbiAgICAgICAgYm9yZGVyOiBub25lO1xuICAgICAgfVxuXG4gICAgICBzdmcge1xuICAgICAgICBtYXgtd2lkdGg6IG5vbmU7XG4gICAgICAgIGhlaWdodDogYXV0bztcbiAgICAgIH1cbiAgICB9XG5cbiAgICAmID4gLm1lcm1haWQtY29udHJvbHMge1xuICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgYm90dG9tOiAyMHB4O1xuICAgICAgcmlnaHQ6IDIwcHg7XG4gICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgZ2FwOiA4cHg7XG4gICAgICBwYWRkaW5nOiA4cHg7XG4gICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodCk7XG4gICAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgYm9yZGVyLXJhZGl1czogNnB4O1xuICAgICAgYm94LXNoYWRvdzogMCAycHggNHB4IHJnYmEoMCwgMCwgMCwgMC4xKTtcbiAgICAgIHotaW5kZXg6IDI7XG5cbiAgICAgIC5tZXJtYWlkLWNvbnRyb2wtYnV0dG9uIHtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICAgIHdpZHRoOiAzMnB4O1xuICAgICAgICBoZWlnaHQ6IDMycHg7XG4gICAgICAgIHBhZGRpbmc6IDA7XG4gICAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgICAgY29sb3I6IHZhcigtLWRhcmspO1xuICAgICAgICBib3JkZXItcmFkaXVzOiA0cHg7XG4gICAgICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICAgICAgZm9udC1zaXplOiAxNnB4O1xuICAgICAgICBmb250LWZhbWlseTogdmFyKC0tYm9keUZvbnQpO1xuICAgICAgICB0cmFuc2l0aW9uOiBhbGwgMC4ycyBlYXNlO1xuXG4gICAgICAgICY6aG92ZXIge1xuICAgICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIH1cblxuICAgICAgICAmOmFjdGl2ZSB7XG4gICAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDFweCk7XG4gICAgICAgIH1cblxuICAgICAgICAvLyBTdHlsZSB0aGUgcmVzZXQgYnV0dG9uIGRpZmZlcmVudGx5XG4gICAgICAgICY6bnRoLWNoaWxkKDIpIHtcbiAgICAgICAgICB3aWR0aDogYXV0bztcbiAgICAgICAgICBwYWRkaW5nOiAwIDEycHg7XG4gICAgICAgICAgZm9udC1zaXplOiAxNHB4O1xuICAgICAgICB9XG4gICAgICB9XG4gICAgfVxuICB9XG59XG4iXX0= */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://kaindy-kb.pages.dev/index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://kaindy-kb.pages.dev/10-Skills/ref--templates--warp-og-image.webp"/><meta property="og:image:url" content="https://kaindy-kb.pages.dev/10-Skills/ref--templates--warp-og-image.webp"/><meta name="twitter:image" content="https://kaindy-kb.pages.dev/10-Skills/ref--templates--warp-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="10-Skills/ref--templates--warp"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">🏠 Kaindy Knowledge Base</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>搜索</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="搜索些什么" placeholder="搜索些什么"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="暗色模式"><title>暗色模式</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="亮色模式"><title>亮色模式</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="阅读模式"><title>阅读模式</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-898"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>探索</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-898" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../10-Skills/">10 Skills</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>ref  templates  warp</a></div></nav><h1 class="article-title">ref--templates--warp</h1><p show-comma="true" class="content-meta"><time datetime="2026-06-15T12:23:17.000Z">2026年6月15日</time><span>11分钟阅读</span></p><ul class="tags"><li><a href="../tags/afaeac" class="internal tag-link">afaeac</a></li></ul></div></div><article class="popover-hint"><h1 id="design-system-warp">Design System: Warp<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#design-system-warp" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<blockquote>
+<p><strong>Hermes Agent — Implementation Notes</strong></p>
+<p>The original site uses proprietary fonts. For self-contained HTML output, use these CDN substitutes:</p>
+<ul>
+<li><strong>Primary:</strong> <code>Geist</code> | <strong>Mono:</strong> <code>Geist Mono</code></li>
+<li><strong>Font stack (CSS):</strong> <code>font-family: 'Geist', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;</code></li>
+<li><strong>Mono stack (CSS):</strong> <code>font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;</code></li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="html" data-theme="github-light github-dark"><code data-language="html" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">link</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> href</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&amp;family=Geist+Mono:wght@400;500&amp;display=swap&quot;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> rel</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;stylesheet&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">></span></span></code></pre></figure>
+<p>Use <code>write_file</code> to create HTML, serve via <code>generative-widgets</code> skill (cloudflared tunnel).
+Verify visual accuracy with <code>browser_vision</code> after generating.</p>
+</blockquote>
+<h2 id="1-visual-theme--atmosphere">1. Visual Theme &amp; Atmosphere<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-visual-theme--atmosphere" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Warp’s website feels like sitting at a campfire in a deep forest — warm, dark, and alive with quiet confidence. Unlike the cold, blue-tinted blacks favored by most developer tools, Warp wraps everything in a warm near-black that feels like charred wood or dark earth. The text isn’t pure white either — it’s Warm Parchment (<code>#faf9f6</code>), a barely-perceptible cream that softens every headline and makes the dark canvas feel inviting rather than austere.</p>
+<p>The typography is the secret weapon: Matter, a geometric sans-serif with distinctive character, deployed at Regular weight across virtually all text. The font choice is unusual for a developer tool — Matter has a softness and humanity that signals “this terminal is for everyone, not just greybeards.” Combined with tight line-heights and controlled negative letter-spacing on headlines, the effect is refined and approachable simultaneously. Nature photography is woven between terminal screenshots, creating a visual language that says: this tool brings you closer to flow, to calm productivity.</p>
+<p>The overall design philosophy is restraint through warmth. Minimal color (almost monochromatic warm grays), minimal ornamentation, and a focus on product showcases set against cinematic dark landscapes. It’s a terminal company that markets like a lifestyle brand.</p>
+<p><strong>Key Characteristics:</strong></p>
+<ul>
+<li>Warm dark background — not cold black, but earthy near-black with warm gray undertones</li>
+<li>Warm Parchment (<code>#faf9f6</code>) text instead of pure white — subtle cream warmth</li>
+<li>Matter font family (Regular weight) — geometric but approachable, not the typical developer-tool typeface</li>
+<li>Nature photography interleaved with product screenshots — lifestyle meets developer tool</li>
+<li>Almost monochromatic warm gray palette — no bold accent colors</li>
+<li>Uppercase labels with wide letter-spacing (2.4px) for categorization — editorial signaling</li>
+<li>Pill-shaped dark buttons (<code>#353534</code>, 50px radius) — restrained, muted CTAs</li>
+</ul>
+<h2 id="2-color-palette--roles">2. Color Palette &amp; Roles<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-color-palette--roles" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="primary">Primary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#primary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Warm Parchment</strong> (<code>#faf9f6</code>): Primary text color — a barely-cream off-white that softens every surface</li>
+<li><strong>Earth Gray</strong> (<code>#353534</code>): Button backgrounds, dark interactive surfaces — warm, not cold</li>
+<li><strong>Deep Void</strong> (near-black, page background): The warm dark canvas derived from the body background</li>
+</ul>
+<h3 id="secondary--accent">Secondary &amp; Accent<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#secondary--accent" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Stone Gray</strong> (<code>#868584</code>): Secondary text, muted descriptions — warm mid-gray</li>
+<li><strong>Ash Gray</strong> (<code>#afaeac</code>): Body text, button text — the workhorse reading color</li>
+<li><strong>Purple-Tint Gray</strong> (<code>#666469</code>): Link text with subtle purple undertone — underlined links in content</li>
+</ul>
+<h3 id="surface--background">Surface &amp; Background<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#surface--background" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Frosted Veil</strong> (<code>rgba(255, 255, 255, 0.04)</code>): Ultra-subtle white overlay for surface differentiation</li>
+<li><strong>Mist Border</strong> (<code>rgba(226, 226, 226, 0.35)</code> / <code>rgba(227, 227, 227, 0.337)</code>): Semi-transparent borders for card containment</li>
+<li><strong>Translucent Parchment</strong> (<code>rgba(250, 249, 246, 0.9)</code>): Slightly transparent primary surface, allowing depth</li>
+</ul>
+<h3 id="neutrals--text">Neutrals &amp; Text<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#neutrals--text" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Warm Parchment</strong> (<code>#faf9f6</code>): Headlines, high-emphasis text</li>
+<li><strong>Ash Gray</strong> (<code>#afaeac</code>): Body paragraphs, descriptions</li>
+<li><strong>Stone Gray</strong> (<code>#868584</code>): Secondary labels, subdued information</li>
+<li><strong>Muted Purple</strong> (<code>#666469</code>): Underlined links, tertiary content</li>
+<li><strong>Dark Charcoal</strong> (<code>#454545</code> / <code>#353534</code>): Borders, button backgrounds</li>
+</ul>
+<h3 id="semantic--accent">Semantic &amp; Accent<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#semantic--accent" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Warp operates as an almost monochromatic system — no bold accent colors</li>
+<li>Interactive states are communicated through opacity changes and underline decorations rather than color shifts</li>
+<li>Any accent color would break the warm, restrained palette</li>
+</ul>
+<h3 id="gradient-system">Gradient System<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#gradient-system" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>No explicit gradients on the marketing site</li>
+<li>Depth is created through layered semi-transparent surfaces and photography rather than color gradients</li>
+</ul>
+<h2 id="3-typography-rules">3. Typography Rules<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-typography-rules" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="font-family">Font Family<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#font-family" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Display &amp; Body</strong>: <code>Matter Regular</code> — geometric sans-serif with soft character. Fallbacks: <code>Matter Regular Placeholder</code>, system sans-serif</li>
+<li><strong>Medium</strong>: <code>Matter Medium</code> — weight 500 variant for emphasis. Fallbacks: <code>Matter Medium Placeholder</code></li>
+<li><strong>Square</strong>: <code>Matter SQ Regular</code> — squared variant for select display contexts. Fallbacks: <code>Matter SQ Regular Placeholder</code></li>
+<li><strong>UI Supplement</strong>: <code>Inter</code> — used for specific UI elements. Fallbacks: <code>Inter Placeholder</code></li>
+<li><strong>Monospace Display</strong>: <code>Geist Mono</code> — for code/terminal display headings</li>
+<li><strong>Monospace Body</strong>: <code>Matter Mono Regular</code> — custom mono companion. Fallbacks: <code>Matter Mono Regular Placeholder</code></li>
+</ul>
+<h3 id="hierarchy">Hierarchy<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#hierarchy" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Role</th><th>Font</th><th>Size</th><th>Weight</th><th>Line Height</th><th>Letter Spacing</th><th>Notes</th></tr></thead><tbody><tr><td>Display Hero</td><td>Matter Regular</td><td>80px</td><td>400</td><td>1.00</td><td>-2.4px</td><td>Maximum compression, hero impact</td></tr><tr><td>Section Display</td><td>Matter Regular</td><td>56px</td><td>400</td><td>1.20</td><td>-0.56px</td><td>Feature section headings</td></tr><tr><td>Section Heading</td><td>Matter Regular</td><td>48px</td><td>400</td><td>1.20</td><td>-0.48px to -0.96px</td><td>Alternate heading weight</td></tr><tr><td>Feature Heading</td><td>Matter Regular</td><td>40px</td><td>400</td><td>1.10</td><td>-0.4px</td><td>Feature block titles</td></tr><tr><td>Sub-heading Large</td><td>Matter Regular</td><td>36px</td><td>400</td><td>1.15</td><td>-0.72px</td><td>Sub-section headers</td></tr><tr><td>Card Display</td><td>Matter SQ Regular</td><td>42px</td><td>400</td><td>1.00</td><td>0px</td><td>Squared variant for special display</td></tr><tr><td>Sub-heading</td><td>Matter Regular</td><td>32px</td><td>400</td><td>1.19</td><td>0px</td><td>Content sub-headings</td></tr><tr><td>Body Heading</td><td>Matter Regular</td><td>24px</td><td>400</td><td>1.20</td><td>-0.72px to 0px</td><td>Bold content intros</td></tr><tr><td>Card Title</td><td>Matter Medium</td><td>22px</td><td>500</td><td>1.14</td><td>0px</td><td>Emphasized card headers</td></tr><tr><td>Body Large</td><td>Matter Regular</td><td>20px</td><td>400</td><td>1.40</td><td>-0.2px</td><td>Primary body text, relaxed</td></tr><tr><td>Body</td><td>Matter Regular</td><td>18px</td><td>400</td><td>1.30</td><td>-0.18px</td><td>Standard body paragraphs</td></tr><tr><td>Nav/UI</td><td>Matter Regular</td><td>16px</td><td>400</td><td>1.20</td><td>0px</td><td>Navigation links, UI text</td></tr><tr><td>Button Text</td><td>Matter Medium</td><td>16px</td><td>500</td><td>1.20</td><td>0px</td><td>Button labels</td></tr><tr><td>Caption</td><td>Matter Regular</td><td>14px</td><td>400</td><td>1.00</td><td>1.4px</td><td>Uppercase labels (transform: uppercase)</td></tr><tr><td>Small Label</td><td>Matter Regular</td><td>12px</td><td>400</td><td>1.35</td><td>2.4px</td><td>Uppercase micro-labels (transform: uppercase)</td></tr><tr><td>Micro</td><td>Matter Regular</td><td>11px</td><td>400</td><td>1.20</td><td>0px</td><td>Smallest text elements</td></tr><tr><td>Code UI</td><td>Geist Mono</td><td>16px</td><td>400</td><td>1.00</td><td>0px</td><td>Terminal/code display</td></tr><tr><td>Code Body</td><td>Matter Mono Regular</td><td>16px</td><td>400</td><td>1.00</td><td>-0.2px</td><td>Code content</td></tr><tr><td>UI Supplement</td><td>Inter</td><td>16px</td><td>500</td><td>1.00</td><td>-0.2px</td><td>Specific UI elements</td></tr></tbody></table></div>
+<h3 id="principles">Principles<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#principles" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Regular weight dominance</strong>: Nearly all text uses weight 400 (Regular) — even headlines. Matter Medium (500) appears only for emphasis moments like card titles and buttons. This creates a remarkably even, calm typographic texture</li>
+<li><strong>Uppercase as editorial signal</strong>: Small labels and categories use uppercase transform with wide letter-spacing (1.4px–2.4px), creating a magazine-editorial categorization system</li>
+<li><strong>Warm legibility</strong>: The combination of Matter’s geometric softness + warm text colors (#faf9f6) + controlled negative tracking creates text that reads as effortlessly human on dark surfaces</li>
+<li><strong>No bold display</strong>: Zero use of bold (700+) weight anywhere — restraint is the philosophy</li>
+</ul>
+<h2 id="4-component-stylings">4. Component Stylings<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-component-stylings" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="buttons">Buttons<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#buttons" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Dark Pill</strong>: <code>#353534</code> background, Ash Gray (<code>#afaeac</code>) text, pill shape (50px radius), <code>10px</code> padding. The primary CTA — warm, muted, understated</li>
+<li><strong>Frosted Tag</strong>: <code>rgba(255, 255, 255, 0.16)</code> background, black text (<code>rgb(0, 0, 0)</code>), rectangular (6px radius), <code>1px 6px</code> padding. Small inline tag-like buttons</li>
+<li><strong>Ghost</strong>: No visible background, text-only with underline decoration on hover</li>
+<li><strong>Hover</strong>: Subtle opacity or brightness shift — no dramatic color changes</li>
+</ul>
+<h3 id="cards--containers">Cards &amp; Containers<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#cards--containers" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Photography Cards</strong>: Full-bleed nature imagery with overlay text, 8px–12px border-radius</li>
+<li><strong>Terminal Screenshot Cards</strong>: Product UI embedded in dark containers with rounded corners (8px–12px)</li>
+<li><strong>Bordered Cards</strong>: Semi-transparent border (<code>rgba(226, 226, 226, 0.35)</code>) for containment, 12px–14px radius</li>
+<li><strong>Hover</strong>: Minimal — content cards don’t dramatically change on hover, maintaining the calm aesthetic</li>
+</ul>
+<h3 id="inputs--forms">Inputs &amp; Forms<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#inputs--forms" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Minimal form presence on the marketing site</li>
+<li>Dark background inputs with warm gray text</li>
+<li>Focus: Border brightness increase, no colored rings (consistent with the monochromatic palette)</li>
+</ul>
+<h3 id="navigation">Navigation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#navigation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Top nav</strong>: Dark background, warm parchment brand text, Matter Regular at 16px for links</li>
+<li><strong>Link color</strong>: Stone Gray (<code>#868584</code>) for muted nav, Warm Parchment for active/hover</li>
+<li><strong>CTA button</strong>: Dark pill (#353534) at nav end — restrained, not attention-grabbing</li>
+<li><strong>Mobile</strong>: Collapses to simplified navigation</li>
+<li><strong>Sticky</strong>: Nav stays fixed on scroll</li>
+</ul>
+<h3 id="image-treatment">Image Treatment<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#image-treatment" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Nature photography</strong>: Landscapes, forests, golden-hour scenes — completely unique for a developer tool</li>
+<li><strong>Terminal screenshots</strong>: Product UI shown in realistic terminal window frames</li>
+<li><strong>Mixed composition</strong>: Nature images and terminal screenshots are interleaved, creating a lifestyle-meets-tool narrative</li>
+<li><strong>Full-bleed</strong>: Images often span full container width with 8px radius</li>
+<li><strong>Video</strong>: Video elements present with 10px border-radius</li>
+</ul>
+<h3 id="testimonial-section">Testimonial Section<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#testimonial-section" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Social proof area (“Don’t take our word for it”) with quotes</li>
+<li>Muted styling consistent with overall restraint</li>
+</ul>
+<h2 id="5-layout-principles">5. Layout Principles<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#5-layout-principles" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="spacing-system">Spacing System<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#spacing-system" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Base unit</strong>: 8px</li>
+<li><strong>Scale</strong>: 1px, 4px, 5px, 8px, 10px, 12px, 14px, 15px, 16px, 18px, 24px, 26px, 30px, 32px, 36px</li>
+<li><strong>Section padding</strong>: 80px–120px vertical between major sections</li>
+<li><strong>Card padding</strong>: 16px–32px internal spacing</li>
+<li><strong>Component gaps</strong>: 8px–16px between related elements</li>
+</ul>
+<h3 id="grid--container">Grid &amp; Container<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#grid--container" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Max width</strong>: ~1500px container (breakpoint at 1500px), centered</li>
+<li><strong>Column patterns</strong>: Full-width hero, 2-column feature sections with photography, single-column testimonials</li>
+<li><strong>Cinematic layout</strong>: Wide containers that let photography breathe</li>
+</ul>
+<h3 id="whitespace-philosophy">Whitespace Philosophy<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#whitespace-philosophy" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Vast and warm</strong>: Generous spacing between sections — the dark background creates a warm void that feels contemplative rather than empty</li>
+<li><strong>Photography as whitespace</strong>: Nature images serve as visual breathing room between dense product information</li>
+<li><strong>Editorial pacing</strong>: The layout reads like a magazine — each section is a deliberate page-turn moment</li>
+</ul>
+<h3 id="border-radius-scale">Border Radius Scale<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#border-radius-scale" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>4px</strong>: Small interactive elements — buttons, tags</li>
+<li><strong>5px–6px</strong>: Standard components — links, small containers</li>
+<li><strong>8px</strong>: Images, video containers, standard cards</li>
+<li><strong>10px</strong>: Video elements, medium containers</li>
+<li><strong>12px</strong>: Feature cards, large images</li>
+<li><strong>14px</strong>: Large containers, prominent cards</li>
+<li><strong>40px</strong>: Large rounded sections</li>
+<li><strong>50px</strong>: Pill buttons — primary CTAs</li>
+<li><strong>200px</strong>: Progress bars — full pill shape</li>
+</ul>
+<h2 id="6-depth--elevation">6. Depth &amp; Elevation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#6-depth--elevation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Level</th><th>Treatment</th><th>Use</th></tr></thead><tbody><tr><td>Level 0 (Flat)</td><td>No shadow, dark background</td><td>Page canvas, most surfaces</td></tr><tr><td>Level 1 (Veil)</td><td><code>rgba(255, 255, 255, 0.04)</code> overlay</td><td>Subtle surface differentiation</td></tr><tr><td>Level 2 (Border)</td><td><code>rgba(226, 226, 226, 0.35) 1px</code> border</td><td>Card containment, section separation</td></tr><tr><td>Level 3 (Ambient)</td><td><code>rgba(0, 0, 0, 0.2) 0px 5px 15px</code> (inferred from design)</td><td>Image containers, floating elements</td></tr></tbody></table></div>
+<h3 id="shadow-philosophy">Shadow Philosophy<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#shadow-philosophy" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Warp’s elevation system is remarkably flat — almost zero shadow usage on the marketing site. Depth is communicated through:</p>
+<ul>
+<li><strong>Semi-transparent borders</strong> instead of shadows — borders at 35% opacity create a ghostly containment</li>
+<li><strong>Photography layering</strong> — images create natural depth without artificial shadows</li>
+<li><strong>Surface opacity shifts</strong> — <code>rgba(255, 255, 255, 0.04)</code> overlays create barely-perceptible layer differences</li>
+<li>The effect is calm and grounded — nothing floats, everything rests</li>
+</ul>
+<h3 id="decorative-depth">Decorative Depth<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#decorative-depth" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Photography as depth</strong>: Nature images create atmospheric depth that shadows cannot</li>
+<li><strong>No glass or blur effects</strong>: The design avoids trendy glassmorphism entirely</li>
+<li><strong>Warm ambient</strong>: Any glow comes from the photography’s natural lighting, not artificial CSS</li>
+</ul>
+<h2 id="7-dos-and-donts">7. Do’s and Don’ts<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#7-dos-and-donts" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="do">Do<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#do" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Use warm off-white (<code>#faf9f6</code>) for text instead of pure white — the cream undertone is essential</li>
+<li>Keep buttons restrained and muted — dark fill (#353534) with muted text (#afaeac), no bright CTAs</li>
+<li>Apply Matter Regular (weight 400) for nearly everything — even headlines. Reserve Medium (500) for emphasis only</li>
+<li>Use uppercase labels with wide letter-spacing (1.4px–2.4px) for categorization</li>
+<li>Interleave nature photography with product screenshots — this is core to the brand identity</li>
+<li>Maintain the almost monochromatic warm gray palette — no bold accent colors</li>
+<li>Use semi-transparent borders (<code>rgba(226, 226, 226, 0.35)</code>) for card containment instead of shadows</li>
+<li>Keep negative letter-spacing on headlines (-0.4px to -2.4px) for Matter’s compressed display treatment</li>
+</ul>
+<h3 id="dont">Don’t<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#dont" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Use pure white (#ffffff) for text — it’s always warm parchment (#faf9f6)</li>
+<li>Add bold accent colors (blue, red, green) — the system is deliberately monochromatic warm grays</li>
+<li>Apply bold weight (700+) to any text — Warp never goes above Medium (500)</li>
+<li>Use heavy drop shadows — depth comes from borders, photography, and opacity shifts</li>
+<li>Create cold or blue-tinted dark backgrounds — the warmth is essential</li>
+<li>Add decorative gradients or glow effects — the photography provides all visual interest</li>
+<li>Use tight, compressed layouts — the editorial spacing is generous and contemplative</li>
+<li>Mix in additional typefaces beyond the Matter family + Inter supplement</li>
+</ul>
+<h2 id="8-responsive-behavior">8. Responsive Behavior<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#8-responsive-behavior" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="breakpoints">Breakpoints<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#breakpoints" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Name</th><th>Width</th><th>Key Changes</th></tr></thead><tbody><tr><td>Mobile</td><td>&lt;810px</td><td>Single column, stacked sections, hero text reduces to ~48px, hamburger nav</td></tr><tr><td>Tablet</td><td>810px–1500px</td><td>2-column features begin, photography scales, nav links partially visible</td></tr><tr><td>Desktop</td><td>>1500px</td><td>Full cinematic layout, 80px hero display, side-by-side photography + text</td></tr></tbody></table></div>
+<h3 id="touch-targets">Touch Targets<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#touch-targets" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Pill buttons: 50px radius with 10px padding — comfortable touch targets</li>
+<li>Nav links: 16px text with surrounding padding for accessibility</li>
+<li>Mobile CTAs: Full-width pills on mobile for easy thumb reach</li>
+</ul>
+<h3 id="collapsing-strategy">Collapsing Strategy<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#collapsing-strategy" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Navigation</strong>: Full horizontal nav → simplified mobile navigation</li>
+<li><strong>Hero text</strong>: 80px display → 56px → 48px across breakpoints</li>
+<li><strong>Feature sections</strong>: Side-by-side photography + text → stacked vertically</li>
+<li><strong>Photography</strong>: Scales within containers, maintains cinematic aspect ratios</li>
+<li><strong>Section spacing</strong>: Reduces proportionally — generous desktop → compact mobile</li>
+</ul>
+<h3 id="image-behavior">Image Behavior<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#image-behavior" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Nature photography scales responsively, maintaining wide cinematic ratios</li>
+<li>Terminal screenshots maintain aspect ratios within responsive containers</li>
+<li>Video elements scale with 10px radius maintained</li>
+<li>No art direction changes — same compositions across breakpoints</li>
+</ul>
+<h2 id="9-agent-prompt-guide">9. Agent Prompt Guide<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#9-agent-prompt-guide" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="quick-color-reference">Quick Color Reference<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#quick-color-reference" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Primary Text: Warm Parchment (<code>#faf9f6</code>)</li>
+<li>Secondary Text: Ash Gray (<code>#afaeac</code>)</li>
+<li>Tertiary Text: Stone Gray (<code>#868584</code>)</li>
+<li>Button Background: Earth Gray (<code>#353534</code>)</li>
+<li>Border: Mist Border (<code>rgba(226, 226, 226, 0.35)</code>)</li>
+<li>Background: Deep warm near-black (page background)</li>
+</ul>
+<h3 id="example-component-prompts">Example Component Prompts<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#example-component-prompts" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>“Create a hero section on warm dark background with 80px Matter Regular heading in warm parchment (#faf9f6), line-height 1.0, letter-spacing -2.4px, and a dark pill button (#353534, 50px radius, <a href=".././tags/afaeac" class="tag-link internal alias" data-slug="tags/afaeac">afaeac</a> text)”</li>
+<li>“Design a feature card with semi-transparent border (rgba(226,226,226,0.35)), 12px radius, warm dark background, Matter Regular heading at 24px, and ash gray (#afaeac) body text at 18px”</li>
+<li>“Build a category label using Matter Regular at 12px, uppercase transform, letter-spacing 2.4px, stone gray (#868584) color — editorial magazine style”</li>
+<li>“Create a testimonial section with warm parchment quotes in Matter Regular 24px, attributed in stone gray (#868584), on dark background with minimal ornamentation”</li>
+<li>“Design a navigation bar with warm dark background, Matter Regular links at 16px in stone gray (#868584), hover to warm parchment (#faf9f6), and a dark pill CTA button (#353534) at the right”</li>
+</ul>
+<h3 id="iteration-guide">Iteration Guide<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#iteration-guide" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>When refining existing screens generated with this design system:</p>
+<ol>
+<li>Verify text color is warm parchment (#faf9f6) not pure white — the warmth is subtle but essential</li>
+<li>Ensure all buttons use the restrained dark palette (#353534) — no bright or colorful CTAs</li>
+<li>Check that Matter Regular (400) is the default weight — Medium (500) only for emphasis</li>
+<li>Confirm uppercase labels have wide letter-spacing (1.4px–2.4px) — tight uppercase feels wrong here</li>
+<li>The overall tone should feel warm and calm, like a well-designed magazine — not aggressive or tech-flashy</li>
+</ol></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>关系图谱</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-409" aria-expanded="true"><h3>目录</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#design-system-warp" data-for="design-system-warp">Design System: Warp</a></li><li class="depth-1"><a href="#1-visual-theme--atmosphere" data-for="1-visual-theme--atmosphere">1. Visual Theme &amp; Atmosphere</a></li><li class="depth-1"><a href="#2-color-palette--roles" data-for="2-color-palette--roles">2. Color Palette &amp; Roles</a></li><li class="depth-2"><a href="#primary" data-for="primary">Primary</a></li><li class="depth-2"><a href="#secondary--accent" data-for="secondary--accent">Secondary &amp; Accent</a></li><li class="depth-2"><a href="#surface--background" data-for="surface--background">Surface &amp; Background</a></li><li class="depth-2"><a href="#neutrals--text" data-for="neutrals--text">Neutrals &amp; Text</a></li><li class="depth-2"><a href="#semantic--accent" data-for="semantic--accent">Semantic &amp; Accent</a></li><li class="depth-2"><a href="#gradient-system" data-for="gradient-system">Gradient System</a></li><li class="depth-1"><a href="#3-typography-rules" data-for="3-typography-rules">3. Typography Rules</a></li><li class="depth-2"><a href="#font-family" data-for="font-family">Font Family</a></li><li class="depth-2"><a href="#hierarchy" data-for="hierarchy">Hierarchy</a></li><li class="depth-2"><a href="#principles" data-for="principles">Principles</a></li><li class="depth-1"><a href="#4-component-stylings" data-for="4-component-stylings">4. Component Stylings</a></li><li class="depth-2"><a href="#buttons" data-for="buttons">Buttons</a></li><li class="depth-2"><a href="#cards--containers" data-for="cards--containers">Cards &amp; Containers</a></li><li class="depth-2"><a href="#inputs--forms" data-for="inputs--forms">Inputs &amp; Forms</a></li><li class="depth-2"><a href="#navigation" data-for="navigation">Navigation</a></li><li class="depth-2"><a href="#image-treatment" data-for="image-treatment">Image Treatment</a></li><li class="depth-2"><a href="#testimonial-section" data-for="testimonial-section">Testimonial Section</a></li><li class="depth-1"><a href="#5-layout-principles" data-for="5-layout-principles">5. Layout Principles</a></li><li class="depth-2"><a href="#spacing-system" data-for="spacing-system">Spacing System</a></li><li class="depth-2"><a href="#grid--container" data-for="grid--container">Grid &amp; Container</a></li><li class="depth-2"><a href="#whitespace-philosophy" data-for="whitespace-philosophy">Whitespace Philosophy</a></li><li class="depth-2"><a href="#border-radius-scale" data-for="border-radius-scale">Border Radius Scale</a></li><li class="depth-1"><a href="#6-depth--elevation" data-for="6-depth--elevation">6. Depth &amp; Elevation</a></li><li class="depth-2"><a href="#shadow-philosophy" data-for="shadow-philosophy">Shadow Philosophy</a></li><li class="depth-2"><a href="#decorative-depth" data-for="decorative-depth">Decorative Depth</a></li><li class="depth-1"><a href="#7-dos-and-donts" data-for="7-dos-and-donts">7. Do’s and Don’ts</a></li><li class="depth-2"><a href="#do" data-for="do">Do</a></li><li class="depth-2"><a href="#dont" data-for="dont">Don’t</a></li><li class="depth-1"><a href="#8-responsive-behavior" data-for="8-responsive-behavior">8. Responsive Behavior</a></li><li class="depth-2"><a href="#breakpoints" data-for="breakpoints">Breakpoints</a></li><li class="depth-2"><a href="#touch-targets" data-for="touch-targets">Touch Targets</a></li><li class="depth-2"><a href="#collapsing-strategy" data-for="collapsing-strategy">Collapsing Strategy</a></li><li class="depth-2"><a href="#image-behavior" data-for="image-behavior">Image Behavior</a></li><li class="depth-1"><a href="#9-agent-prompt-guide" data-for="9-agent-prompt-guide">9. Agent Prompt Guide</a></li><li class="depth-2"><a href="#quick-color-reference" data-for="quick-color-reference">Quick Color Reference</a></li><li class="depth-2"><a href="#example-component-prompts" data-for="example-component-prompts">Example Component Prompts</a></li><li class="depth-2"><a href="#iteration-guide" data-for="iteration-guide">Iteration Guide</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../postscript.js" type="module" data-persist="true"></script></html>

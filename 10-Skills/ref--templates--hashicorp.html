@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr"><head><title>ref--templates--hashicorp</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="🏠 Kaindy Knowledge Base"/><meta property="og:title" content="ref--templates--hashicorp"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="ref--templates--hashicorp"/><meta name="twitter:description" content="Design System: HashiCorp Hermes Agent — Implementation Notes The original site uses proprietary fonts."/><meta property="og:description" content="Design System: HashiCorp Hermes Agent — Implementation Notes The original site uses proprietary fonts."/><meta property="og:image:alt" content="Design System: HashiCorp Hermes Agent — Implementation Notes The original site uses proprietary fonts."/><meta property="twitter:domain" content="kaindy-kb.pages.dev"/><meta property="og:url" content="https://kaindy-kb.pages.dev/10-Skills/ref--templates--hashicorp"/><meta property="twitter:url" content="https://kaindy-kb.pages.dev/10-Skills/ref--templates--hashicorp"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Design System: HashiCorp Hermes Agent — Implementation Notes The original site uses proprietary fonts."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUva2FpbmR5L0RvY3VtZW50cy9xdWFydHovcXVhcnR6L2NvbXBvbmVudHMvc3R5bGVzIiwic291cmNlcyI6WyJtZXJtYWlkLmlubGluZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFHRjtFQUNFOzs7QUFLRjtFQUNFO0VBQ0E7OztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTs7QUFJRjtFQUNFO0VBQ0E7RUFDQSIsInNvdXJjZXNDb250ZW50IjpbIi5leHBhbmQtYnV0dG9uIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbG9hdDogcmlnaHQ7XG4gIHBhZGRpbmc6IDAuNHJlbTtcbiAgbWFyZ2luOiAwLjNyZW07XG4gIHJpZ2h0OiAwOyAvLyBOT1RFOiByaWdodCB3aWxsIGJlIHNldCBpbiBtZXJtYWlkLmlubGluZS50c1xuICBjb2xvcjogdmFyKC0tZ3JheSk7XG4gIGJvcmRlci1jb2xvcjogdmFyKC0tZGFyayk7XG4gIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgYm9yZGVyOiAxcHggc29saWQ7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgb3BhY2l0eTogMDtcbiAgdHJhbnNpdGlvbjogMC4ycztcblxuICAmID4gc3ZnIHtcbiAgICBmaWxsOiB2YXIoLS1saWdodCk7XG4gICAgZmlsdGVyOiBjb250cmFzdCgwLjMpO1xuICB9XG5cbiAgJjpob3ZlciB7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIGJvcmRlci1jb2xvcjogdmFyKC0tc2Vjb25kYXJ5KTtcbiAgfVxuXG4gICY6Zm9jdXMge1xuICAgIG91dGxpbmU6IDA7XG4gIH1cbn1cblxucHJlIHtcbiAgJjpob3ZlciA+IC5leHBhbmQtYnV0dG9uIHtcbiAgICBvcGFjaXR5OiAxO1xuICAgIHRyYW5zaXRpb246IDAuMnM7XG4gIH1cbn1cblxuI21lcm1haWQtY29udGFpbmVyIHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICBjb250YWluOiBsYXlvdXQ7XG4gIHotaW5kZXg6IDk5OTtcbiAgbGVmdDogMDtcbiAgdG9wOiAwO1xuICB3aWR0aDogMTAwdnc7XG4gIGhlaWdodDogMTAwdmg7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIGRpc3BsYXk6IG5vbmU7XG4gIGJhY2tkcm9wLWZpbHRlcjogYmx1cig0cHgpO1xuICBiYWNrZ3JvdW5kOiByZ2JhKDAsIDAsIDAsIDAuNSk7XG5cbiAgJi5hY3RpdmUge1xuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgfVxuXG4gICYgPiAjbWVybWFpZC1zcGFjZSB7XG4gICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gICAgYm9yZGVyLXJhZGl1czogNXB4O1xuICAgIHBvc2l0aW9uOiBmaXhlZDtcbiAgICB0b3A6IDUwJTtcbiAgICBsZWZ0OiA1MCU7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7XG4gICAgaGVpZ2h0OiA4MHZoO1xuICAgIHdpZHRoOiA4MHZ3O1xuICAgIG92ZXJmbG93OiBoaWRkZW47XG5cbiAgICAmID4gLm1lcm1haWQtY29udGVudCB7XG4gICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgICB0cmFuc2Zvcm0tb3JpZ2luOiAwIDA7XG4gICAgICB0cmFuc2l0aW9uOiB0cmFuc2Zvcm0gMC4xcyBlYXNlO1xuICAgICAgb3ZlcmZsb3c6IHZpc2libGU7XG4gICAgICBtaW4taGVpZ2h0OiAyMDBweDtcbiAgICAgIG1pbi13aWR0aDogMjAwcHg7XG5cbiAgICAgIHByZSB7XG4gICAgICAgIG1hcmdpbjogMDtcbiAgICAgICAgYm9yZGVyOiBub25lO1xuICAgICAgfVxuXG4gICAgICBzdmcge1xuICAgICAgICBtYXgtd2lkdGg6IG5vbmU7XG4gICAgICAgIGhlaWdodDogYXV0bztcbiAgICAgIH1cbiAgICB9XG5cbiAgICAmID4gLm1lcm1haWQtY29udHJvbHMge1xuICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgYm90dG9tOiAyMHB4O1xuICAgICAgcmlnaHQ6IDIwcHg7XG4gICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgZ2FwOiA4cHg7XG4gICAgICBwYWRkaW5nOiA4cHg7XG4gICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodCk7XG4gICAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgYm9yZGVyLXJhZGl1czogNnB4O1xuICAgICAgYm94LXNoYWRvdzogMCAycHggNHB4IHJnYmEoMCwgMCwgMCwgMC4xKTtcbiAgICAgIHotaW5kZXg6IDI7XG5cbiAgICAgIC5tZXJtYWlkLWNvbnRyb2wtYnV0dG9uIHtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICAgIHdpZHRoOiAzMnB4O1xuICAgICAgICBoZWlnaHQ6IDMycHg7XG4gICAgICAgIHBhZGRpbmc6IDA7XG4gICAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgICAgY29sb3I6IHZhcigtLWRhcmspO1xuICAgICAgICBib3JkZXItcmFkaXVzOiA0cHg7XG4gICAgICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICAgICAgZm9udC1zaXplOiAxNnB4O1xuICAgICAgICBmb250LWZhbWlseTogdmFyKC0tYm9keUZvbnQpO1xuICAgICAgICB0cmFuc2l0aW9uOiBhbGwgMC4ycyBlYXNlO1xuXG4gICAgICAgICY6aG92ZXIge1xuICAgICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIH1cblxuICAgICAgICAmOmFjdGl2ZSB7XG4gICAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDFweCk7XG4gICAgICAgIH1cblxuICAgICAgICAvLyBTdHlsZSB0aGUgcmVzZXQgYnV0dG9uIGRpZmZlcmVudGx5XG4gICAgICAgICY6bnRoLWNoaWxkKDIpIHtcbiAgICAgICAgICB3aWR0aDogYXV0bztcbiAgICAgICAgICBwYWRkaW5nOiAwIDEycHg7XG4gICAgICAgICAgZm9udC1zaXplOiAxNHB4O1xuICAgICAgICB9XG4gICAgICB9XG4gICAgfVxuICB9XG59XG4iXX0= */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://kaindy-kb.pages.dev/index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://kaindy-kb.pages.dev/10-Skills/ref--templates--hashicorp-og-image.webp"/><meta property="og:image:url" content="https://kaindy-kb.pages.dev/10-Skills/ref--templates--hashicorp-og-image.webp"/><meta name="twitter:image" content="https://kaindy-kb.pages.dev/10-Skills/ref--templates--hashicorp-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="10-Skills/ref--templates--hashicorp"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">🏠 Kaindy Knowledge Base</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>搜索</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="搜索些什么" placeholder="搜索些什么"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="暗色模式"><title>暗色模式</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="亮色模式"><title>亮色模式</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="阅读模式"><title>阅读模式</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-824"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>探索</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-824" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../10-Skills/">10 Skills</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>ref  templates  hashicorp</a></div></nav><h1 class="article-title">ref--templates--hashicorp</h1><p show-comma="true" class="content-meta"><time datetime="2026-06-15T12:23:17.000Z">2026年6月15日</time><span>10分钟阅读</span></p><ul class="tags"><li><a href="../tags/d5d7db" class="internal tag-link">d5d7db</a></li><li><a href="../tags/656a76" class="internal tag-link">656a76</a></li><li><a href="../tags/7b42bc" class="internal tag-link">7b42bc</a></li><li><a href="../tags/ffcf25" class="internal tag-link">ffcf25</a></li><li><a href="../tags/14c6cb" class="internal tag-link">14c6cb</a></li><li><a href="../tags/0d0e12" class="internal tag-link">0d0e12</a></li><li><a href="../tags/efeff1" class="internal tag-link">efeff1</a></li></ul></div></div><article class="popover-hint"><h1 id="design-system-hashicorp">Design System: HashiCorp<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#design-system-hashicorp" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<blockquote>
+<p><strong>Hermes Agent — Implementation Notes</strong></p>
+<p>The original site uses proprietary fonts. For self-contained HTML output, use these CDN substitutes:</p>
+<ul>
+<li><strong>Primary:</strong> <code>Inter</code> | <strong>Mono:</strong> <code>JetBrains Mono</code></li>
+<li><strong>Font stack (CSS):</strong> <code>font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;</code></li>
+<li><strong>Mono stack (CSS):</strong> <code>font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;</code></li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="html" data-theme="github-light github-dark"><code data-language="html" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">link</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> href</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap&quot;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> rel</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;stylesheet&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">></span></span></code></pre></figure>
+<p>Use <code>write_file</code> to create HTML, serve via <code>generative-widgets</code> skill (cloudflared tunnel).
+Verify visual accuracy with <code>browser_vision</code> after generating.</p>
+</blockquote>
+<h2 id="1-visual-theme--atmosphere">1. Visual Theme &amp; Atmosphere<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-visual-theme--atmosphere" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>HashiCorp’s website is enterprise infrastructure made tangible — a design system that must communicate the complexity of cloud infrastructure management while remaining approachable. The visual language splits between two modes: a clean white light-mode for informational sections and a dramatic dark-mode (<code>#15181e</code>, <code>#0d0e12</code>) for hero areas and product showcases, creating a day/night duality that mirrors the “build in light, deploy in dark” developer workflow.</p>
+<p>The typography is anchored by a custom brand font (HashiCorp Sans, loaded as <code>__hashicorpSans_96f0ca</code>) that carries substantial weight — literally. Headings use 600–700 weights with tight line-heights (1.17–1.19), creating dense, authoritative text blocks that communicate enterprise confidence. The hero headline at 82px weight 600 with OpenType <code>&quot;kern&quot;</code> enabled is not decorative — it’s infrastructure-grade typography.</p>
+<p>What distinguishes HashiCorp is its multi-product color system. Each product in the portfolio has its own brand color — Terraform purple (<code>#7b42bc</code>), Vault yellow (<code>#ffcf25</code>), Waypoint teal (<code>#14c6cb</code>), Vagrant blue (<code>#1868f2</code>) — and these colors appear throughout as accent tokens via a CSS custom property system (<code>--mds-color-*</code>). This creates a design system within a design system: the parent brand is black-and-white with blue accents, while each child product injects its own chromatic identity.</p>
+<p>The component system uses the <code>mds</code> (Markdown Design System) prefix, indicating a systematic, token-driven approach where colors, spacing, and states are all managed through CSS variables. Shadows are remarkably subtle — dual-layer micro-shadows using <code>rgba(97, 104, 117, 0.05)</code> that are nearly invisible but provide just enough depth to separate interactive surfaces from the background.</p>
+<p><strong>Key Characteristics:</strong></p>
+<ul>
+<li>Dual-mode: clean white sections + dramatic dark (<code>#15181e</code>) hero/product areas</li>
+<li>Custom HashiCorp Sans font with 600–700 weights and <code>&quot;kern&quot;</code> feature</li>
+<li>Multi-product color system via <code>--mds-color-*</code> CSS custom properties</li>
+<li>Product brand colors: Terraform purple, Vault yellow, Waypoint teal, Vagrant blue</li>
+<li>Uppercase letter-spaced captions (13px, weight 600, 1.3px letter-spacing)</li>
+<li>Micro-shadows: dual-layer at 0.05 opacity — depth through whisper, not shout</li>
+<li>Token-driven <code>mds</code> component system with semantic variable names</li>
+<li>Tight border radius: 2px–8px, nothing pill-shaped or circular</li>
+<li>System-ui fallback stack for secondary text</li>
+</ul>
+<h2 id="2-color-palette--roles">2. Color Palette &amp; Roles<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-color-palette--roles" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="brand-primary">Brand Primary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#brand-primary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Black</strong> (<code>#000000</code>): Primary brand color, text on light surfaces, <code>--mds-color-hcp-brand</code></li>
+<li><strong>Dark Charcoal</strong> (<code>#15181e</code>): Dark mode backgrounds, hero sections</li>
+<li><strong>Near Black</strong> (<code>#0d0e12</code>): Deepest dark mode surface, form inputs on dark</li>
+</ul>
+<h3 id="neutral-scale">Neutral Scale<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#neutral-scale" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Light Gray</strong> (<code>#f1f2f3</code>): Light backgrounds, subtle surfaces</li>
+<li><strong>Mid Gray</strong> (<code>#d5d7db</code>): Borders, button text on dark</li>
+<li><strong>Cool Gray</strong> (<code>#b2b6bd</code>): Border accents (at 0.1–0.4 opacity)</li>
+<li><strong>Dark Gray</strong> (<code>#656a76</code>): Helper text, secondary labels, <code>--mds-form-helper-text-color</code></li>
+<li><strong>Charcoal</strong> (<code>#3b3d45</code>): Secondary text on light, button borders</li>
+<li><strong>Near White</strong> (<code>#efeff1</code>): Primary text on dark surfaces</li>
+</ul>
+<h3 id="product-brand-colors">Product Brand Colors<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#product-brand-colors" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Terraform Purple</strong> (<code>#7b42bc</code>): <code>--mds-color-terraform-button-background</code></li>
+<li><strong>Vault Yellow</strong> (<code>#ffcf25</code>): <code>--mds-color-vault-button-background</code></li>
+<li><strong>Waypoint Teal</strong> (<code>#14c6cb</code>): <code>--mds-color-waypoint-button-background-focus</code></li>
+<li><strong>Waypoint Teal Hover</strong> (<code>#12b6bb</code>): <code>--mds-color-waypoint-button-background-hover</code></li>
+<li><strong>Vagrant Blue</strong> (<code>#1868f2</code>): <code>--mds-color-vagrant-brand</code></li>
+<li><strong>Purple Accent</strong> (<code>#911ced</code>): <code>--mds-color-palette-purple-300</code></li>
+<li><strong>Visited Purple</strong> (<code>#a737ff</code>): <code>--mds-color-foreground-action-visited</code></li>
+</ul>
+<h3 id="semantic-colors">Semantic Colors<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#semantic-colors" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Action Blue</strong> (<code>#1060ff</code>): Primary action links on dark</li>
+<li><strong>Link Blue</strong> (<code>#2264d6</code>): Primary links on light</li>
+<li><strong>Bright Blue</strong> (<code>#2b89ff</code>): Active links, hover accent</li>
+<li><strong>Amber</strong> (<code>#bb5a00</code>): <code>--mds-color-palette-amber-200</code>, warning states</li>
+<li><strong>Amber Light</strong> (<code>#fbeabf</code>): <code>--mds-color-palette-amber-100</code>, warning backgrounds</li>
+<li><strong>Vault Faint Yellow</strong> (<code>#fff9cf</code>): <code>--mds-color-vault-radar-gradient-faint-stop</code></li>
+<li><strong>Orange</strong> (<code>#a9722e</code>): <code>--mds-color-unified-core-orange-6</code></li>
+<li><strong>Red</strong> (<code>#731e25</code>): <code>--mds-color-unified-core-red-7</code>, error states</li>
+<li><strong>Navy</strong> (<code>#101a59</code>): <code>--mds-color-unified-core-blue-7</code></li>
+</ul>
+<h3 id="shadows">Shadows<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#shadows" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Micro Shadow</strong> (<code>rgba(97, 104, 117, 0.05) 0px 1px 1px, rgba(97, 104, 117, 0.05) 0px 2px 2px</code>): Default card/button elevation</li>
+<li><strong>Focus Outline</strong>: <code>3px solid var(--mds-color-focus-action-external)</code> — systematic focus ring</li>
+</ul>
+<h2 id="3-typography-rules">3. Typography Rules<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-typography-rules" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="font-families">Font Families<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#font-families" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Primary Brand</strong>: <code>__hashicorpSans_96f0ca</code> (HashiCorp Sans), with fallback: <code>__hashicorpSans_Fallback_96f0ca</code></li>
+<li><strong>System UI</strong>: <code>system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial</code></li>
+</ul>
+<h3 id="hierarchy">Hierarchy<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#hierarchy" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Role</th><th>Font</th><th>Size</th><th>Weight</th><th>Line Height</th><th>Letter Spacing</th><th>Notes</th></tr></thead><tbody><tr><td>Display Hero</td><td>HashiCorp Sans</td><td>82px (5.13rem)</td><td>600</td><td>1.17 (tight)</td><td>normal</td><td><code>&quot;kern&quot;</code> enabled</td></tr><tr><td>Section Heading</td><td>HashiCorp Sans</td><td>52px (3.25rem)</td><td>600</td><td>1.19 (tight)</td><td>normal</td><td><code>&quot;kern&quot;</code> enabled</td></tr><tr><td>Feature Heading</td><td>HashiCorp Sans</td><td>42px (2.63rem)</td><td>700</td><td>1.19 (tight)</td><td>-0.42px</td><td>Negative tracking</td></tr><tr><td>Sub-heading</td><td>HashiCorp Sans</td><td>34px (2.13rem)</td><td>600–700</td><td>1.18 (tight)</td><td>normal</td><td>Feature blocks</td></tr><tr><td>Card Title</td><td>HashiCorp Sans</td><td>26px (1.63rem)</td><td>700</td><td>1.19 (tight)</td><td>normal</td><td>Card and panel headings</td></tr><tr><td>Small Title</td><td>HashiCorp Sans</td><td>19px (1.19rem)</td><td>700</td><td>1.21 (tight)</td><td>normal</td><td>Compact headings</td></tr><tr><td>Body Emphasis</td><td>HashiCorp Sans</td><td>17px (1.06rem)</td><td>600–700</td><td>1.18–1.35</td><td>normal</td><td>Bold body text</td></tr><tr><td>Body Large</td><td>system-ui</td><td>20px (1.25rem)</td><td>400–600</td><td>1.50</td><td>normal</td><td>Hero descriptions</td></tr><tr><td>Body</td><td>system-ui</td><td>16px (1.00rem)</td><td>400–500</td><td>1.63–1.69 (relaxed)</td><td>normal</td><td>Standard body text</td></tr><tr><td>Nav Link</td><td>system-ui</td><td>15px (0.94rem)</td><td>500</td><td>1.60 (relaxed)</td><td>normal</td><td>Navigation items</td></tr><tr><td>Small Body</td><td>system-ui</td><td>14px (0.88rem)</td><td>400–500</td><td>1.29–1.71</td><td>normal</td><td>Secondary content</td></tr><tr><td>Caption</td><td>system-ui</td><td>13px (0.81rem)</td><td>400–500</td><td>1.23–1.69</td><td>normal</td><td>Metadata, footer links</td></tr><tr><td>Uppercase Label</td><td>HashiCorp Sans</td><td>13px (0.81rem)</td><td>600</td><td>1.69 (relaxed)</td><td>1.3px</td><td><code>text-transform: uppercase</code></td></tr></tbody></table></div>
+<h3 id="principles">Principles<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#principles" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Brand/System split</strong>: HashiCorp Sans for headings and brand-critical text; system-ui for body, navigation, and functional text. The brand font carries the weight, system-ui carries the words.</li>
+<li><strong>Kern always on</strong>: All HashiCorp Sans text enables OpenType <code>&quot;kern&quot;</code> — letterfitting is non-negotiable.</li>
+<li><strong>Tight headings</strong>: Every heading uses 1.17–1.21 line-height, creating dense, stacked text blocks that feel infrastructural — solid, load-bearing.</li>
+<li><strong>Relaxed body</strong>: Body text uses 1.50–1.69 line-height (notably generous), creating comfortable reading rhythm beneath the dense headings.</li>
+<li><strong>Uppercase labels as wayfinding</strong>: 13px uppercase with 1.3px letter-spacing serves as the systematic category/section marker — always HashiCorp Sans weight 600.</li>
+</ul>
+<h2 id="4-component-stylings">4. Component Stylings<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-component-stylings" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="buttons">Buttons<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#buttons" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Primary Dark</strong></p>
+<ul>
+<li>Background: <code>#15181e</code></li>
+<li>Text: <code>#d5d7db</code></li>
+<li>Padding: 9px 9px 9px 15px (asymmetric, more left padding)</li>
+<li>Radius: 5px</li>
+<li>Border: <code>1px solid rgba(178, 182, 189, 0.4)</code></li>
+<li>Shadow: <code>rgba(97, 104, 117, 0.05) 0px 1px 1px, rgba(97, 104, 117, 0.05) 0px 2px 2px</code></li>
+<li>Focus: <code>3px solid var(--mds-color-focus-action-external)</code></li>
+<li>Hover: uses <code>--mds-color-surface-interactive</code> token</li>
+</ul>
+<p><strong>Secondary White</strong></p>
+<ul>
+<li>Background: <code>#ffffff</code></li>
+<li>Text: <code>#3b3d45</code></li>
+<li>Padding: 8px 12px</li>
+<li>Radius: 4px</li>
+<li>Hover: <code>--mds-color-surface-interactive</code> + low-shadow elevation</li>
+<li>Focus: <code>3px solid transparent</code> outline</li>
+<li>Clean, minimal appearance</li>
+</ul>
+<p><strong>Product-Colored Buttons</strong></p>
+<ul>
+<li>Terraform: background <code>#7b42bc</code></li>
+<li>Vault: background <code>#ffcf25</code> (dark text)</li>
+<li>Waypoint: background <code>#14c6cb</code>, hover <code>#12b6bb</code></li>
+<li>Each product button follows the same structural pattern but uses its brand color</li>
+</ul>
+<h3 id="badges--pills">Badges / Pills<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#badges--pills" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Background: <code>#42225b</code> (deep purple)</li>
+<li>Text: <code>#efeff1</code></li>
+<li>Padding: 3px 7px</li>
+<li>Radius: 5px</li>
+<li>Border: <code>1px solid rgb(180, 87, 255)</code></li>
+<li>Font: 16px</li>
+</ul>
+<h3 id="inputs">Inputs<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#inputs" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Text Input (Dark Mode)</strong></p>
+<ul>
+<li>Background: <code>#0d0e12</code></li>
+<li>Text: <code>#efeff1</code></li>
+<li>Border: <code>1px solid rgb(97, 104, 117)</code></li>
+<li>Padding: 11px</li>
+<li>Radius: 5px</li>
+<li>Focus: <code>3px solid var(--mds-color-focus-action-external)</code> outline</li>
+</ul>
+<p><strong>Checkbox</strong></p>
+<ul>
+<li>Background: <code>#0d0e12</code></li>
+<li>Border: <code>1px solid rgb(97, 104, 117)</code></li>
+<li>Radius: 3px</li>
+</ul>
+<h3 id="links">Links<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#links" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Action Blue on Light</strong>: <code>#2264d6</code>, hover → blue-600 variable, underline on hover</li>
+<li><strong>Action Blue on Dark</strong>: <code>#1060ff</code> or <code>#2b89ff</code>, underline on hover</li>
+<li><strong>White on Dark</strong>: <code>#ffffff</code>, transparent underline → visible underline on hover</li>
+<li><strong>Neutral on Light</strong>: <code>#3b3d45</code>, transparent underline → visible underline on hover</li>
+<li><strong>Light on Dark</strong>: <code>#efeff1</code>, similar hover pattern</li>
+<li>All links use <code>var(--wpl-blue-600)</code> as hover color</li>
+</ul>
+<h3 id="cards--containers">Cards &amp; Containers<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#cards--containers" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Light mode: white background, micro-shadow elevation</li>
+<li>Dark mode: <code>#15181e</code> or darker surfaces</li>
+<li>Radius: 8px for cards and containers</li>
+<li>Product showcase cards with gradient borders or accent lighting</li>
+</ul>
+<h3 id="navigation">Navigation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#navigation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Clean horizontal nav with mega-menu dropdowns</li>
+<li>HashiCorp logo left-aligned</li>
+<li>system-ui 15px weight 500 for links</li>
+<li>Product categories organized by lifecycle management group</li>
+<li>“Get started” and “Contact us” CTAs in header</li>
+<li>Dark mode variant for hero sections</li>
+</ul>
+<h2 id="5-layout-principles">5. Layout Principles<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#5-layout-principles" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="spacing-system">Spacing System<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#spacing-system" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Base unit: 8px</li>
+<li>Scale: 2px, 3px, 4px, 6px, 7px, 8px, 9px, 11px, 12px, 16px, 20px, 24px, 32px, 40px, 48px</li>
+</ul>
+<h3 id="grid--container">Grid &amp; Container<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#grid--container" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Max content width: ~1150px (xl breakpoint)</li>
+<li>Full-width dark hero sections with contained content</li>
+<li>Card grids: 2–3 column layouts</li>
+<li>Generous horizontal padding at desktop scale</li>
+</ul>
+<h3 id="breakpoints">Breakpoints<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#breakpoints" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Name</th><th>Width</th><th>Key Changes</th></tr></thead><tbody><tr><td>Mobile Small</td><td>&lt;375px</td><td>Tight single column</td></tr><tr><td>Mobile</td><td>375–480px</td><td>Standard mobile</td></tr><tr><td>Small Tablet</td><td>480–600px</td><td>Minor adjustments</td></tr><tr><td>Tablet</td><td>600–768px</td><td>2-column grids begin</td></tr><tr><td>Small Desktop</td><td>768–992px</td><td>Full nav visible</td></tr><tr><td>Desktop</td><td>992–1120px</td><td>Standard layout</td></tr><tr><td>Large Desktop</td><td>1120–1440px</td><td>Max-width content</td></tr><tr><td>Ultra-wide</td><td>>1440px</td><td>Centered, generous margins</td></tr></tbody></table></div>
+<h3 id="whitespace-philosophy">Whitespace Philosophy<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#whitespace-philosophy" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Enterprise breathing room</strong>: Generous vertical spacing between sections (48px–80px+) communicates stability and seriousness.</li>
+<li><strong>Dense headings, spacious body</strong>: Tight line-height headings sit above relaxed body text, creating visual “weight at the top” of each section.</li>
+<li><strong>Dark as canvas</strong>: Dark hero sections use extra vertical padding to let 3D illustrations and gradients breathe.</li>
+</ul>
+<h3 id="border-radius-scale">Border Radius Scale<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#border-radius-scale" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Minimal (2px): Links, small inline elements</li>
+<li>Subtle (3px): Checkboxes, small inputs</li>
+<li>Standard (4px): Secondary buttons</li>
+<li>Comfortable (5px): Primary buttons, badges, inputs</li>
+<li>Card (8px): Cards, containers, images</li>
+</ul>
+<h2 id="6-depth--elevation">6. Depth &amp; Elevation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#6-depth--elevation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Level</th><th>Treatment</th><th>Use</th></tr></thead><tbody><tr><td>Flat (Level 0)</td><td>No shadow</td><td>Default surfaces, text blocks</td></tr><tr><td>Whisper (Level 1)</td><td><code>rgba(97, 104, 117, 0.05) 0px 1px 1px, rgba(97, 104, 117, 0.05) 0px 2px 2px</code></td><td>Cards, buttons, interactive surfaces</td></tr><tr><td>Focus (Level 2)</td><td><code>3px solid var(--mds-color-focus-action-external)</code> outline</td><td>Focus rings — color-matched to context</td></tr></tbody></table></div>
+<p><strong>Shadow Philosophy</strong>: HashiCorp uses arguably the subtlest shadow system in modern web design. The dual-layer shadows at 5% opacity are nearly invisible — they exist not to create visual depth but to signal interactivity. If you can see the shadow, it’s too strong. This restraint communicates the enterprise value of stability — nothing floats, nothing is uncertain.</p>
+<h2 id="7-dos-and-donts">7. Do’s and Don’ts<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#7-dos-and-donts" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="do">Do<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#do" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Use HashiCorp Sans for headings and brand text, system-ui for body and UI text</li>
+<li>Enable <code>&quot;kern&quot;</code> on all HashiCorp Sans text</li>
+<li>Use product brand colors ONLY for their respective products (Terraform = purple, Vault = yellow, etc.)</li>
+<li>Apply uppercase labels at 13px weight 600 with 1.3px letter-spacing for section markers</li>
+<li>Keep shadows at the “whisper” level (0.05 opacity dual-layer)</li>
+<li>Use the <code>--mds-color-*</code> token system for consistent color application</li>
+<li>Maintain the tight-heading / relaxed-body rhythm (1.17–1.21 vs 1.50–1.69 line-heights)</li>
+<li>Use <code>3px solid</code> focus outlines for accessibility</li>
+</ul>
+<h3 id="dont">Don’t<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#dont" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Don’t use product brand colors outside their product context (no Terraform purple on Vault content)</li>
+<li>Don’t increase shadow opacity above 0.1 — the whisper level is intentional</li>
+<li>Don’t use pill-shaped buttons (>8px radius) — the sharp, minimal radius is structural</li>
+<li>Don’t skip the <code>&quot;kern&quot;</code> feature on headings — the font requires it</li>
+<li>Don’t use HashiCorp Sans for small body text — it’s designed for 17px+ heading use</li>
+<li>Don’t mix product colors in the same component — each product has one color</li>
+<li>Don’t use pure black (<code>#000000</code>) for dark backgrounds — use <code>#15181e</code> or <code>#0d0e12</code></li>
+<li>Don’t forget the asymmetric button padding — 9px 9px 9px 15px is intentional</li>
+</ul>
+<h2 id="8-responsive-behavior">8. Responsive Behavior<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#8-responsive-behavior" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="breakpoints-1">Breakpoints<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#breakpoints-1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Name</th><th>Width</th><th>Key Changes</th></tr></thead><tbody><tr><td>Mobile</td><td>&lt;768px</td><td>Single column, hamburger nav, stacked CTAs</td></tr><tr><td>Tablet</td><td>768–992px</td><td>2-column grids, nav begins expanding</td></tr><tr><td>Desktop</td><td>992–1150px</td><td>Full layout, mega-menu nav</td></tr><tr><td>Large</td><td>>1150px</td><td>Max-width centered, generous margins</td></tr></tbody></table></div>
+<h3 id="collapsing-strategy">Collapsing Strategy<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#collapsing-strategy" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Hero: 82px → 52px → 42px heading sizes</li>
+<li>Navigation: mega-menu → hamburger</li>
+<li>Product cards: 3-column → 2-column → stacked</li>
+<li>Dark sections maintain full-width but compress padding</li>
+<li>Buttons: inline → full-width stacked on mobile</li>
+</ul>
+<h2 id="9-agent-prompt-guide">9. Agent Prompt Guide<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#9-agent-prompt-guide" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="quick-color-reference">Quick Color Reference<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#quick-color-reference" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Light bg: <code>#ffffff</code>, <code>#f1f2f3</code></li>
+<li>Dark bg: <code>#15181e</code>, <code>#0d0e12</code></li>
+<li>Text light: <code>#000000</code>, <code>#3b3d45</code></li>
+<li>Text dark: <code>#efeff1</code>, <code>#d5d7db</code></li>
+<li>Links: <code>#2264d6</code> (light), <code>#1060ff</code> (dark), <code>#2b89ff</code> (active)</li>
+<li>Helper text: <code>#656a76</code></li>
+<li>Borders: <code>rgba(178, 182, 189, 0.4)</code>, <code>rgb(97, 104, 117)</code></li>
+<li>Focus: <code>3px solid</code> product-appropriate color</li>
+</ul>
+<h3 id="example-component-prompts">Example Component Prompts<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#example-component-prompts" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>“Create a hero on dark background (#15181e). Headline at 82px HashiCorp Sans weight 600, line-height 1.17, kern enabled, white text. Sub-text at 20px system-ui weight 400, line-height 1.50, <a href=".././tags/d5d7db" class="tag-link internal alias" data-slug="tags/d5d7db">d5d7db</a> text. Two buttons: primary dark (#15181e, 5px radius, 9px 15px padding) and secondary white (#ffffff, 4px radius, 8px 12px padding).”</li>
+<li>“Design a product card: white background, 8px radius, dual-layer shadow at rgba(97,104,117,0.05). Title at 26px HashiCorp Sans weight 700, body at 16px system-ui weight 400 line-height 1.63.”</li>
+<li>“Build an uppercase section label: 13px HashiCorp Sans weight 600, line-height 1.69, letter-spacing 1.3px, text-transform uppercase, <a href=".././tags/656a76" class="tag-link internal alias" data-slug="tags/656a76">656a76</a> color.”</li>
+<li>“Create a product-specific CTA button: Terraform → <a href=".././tags/7b42bc" class="tag-link internal alias" data-slug="tags/7b42bc">7b42bc</a> background, Vault → <a href=".././tags/ffcf25" class="tag-link internal alias" data-slug="tags/ffcf25">ffcf25</a> with dark text, Waypoint → <a href=".././tags/14c6cb" class="tag-link internal alias" data-slug="tags/14c6cb">14c6cb</a>. All: 5px radius, 500 weight text, 16px system-ui.”</li>
+<li>“Design a dark form: <a href=".././tags/0d0e12" class="tag-link internal alias" data-slug="tags/0d0e12">0d0e12</a> input background, <a href=".././tags/efeff1" class="tag-link internal alias" data-slug="tags/efeff1">efeff1</a> text, 1px solid rgb(97,104,117) border, 5px radius, 11px padding. Focus: 3px solid accent-color outline.”</li>
+</ul>
+<h3 id="iteration-guide">Iteration Guide<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#iteration-guide" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li>Always start with the mode decision: light (white) for informational, dark (#15181e) for hero/product</li>
+<li>HashiCorp Sans for headings only (17px+), system-ui for everything else</li>
+<li>Shadows are at whisper level (0.05 opacity) — if visible, reduce</li>
+<li>Product colors are sacred — each product owns exactly one color</li>
+<li>Focus rings are always 3px solid, color-matched to product context</li>
+<li>Uppercase labels are the systematic wayfinding pattern — 13px, 600, 1.3px tracking</li>
+</ol></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>关系图谱</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-373" aria-expanded="true"><h3>目录</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#design-system-hashicorp" data-for="design-system-hashicorp">Design System: HashiCorp</a></li><li class="depth-1"><a href="#1-visual-theme--atmosphere" data-for="1-visual-theme--atmosphere">1. Visual Theme &amp; Atmosphere</a></li><li class="depth-1"><a href="#2-color-palette--roles" data-for="2-color-palette--roles">2. Color Palette &amp; Roles</a></li><li class="depth-2"><a href="#brand-primary" data-for="brand-primary">Brand Primary</a></li><li class="depth-2"><a href="#neutral-scale" data-for="neutral-scale">Neutral Scale</a></li><li class="depth-2"><a href="#product-brand-colors" data-for="product-brand-colors">Product Brand Colors</a></li><li class="depth-2"><a href="#semantic-colors" data-for="semantic-colors">Semantic Colors</a></li><li class="depth-2"><a href="#shadows" data-for="shadows">Shadows</a></li><li class="depth-1"><a href="#3-typography-rules" data-for="3-typography-rules">3. Typography Rules</a></li><li class="depth-2"><a href="#font-families" data-for="font-families">Font Families</a></li><li class="depth-2"><a href="#hierarchy" data-for="hierarchy">Hierarchy</a></li><li class="depth-2"><a href="#principles" data-for="principles">Principles</a></li><li class="depth-1"><a href="#4-component-stylings" data-for="4-component-stylings">4. Component Stylings</a></li><li class="depth-2"><a href="#buttons" data-for="buttons">Buttons</a></li><li class="depth-2"><a href="#badges--pills" data-for="badges--pills">Badges / Pills</a></li><li class="depth-2"><a href="#inputs" data-for="inputs">Inputs</a></li><li class="depth-2"><a href="#links" data-for="links">Links</a></li><li class="depth-2"><a href="#cards--containers" data-for="cards--containers">Cards &amp; Containers</a></li><li class="depth-2"><a href="#navigation" data-for="navigation">Navigation</a></li><li class="depth-1"><a href="#5-layout-principles" data-for="5-layout-principles">5. Layout Principles</a></li><li class="depth-2"><a href="#spacing-system" data-for="spacing-system">Spacing System</a></li><li class="depth-2"><a href="#grid--container" data-for="grid--container">Grid &amp; Container</a></li><li class="depth-2"><a href="#breakpoints" data-for="breakpoints">Breakpoints</a></li><li class="depth-2"><a href="#whitespace-philosophy" data-for="whitespace-philosophy">Whitespace Philosophy</a></li><li class="depth-2"><a href="#border-radius-scale" data-for="border-radius-scale">Border Radius Scale</a></li><li class="depth-1"><a href="#6-depth--elevation" data-for="6-depth--elevation">6. Depth &amp; Elevation</a></li><li class="depth-1"><a href="#7-dos-and-donts" data-for="7-dos-and-donts">7. Do’s and Don’ts</a></li><li class="depth-2"><a href="#do" data-for="do">Do</a></li><li class="depth-2"><a href="#dont" data-for="dont">Don’t</a></li><li class="depth-1"><a href="#8-responsive-behavior" data-for="8-responsive-behavior">8. Responsive Behavior</a></li><li class="depth-2"><a href="#breakpoints-1" data-for="breakpoints-1">Breakpoints</a></li><li class="depth-2"><a href="#collapsing-strategy" data-for="collapsing-strategy">Collapsing Strategy</a></li><li class="depth-1"><a href="#9-agent-prompt-guide" data-for="9-agent-prompt-guide">9. Agent Prompt Guide</a></li><li class="depth-2"><a href="#quick-color-reference" data-for="quick-color-reference">Quick Color Reference</a></li><li class="depth-2"><a href="#example-component-prompts" data-for="example-component-prompts">Example Component Prompts</a></li><li class="depth-2"><a href="#iteration-guide" data-for="iteration-guide">Iteration Guide</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../postscript.js" type="module" data-persist="true"></script></html>

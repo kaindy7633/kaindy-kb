@@ -1,0 +1,1703 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr"><head><title>creative--ai-video-production</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="🏠 Kaindy Knowledge Base"/><meta property="og:title" content="creative--ai-video-production"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="creative--ai-video-production"/><meta name="twitter:description" content="ai-video-production Category: creative Source: Hermes Skill Synced: 2026-06-15 AI Video Production（AI 视频生产） AI 短剧/视频自动化生产全流程技能。覆盖真人 AI 短剧和 AI 漫剧（动画）两种形态的端到端制作管线。 触发条件 当用户提到以下任一关键词时加载此技能： ⚠️ Skill 体积警告 (2026-06-15)：本 skill 当前 86KB/1,192 行。在 deepseek-v4-flash cron job 中加载会导致请求体膨胀至 ~188KB，超出 v4-flash 上..."/><meta property="og:description" content="ai-video-production Category: creative Source: Hermes Skill Synced: 2026-06-15 AI Video Production（AI 视频生产） AI 短剧/视频自动化生产全流程技能。覆盖真人 AI 短剧和 AI 漫剧（动画）两种形态的端到端制作管线。 触发条件 当用户提到以下任一关键词时加载此技能： ⚠️ Skill 体积警告 (2026-06-15)：本 skill 当前 86KB/1,192 行。在 deepseek-v4-flash cron job 中加载会导致请求体膨胀至 ~188KB，超出 v4-flash 上..."/><meta property="og:image:alt" content="ai-video-production Category: creative Source: Hermes Skill Synced: 2026-06-15 AI Video Production（AI 视频生产） AI 短剧/视频自动化生产全流程技能。覆盖真人 AI 短剧和 AI 漫剧（动画）两种形态的端到端制作管线。 触发条件 当用户提到以下任一关键词时加载此技能： ⚠️ Skill 体积警告 (2026-06-15)：本 skill 当前 86KB/1,192 行。在 deepseek-v4-flash cron job 中加载会导致请求体膨胀至 ~188KB，超出 v4-flash 上..."/><meta property="twitter:domain" content="kaindy-kb.pages.dev"/><meta property="og:url" content="https://kaindy-kb.pages.dev/10-Skills/creative--ai-video-production"/><meta property="twitter:url" content="https://kaindy-kb.pages.dev/10-Skills/creative--ai-video-production"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="ai-video-production Category: creative Source: Hermes Skill Synced: 2026-06-15 AI Video Production（AI 视频生产） AI 短剧/视频自动化生产全流程技能。覆盖真人 AI 短剧和 AI 漫剧（动画）两种形态的端到端制作管线。 触发条件 当用户提到以下任一关键词时加载此技能： ⚠️ Skill 体积警告 (2026-06-15)：本 skill 当前 86KB/1,192 行。在 deepseek-v4-flash cron job 中加载会导致请求体膨胀至 ~188KB，超出 v4-flash 上..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUva2FpbmR5L0RvY3VtZW50cy9xdWFydHovcXVhcnR6L2NvbXBvbmVudHMvc3R5bGVzIiwic291cmNlcyI6WyJtZXJtYWlkLmlubGluZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFHRjtFQUNFOzs7QUFLRjtFQUNFO0VBQ0E7OztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTs7QUFJRjtFQUNFO0VBQ0E7RUFDQSIsInNvdXJjZXNDb250ZW50IjpbIi5leHBhbmQtYnV0dG9uIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbG9hdDogcmlnaHQ7XG4gIHBhZGRpbmc6IDAuNHJlbTtcbiAgbWFyZ2luOiAwLjNyZW07XG4gIHJpZ2h0OiAwOyAvLyBOT1RFOiByaWdodCB3aWxsIGJlIHNldCBpbiBtZXJtYWlkLmlubGluZS50c1xuICBjb2xvcjogdmFyKC0tZ3JheSk7XG4gIGJvcmRlci1jb2xvcjogdmFyKC0tZGFyayk7XG4gIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgYm9yZGVyOiAxcHggc29saWQ7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgb3BhY2l0eTogMDtcbiAgdHJhbnNpdGlvbjogMC4ycztcblxuICAmID4gc3ZnIHtcbiAgICBmaWxsOiB2YXIoLS1saWdodCk7XG4gICAgZmlsdGVyOiBjb250cmFzdCgwLjMpO1xuICB9XG5cbiAgJjpob3ZlciB7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIGJvcmRlci1jb2xvcjogdmFyKC0tc2Vjb25kYXJ5KTtcbiAgfVxuXG4gICY6Zm9jdXMge1xuICAgIG91dGxpbmU6IDA7XG4gIH1cbn1cblxucHJlIHtcbiAgJjpob3ZlciA+IC5leHBhbmQtYnV0dG9uIHtcbiAgICBvcGFjaXR5OiAxO1xuICAgIHRyYW5zaXRpb246IDAuMnM7XG4gIH1cbn1cblxuI21lcm1haWQtY29udGFpbmVyIHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICBjb250YWluOiBsYXlvdXQ7XG4gIHotaW5kZXg6IDk5OTtcbiAgbGVmdDogMDtcbiAgdG9wOiAwO1xuICB3aWR0aDogMTAwdnc7XG4gIGhlaWdodDogMTAwdmg7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIGRpc3BsYXk6IG5vbmU7XG4gIGJhY2tkcm9wLWZpbHRlcjogYmx1cig0cHgpO1xuICBiYWNrZ3JvdW5kOiByZ2JhKDAsIDAsIDAsIDAuNSk7XG5cbiAgJi5hY3RpdmUge1xuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgfVxuXG4gICYgPiAjbWVybWFpZC1zcGFjZSB7XG4gICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gICAgYm9yZGVyLXJhZGl1czogNXB4O1xuICAgIHBvc2l0aW9uOiBmaXhlZDtcbiAgICB0b3A6IDUwJTtcbiAgICBsZWZ0OiA1MCU7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7XG4gICAgaGVpZ2h0OiA4MHZoO1xuICAgIHdpZHRoOiA4MHZ3O1xuICAgIG92ZXJmbG93OiBoaWRkZW47XG5cbiAgICAmID4gLm1lcm1haWQtY29udGVudCB7XG4gICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgICB0cmFuc2Zvcm0tb3JpZ2luOiAwIDA7XG4gICAgICB0cmFuc2l0aW9uOiB0cmFuc2Zvcm0gMC4xcyBlYXNlO1xuICAgICAgb3ZlcmZsb3c6IHZpc2libGU7XG4gICAgICBtaW4taGVpZ2h0OiAyMDBweDtcbiAgICAgIG1pbi13aWR0aDogMjAwcHg7XG5cbiAgICAgIHByZSB7XG4gICAgICAgIG1hcmdpbjogMDtcbiAgICAgICAgYm9yZGVyOiBub25lO1xuICAgICAgfVxuXG4gICAgICBzdmcge1xuICAgICAgICBtYXgtd2lkdGg6IG5vbmU7XG4gICAgICAgIGhlaWdodDogYXV0bztcbiAgICAgIH1cbiAgICB9XG5cbiAgICAmID4gLm1lcm1haWQtY29udHJvbHMge1xuICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgYm90dG9tOiAyMHB4O1xuICAgICAgcmlnaHQ6IDIwcHg7XG4gICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgZ2FwOiA4cHg7XG4gICAgICBwYWRkaW5nOiA4cHg7XG4gICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodCk7XG4gICAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgYm9yZGVyLXJhZGl1czogNnB4O1xuICAgICAgYm94LXNoYWRvdzogMCAycHggNHB4IHJnYmEoMCwgMCwgMCwgMC4xKTtcbiAgICAgIHotaW5kZXg6IDI7XG5cbiAgICAgIC5tZXJtYWlkLWNvbnRyb2wtYnV0dG9uIHtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICAgIHdpZHRoOiAzMnB4O1xuICAgICAgICBoZWlnaHQ6IDMycHg7XG4gICAgICAgIHBhZGRpbmc6IDA7XG4gICAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgICAgY29sb3I6IHZhcigtLWRhcmspO1xuICAgICAgICBib3JkZXItcmFkaXVzOiA0cHg7XG4gICAgICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICAgICAgZm9udC1zaXplOiAxNnB4O1xuICAgICAgICBmb250LWZhbWlseTogdmFyKC0tYm9keUZvbnQpO1xuICAgICAgICB0cmFuc2l0aW9uOiBhbGwgMC4ycyBlYXNlO1xuXG4gICAgICAgICY6aG92ZXIge1xuICAgICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIH1cblxuICAgICAgICAmOmFjdGl2ZSB7XG4gICAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDFweCk7XG4gICAgICAgIH1cblxuICAgICAgICAvLyBTdHlsZSB0aGUgcmVzZXQgYnV0dG9uIGRpZmZlcmVudGx5XG4gICAgICAgICY6bnRoLWNoaWxkKDIpIHtcbiAgICAgICAgICB3aWR0aDogYXV0bztcbiAgICAgICAgICBwYWRkaW5nOiAwIDEycHg7XG4gICAgICAgICAgZm9udC1zaXplOiAxNHB4O1xuICAgICAgICB9XG4gICAgICB9XG4gICAgfVxuICB9XG59XG4iXX0= */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://kaindy-kb.pages.dev/index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://kaindy-kb.pages.dev/10-Skills/creative--ai-video-production-og-image.webp"/><meta property="og:image:url" content="https://kaindy-kb.pages.dev/10-Skills/creative--ai-video-production-og-image.webp"/><meta name="twitter:image" content="https://kaindy-kb.pages.dev/10-Skills/creative--ai-video-production-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="10-Skills/creative--ai-video-production"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">🏠 Kaindy Knowledge Base</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>搜索</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="搜索些什么" placeholder="搜索些什么"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="暗色模式"><title>暗色模式</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="亮色模式"><title>亮色模式</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="阅读模式"><title>阅读模式</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-35"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>探索</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-35" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../10-Skills/">10 Skills</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>creative  ai video production</a></div></nav><h1 class="article-title">creative--ai-video-production</h1><p show-comma="true" class="content-meta"><time datetime="2026-06-15T12:23:17.000Z">2026年6月15日</time><span>101分钟阅读</span></p></div></div><article class="popover-hint"><h1 id="ai-video-production">ai-video-production<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#ai-video-production" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p><strong>Category:</strong> creative<br/>
+<strong>Source:</strong> Hermes Skill<br/>
+<strong>Synced:</strong> 2026-06-15</p>
+<hr/>
+<h1 id="ai-video-productionai-视频生产">AI Video Production（AI 视频生产）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#ai-video-productionai-视频生产" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>AI 短剧/视频自动化生产全流程技能。覆盖真人 AI 短剧和 AI 漫剧（动画）两种形态的端到端制作管线。</p>
+<h2 id="触发条件">触发条件<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#触发条件" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>当用户提到以下任一关键词时加载此技能：</p>
+<blockquote>
+<p>⚠️ <strong>Skill 体积警告 (2026-06-15)</strong>：本 skill 当前 86KB/1,192 行。在 <code>deepseek-v4-flash</code> cron job 中加载会导致请求体膨胀至 ~188KB，超出 v4-flash 上下文窗口，触发 <code>ReadError: Broken pipe</code>。<strong>不要在 v4-flash cron job 中直接加载本 skill</strong> — 改为将所需参考数据（模型列表、搜索 URL）内联到 cron prompt 中。v4-pro 可正常承载。详见 <code>references/cron-v4-flash-context-limit.md</code>。</p>
+</blockquote>
+<ul>
+<li>AI 短剧、AI 剧集、AI 视频生产、AI 影视</li>
+<li>AI 漫剧、AI 动画、AI 动漫</li>
+<li>AI 视频工作流、自动化视频平台</li>
+<li>编剧/抽卡/剪辑自动化</li>
+<li>剧本到视频管线</li>
+<li>libtv、即梦、MOKI、Pixverse 等平台参考</li>
+</ul>
+<h2 id="核心角色与职责">核心角色与职责<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#核心角色与职责" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<pre><code>编剧  ──→ 剧本结构化输入（LLM辅助/批量生成）
+抽卡师 ──→ 角色一致性系统 + 分镜审核/调整
+剪辑师 ──→ 自动合成后的精修/调色/导出
+
+平台自动化层：
+  剧本解析器 ──→ 分镜拆解器 ──→ 素材调度器 ──→ 渲染引擎 ──→ 导出
+</code></pre>
+<h2 id="整体流程">整体流程<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#整体流程" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<pre><code>[前期] → [中期] → [后期] → [发布]
+ 编剧      生成      剪辑      分发
+ 分镜      配音      合成
+ 角色      选卡      特效
+</code></pre>
+<h2 id="真人-ai-短剧管线">真人 AI 短剧管线<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#真人-ai-短剧管线" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ol>
+<li>剧本阶段</li>
+</ol>
+<ul>
+<li>LLM 辅助创作：GPT-4/Claude 生成大纲、对白、场景描述</li>
+<li>结构化输出：场景号、角色、动作、对白、情绪标注</li>
+<li>AI 定位：加速器/批量化工具</li>
+</ul>
+<ol start="2">
+<li>角色设定与一致性（抽卡师核心难点）</li>
+</ol>
+<blockquote>
+<p>⚠️ 豆包方案已实测，效果差，不推荐。以下方案经过生产验证。</p>
+</blockquote>
+<ul>
+<li>Midjourney/SD + IP-Adapter/InstantID → 角色定妆照</li>
+<li>ComfyUI 角色一致性管线（Reference + ControlNet + IPAdapter）</li>
+<li>每个角色生成多角度、多表情 reference set</li>
+</ul>
+<ol start="3">
+<li>场景/分镜生成</li>
+</ol>
+<ul>
+<li>剧本 → 分镜描述（AI 自动拆分）</li>
+<li>每个镜头标注：景别、角度、动作、时长</li>
+<li>ComfyUI + AnimateDiff/SVD 生成关键帧</li>
+<li>CogVideoX/Open-Sora 直接文生视频</li>
+</ul>
+<ol start="4">
+<li>视频生成工具矩阵（2026年6月更新）</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>模型</th><th>厂商</th><th>分辨率</th><th>最长时长</th><th>核心优势</th><th>API 状态</th></tr></thead><tbody><tr><td><strong>Seedance 2.0</strong></td><td>字节跳动</td><td>1080p-2K</td><td>2分钟</td><td><strong>多镜头叙事一致性</strong>、音画同步、四模态输入、Image2故事板</td><td>2026.4 公测</td></tr><tr><td><strong>Seedance 2.1</strong> 🆕🔥</td><td>字节跳动</td><td>1080p-2K</td><td>待公布</td><td><strong>2026-05-30社区发现更新</strong></td><td>内测/泄露阶段</td></tr><tr><td><strong>Seedance 2.0 动态 (06-03更新)</strong>: 画板功能升级+宫格编辑+AI检测消除功能 (T8star-Aix, 2,270播放 06-02); Seedance2.0不卡人脸+支持modelscope免费版生成+OpenAI兼容调用; 免费通道继续收紧 “把Seedance 2.0不限量渠道玩死了”(鬼大叔AI 255播放, 06-03)</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td><strong>HappyHorse 1.0</strong> 🔥</td><td>阿里千问</td><td>1080p</td><td>5-10秒</td><td>社区称可挑战Seedance 2.0、皮克斯/美剧风格、Coze深度集成</td><td>社区白嫖方法</td></tr><tr><td>Kling 3.0 (O3)</td><td>快手</td><td>1080p-4K</td><td>15秒+</td><td>电影级运动、物理准确、原生音频、<strong>支持原生4K输出</strong> 🆕</td><td>已开放</td></tr><tr><td><strong>Gemini Omni</strong> 🔥</td><td>Google</td><td>1080p</td><td>30秒</td><td>已正式发布，全模态视频+音频+文本；但社区实测反馈一般，“Omni拉胯了” (DeepWhite深白色, 4.4K播放)</td><td>已开放（实测反馈一般）</td></tr><tr><td><strong>NVIDIA SANA-WM 2.6B</strong> 🔥🆕</td><td>英伟达</td><td>720p</td><td>60秒</td><td>开源世界模型，相机轨迹可控单卡跑，2.6B+17B refiner</td><td>已开源</td></tr><tr><td><strong>JoyAI-Echo</strong> 🆕🔬</td><td>京东研究院</td><td>1280×736</td><td>分钟级(多镜头拼接)</td><td><strong>开源DMD蒸馏+配对音视频记忆链</strong>，7.5x加速，故事级一致性。对标Seedance 2.0叙事能力。当前仅T2V，I2V计划中。非商业许可，48GB+显存。📝 <a href="../~/Documents/ai-video-research/JoyAI-Echo-分析" class="internal alias" data-slug="~/Documents/ai-video-research/JoyAI-Echo-分析">深度分析</a></td><td>已开源(非商业)</td></tr><tr><td><strong>Bernini</strong> 🔥🔥🔥 🆕</td><td>字节跳动</td><td>-</td><td>-</td><td><strong>2026-06-04开源！视频编辑专精</strong>（非生成）：换装/天气/背景修改无缝；弱于添加物体和人脸替换。ComfyUI TE节点已就绪</td><td>已开源 (⭐392)</td></tr><tr><td><strong>Wan2.7</strong></td><td>阿里</td><td>1080p</td><td>-</td><td>国产性价比、漫剧批量</td><td>已开放</td></tr><tr><td>Runway Gen-4</td><td>Runway</td><td>1080p+</td><td>-</td><td>专业影视级控制</td><td>已开放</td></tr><tr><td>Luma Dream Machine</td><td>Luma</td><td>1080p</td><td>-</td><td>速度快、适合迭代</td><td>已开放</td></tr><tr><td>Vidu</td><td>生数科技</td><td>1080p</td><td>长视频</td><td>一致性</td><td>已开放</td></tr><tr><td>Hailuo（海螺）</td><td>MiniMax</td><td>1080p</td><td>-</td><td>国产高性价比</td><td>已开放</td></tr><tr><td>Pika 2.0</td><td>Pika</td><td>1080p</td><td>-</td><td>消费级简单</td><td>已开放</td></tr><tr><td><del>Sora 2</del></td><td><del>OpenAI</del></td><td>-</td><td>-</td><td>❌ <strong>已关停 (2026-03)</strong></td><td>已关闭</td></tr><tr><td><strong>ChatGPT Image2</strong></td><td>OpenAI</td><td>-</td><td>-</td><td>多图编辑、批量生成、角色一致性。<strong>新能力：可直接生成分层PSD源文件</strong> (豌豆Four4, 80K播放 🔥)、<strong>可编辑PPT</strong> (北乔AIGC, 28K播放)、<strong>联动Seedance做游戏宣传片</strong> (AI先生李豪, 80K播放)</td><td>已开放</td></tr><tr><td><strong>GPT-5.5 Instant</strong> 🔥</td><td>OpenAI</td><td>-</td><td>-</td><td>增强记忆、Codex 5.5联动、Image 2深度集成</td><td>2026.5.6 发布</td></tr><tr><td><strong>GPT-Image-2</strong> 🔥🆕</td><td>OpenAI (aitechflux中转)</td><td>最大2K</td><td>-</td><td><strong>OpenAI兼容API</strong>，图生图+文生图，b64_json返回(非URL)，角色一致性优秀。替代ComfyUI SD1.5。API: <code>POST /v1/images/generations</code>，model=<code>gpt-image-2</code></td><td>已接入 ✅</td></tr></tbody></table></div>
+<p><strong>2026年6月新增工具/平台</strong>：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>工具</th><th>用途</th><th>成本</th><th>来源</th></tr></thead><tbody><tr><td><strong>Bernini</strong> 🔥🔥🔥 🆕</td><td>字节跳动正式开源！<strong>MLLM语义规划器 + DiT渲染器</strong>统一视频生成/编辑框架。视频编辑、人物替换、风格迁移、影视二创。<code>bytedance/Bernini</code> ⭐392 (06-04开源)。ComfyUI已有整合节点(<code>ComfyUI-Bernini</code>+<code>TE Bernini</code>)。<strong>社区教程爆发 (06-06)</strong>：B站AIwood爱屋研究室”字节开源Bernini！黑科技拉满！无需遮罩！语义引导！参考替换！视频融合！Running Hub已上” (14K播放); T8star-Aix “字节开源小Seedance2.0，Bernini视频编辑项目参数详解及工作流优化” (10K播放) — 详细参数指南+工作流优化</td><td>免费(开源)</td><td>GitHub + B站 (06-04起爆发)</td></tr><tr><td><strong>火山剧创</strong> 🆕🔥</td><td><strong>火山引擎AI短剧生成工具</strong> — 上传剧本→一键精美短剧生成。字节跳动在工具层直接布局</td><td>待确认</td><td>B站 (大象学长_ 402播放, 06-03)</td></tr><tr><td><strong>HappyHorse 1.0</strong> 🔥</td><td>新视频生成黑马，社区评测”已可挑战Seedance 2.0”</td><td>免费(社区方法)</td><td>B站多条横评 (05-13~16)</td></tr><tr><td><strong>HappyHorse 1.5 (bouncybohr)</strong> 🔥🆕🆕</td><td><strong>下一代HH已在arena.ai A/B测试并获社区确认</strong> — arena.ai Battle模式可抽到代号<code>bouncybohr</code>的视频模型。06-08确认：该模型由千问团队运营，风格与HH1.0一致。<strong>生产评测持续</strong> (那颗星星188, 3,988播放, 06-08)🔬</td><td>N/A (A/B测试)</td><td>B站 (那颗星星188, 3,988播放, 06-08确认)</td></tr><tr><td><strong>Seko (商汤)</strong></td><td>AI短片工具，可与Seedance2.0搭配</td><td>待确认</td><td>B站56.3万播放短片 (吴忧造剧 05-09)</td></tr></tbody></table></div>
+<p><strong>updream 最新动态</strong> (2026-06-03 更新):</p>
+<ul>
+<li><strong>B站AI创作大赛持续</strong>: 四大赛道同步推进中。05-16~18新增投稿：UP动画赛道《Lv1魔物獭叽》第6集(囧囧导个演, 2,436播放)、Tab Now投稿《海上的第一百次放映》(310LAB, 05-18)</li>
+<li><strong>updream被用于HH1.0生成</strong>: 星无《熟人》(05-18, 1,249播放) 全程使用updream HappyHorse1.0制作 — updream已成HH主要使用入口</li>
+<li><strong>SD整备班</strong> “AI原创短片《木偶奇玩》耗时15天0元制作，白薅目前市面所有ai视频工具” (05-18, 165播放) — 多工具组合使用案例</li>
+<li><strong>创作者反馈</strong>: “updream真的夯中夯” (修伊大刀, 05-16, 108播放) — 社区评价分化</li>
+<li><strong>updream 深度分析</strong> (2026-05-17 更新):</li>
+<li><strong>B站AI创作大赛持续</strong>: 四大赛道同步推进中。05-16~18新增投稿：UP动画赛道《Lv1魔物獭叽》第6集(囧囧导个演, 2,436播放)、Tab Now投稿《海上的第一百次放映》(310LAB, 05-18)</li>
+<li><strong>updream被用于HH1.0生成</strong>: 星无《熟人》(05-18, 1,249播放) 全程使用updream HappyHorse1.0制作 — updream已成HH主要使用入口</li>
+<li><strong>SD整备班</strong> “AI原创短片《木偶奇玩》耗时15天0元制作，白薅目前市面所有ai视频工具” (05-18, 165播放) — 多工具组合使用案例</li>
+<li><strong>创作者反馈</strong>: “updream真的夯中夯” (修伊大刀, 05-16, 108播放) — 社区评价分化</li>
+<li><strong>B站AI创作大赛驱动生态爆发</strong>: 三国主题赛 (05-13起)、开放赛道 (05-01起)、AI游戏赛道 (05-11起)、UP动画赛道 — 四大赛道同步推进，参赛作品密集涌现
+<ul>
+<li>三国主题赛: 《长坂血战：我赵云，今杀穿曹营》(1.1万播放, 05-13)</li>
+<li>AI游戏赛道: 《冰爽节奏》(2211播放, Ryven先生 05-15)、绝区零AI二创小游戏 (5238播放, 05-11)</li>
+<li>UP动画: 枺枺布布 小纸人海边日记 (2.4万播放, 05-01)</li>
+</ul>
+</li>
+<li><strong>邀请码仍稀缺</strong>: “最近AI区都在求码的updream”(想拍科幻的徐某, 6.3万播放 05-01) — 社区获取困难，成为传播瓶颈</li>
+<li><strong>B站AI创作大赛持续爆发</strong> (06-01更新): 开放赛道冠军《牌子》 — <strong>19,737,922播放</strong> 🏆 (DiDi_OK, 05-30)，长征主题《跨越时空的敬礼》84K播放。四大赛道(三国/开放/AI游戏/UP动画)持续产出</li>
+<li><strong>updream保姆级教程爆火</strong>: 鱼摆摆喂 “B站官方AI？updream保姆级教程，20分钟快速上手” (06-01, <strong>136,534播放</strong> 🔥) — 目前最高播放updream教程，含无限画布节点搭建演示</li>
+<li><strong>updream真人仙侠短剧全流程教学</strong>: 牙古兽Z (3,290播放) — 真人短剧方向实操</li>
+<li><strong>updream价格分享</strong>: 苍羽蜉蝣 “updream上线，价格展示和个人经验分享” (6,805播放) — 社区关注付费模式</li>
+<li>无限画布+四模型集成 (Seedance2.0+Kling3.0+Wan2.7+Seedance2.1) 成为核心卖点</li>
+<li>角色库功能 (苍羽蜉蝣 “updream的虚拟角色库有啥用？” 05-06) — 暗示具备角色一致性管理</li>
+<li>AI超元域 “实测B站官方AI视频神器updream” (04-30, 1.3万播放) — 最早深度评测
+| <strong>游蜂写作V1.1.7</strong> 🆕 | 全自动AI小说写作软件：剧情树+关系网+大纲+正文+润色 | 待确认 | B站 (智匙网络 05-17, 540播放) |
+| <strong>游蜂写作V1.1.7</strong> 🆕 | 全自动AI小说写作软件：剧情树+关系网+大纲+正文+润色 | 待确认 | B站 (智匙网络 05-17, 5,364播放, 377评论) |
+| <strong>AI出海电商</strong> 🆕🔥 | 2026新兴赛道：AI+跨境电商”双层流”虚拟店，单店日赚300+ | N/A | B站多条教程 (05-17起密集出现) |
+| <strong>Guizang PPT Skill</strong> 🆕 | 藏师傅PPT Skill+Codex+HyperFrames组合：文档→带动效解释视频 | 免费(开源) | GitHub/op7418 (05-18)
+| <strong>seedance-ae-plugin</strong> 🆕 | 开源AE插件：时间线一键调用Seedance2.0/Z.AI/FAL | 免费(开源) | GitHub/HomoLapis (⭐3, 05-15) |
+| <strong>seedance-ae-plugin</strong> 🆕 | 开源AE插件：时间线一键调用Seedance2.0/Z.AI/FAL | 免费(开源) | GitHub/HomoLapis (⭐3, 05-15) |
+| <strong>LumeFlow AI</strong> 🆕 | 人物一致性电影级动画 (GPT Image2+Seedance2.0) | 待确认 | B站教程 (安得广厦千万间678 05-14) |
+| <strong>ChatGPT Image2+Seedance Coze工作流</strong> 🆕 | Coze一键搭建”脱口秀视频”工作流：Image2出图→Seedance动效→配音 | 待确认 | B站 (花生工具箱, 98播放, 05-18) |
+| <strong>Codex++</strong> 🔥🆕 | 增强Codex：解决无法删除会话、API模式下强制安装插件、会话同步 | 免费(开源) | B站 (荒陌Lynx, 2.1万播放, 05-12) |
+| <strong>Codex API 原生插件</strong> 🆕 | Codex API 启用原生插件功能及快速模式 | 免费 | B站 (深度云创科技, 1342播放, 05-17) |
+| <strong>Hailuo AI Relight</strong> 🆕 | AI图像光工作室（打光控制） | 待确认 | B站教程 (05-14) |
+| <strong>Hyperframes</strong> 🆕🔥 | URL→AI语音短片自动生成 (Codex+Archon工作流)、HTML→MP4像素级视频 | 免费(开源) | GitHub/heygen-com/hyperframes (⭐18,685, HeyGen开源 05-08) |
+| <strong>灵境5.0</strong> | Seedance2.0配套：图片反推剧本+分镜九宫格 | 待确认 | B站 (无声铃鹿 03-05<del>06) |
+| <strong>秋叶ComfyUI整合包</strong> | 311个AI模板 + 全套工作流 | 免费 | B站 (BV14UdmBnEGa) |
+| <strong>Nex-N2-Pro</strong> 🔥🆕 | 硅基流动上线 — 基于Qwen3.5-397B-A17B后训练的MoE模型，总参数397B，256K超长上下文。<strong>Agent能力突出</strong>：Terminal-Bench/GDPval/SWE-Atlas进入全球第一梯队。06-08确认：鲲鹏Talk 2,511播放深度评测证实其Agent任务闭环能力，“思考→执行→反馈→迭代”统一框架。国产Agent模型首次可与GPT-5.5/Claude Opus 4.7对标。<strong>限时免费</strong> | 限时免费 | B站 (鲲鹏Talk, 2,511播放, 06-08; 白鸦Biya 4,111播放 06-05) |
+| <strong>Claude Oceanus</strong> 🆕🔥 | Anthropic新模型泄露，坚称AGI将至。06-08社区热度延续：与Claude Mythos/Mythos实测翻车形成连贯叙事。Anthropic再发AGI预警 | N/A (泄露) | B站 (AI-seeker, 2,942播放, 06-06; b站小水镜 06-07) |
+| <strong>GPT-5.6 Kindle 新检查点</strong> 🆕🔥🔥 | <strong>06-12价格战信号：GPT-5.6重磅来袭，大模型价格战正式打响</strong> (AI-seeker 3,588播放)。代号Kindle的GPT-5.6新检查点持续内部测试：[中配]Claude Fable 5明日发布+GPT 5.6 Kindle+OpenAI上市+Gemini 3.5 Pro+Nex-N2汇总 (黑纹白斑马 1,211播放)。OpenAI内部测试节奏加快 | N/A (内部测试) | B站 (AI-seeker 3,588 06-11; 黑纹白斑马 1,211 06-10) |
+| <strong>Nemotron 3 Ultra</strong> 🆕🔥 | 英伟达发布史上最强开源模型，<strong>5500亿参数</strong>，性能直接对标顶尖AI大脑。已上线可免费使用 | 免费 | B站 (小牛AI_XNAI 109播放 06-06; 地层世界 160播放 06-07; b站小水镜 226播放 06-07) |
+| <strong>LTX2-ICEdit-Insight</strong> 🆕🔥 | 重庆威能猫科技 | 704×1184 @24fps | - | <strong>LTX2.3视频修复/增强专精</strong>: 去水印/去字幕/高清修复/画质增强。Task-Aware IC-LoRA直挂ComfyUI LTX2.3模型。Running Hub已上。⭐109。📝 <a href="../~/Documents/ai-video-research/LTX2-ICEdit-Insight-分析" class="internal alias" data-slug="~/Documents/ai-video-research/LTX2-ICEdit-Insight-分析">深度分析</a> | 已开源(HF) / Running Hub |
+| <strong>Bernini</strong> 🔥🔥🔥 🆕 | 字节跳动 | - | - | <strong>视频编辑专精</strong>（非生成）：换装/天气/背景/小元素修改；提示词增强节点可调用LLM生成官方模板格式提示词。支持Wan2.1 LoRA。<strong>06-12生态持续爆发</strong>：全流程教学7种高阶用法(有趣的80后程序员 1,508播放)、Bernini全模态+Seedance平替工作流(T8star-Aix 8,027播放🔥)、OOTD换装赛道确认(乐皮ai 1,037播放)、视频编辑推翻论(阿硕讲ai 11,608播放🔥)、普通显卡实测(暴躁小白兔 368播放) | 已开源 (⭐392→🔥) |
+| <strong>Bernini 1.3B</strong> 🆕 | 字节跳动 | - | - | <strong>06-13小模型发布</strong> — AIwood实测效果”一般”。ComfyUI官方正式合并Bernini，更新到开发版即可用。MLLM已发布但未完成适配。<strong>字节宣布完成Bernini推理代码和权重模型的全量开源</strong> ✅ (AIwood爱屋研究室, 4,603播放, 06-09) | 已开源 |
+| <strong>ComfyUI-Bernini 导演台</strong> 🆕🔥 | 社区 | - | - | <strong>06-13全模态循环版发布</strong> (T8star-Aix, 2,913播放)：无限多镜头+自动音效+自动配音+多参考图+无限循环+口型同步。<code>ComfyUI-Bernini</code>官方节点已发布(GitHub AIMixer/ComfyUI-Bernini)，支持FPS设置/源视频导出/音频同步修复(AI搅拌机/搅拌手)。BSAI v28整合包(217播放, 06-13)已包含Bernini全系列+Ideogram4+Scail2动作迁移+NVIDIA PiD 4K | 免费(社区) |
+| <strong>Flova AI</strong> 🆕 | 一句话自动生成AI短剧全流程（剧本→分镜→视频→配音→剪辑），人物一致性 | 待确认 | B站 (03-26首测, 05-11教程爆发) |
+| <strong>MammothModa 2</strong> 🔥🆕 | 字节跳动自回归-扩散统一架构（类GPT-4O），已开源预览版，ComfyUI可用 | 免费(开源) | B站/T8star-Aix (3889播放, 2025-10) |
+| <strong>DreamID-Omni</strong> 🔥🆕 | 字节开源版Seedance2.0目标，统一身份保持+视频生成 | 免费(开源) | B站 (白日梦想家-旭 05-17) |
+| <strong>即梦CLI工具</strong> 🆕🔥 | <strong>字节跳动(即梦)官方CLI</strong>: 命令行生图+生视频。Mac/Linux一键安装，Windows有打包。支持Seedance2.0直接调用。<strong>即梦CLI转API工具已开源</strong>: github.com/xiaozhichao2025/JimengCli_api，转为标准OpenAI协议API | 高级会员(积分制) | B站 (我老萝卜 4,064播放 + wuli大雄 3,409播放 + 杯酒人生way 1,188播放) |
+| <strong>即梦Agent</strong> 🆕🔥 | 即梦平台新增Agent智能体模式，8种玩法：支持智能体搭建、工作流自动化、多模型编排。以节点方式串联Seedance2.0+Kling+Wan2.7 | 高级会员 | B站 (SD电商教程 28,796播放) |
+| <strong>Toonflow</strong> 🆕🔥 | <strong>开源AI短剧漫剧Agent工具</strong> (GitHub HBAI-Ltd/Toonflow-app, ⭐9,652/1,743 forks, v1.1.7, Apache 2.0+商业限制)。小说→剧本→AI图片→AI视频全流程。核心亮点：三层Agent(决策/执行/监督)、Skill文件化系统(11画风+12故事类型)、ONNX本地记忆、可编程供应商、无限画布工作台。Demo成本</del>¥130/2分钟。B站80K+播放 | 免费(开源) | B站 (ACT丶流星雨 <strong>80,310播放</strong> 🔥 + 新版教程32,741播放) |
+| <strong>Moyin Creator (魔因漫创)</strong> 🆕🔥 | <strong>生产级AI影视工具</strong> (GitHub MemeCalculate/moyin-cre)。五大模块: 剧本→角色→场景→导演→S级(Seedance2.0)，自动流入无需手动搅合。支持短剧/番剧/预告片批量化 | 免费(开源) | B站 (魔因量算-老金 15,154+8,275播放) |
+| <strong>全自动AI短剧引擎(八尺x)</strong> 🆕 | 开源自搓”导演级全自动AI短剧引擎”：NanoBanana Pro生图+Veo 3.1视频+Gemini 3.1 Pro剧本+Google TTS。解决AI原创拉胯/提示词/防崩溃/归档4大痛点 | 免费(开源) | B站 (八尺x 6,274播放, 532赞) |
+| <strong>DaVinci-MagiHuman</strong> | 达芬奇开源音视频同步模型，5秒视频2秒出，6种语言，单流架构 | 免费(开源) | B站 (03-24起, 设计师李小小 1.1万播放) |
+| <strong>NVIDIA SANA-WM 2.6B</strong> 🆕 | 英伟达开源世界模型 | 免费(开源) | B站 (竹言见智 05-17) |
+| <strong>Cora (Creaibo)</strong> 🆕🔥🔥 | <strong>AI创作工具传送门插件</strong> — 图灵的猫开发。一键收集网页中的图片/视频/提示词，直接从侧边栏拖拽到不同创作工具继续使用。<strong>06-12已飙至255,038播放🔥全站爆款</strong>。解决AI时代多工具间反复下载/上传/复制/粘贴的上下文断裂。Creaibo 2.0将于6.17-6.19首轮内测 | 免费(开源) | B站 (图灵的猫 <strong>255,038播放</strong> 🔥🔥, 06-05发布) |
+| <strong>UUMit (A2A交易平台)</strong> 🆕🔥 | <strong>全球首个A2A (Agent-to-Agent) 交易平台</strong> — 把你写的小工具/代码片段/行业经验挂上去增加睡后收入。刚上线正是红利期。AI Agent可以自己出去给自己赚钱了 (B站科技侠来了 20,411播放) | N/A (平台型) | B站 (科技侠来了 20,411播放, 大脚AI 919播放) |
+| <strong>科技宅小明 一人公司AI工作流</strong> 🆕🔥 | 教普通人用AI WorkBuddy把日报/表格/资料整理/项目推进全自动跑通。<strong>408,307播放</strong> 🔥 — 本周最高播放AI效率视频 | 免费 | B站 (科技宅小明 408K播放) |
+| <strong>Singularity LTX 2.3 OmniCine</strong> 🆕🔥 | <strong>LTX2.3社区衍生正式版</strong> — 动作优化、分镜控制、参考图生视频全齐。AIGC特异点发布，RH/云扉/仙宫云多平台可用 | 免费(开源, ComfyUI) | B站 (AIGC特异点 11,539播放, 06-05) |</li>
+</ul>
+<p><strong>HappyHorse 深度信息</strong> (2026-05-17 更新 — 千问确认 + 生产验证):</p>
+<p><strong>生产级短剧实测</strong> (2026-05-18 更新):</p>
+<ul>
+<li>星无《熟人》全程updream+HH1.0制作 (1486播放, 05-18) — 恐怖风格短片，HH首次被用于恐怖/悬疑题材</li>
+<li>阿硕讲ai “人脸秒过，快乐马做短剧实测，25宫格避坑指南” (05-14, <strong>90,239播放</strong> 🔥) — <strong>HH短剧教程播放量创新高</strong>。核心发现：HH真人脸一致性测试通过（“人脸秒过”），25宫格分镜法做短剧全流程，结合Wan2.7/Wuli混合使用。提供完整避坑指南。</li>
+<li>极果AI评测室 “国产AI视频模型横评：实测价格差6倍” (05-11, <strong>82,818播放</strong>) — 用同一套提示词实测Seedance2.0/HH1.0/ViduQ3漫剧+短剧+影视剧三场景，画面质量+生成速度+价格成本全算清。目前最权威横评。</li>
+<li>太阳鸽鸽棒 “真这么厉害？千问HappyHorse 1.0超全面评测” (05-17, 2,732播放) — 6分钟深度评测，“结论是真的很强”，更新到最新</li>
+<li>炽焰-坚持蛊 “HappyHorse 1.0真人向电影感测试样片——谎言” (05-15, 4750播放) — 真人电影感输出质量验证</li>
+<li>Coze+HH真人口播带货工作流成熟：电商猫粮展示 (A流AIGC, 05-16)、真人模特一键直出 (阿钧AI智能体, 05-16)</li>
+<li>福仔的AI脑洞 3模型横评结论 (05-14, 2183播放): <strong>Vidu &lt; HappyHorse ≈ Seedance 2.0</strong> — 三次验证一致</li>
+</ul>
+<p><strong>HH已验证能力边界</strong> (截至06-01):</p>
+<ul>
+<li>✅ 真人脸一致性 — 已通过生产验证 (阿硕讲ai实测)</li>
+<li>✅ 电商带货真人口播 — Coze工作流成熟</li>
+<li>✅ 电影感真人短片 — 多部样片验证</li>
+<li>✅ 漫剧分镜生成 — Coze标准范式</li>
+<li>✅ 恐怖/悬疑风格短片 — 星无《熟人》全程updream+HH1.0 (1486播放, 05-18)</li>
+<li>❌ <strong>确认不开源</strong>: 社区负面反应 “HappyHorse已死！竟不开源” (2,755播放, 罐西别导蛋)</li>
+<li>⚠️ 长视频 (>10秒) — 仍受限，需分段</li>
+<li>⚠️ 复杂动作场景 — 偶有崩坏</li>
+<li>⚠️ <strong>动画能力被质疑</strong> (06-03更新): “以防你不知道HappyHorse做动画也是一坨” (一方鸽行, <strong>24,231播放</strong> 🔥负面评测)；“夯还是拉？6分钟HappyHorse深度测评” (大象学长_, 7,444播放) 结论中立偏负面；“HappyHorse 1.0实测，给我看笑了” (21,604播放)。<strong>社区共识已形成：HH动画能力薄弱，仅适合真人短片</strong></li>
+</ul>
+<p><strong>HappyHorse 深度信息</strong> (2026-05-17 更新 — 千问确认):</p>
+<ul>
+<li><strong>确认来源</strong>: 阿里千问 (Qwen) 团队，非第三方。社区称”千问-HappyHorse”、“快乐马”</li>
+<li><strong>爆发轨迹</strong>: 05-07 首测 → 05-13 社区爆发 → 05-16 横评高峰，B站相关视频总播放超 3 万</li>
+<li><strong>权威评测</strong>: 太阳鸽鸽棒《真这么厉害？千问HappyHorse 1.0超全面评测》(1881播放, 05-17, 10h前) — 6分钟深度评测，“结论是真的很强”</li>
+<li><strong>代表作品</strong>:
+<ul>
+<li>《僵尸清道妇 VESPER-9》(Seedance+HappyHorse+Image2 联合作品, 8530播放 05-13)</li>
+<li>AI游戏实机视频 (田同学Tino, 4.6万播放 05-13) — 目前HH最高播放</li>
+<li>伊藤润二《漩涡》还原 (Ezio_li, 7858播放 05-11)</li>
+</ul>
+</li>
+<li><strong>Coze+HappyHorse工作流</strong>已成为标准范式：漫剧分镜/电商带货/模特走秀/游戏实机一键生成</li>
+<li><strong>价格对比</strong>: 苍羽蜉蝣《快乐马对比seedance2.0以及价格》(2244播放 04-27) — HH生成成本约为Seedance的1/3~1/5</li>
+<li><strong>横评结论</strong> (福仔的AI脑洞 05-14, 2169播放): Vidu &lt; HappyHorse ≈ Seedance 2.0</li>
+<li><strong>社区两极分化</strong>: 有人称”干翻Seedance 2.0”，有人坚持Seedance更强</li>
+<li><strong>多模型联合作战成趋势</strong>: Seedance+HappyHorse+Image2三件套已成标配</li>
+<li>⚠️ 标题党/引流含量仍高，真实生产环境能力待验证。但千问背景+Coze集成让它比之前的”黑马”更可信</li>
+</ul>
+<p><strong>LTX-2.3 社区爆发</strong> 🔥🔥🔥 (2026-05-17 新增):</p>
+<p><strong>持续性热度 (06-03更新)</strong>: 6月初LTX2.3依然保持高热度，独立生态加速成熟<br/><strong>06-12更新</strong>: 黑鹤001「LTX2.3最新全功能精简流终篇」爆火(38,783播放🔥, 261弹幕) — 全能视频编辑生成-总结篇，低显存。LTX2.3短剧封神攻略(桐福客栈东秀才 552播放)</p>
+<p><strong>参考生成领域实现三大连续突破</strong> 🔥🔥🔥:</p>
+<ul>
+<li><strong>光锥实验室全能参考测试版</strong> (4,680播放, 06-02) — 参考模型里程碑更新</li>
+<li><strong>Licon-MSR LTX2.3全能参考Lora</strong> (820播放, 06-02) — LoRA级参考一致性方案</li>
+<li><strong>三视图人物参考集成</strong>（导演台万能参考多人互动测试成功，1,285播放, 06-02）— 支持三视图人物参考，保持原导演台全部功能</li>
+<li><strong>王炸！LTX2.3参考生成里程点革新</strong> (2,168播放, 06-02)</li>
+<li><strong>社区评价</strong>: “完美解决LTX2.3视频人物、场景的一致性！直出1分钟短剧全流程精讲！” (3,256播放, 小猪AI-Q) — <strong>短剧生产最相关验证</strong></li>
+<li><strong>LTX2.3-v17</strong>版本号出现 (418播放, 06-02)</li>
+<li>【AI电影】开源模型LTX2.3零基础全流程教学 (7,331播放, 阿文—Arwen)</li>
+<li><strong>LTX2.3 导演插件 WhatDreamsCost</strong> (5,031播放, 黎黎原上咩) — 像导演一样在时间轴上掌控文本/图片/语音来生成视频</li>
+<li><strong>8G显存跑LTX 2.3零崩溃低配ComfyUI</strong> (9,168播放, 大凯智障君)</li>
+<li><strong>数字人口播全流程</strong> 7分钟长音频+分镜智能体+情感配音+工作流 (290播放, 凤希AI伴侣)</li>
+<li>seedance2.0与ltx2.3数字人mv对比 (104播放, 06-03) — 两者数字人直接对比开始出现</li>
+<li><strong>LTX2.3百科全書</strong> 25分钟了解12G显存直出1080P (71,647播放, 最高播放持续刷新)</li>
+<li>导演节点制作高考MV教程 (194播放, 06-03)</li>
+<li>40岁小白学LTX2.3系列 (121-140播放, 06-02)</li>
+<li>ComfyUI × LTX 2.3 MV制作指南升级版 (464播放, 06-02)</li>
+</ul>
+<p><strong>LTX2.3生态成熟度分析</strong>: 参考生成能力已从”单图参考”进化到”三视图多人物参考”，一致性方案获得社区最高验证。v17版本号+光锥实验室+WhatDreamsCost三线并进，生态成熟度显著高于一个月前。建议评估LTX2.3替代部分Seedance API调用的可行性。</p>
+<p><strong>LTX2-ICEdit-Insight</strong> 🆕🔥 — 社区新工具，基于LTX2.3的视频编辑统一框架（去水印/去字幕/高清修复/画质增强）。核心技术: TADA(Task-Aware Decoupled Adapter)替代单一LoRA、FGLC时序稳定、PMTR多任务协同。IC-LoRA可直挂ComfyUI LTX2.3原生模型。Running Hub已上。GitHub: Valiant-Cat/LTX2-ICEdit-Insight，⭐109。📝 <a href="../~/Documents/ai-video-research/LTX2-ICEdit-Insight-分析" class="internal alias" data-slug="~/Documents/ai-video-research/LTX2-ICEdit-Insight-分析">深度分析</a> (HyLan_L, 641播放, 06-06)</p>
+<p><strong>持续性热度 (06-01更新)</strong>: 6月初LTX2.3依然保持高热度，独立生态正在成熟</p>
+<ul>
+<li>LTX-2.3百科全书：25分钟了解玩法 — <strong>70,751播放</strong> (黎黎原上咩)</li>
+<li>3分钟保持人物一致性的短剧-LTX2.3 — <strong>121,546播放</strong> 🔥 (树上的盆友) — <strong>短剧一致性方案已获社区最高验证</strong></li>
+<li>“【AI电影】开源模型LTX2.3也能做电影？零基础全流程教学” — 6,502播放 (阿文—Arwen)</li>
+<li>SANA-WM实测1,420播放 + 社区评价”用消费级显卡，生成1分钟视频世界” (2,044播放)</li>
+<li><strong>2026年5月16-17日24h内，B站LTX2.3相关教程密集涌现</strong> — 这是当前AI视频生成社区最热话题</li>
+<li><strong>三大核心突破</strong>:
+<ul>
+<li><strong>导演节点 (Director Node)</strong>: 图形时间轴直观编辑视频分镜，自由控制分镜长度，编排音画同步</li>
+<li><strong>PromptRelay</strong>: 四图加持，图生视频分镜控制，肢体优化、神情自然、去AI感</li>
+<li><strong>Singularity预览版</strong>: 开源图生视频（首尾帧），8G显存可用，自动补帧，支持50系显卡</li>
+</ul>
+</li>
+<li><strong>关键能力</strong> (社区验证):
+<ul>
+<li>✅ 8G显存可跑 (GGUF版更低) — “刘悦的技术博客” 多人对话+数字人工作流</li>
+<li>✅ 人物一致性 — “无需lora，人物一致性加角色音频一致性做小短片，理论上不限时长。非常稳几乎不用抽卡” (海啊啦啊, 05-16)</li>
+<li>✅ 分镜导演台 — 自由控制分镜长度+音画同步 (Ai_随风, 831播放 05-16)</li>
+<li>✅ 数字人口型 — LTX2.3多功能导演台，对口型+图生视频一个工作流搞定 (安仔先生666)</li>
+<li>✅ AI控制人物表情 (艾橘溪, 05-17)</li>
+<li>✅ For循环分段生成长视频MV (AI-KSK, 05-17)</li>
+<li>✅ GGUF低显存版一键部署包 (K哥讲AI, 05-16)</li>
+</ul>
+</li>
+<li><strong>社区评价</strong>: “文戏剑指即梦Seedance！LTX 2.3 全能高清工作流V3-帧级控制编导版” (LHQAQ-Li, 661播放)</li>
+<li><strong>代表性教程</strong>:
+<ul>
+<li>“ComfyUI图生视频-LTX2.3模型与工作流下载 Singularity+PromptRelay” (comfyui, 1046播放 05-17)</li>
+<li>“LTX-2.3-Prompt-Relay-Smart-图生视频-多人对话-单人数字人” (刘悦的技术博客, 1293播放 05-17)</li>
+<li>“PromptRelay 四图加持，LTX2.3 玩转短剧漫剧与数字人直播” (跳爷观光团, 1021播放 05-16)</li>
+<li>“AIGC实战课115: 短片神器！LTX-2.3导演节点” (Doc_workBox, 1729播放 05-16)</li>
+</ul>
+</li>
+<li><strong>对短剧生产的冲击</strong>: 开源+本地部署+8G显存，理论上可替代部分云端API调用。若导演节点成熟，可能改变”多模型路由”策略，将部分生产从Seedance/HH API迁移到本地ComfyUI+LTX2.3</li>
+<li>⚠️ <strong>注意</strong>: 社区爆发仅24h，内容质量参差不齐。GGUF版实际效果待验证。dgx spark 128G跑LTX2.3显存占用106G (1456播放 05-16) — 高端硬件仍更优</li>
+</ul>
+<p><strong>OpenAI史上最大规模重组</strong> 🔥🔥🔥 (2026-05-18 新增):</p>
+<ul>
+<li><strong>曝光</strong>: “OpenAI突发史上最大规模重组，布罗克曼临危受命全面掌权” (Nana的AI娜娜, 1203播放, 昨天 05-17)</li>
+<li><strong>核心</strong>: ChatGPT/Codex/API 三部门要合流 (小行星AI观测站, 188播放, 05-17)</li>
+<li><strong>Codex API 原生插件功能+快速模式</strong> (深度云创科技, 1342播放, 23小时前)</li>
+<li><strong>影响评估</strong>: 如果ChatGPT/Codex/API合流，可能意味着全产品线统一底层模型和定价体系。对AI短剧生态的影响：Codex+HyperFrames剪辑工作流可能更深嵌入ChatGPT生态</li>
+<li><strong>Codex++ 增强工具</strong> 🆕: 荒陌Lynx “Codex++ | 增强你的Codex！解决无法删除会话+API模式下无法使用插件+强制安装插件+会话同步” (2.1万播放, 05-12) — 社区必备工具</li>
+<li><strong>Codex Mobile 确认上线</strong>: 小行星AI观测站 (05-15) “Codex 登陆手机端：躺床上也能远程写代码” (168播放)</li>
+<li><strong>GitHub开放Copilot API</strong>: “AI编程进入全自动时代” (696播放, 05-14) — 与Codex形成竞争</li>
+<li><strong>Codex 推送多项功能与性能改进，重置付费用户额度</strong> (橘鸦Juya, 27,827播放, 05-17)</li>
+<li><strong>Codex Mobile 正式上线</strong>: 手机端Codex App发布，“Codex手机端终于来了” (珍妮丁丁AI说, 1,929播放, 05-16)。金牛座大肚腩 (05-17) 详细教程：在ChatGPT App中设置Codex Mobile，语音模式控制电脑</li>
+<li><strong>“5分钟速通codex”</strong> (姚武酒, 41,832播放, 05-17) — 目前最高播放Codex速通教程，含细节</li>
+<li><strong>Hermes Agent 接入 Codex App-Server Runtime</strong> 被B站覆盖 (探索未至之境, 3,039播放, 05-15) — Hermes+Codex开源Agent生态引起社区关注</li>
+<li><strong>Guizang PPT Skill + Codex + HyperFrames</strong> 组合 (歸藏的AI工具箱, 05-18) — PPT自动化+AI视频渲染新范式</li>
+<li><strong>GPT-5.5社区反映”变笨”</strong>, Codex负责人紧急灭火 (大单网, 05-17)</li>
+<li><strong>Codex中国站正式上线</strong> (Claw小龙虾, 05-15)</li>
+</ul>
+<p><strong>LTX-2.3 持续爆发 — Sulphur2版本发布</strong> 🔥🔥🔥 (2026-05-18 更新):</p>
+<ul>
+<li><strong>05-16~17 教程密集涌现确认社区持续热度</strong></li>
+<li><strong>LTX 2.3 Sulphur2 最新最强版</strong>: “ComfyUI LTX 2.3 Sulphur2 最新最强视频生成喂饭指南” (FaboroHacks, 5243播放, 05-15) — Sulphur2是最新版本迭代</li>
+<li><strong>全功能精简流(中篇)</strong>: “▶LTX2.3最新全功能精简流(中篇)◆低显存/高质量◆单/多图生成视频◆多段控制◆数字人” (黑鹤001, 2.5万播放, 05-14) — 系列教程很高人气</li>
+<li><strong>OmniShortCut开源项目</strong>: “化腐朽为神奇，LTX2.3 Edit Anything+最新开源项目OmniShortCut，AI视频编辑效果直追闭源模型” (T8star-Aix, 7625播放, 05-08) — 视频编辑能力增强</li>
+<li><strong>漫剧生产级确认</strong>: “最新动态漫剧利器-ltx2.3快速生成音画视频10秒视频最快2分钟即可生成【不到6分/条】” (术术菌做动画, 2944播放, 05-05) — 漫剧性价比极高</li>
+<li><strong>Singularity+PromptRelay 工作流成熟</strong>: ComfyUI图生视频完整教程 (comfyui, 1,902播放, 05-17)</li>
+<li><strong>Singularity+PromptRelay 工作流成熟</strong>: ComfyUI图生视频完整教程 (comfyui, 1,902播放, 05-17)</li>
+<li><strong>AI控制人物表情</strong>: LTX2.3图生视频工作流 (艾橘溪, 813播放, 05-17)</li>
+<li><strong>帧级控制编导版</strong>: “文戏剑指即梦Seedance！LTX 2.3 全能高清工作流V3” (LHQAQ-Li, 947播放, 05-16)</li>
+<li><strong>LTX2.3视频处理合集</strong>: 水印字幕去除+超分+修复 (像素幻想Lab, 1,538播放, 05-16)</li>
+<li><strong>导演节点引入+经验分享</strong>: “LTX2.3稳步增强” (敢抢我神棍名号, 1,482播放, 05-17)</li>
+<li><strong>社区共识</strong>: LTX2.3已从”尝鲜”进入”生产级”讨论，导演节点+PromptRelay+Singularity三件套标准</li>
+</ul>
+<p><strong>ComfyUI 持续迭代 (06-05更新 ⭐115,729)</strong>: 6月初仍保持高速开发，前端1.45.15</p>
+<ul>
+<li><strong>6月4日</strong>: <code>Frontend bump to 1.45.15 (#14265)</code>、<code>[Partner Nodes] Krea 2 Medium Turbo (#14280)</code> — 新商用模型、<code>Bria Green Background (#14277)</code> — 绿幕背景节点、<code>Flux Erase seed input (#14283)</code></li>
+<li><strong>6月2日</strong>: <code>PiD: Add SDXL and QwenImage support (#14240)</code>、<code>MultiGPU manual abort freeze fix (#14235)</code>、<code>Radiance variant (#14206)</code></li>
+<li><strong>5月31日</strong>: <code>Gaussian splat nodes (#14190)</code> — 3D高斯泼溅、<code>Ernie model speed up</code></li>
+<li><strong>秋叶ComfyUI V9.5整合包爆火</strong>: 秋葉aaakki “秋叶ComfyUI V9.5中文整合包” (06-01, <strong>236,480播放</strong>, 13,190赞 🔥) — 最新版含278+工作流/模型/插件/LoRA，全面支持50/40/30系显卡</li>
+<li>B站ComfyUI教程持续高热: 云端部署(5,959-13,209播放)、漫剧全流程(12,100播放)、Wan2.2整合包(261,235播放)</li>
+</ul>
+<p><strong>NVIDIA SANA-WM 2.6B 世界模型</strong> 🔥🆕 (2026-05-17, 更新 06-05):</p>
+<ul>
+<li>英伟达开源世界模型，主模型26亿参数 + refiner 17B → 720p输出</li>
+<li><strong>核心能力</strong>：相机轨迹严格可控（输入起始帧+相机路径→生成可探索的60秒虚拟世界），非普通图生视频</li>
+<li><strong>关键突破</strong>：单张高端GPU跑满60秒，同类竞品(LingBob World 14B+14B、HY World Play 8B、Metrix Game 3.0 5B)均需8张GPU</li>
+<li><strong>应用场景</strong>：游戏关卡预览、虚拟拍摄分镜测试、机器人训练、自动驾驶仿真视觉推演</li>
+<li><strong>局限</strong>：还不完美理解碰撞/重力/水流/物体交互，非完整物理引擎</li>
+<li>论文: arxiv.org/abs/2605.15178，Hybrid Linear Diffusion Transformer架构</li>
+<li>B站智讯智库 (05-23, 2,622播放) 深度解析已消化 → <code>~/Documents/ai-video-research/用你的消费级显卡，生成1分钟视频世界！NVIDIA全新SANA-WM模型有多强？.md</code></li>
+<li>对AI视频生成的冲击：降低”造世界”门槛，从大厂算力集群下沉到消费级硬件，改变内容生产成本结构</li>
+</ul>
+<p><strong>Google Gemini Omni 泄露 → 正式发布（实测反馈一般）</strong> 🔥🔥 (2026-06-01 更新):</p>
+<ul>
+<li><strong>05-03~05-17</strong>: 大规模泄露阶段（详见上期）</li>
+<li><strong>05-30~06-01 正式上线</strong>: B站出现实测教程”如何使用 Gemini Omni 编辑和创建视频指南” (ubilier, 234播放)</li>
+<li><strong>实测反馈</strong>: “Omni拉胯了？谷歌Omni实测：带你认识’视频界的Nano Banana’” (DeepWhite深白色, <strong>4,397播放</strong>) — 评价偏负面</li>
+<li><strong>横评</strong>: “谷歌Omni、Seedance 2.0与Kling 3.0全面对比评测” (环球影视工厂, 126播放)</li>
+<li><strong>结论</strong>: Gemini Omni已从”泄露→即将发布→正式上线”但实测反馈一般，短期内不构成对Seedance 2.0的实质性威胁</li>
+<li><strong>05-03</strong>: 首次泄露，黑鸦Heya “头皮发麻！谷歌神秘模型 Gemini Omni 泄露！” (4.1万播放)</li>
+<li><strong>05-12</strong>: 大规模扩散，新智元AIEra (8708播放)、硅基研究所所长 (2480播放) 跟进</li>
+<li><strong>05-13</strong>: 定价与演示泄露，烟神殿副殿主 (4559播放)、未来变量relaunch (794播放)</li>
+<li><strong>05-14~15</strong>: Seedance2.0直接对比 — “首曝！！Gemini Omni与Seedance 2.0生成视频对比！！” (不会写报告的Ai菌, 7716播放 05-15); “隐忍数月！Gemini Omni视频生成爆料，Seedance 2.0冷汗直流！” (1828播放 05-14)</li>
+<li><strong>05-16</strong>: “【中配】Gemini Omni 揭秘 2887 ELO 77% ARC-AGI-2” (薛定猫AI, 552播放)</li>
+<li><strong>05-17~18</strong>: “AI技术周报6：Gemini Omni视频模型将正式发布，Android 17深度AI化；NVIDIA发布SANA-WM 2.6B开源世界模型” (竹言见智, 776播放, 17h前) — 🔥 <strong>首次确认”将正式发布”而非”泄露”</strong></li>
+<li><strong>05-18</strong>: “[中配]详解Gemini Omni：谷歌如何重塑AI竞赛” (环球AI圈, 24播放, 昨天) — BitBiasedAI原版中配</li>
+<li><strong>社区情绪</strong>: 标题党密集，但泄露信息量不小。Gemini Omni被描述为全模态模型（视频+音频+文本），直接对标Seedance 2.0。<strong>正式发布时间待确认，但社区已从”泄露”转向”即将发布”</strong></li>
+<li><strong>对比视频真实性</strong>: “首曝对比”8281播放 (05-15) 为当前最高播放的直接对比内容</li>
+<li>⚠️ <strong>注意</strong>: 仍无官方确认。但”将正式发布”的措辞比前几周的”泄露”更进一步</li>
+</ul>
+<p><strong>AI漫剧平台淘汰+变现质疑</strong> ⚠️⚠️ (2026-06-06 更新):</p>
+<ul>
+<li>“AI漫剧现状总结：纯AI的工作流漫剧已被平台淘汰” (山大科技馆, 1.4万播放, 01-19)</li>
+<li>“3个月大赚30元！被AI漫剧行业淘汰是啥感受” (被炒的炒饭, 1.1万播放, 05-15)</li>
+<li><strong>🔥 116万播放热议</strong>: “在红果做一集ai漫剧能赚多少钱？” (赛博AI印钞姬, <strong>1,163,898播放</strong> 🔥, 05-17) — 社区最热变现讨论，标志着AI漫剧赚钱话题出圈</li>
+<li>“AI短剧真的有那么挣钱吗？” (好友可见CLab, 267播放, 05-17) — 变现质疑持续扩散</li>
+<li>“AI短剧AI漫剧频道内容同质化严重，大量”全集合集”式发布 (电子榨菜库 05-17 批量发布)</li>
+</ul>
+<p><strong>字节跳动 MammothModa 2 &amp; DreamID-Omni</strong> (2026-05-18 新增):</p>
+<ul>
+<li><strong>MammothModa 2</strong>: 字节自回归-扩散统一架构，类GPT-4O模型。2025年10月已开源预览版，T8star-Aix ComfyUI教程 (3889播放)。JimmyMo_吉米猫 (05-17): “Seedance 2.0已经够强，为什么字节还要投入MammothModa这样的统一架构？”</li>
+<li><strong>DreamID-Omni</strong>: 字节跳动开源项目，目标”开源版Seedance 2.0”，白日梦想家-旭 (05-17) 报道</li>
+<li><strong>战略解读</strong>: 字节在AI视频双轨并行 — Seedance 2.0做商业产品（闭源API），MammothModa/DreamID-Omni走开源路线建立生态护城河</li>
+</ul>
+<p><strong>Flova AI 全自动短剧平台</strong> (2026-05-18 新增):</p>
+<ul>
+<li><strong>核心卖点</strong>: “只需一句话，自动生成短剧” — 覆盖剧本→分镜→静帧→视频→配音→剪辑全流程，保持人物一致性</li>
+<li><strong>代表教程</strong>: 贝塔AI真想教会你 “全网首发！Flova AI 10分钟快速掌握真人短剧制作技巧” (1489播放, 05-11)</li>
+<li><strong>其他教程</strong>: 冲破信息差 (3419播放, 03-26)、谟音卡卡 (698播放, 04-07)</li>
+<li><strong>定位</strong>: 面向零基础用户的全自动AI短剧工具，比Jellyfish更”一键化”但控制力更弱</li>
+<li><strong>06-01更新</strong>: Flova AI × HappyHorse 1.0 × 阿里云「地方人文记忆」AI 创作大赛上线 (FlovaAI官方, 22播放)</li>
+<li>后续产出需持续观察</li>
+</ul>
+<blockquote>
+<p>⚠️ 豆包方案已实测效果差，不推荐。红果AI短剧免费版质量待验证。</p>
+</blockquote>
+<p><strong>推荐策略</strong>：多模型接入，按场景路由。Seedance 2.0 做真人剧主力（多镜头一致性最强），Kling 3.0 做高质量单镜头，Wan2.7 做漫剧批量。</p>
+<p><strong>2026年6月社区实测排名</strong>（06-08 最新社区共识）：</p>
+<pre><code>Seedance 2.0 ≥ HappyHorse 1.0 > Kling 3.0 > LTX2.3 (开源) > Wan 2.7 > Gemini Omni (实测反馈一般)
+└─ HappyHorse 1.5 (bouncybohr) 已在arena.ai确认可抽到 🔬 (那颗星星188 3,988播放 06-08)
+</code></pre>
+<ul>
+<li>🆕 <strong>HappyHorse 1.5 (bouncybohr) 确认</strong> — 那颗星星188 (3,988播放, 06-08) 详细评测，可在arena.ai Battle模式抽到。千问团队运营</li>
+<li>🆕 <strong>GPT-5.6 内部测试开始</strong> — 产品君 (7,374播放, 06-07) 确认GPT-5.6内测已启动；infinite灵感港 (15,621播放, 06-06) 深度解读</li>
+<li>🆕 <strong>火山剧创全流程实测</strong> — 大象学长_ (1,106播放, 06-02): 上传剧本→自动人物场景道具→Seedance批量→一键剪辑出片</li>
+<li>🆕 <strong>Bernini生态全面爆发</strong> — 多个高播放视频确认：阿硕讲ai 3,114播放、刘悦4,082播放(Bernini-R-GGUF 8G)、小猪AI-Q 1,045播放(6G)、Prompt娄13,077播放(16G)</li>
+<li>🆕 <strong>Nemotron 3 Ultra 550B开源</strong> — 英伟达最大开源模型，已上线可免费使用 (小牛AI_XNAI 06-06)
+| <strong>Nex-N2-Pro Agent模型</strong> — 鲲鹏Talk (2,511播放, 06-06) 确认硅基流动限免，397B MoE，Agent能力全球第一梯队
+| <strong>JoyAI-Echo</strong> 🔬🆕 — 京东研究院开源DMD蒸馏+配对音视频记忆链视频模型，对标Seedance 2.0叙事能力。非商业许可，48GB+显存(bf16)/6GB(GGUF)。📝 深度分析: <code>~/Documents/ai-video-research/JoyAI-Echo-分析.md</code></li>
+<li>🆕 <strong>泛式AI编程正面感受出圈</strong> — 13441+26718+3361播放三个视频，B站知名UP主泛式确认AI编程”好时代来临”</li>
+<li>🆕 <strong>Codex 全攻略</strong> — 马克的技术工作坊 (3,349播放, 06-08) 覆盖Annotate/Fork/Archive/Plan/Plugin/Skill</li>
+<li>🆕 <strong>DeepWhite深白色一人剧组</strong> — (7,921播放, 06-06) AI智能体辅助精品视频全流程万字拆解，含免费技能分享。画布流程及提示词已发布Running Hub。<strong>高质量内容标杆，超越普通教程</strong>
+| <strong>AI视次方「一站式打造专业剧组」</strong> 🆕 | (98,467播放🔥, 06-05) — AI影视黑科技一站式工具，社区高度关注 |
+| <strong>Pixelle-Video</strong> 🆕🔥 | <strong>阿里AIDC-AI全自动短视频引擎</strong> (GitHub <code>AIDC-AI/Pixelle-Video</code>, ⭐22,501, Apache-2.0, 2026-01创建) — <strong>三合一媒体源架构</strong>：每个管线步骤可独立选择本地ComfyUI/RunningHub云端/直接API(4大供应商25+模型)。核心技术：ComfyBaseService抽象层、api_media.py直连适配器(815行, 支持DashScope/Kling/Seedance/OpenAI)、FastAPI异步任务系统、Streamlit前端。<strong>短期不构成短剧直接威胁</strong>（缺少角色一致性/剧情编排/多集管理），但API Provider层和ComfyUI三源架构可直接借鉴。⚠️ 团队有FilmAgent/Anim-Director/AniMaker等技术储备，中期可能扩展至短剧。📝 <a href="../~/Documents/ai-video-research/Pixelle-Video-分析" class="internal alias" data-slug="~/Documents/ai-video-research/Pixelle-Video-分析">深度分析</a> | 免费(开源) | GitHub (06-14仍活跃提交) |
+| <strong>Huobao-Drama (火爆短剧)</strong> 🆕🔥 | <strong>开源AI短剧半自动生产工具</strong> (GitHub <code>chatfire-AI/huobao-drama</code>, ⭐12,714/2,434 forks, CC BY-NC-SA, 2026-01创建) — TypeScript全栈(Hono+Mastra AI Agents+SQLite+Nuxt 3)。5个专用Agent(剧本改写/角色提取/分镜拆解/音色分配/提示词生成)，11步流水线从输入到成片。核心创新：宫格图生成→切分降低API成本、9厂商Adapter统一抽象层、角色作为跨集一致性锚点。依赖Seedance/MiniMax/Vidu等云API。⚠️ <strong>非商业许可(CC BY-NC-SA)</strong>，另有商业版运营。📝 <a href="../~/Documents/ai-video-research/Huobao-Drama-分析" class="internal alias" data-slug="~/Documents/ai-video-research/Huobao-Drama-分析">深度分析</a> | 免费(开源)/商业版 | GitHub (TypeScript) |
+| <strong>LocalMiniDrama</strong> 🆕 | <strong>开源本地AI短剧生成器</strong> (GitHub <code>xuanyustudio/LocalMiniDrama</code>, ⭐652, MIT, 2026-02创建) — Vue 3+Node.js/Express+SQLite+Electron 28，单人维护。<strong>编排层非推理层</strong>：所有AI生成走云端API(Seedance 2.0/Kling/通义WAN)，本地只跑UI+DB+ffmpeg。核心创新：三模型独立配置UI(文本/图片/视频分离)、<code>@图片N</code>引用体系+全能模式、ffmpeg尾帧衔接、jsonrepair自动修复。<strong>我们的RTX 3050 4GB完全能跑</strong>（GPU不参与AI推理）。📝 <a href="../~/Documents/ai-video-research/LocalMiniDrama-分析" class="internal alias" data-slug="~/Documents/ai-video-research/LocalMiniDrama-分析">深度分析</a> | 免费(开源) | GitHub (v1.2.7, 06-02更新) |</li>
+<li>🆕 <strong>老麦的工具库「1个人+1台电脑AI短剧全流程」</strong> — (143,772播放🔥, 06-05) — AI短剧全流程公开+分钱模式，引发社区热议</li>
+<li>🆕 <strong>Creaibo Cora传送门插件爆火</strong> — 图灵的猫255,038播放🔥🔥全站最高；Creaibo 2.0将于6.17-6.19首轮内测</li>
+<li>🆕 <strong>UUMit A2A交易平台</strong> — 科技侠来了25,059播放🔥+朋克周9,407播放+程序员晓刘4,283播放，三大UP主同期报道，A2A概念出圈</li>
+<li>🆕 <strong>AI赚钱方向密集</strong> — AI智能体卖799/899爆款成本低得离谱(赛博印钞姬25,851播放🔥)、我靠不体面方法赚回尊严(10,440播放)、普通人邪修搞钱方法(5,406播放)</li>
+<li>🆕 <strong>AI编剧/网文新方法</strong> — AI写小说正确方法避免制造文字垃圾(雷饼干教网文 446播放, 06-11)</li>
+</ul>
+<p><strong>AI视频场景一致性完整工作流</strong> 🆕🔥 (HiShineAi, 64K播放, 06-06):</p>
+<ul>
+<li><strong>5种一致性解决方案</strong>社区首次系统性梳理：
+<ol>
+<li><strong>俯视图+九宫格</strong>：室内空间逻辑的”定海神针”</li>
+<li><strong>720度全景截图</strong>：物理级背景统一</li>
+<li><strong>Seedance 2.0 全能参考</strong>：实现15秒连贯叙事</li>
+<li><strong>360度环绕动态捕捉</strong>：批量收割背景资产</li>
+<li><strong>GPT-image2 视觉导演</strong>：跨时代空间推理与分镜生成</li>
+</ol>
+</li>
+</ul>
+<ol start="5">
+<li>配音与口型同步</li>
+</ol>
+<ul>
+<li>TTS：ElevenLabs（多语言/情感）、Fish Audio（中文好）、CosyVoice（阿里开源）</li>
+<li>口型同步：HeyGen/SadTalker/MuseTalk/Wav2Lip</li>
+</ul>
+<h3 id="ai短剧变现标杆案例2026年6月更新">AI短剧变现标杆案例（2026年6月更新）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#ai短剧变现标杆案例2026年6月更新" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>🔥 来源：乱翻书播客「3000块成本，3.5亿次播放，AI短剧怎么在抖音挣钱？」(55,330播放, 06-07, 嘉宾《安徽小木匠》作者小果哥哥)</p>
+</blockquote>
+<p><strong>成本结构拆解</strong>：</p>
+<ul>
+<li>总成本 <strong>3000元</strong>（含Seedance API调用+配音+剪辑）</li>
+<li>单集成本约 <strong>50-100元</strong></li>
+<li>抖音播放 <strong>3.5亿次</strong> → 分成收入可观</li>
+<li>制作周期：单人+AI工具，1-2周完成整部短剧</li>
+</ul>
+<p><strong>成功关键</strong>（小果哥哥经验）：</p>
+<ol>
+<li><strong>选题决定80%</strong>：安徽小木匠=接地气+地域共鸣+正能量——选题不是”AI能拍什么”，而是”观众想看什么”</li>
+<li><strong>人物一致性是门槛</strong>：Seedance 2.0的参考图功能解决了单人短剧的最大痛点</li>
+<li><strong>抖音算法友好</strong>：竖屏+短时长+强情绪钩子，AI短剧天然匹配短视频分发生态</li>
+<li><strong>不贪多</strong>：不追求”电影质感”，focus在”故事讲清楚”——观众核心消费的是剧情不是画质</li>
+</ol>
+<p><strong>启示</strong>：3000元验证了AI短剧”低成本爆款”的可能性。但小果哥哥是专业内容创作者转型，非零基础。选题能力和叙事经验仍然不可替代。</p>
+<h3 id="seedance-20-最新多参使用技巧--2026-06-13">Seedance 2.0 最新多参使用技巧 🆕 (2026-06-13)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#seedance-20-最新多参使用技巧--2026-06-13" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>🔥 来源：Lly月「关于Seedance 2.0多参最全的使用技巧-规避人脸审核/运镜控制/色调控制」(33分钟, 103播放, 06-13发布)</p>
+</blockquote>
+<p>核心技巧：</p>
+<ul>
+<li><strong>规避人脸审核</strong>：在prompt中加 <code>(不暴露正面:1.3)</code> 或调整人物角度为侧脸/背影</li>
+<li><strong>运镜控制</strong>：<code>镜头缓慢上摇</code> <code>推镜特写</code> 等分镜术语要写在prompt开头，成为首要约束</li>
+<li><strong>色调控制</strong>：<code>冷色调</code> <code>暖黄光</code> <code>赛博蓝紫</code> 等色调词需要绑定具体物体（如”蓝紫色的霓虹灯”而非空泛的”赛博朋克”）</li>
+<li><strong>长视频分段策略</strong>：2分钟视频拆为8段×15秒，每段控制一个镜头变化</li>
+<li><strong>参考图尺寸必须严格一致</strong>：否则导致生成失败或画面抖动</li>
+</ul>
+<h3 id="seedance-20-提示词进阶情绪路线图">Seedance 2.0 提示词进阶：情绪路线图<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#seedance-20-提示词进阶情绪路线图" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>🔥 来源：@AIGC自修室（抖音，2026-06-05）。AI 演员”永远像群演”不是模型问题，是提示词缺少表演指导。</p>
+</blockquote>
+<p><strong>核心理念</strong>：用”导演阐述式分镜脚本”替代纯画面描述，给每个镜头标注情绪弧线。</p>
+<pre><code>× 传统写法：
+&quot;一个悲伤的女人坐在窗边&quot;
+
+✅ 情绪路线图写法：
+&quot;特写。林薇坐窗边，雨水滑过玻璃。
+【情绪弧线】出神望窗外→想起什么眼眶微红→泪打转2秒→落下→指尖拭去→
+深吸气抬头已恢复平静。
+【微表情】嘴角微抽，下巴轻颤。&quot;
+</code></pre>
+<p><strong>每镜标注字段</strong>：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>维度</th><th>格式</th></tr></thead><tbody><tr><td>情绪弧线</td><td><code>{step1}→{step2}→...→{stepN}</code></td></tr><tr><td>微表情</td><td>眉毛/眼部/嘴角的渐进变化</td></tr><tr><td>声音</td><td>语调（低沉/尖锐）+ 语速（急促/缓慢）+ 停顿</td></tr><tr><td>肢体</td><td>手部动作、身体姿态、呼吸节奏</td></tr></tbody></table></div>
+<p>详见 <code>ai-drama-screenwriting</code> 技能「高级情感技巧 §6」。</p>
+<ol start="6">
+<li>剪辑与后期</li>
+</ol>
+<ul>
+<li>自动剪辑：剧本时间轴驱动自动拼接</li>
+<li>转场：AI 生成过渡效果</li>
+<li>字幕：Whisper + 自动时间轴对齐</li>
+<li>调色：DaVinci Resolve + AI LUT</li>
+<li>BGM/SFX：Suno/Udio/AudioCraft</li>
+</ul>
+<ol start="7">
+<li>素材预处理与修复 🆕 (2026-06-12)</li>
+</ol>
+<blockquote>
+<p>LTX2-ICEdit-Insight 可集成到管线的两个关键点位。</p>
+</blockquote>
+<p><strong>A. 预处理管道</strong> (解决”素材污染”):</p>
+<pre><code>原始素材(带水印/字幕/低清)
+    ↓ LTX2-ICEdit-Insight (去水印/去字幕/高清)
+清洁素材
+    ↓ Jellyfish 正常管线
+最终成片
+</code></pre>
+<p><strong>B. 后处理管道</strong> (AI视频最终抛光):</p>
+<pre><code>AI 生成视频 (LTX2.3/Seedance)
+    ↓ LTX2-ICEdit-Insight (hd模式: 去伪影/增强纹理)
+高清成片 (704×1184)
+</code></pre>
+<p><strong>C. ComfyUI 集成</strong> (最优路径):
+IC-LoRA 可直接挂载 ComfyUI 中的 LTX-2.3 原生模型，无需 Insight 一体化 checkpoint。工作流 JSON 参考: <code>LTX-2.3-ICLORA编辑-官方模型版本.json</code>。</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>ComfyUI 节点链:</span></span>
+<span data-line><span>  LTXLoadVideoModel → LTXICLoRALoaderModelOnly → LTXAddVideoICLoRAGuide</span></span>
+<span data-line><span>  → ... (其他处理) → LTXDecodeVideo → 输出</span></span></code></pre></figure>
+<p><strong>硬件</strong>: RTX 4090 24GB (704×1184×97帧 ≈ 17GB VRAM)，Running Hub 云端备选。
+<strong>模型</strong>: HF <code>joyfox/LTX2.3-ICEdit-Insight</code>，4个 IC-LoRA + Insight checkpoint + Gemma (~30GB+ 磁盘)。
+📝 深度分析: <code>~/Documents/ai-video-research/LTX2-ICEdit-Insight-分析.md</code></p>
+<ol start="8">
+<li>Bernini 本地全模态管线 — Seedance 平替方案 🆕 (2026-06-13)</li>
+</ol>
+<blockquote>
+<p>🔥 来源：T8star-Aix「能平替字节的只有字节！真Seedance2.0平替！手搓Bernini全模态工作流」(8,977播放, 06-10)。📝 <a href="../~/Documents/ai-video-research/Bernini-Seedance-平替工作流" class="internal alias" data-slug="~/Documents/ai-video-research/Bernini-Seedance-平替工作流">深度分析</a></p>
+</blockquote>
+<p><strong>核心洞察</strong>：Bernini 可以通过手工搭建的全模态 ComfyUI 工作流，在图生视频+音频+口型同步维度上实现 Seedance 2.0 级别的效果，成为字节生态内的”免费平替”。</p>
+<p><strong>Bernini 能力边界</strong>：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>能力</th><th>表现</th><th>推荐</th></tr></thead><tbody><tr><td>图生视频 (I2V)</td><td>优秀 — 人物一致性高，动作自然</td><td>✅ 主力</td></tr><tr><td>多图参考 (≤4张)</td><td>角色+场景参考，相似度极高</td><td>✅ 替代全能参考</td></tr><tr><td>图像编辑</td><td><strong>极强</strong> — 1帧即可编辑，一致性保持好</td><td>✅ 后期修复</td></tr><tr><td>文生视频 (T2V)</td><td>可用 — 动作偏快，偶有失控</td><td>⚠️ 慎用</td></tr><tr><td>文生图 (T2I)</td><td>一般 — 偏糊，非主力</td><td>❌ 不推荐</td></tr></tbody></table></div>
+<p><strong>本地全模态五步管线</strong>：</p>
+<pre><code>SD/Flux出图(首尾帧) → Bernini I2V → Huanyuan/MiniMax SFX → VoxyPM TTS → InfiniTalk 口型同步
+</code></pre>
+<p><strong>关键参数决策</strong>（社区生产验证）：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>参数</th><th>推荐值</th><th>说明</th></tr></thead><tbody><tr><td>步数策略</td><td>4步(动态) + 6步(降噪) = 10步</td><td>目前最佳平衡；三步三步会产生噪点</td></tr><tr><td>I2V 模型</td><td>Wan 2.1 64-Ranker + Unified Reward</td><td>效果优于其他组合</td></tr><tr><td>参考图尺寸</td><td><strong>必须完全一致</strong></td><td>不一致会直接报错</td></tr><tr><td>提示词增强</td><td>GPT-5.5 / Qwen 3.1 格式化</td><td>成本几分钱，效果提升显著</td></tr><tr><td>音频填充</td><td>TTS先垫5秒静音再修剪</td><td>防止配音不够长导致混合截断</td></tr><tr><td>口型同步</td><td>InfiniTalk V2V, 帧尺寸必须一致</td><td>24FPS, 帧数4n+1</td></tr></tbody></table></div>
+<p><strong>集成到 Jellyfish 的方式</strong>：</p>
+<ul>
+<li>ComfyUI Provider 层：封装 Bernini I2V 工作流为 Jellyfish 的一个 video provider</li>
+<li>资产系统对接：角色 Reference Set → Bernini 多图参考输入</li>
+<li>成本优势：完全本地化，零 API 费用（与 Seedance API 按次收费形成对比）</li>
+<li>硬件要求：≥12GB VRAM（推荐 16GB+），Running Hub 云端备选</li>
+</ul>
+<p><strong>局限性</strong>：</p>
+<ul>
+<li>文生视频不如 Seedance — 不适合零参考图生成</li>
+<li>文生图不可用 — 仍需 SD/Flux 出首尾帧</li>
+<li>工作流搭建复杂 — 需 5-6 个独立步骤</li>
+<li>音频口型偶尔不同步</li>
+</ul>
+<h3 id="hyperframes---codex驱动的全自动视频剪辑革命-2026-06-05-更新-24371-v0673-新采纳者reap">Hyperframes 🔥 — Codex驱动的全自动视频剪辑革命 (2026-06-05 更新: ⭐24,371, v0.6.73, 新采纳者reap)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#hyperframes---codex驱动的全自动视频剪辑革命-2026-06-05-更新-24371-v0673-新采纳者reap" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>HeyGen 开源项目 (GitHub heygen-com/hyperframes, ⭐24,371, 2026-05-08 开源，06-05活跃)，彻底改变了AI视频剪辑范式：</p>
+<ul>
+<li><strong>核心能力</strong>: HTML+CSS → MP4视频，像素级精准控制，告别AE关键帧</li>
+<li><strong>Codex集成</strong>: 安装HyperFrames插件后，Codex可全自动完成”想法→脚本→HTML→MP4→配音→字幕”</li>
+<li><strong>最新更新 (6月4-5日 v0.6.73)</strong>:
+<ul>
+<li><code>v0.6.73</code>: 修复非循环媒体自然结束不重启(<code>#1203</code>)、CLI内存报告(<code>#1204</code>)、401重试装饰器(<code>#1202</code>)</li>
+<li><code>docs</code>: 新采纳者 <strong>reap</strong> 平台接入(<code>#876</code>)</li>
+<li><code>v0.6.64 (05-31)</code>: 多轨音频混音、Lottie适配、Lambda测试</li>
+</ul>
+</li>
+<li><strong>06-03社区新高</strong>: 技术胖”为什么你的HyperFrames动画不丝滑？Codex实战4个坑全讲透” <strong>(65,939播放)</strong> 🔥</li>
+<li><strong>06-05社区负面</strong>: “CodeX+HyperFrames自动剪辑？拉完了！” (183播放) — 开始出现负面反馈</li>
+<li><strong>Codex 6款业务插件发布</strong> 🔥 (06-03): OpenAI为Codex推出六款业务插件 + Sites和Annotations功能 (橘鸦Juya, 3,026播放)</li>
+<li><strong>社区爆发</strong>:
+<ul>
+<li>“用 Codex 做视频，HyperFrames 插件真香了” (Andrew游牧, 5786播放 05-08)</li>
+<li>“Codex 居然能剪视频了！” (AI破局者, 2115播放 05-12)</li>
+<li>“我用 Codex + HyperFrames 做了一条 3 分钟中文科普视频” (2083播放 05-08)</li>
+<li>“Codex+HyperFrames实现全自动剪辑！” (拓扑同学, 05-12/05-17 双发)</li>
+<li>“AI也能帮你剪视频了 Codex + HyperFrames 正在吃掉剪辑行业” (Sherry小水, 05-17)</li>
+</ul>
+</li>
+<li><strong>社区爆发延续 (06-01更新)</strong>:
+<ul>
+<li>“用 Codex 做视频，HyperFrames 插件真香了” (Andrew游牧, 12,348播放 05-31 🔥 持续走高)</li>
+<li>“AI 剪辑教程：用这套方法，让 Codex 剪视频效果以及效率翻倍” (废才俱乐部Club, <strong>19,272播放</strong> 05-31)</li>
+<li>“为什么你的 HyperFrames 动画不丝滑？Codex 实战 4 个坑全讲透” (技术胖, <strong>53,549播放</strong> 05-31 🔥 最高播放HF教程)</li>
+<li>“hyperframes对比remotion，vibe做动画哪家强？” (浙大猫学长, 4,646播放 05-31)</li>
+<li>Codex 中文设置教程 — “codex 设置不了中文？我复现半天终于解决了” (枫枫知道, 9,540播放 05-31)</li>
+</ul>
+</li>
+<li><strong>Remotion对比</strong>: HyperFrames胜在Codex原生集成+Agent友好，Remotion胜在生态系统成熟</li>
+<li><strong>对AI短剧的冲击</strong>: 剪辑环节被Codex+HyperFrames覆盖</li>
+<li><strong>v0.6.64 (2026-05-31)</strong>: 多轨音频混音修复(<code>fix multi-track audioMixer test</code>)、Lottie运行时适配文档(<code>align Lottie guidance with runtime adapter</code>)、Lambda冒烟测试+benchmark — 云端部署与音频能力成熟\n- <strong>全AI闭环</strong>: 剧本(LLM) → 分镜(Seedance/HH/LTX2.3) → 剪辑(Codex+HyperFrames) → 配音(TTS)</li>
+<li><strong>影视飓风279万播放AI工作流</strong>: “AI真的好用吗？影视飓风全新工作流分享” (2,796,353播放, 155,851赞 🔥) — 从2024到2026年AI在专业影视制作中的深度嵌入，涵盖剧本辅助、AI生成预可视化、AI粗剪、AI调色辅助全流程。核心结论: AI已从”尝鲜”进入”生产必需”阶段</li>
+<li><strong>Codex 5.5 生态最新</strong> (2026-05-17):
+<ul>
+<li>Codex中国站正式上线 (Claw小龙虾, 05-15, 708播放)</li>
+<li>OpenAI表示Codex即将登陆手机 (05-15资讯)</li>
+<li>GPT-5.5被社区反映”变笨”，Codex负责人紧急灭火 (大单网, 05-17)</li>
+<li>“5分钟速通Codex” 1.7万播放 (姚武酒, 05-17) — 高热度教程</li>
+<li>“GPT-5.5堪称自闭天才 | Codex下载狂飙 | 弃用Claude” (Nana的AI娜娜, 05-15)</li>
+<li><strong>GPT-5.6泄露线索加强</strong>: “GPT 5.6来了！目标直指Mythos，中国AI也已加入战场” (AI-seeker, 10,852播放) — 社区讨论Mythos对标。OpenAI 测试节奏加快</li>
+<li><strong>OpenAI推出Codex 6款业务插件</strong> 🔥 (06-03, 06-12持续爆火): OpenAI 为 Codex 推出六款业务插件 + Sites 和 Annotations 功能，从编程工具向业务应用平台拓展。橘鸦Juya报道已飙至 <strong>32,904播放🔥</strong>。社区热议：外贸人最适合使用Codex (309播放)、Codex做数据分析导出PPT (200播放)、Codex跑线上业务宕机风险 (113播放)</li>
+<li><strong>Codex 10个必装插件教程</strong>: 22,010播放, 实测Codex 10个必装插件从动画到视频生成全覆盖 (松小鼠呀ya)</li>
+<li><strong>Codex零基础实战教程爆火</strong>: 程序员鱼皮 (244,491播放 🔥)</li>
+<li><strong>HyperFrames 技术胖4坑讲透</strong>: 65,939播放，目前最高播放HF深度教程</li>
+<li><strong>程序员鱼皮锐评32个AI编程工具</strong> (304,035播放, 9,803赞 🔥): Cursor/Claude Code/Codex/GitHub Copilot/Windsurf/Trae/Kiro/Qoder/CodeBuddy等全实测横评</li>
+</ul>
+</li>
+</ul>
+<p><strong>Claude Fable 5正式发布！Mythos 5安全版上线</strong> 🔥🔥🔥 (2026-06-10 更新, 06-12实测爆火):</p>
+<ul>
+<li><strong>Claude Fable 5 正式发布</strong>: …(省略)</li>
+<li><strong>实测爆火</strong>: 神烦老狗怒砸800大洋实测(122,444播放🔥, 324弹幕), AI超元域实测碾压GPT 5.5 (61,850播放🔥), 二ノ宫小游戏复刻(1,703播放)</li>
+<li><strong>社区高涨但质疑仍在</strong>: 神烦老狗实测结论——确实强但价格逆天, 普通人用不起; AI超元域强调编程能力碾压; 二ノ宫展示Fable 5复刻广告里小游戏的能力</li>
+<li><strong>Claude Fable 5 正式发布</strong>: Anthropic终于发布了Mythos级安全模型，装安全护栏后向公众开放。SWE-bench Pro 80.3%（比GPT-5.5的58.6高22pct），SWE-bench Verified 93.9% (神烦老狗, <strong>29,083播放</strong> 🔥, 橘鸦Juya 7,573播放, 程序员阿江 11,444播放)</li>
+<li><strong>Fable 5 vs Mythos 5关系</strong>: Fable 5是Mythos 5装上安全护栏的公开版本。敏感问题自动转给弱一点的Opus 4.8来答。完整版Mythos 5只给安全防御机构用 (程序员阿江-Relakkes 11K播放)</li>
+<li><strong>定价极高</strong>: 消耗约Opus两倍，6月23日后按量收费 (AGI_Ananas 704播放)。社区评论”价格逆天根本用不起” (神烦老狗 5:30视频)</li>
+<li><strong>Mythos 5实测翻车延续</strong>: curl创始人17万行代码实测，仅扫出1个低危CVE (码里奥Ziho, 29K播放)。结论：营销噱头大于技术突破</li>
+<li><strong>GPT-5.6 Kindle 新检查点</strong>: OpenAI内部测试GPT-5.6新检查点，代号Kindle。社区猜测发布时间临近 (NixAPI 1,428播放, [中配] 1,086播放)</li>
+<li><strong>对AI视频生产的影响</strong>: Fable 5可大幅提升剧本创作质量、分镜拆解精度。但定价过高，不适合直接用于批量生产。建议评估API成本后再决定是否集成</li>
+<li><strong>三大模型军备竞赛</strong>: Claude Fable 5/Mythos 5 vs GPT-5.6 (Kindle) vs Gemini 3.5 Pro — 本周进入白热化 (黑鸦Heya 24K播放 “大模型诸神之战”)</li>
+<li><strong>Claude Mythos Preview 官宣但不对公众发布</strong>: SWE-bench Pro 77.8% (比GPT-5.4高20pct), SWE-bench Verified 93.9%。Anthropic称”太危险”不开放 (程序员阿江-Relakkes, 95K播放)</li>
+<li><strong>🔥 Claude Mythos 实测翻车</strong> ⚠️: curl创始人用17万行代码实测，仅扫出1个低危CVE，其余全是误报或普通Bug，远低于”10+ CVE”预期 (码里奥Ziho, 29K播放)。结论：<strong>Mythos营销噱头大于技术突破</strong>，但确实比传统代码分析工具强</li>
+<li><strong>🔥 Claude 新模型 Oceanus 曝光</strong> 🆕: AI-seeker (2,942播放, 06-06) 报道Anthropic新模型泄露，代号Oceanus。Anthropic坚称AGI将至。与GPT-5.6形成军备竞赛 (来源: AI-seeker, 06-06)</li>
+<li><strong>GPT 5.6 新检查点来袭</strong> 🆕: infinite灵感港 “GPT5.6新检查点来袭，Claude &amp; Gemini 虎视眈眈 — 6月7日AI日报第419期” (11,511播放, 06-07) — GPT-5.6新增checkpoint，OpenAI加速测试节奏。社区讨论Mythos对标。中国AI也已加入战场 (AI-seeker, 15K播放)</li>
+<li><strong>AI日报0604</strong>: “AI巅峰战！Mythos、GPT 5.6、Gemini 3.5 Pro互相狙击终极肉搏” (黑鸦Heya, 43K播放)</li>
+<li><strong>行业冷思考</strong>: “AI产业链中，到底谁在赚钱？” — 算力>大模型，马斯克把xAI团队拆入SpaceX，22万显卡租给Anthropic扭亏为盈 (晓辉博士, 77K播放)</li>
+<li><strong>Codex+GPT 5.5最佳组合</strong>: 产品经理、交互设计、Vibe Coding场景实测 (oil欧呦, 30K播放)</li>
+</ul>
+<h2 id="ai-漫剧动画管线差异点">AI 漫剧/动画管线（差异点）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#ai-漫剧动画管线差异点" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>环节</th><th>真人剧</th><th>漫剧</th></tr></thead><tbody><tr><td>画面来源</td><td>文生视频/图生视频</td><td>静态图 + 动画化</td></tr><tr><td>核心工作流</td><td>T2V / I2V</td><td>漫画分镜 → 图层拆分 → 动画插值</td></tr><tr><td>一致性方案</td><td>IPAdapter + 视频模型</td><td>LoRA 角色模型 + 线稿控制</td></tr><tr><td>镜头运动</td><td>模型自主</td><td>关键帧 + 补间（运镜可控）</td></tr><tr><td>产出格式</td><td>MP4 视频</td><td>竖屏 + 气泡字幕</td></tr></tbody></table></div>
+<p>漫剧特有工具链</p>
+<ul>
+<li>角色设计：SD + LoRA 训练（每个主要角色一个 LoRA）</li>
+<li>分镜生成：Comic Diffusion / 自训练模型</li>
+<li>图层拆分：Segment Anything + Photoshop 脚本</li>
+<li>动画化：AnimateDiff/ToonCrafter/自研插值 ⚠️ ToonCrafter (FranxYao/ToonCrafter) 仓库已404下线，社区推荐替代: AnimateDiff (guoyww/AnimateDiff) 或 Wan2.1 I2V</li>
+<li>特效：After Effects 模板化 + AI 生成粒子/光效</li>
+<li>漫画格式输出：多图拼接 + 阅读顺序自动化</li>
+</ul>
+<h2 id="传统影视--ai-自动化映射">传统影视 → AI 自动化映射<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#传统影视--ai-自动化映射" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<pre><code>传统环节        → AI 自动化方案
+─────────────────────────────────
+编剧            → LLM 批量生成 + 人工筛选
+分镜绘制        → AI 分镜图生成（SD + ControlNet）
+选角/定妆        → AI 角色生成 + 一致性系统
+拍摄            → T2V/I2V 批量生成
+灯光/布景        → AI 场景生成（背景替换）
+配音            → TTS 批量 + 情感控制
+剪辑            → 剧本时间轴驱动自动剪辑
+调色            → AI LUT 自动匹配
+字幕            → ASR + 自动时间轴
+宣发物料         → AI 海报/预告片生成
+</code></pre>
+<h2 id="市场数据2026年">市场数据（2026年）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#市场数据2026年" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>指标</th><th>数据</th></tr></thead><tbody><tr><td>AI短剧用户规模</td><td>2.8 亿（2025 年 1.2 亿）</td></tr><tr><td>市场规模</td><td>240 亿元</td></tr><tr><td>2026 春节档 AI 动漫短剧占比</td><td>30%</td></tr><tr><td>传统短剧单集成本</td><td>5-10 万元</td></tr><tr><td>AI 短剧单集成本</td><td>300-5000 元（标杆案例3000元/整部）</td></tr><tr><td>AI短剧爆款案例</td><td>《安徽小木匠》3000元成本/3.5亿次播放（06-07）</td></tr><tr><td>传统制作周期</td><td>2-3 个月</td></tr><tr><td>AI 制作周期</td><td>1 周左右</td></tr><tr><td>2025 漫剧爆款率</td><td>0.16%（6 万部仅 96 部破亿）</td></tr></tbody></table></div>
+<p><strong>核心洞察</strong>：AI 解决”怎么拍”，不解决”拍什么”。选题和剧本仍是核心壁垒。</p>
+<h2 id="平台分析与竞品">平台分析与竞品<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#平台分析与竞品" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Jellyfish（水母）— 开源标杆 ⭐</p>
+<ul>
+<li><strong>GitHub</strong>: <code>github.com/Forget-C/Jellyfish</code> (3,731 Stars, Python)</li>
+<li><strong>定位</strong>: AI 短剧/漫剧一站式生产工具</li>
+<li><strong>架构</strong>: 剧本输入 → 智能分镜 → 资产一致性管理 → AI 生成 → 编辑 → 导出</li>
+<li><strong>核心设计</strong>:
+<ul>
+<li>资产一致性：全局种子 + 统一风格 + 资产复用（解决”漂移”问题）</li>
+<li>Shot 确认工作流：候选确认 → ready → 生成</li>
+<li>统一异步任务中心（文本/图像/视频）</li>
+<li>多模型/多供应商管理 + prompt 模板</li>
+<li>OpenAPI 前后端分离</li>
+</ul>
+</li>
+<li><strong>参考价值</strong>: 完整的开源实现，可直接 fork 定制或借鉴架构</li>
+</ul>
+<p>LibTV（liblib.tv）— Agent 友好型 ⭐</p>
+<ul>
+<li><strong>开发商</strong>: LiblibAI（国内最大 AI 图像平台，类 Civitai）</li>
+<li><strong>定位</strong>: 全球首个同时面向人类创作者与 AI Agent 的视频创作平台</li>
+<li><strong>核心设计</strong>: 无限画布 + 节点式工作流（类 ComfyUI）、双入口（人类 UI + Agent API）</li>
+<li><strong>集成模型</strong>: Lib Nano Pro、Kling 3.0</li>
+<li><strong>功能</strong>: 剧本转分镜、角色三视图、多机位分镜、Agent 自动拍片</li>
+<li><strong>参考价值</strong>: 节点式工作流 + Agent 双入口是正确的架构方向</li>
+</ul>
+<p>剧火AI（juhuo.cn）</p>
+<ul>
+<li>首批接入 Seedance 2.0 的商用平台</li>
+<li>AI 漫剧 + AI 仿真人剧全覆盖</li>
+<li>Agent 自动化：输入想法/上传剧本 → 自动策划 → 视频合成</li>
+</ul>
+<p>其他竞品</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>平台</th><th>特点</th></tr></thead><tbody><tr><td>天工短剧工作台（昆仑万维）</td><td>工业化生成平台</td></tr><tr><td>AniShort</td><td>协作创作与流程管理</td></tr><tr><td>即梦（字节）— Seedance 2.0 首发平台 ⭐</td><td></td></tr></tbody></table></div>
+<ul>
+<li><strong>开发商</strong>: 字节跳动</li>
+<li><strong>定位</strong>: 通用AI创作平台（生图+生视频+Agent工作流）</li>
+<li><strong>核心能力</strong>: Seedance 2.0/2.1首发、8种Agent玩法、节点式工作流编排、CLI工具</li>
+<li><strong>参考价值</strong>: 字节AI视频生态的入口级平台</li>
+</ul>
+<p>火山引擎「剧创」（字节）— 垂直短剧生产工具 🆕🔥</p>
+<ul>
+<li><strong>开发商</strong>: 字节跳动 / 火山引擎</li>
+<li><strong>首次曝光</strong>: 2026-06-03（B站@大象学长_，402播放）</li>
+<li><strong>定位</strong>: AI短剧垂直专用工具 — “上传剧本→一键精美短剧生成”</li>
+<li><strong>与即梦的关系</strong>: 即梦是横向通用AI创作平台，剧创是纵向短剧专用工具。字节走”平台+垂直工具”双轨战略</li>
+<li><strong>底层模型</strong>: 深度绑定 Seedance 2.0/2.1（视频生成），可能集成Bernini（视频编辑）、DreamID-Omni（角色一致性）</li>
+<li><strong>核心卖点</strong>:
+<ul>
+<li>零门槛：上传剧本即可自动完成分镜→角色→视频→配音→导出全流程</li>
+<li>原生Seedance集成：优化深度非第三方可比</li>
+<li>抖音生态闭环：可能内置一键发布到抖音/西瓜视频（致命的分发优势）</li>
+</ul>
+</li>
+<li><strong>威胁评估</strong>: ⚠️⚠️⚠️ 高 — 字节模型+平台+渠道三重优势，对非字节系商业短剧工具冲击最大</li>
+<li><strong>我们应对</strong>:
+<ul>
+<li>差异化定位：强化开源自由+多模型路由+本地部署+Agent编排</li>
+<li>不竞争”一键式”，竞争”可定制+可解释+可审计”</li>
+<li>主攻B端（MCN/短剧工作室），他们有定制需求</li>
+</ul>
+</li>
+<li><strong>详细分析</strong>: <code>~/Documents/ai-video-research/火山引擎剧创-AI短剧工具分析.md</code>
+| 剪映（字节） | 短视频 AI 编辑 |
+| <strong>Toonflow</strong> 🆕🔥 | <strong>开源AI短剧Agent工具</strong> (HBAI-Ltd/Toonflow-app, ⭐9,652, v1.1.7) — 三层Agent+Skill文件化+ONNX记忆+无限画布，小说→剧本→AI图→AI视频全流程，B站80K播放。📝 深度分析: <code>~/Documents/ai-video-research/Toonflow-app-架构分析.md</code> |
+| <strong>Moyin Creator(魔因漫创)</strong> 🆕🔥 | <strong>开源AI影视生产工具</strong> (MemeCalculate/moyin-cre) — 五大模块流水线: 剧本→角色→场景→导演→S级(Seedance2.0) |
+| <strong>novel-to-drama-system</strong> 🆕🔥 | <strong>AI网文创作+短剧生产引擎</strong> (boxue96/novel-to-drama-system, ⭐7, MIT, 2026-06-06, <strong>06-11持续更新</strong>) — 小说→分卷大纲→细纲→章节→10镜分镜→视频全流程。核心亮点：<strong>prompt热加载系统</strong>(mtime+importlib.reload零重启)、<strong>分层上下文注入</strong>(三漏斗模型:全局→卷级→章级)、<strong>口语色板系统</strong>(5维角色说话方式指纹)、<strong>硬门禁规则引擎</strong>(HardRules/ScanRules双层+ai_scan质检)、<strong>字数控制器</strong>(段落裁剪+句子边界保持)、<strong>防抢跑机制</strong>(下一章预告负面约束)。📝 <a href="../~/Documents/ai-video-research/novel-to-drama-system-分析" class="internal alias" data-slug="~/Documents/ai-video-research/novel-to-drama-system-分析">深度分析</a> |
+| <strong>ViMax</strong> 🆕🔥🔥 | <strong>HKU开源Agentic视频生成框架</strong> (HKUDS/ViMax, ⭐9,801/🍴1,453, MIT, Python 3.12, 2026-06-02论文) — 导演+编剧+制片人+视频生成器四合一。14 Agent协同(Idea2Video/Novel2Video/Script2Video三管线)。核心：RAG长剧本引擎、VLM自动一致性校验、并行多图生成+最佳帧筛选、Agents Loop+TUI交互式创作。支持Google Veo/Seedance/OpenRouter等。📝 <a href="../~/.hermes/skills/creative/ai-video-skill-index/references/vimax" class="internal alias" data-slug="~/.hermes/skills/creative/ai-video-skill-index/references/vimax">深度研报</a> | 免费(MIT开源) | GitHub + arXiv:2606.07649 |
+| <strong>八尺x全自动引擎</strong> 🆕 | <strong>自搓开源导演引擎</strong> — NanoBanana Pro+Veo 3.1+Gemini 3.1 Pro，抗崩溃/自动归档 |</li>
+</ul>
+<p>| <strong>MoneyPrinterTurbo</strong> 🔗 | <strong>互补工具</strong> — AI 信息流短视频 (⭐80K, harry0703/MoneyPrinterTurbo)。主题→LLM脚本→Pexels素材→TTS→MoviePy合成。非短剧工具，是与我们赛道互补的<strong>信息流口播视频自动化</strong>标杆。借鉴价值：TTS多provider抽象、字幕渲染(Pillow替代ImageMagick)、任务队列设计。详见 <code>moneyprinterturbo</code> 技能。 |</p>
+<h2 id="平台架构设计">平台架构设计<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#平台架构设计" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>设计原则</p>
+<ol>
+<li>借鉴 Jellyfish 的资产一致性模型（全局种子 + 资产复用 + 实体管理）</li>
+<li>借鉴 LibTV 的节点式工作流（可视化管线、Agent 双入口）</li>
+<li>面向团队角色设计（编剧/抽卡师/剪辑师各有工作台，平台做胶水）</li>
+<li>多模型可插拔（Seedance 2.0 / Kling 3.0 / Wan2.7 按需路由）</li>
+</ol>
+<p>系统分层</p>
+<pre><code>前端层:  编剧工作台 | 抽卡工作台 | 剪辑工作台
+API 层:  OpenAPI（含 Agent 入口供 Hermes 调度）
+核心层:  剧本引擎 | 分镜引擎 | 资产引擎 | 生成调度器 | 模型网关 | 配音引擎 | 剪辑引擎 | 导出引擎
+基建层:  PostgreSQL | Redis | MinIO | Celery
+模型层:  Seedance 2.0 | Kling 3.0 | Wan2.7 | ElevenLabs | ...
+</code></pre>
+<p>数据模型（核心）</p>
+<pre><code>Project → Chapter → Shot → KeyFrame / ReferenceImage / VideoPrompt / GenerationTask
+         Character → ReferenceImages / LoRA
+         Scene / Prop / Costume
+</code></pre>
+<p>技术选型</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>组件</th><th>推荐</th><th>理由</th></tr></thead><tbody><tr><td>后端</td><td>FastAPI</td><td>异步、OpenAPI 自动生成、Python 生态</td></tr><tr><td>前端</td><td>React + React Flow</td><td>节点式工作流 UI</td></tr><tr><td>任务队列</td><td>Celery + Redis</td><td>异步视频生成任务</td></tr><tr><td>存储</td><td>MinIO / S3</td><td>视频/图片素材</td></tr><tr><td>模型接入</td><td>统一 gateway 层</td><td>多模型路由、降级、成本控制</td></tr></tbody></table></div>
+<h2 id="实施路线图">实施路线图<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#实施路线图" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>当前状态 (2026-05-14)</p>
+<p><strong>Phase 1: Fork Jellyfish → 开发环境 → Provider 集成</strong> — 85% 完成</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>组件</th><th>状态</th><th>备注</th></tr></thead><tbody><tr><td>Jellyfish Fork + 本地环境</td><td>✅</td><td>5 服务全在线 (Redis/Backend/Celery/ComfyUI/Frontend)</td></tr><tr><td>ComfyUI 工作流系统</td><td>✅</td><td>5 模板 + WorkflowFactory + 自动降级 + IPAdapter</td></tr><tr><td>Seedance Provider 代码</td><td>✅</td><td>DB 中有占位符 Key，需真实 Key</td></tr><tr><td>DashScope Wan2.7 Provider</td><td>✅</td><td>代码完成 (8/8 E2E)，待 API Key</td></tr><tr><td>Kling Provider</td><td>✅</td><td>代码完成 (35/35 E2E)，待 API Key</td></tr><tr><td>CosyVoice TTS Provider</td><td>✅</td><td>代码完成 (5/5 E2E)，待 API Key</td></tr><tr><td>DeepSeek LLM</td><td>❌</td><td><strong>Key 已失效 (401)</strong>，剧本分镜/提取全部阻塞</td></tr><tr><td>统一配置工具</td><td>✅</td><td><code>scripts/setup_all_providers.py</code> 一站式注册所有 Provider</td></tr></tbody></table></div>
+<p><strong>阻塞项</strong>: DeepSeek API Key 过期 + 三个视频 Provider 缺 Key。拿到 Key 后一条命令即可完成全部配置。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>阶段</th><th>周期</th><th>目标</th></tr></thead><tbody><tr><td>Phase 1: MVP</td><td>2-4 周</td><td>最小闭环：剧本→分镜→视频生成→导出，单模型</td></tr><tr><td>Phase 2: 团队协作</td><td>4-8 周</td><td>多角色工作台、资产库、任务队列、多模型网关</td></tr><tr><td>Phase 3: 自动化</td><td>8-12 周</td><td>Agent 全自动模式（Hermes 驱动）、节点式工作流、批量生产</td></tr><tr><td>Phase 4: 平台化</td><td>持续</td><td>多租户、模板市场、开放 API、分发渠道</td></tr></tbody></table></div>
+<h2 id="关键风险">关键风险<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#关键风险" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ol>
+<li><strong>视频模型 API 不稳定</strong>：Seedance 2.0 仍在公测，需多模型 fallback</li>
+<li><strong>角色一致性仍是难点</strong>：即便 Jellyfish 也视其为核心挑战</li>
+<li><strong>成本控制</strong>：API 调用费可能吃掉利润，需 batch 优化和缓存</li>
+<li><strong>版权合规</strong>：AI 生成内容版权归属灰色地带</li>
+<li><strong>爆款率极低（0.16%）</strong>：工具解决效率，选题和剧本质量才是核心</li>
+</ol>
+<h2 id="参考资料">参考资料<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#参考资料" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><code>references/gpt-image-2-via-aitechflux.md</code> — 🆕 GPT-Image-2 API 接入：b64_json 返回、2K 分辨率、集成到 Jellyfish 方案</li>
+<li><code>references/hermes-key-masking-workaround.md</code> — 🆕 Hermes Key 脱敏绕过技术</li>
+<li><code>references/feishu-gateway-yolo-fix.md</code> — 🆕 飞书网关审批窗修复</li>
+<li><code>references/vision-api-integration.md</code> — 🆕 视频理解 API 集成</li>
+<li><code>references/pipeline-research.md</code> — 完整调研报告（含详细架构、工作流、竞品对比）</li>
+<li><code>references/competitor-analysis-framework.md</code> — 🆕 竞品分析框架：7节模板、cron模式信息收集替代方案、回写步骤</li>
+<li><code>references/research-methodology.md</code> — 线上调研方法论（绕过搜索限制的技巧）</li>
+<li><code>references/research-methodology-cn.md</code> — <strong>国内平台搜索方法论</strong>（Bing 陷阱、B站/抖音/小红书替代方案）</li>
+<li><code>references/team-chengyi-ai-rd.md</code> — 程一集团AI研发部团队上下文（成员、技术栈、作品状态、成本目标）</li>
+<li><code>references/jellyfish-local-setup.md</code> — Jellyfish 本地开发环境搭建（无 Docker，含 ComfyUI 桥接、国内镜像、<strong>火山引擎/Seedance Provider 配置</strong>、<strong>视频生成流水线</strong>）</li>
+<li><code>references/jellyfish-architecture.md</code> — Jellyfish 源码架构深度分析（9 Agent、Provider 系统、数据模型、任务系统）</li>
+<li><code>references/jellyfish-troubleshooting.md</code> — 排障实录：API Key 双源 401、Celery 启动 hang、extract 422、Chapter UUID 等</li>
+<li><code>references/daily-research-scan.md</code> — 每日研报自动扫描系统设计（7源+反爬降级，cron job <code>9e3d8776420a</code>）</li>
+<li><code>references/daily-scan-execution-log.md</code> — 每日研报执行日志/方法论（06-06扫描复盘，含关键词有效性分析/失败策略修复/平台可达性更新）</li>
+<li><code>references/bilibili-api-search.md</code> — <strong>B站 API 搜索方法</strong>（06-08更新：<code>search/all/v2</code> 端点已失效，改用 <code>search/type</code> 端点+完整浏览器Headers；<code>scripts/search_bilibili.py</code> 已同步更新）</li>
+<li><code>references/jellyfish-api-quirks.md</code> — API 细节陷阱：task_kind 单复数、succeeded vs completed、frame_type 枚举</li>
+<li>🆕 <strong>竞品深度分析笔记</strong>（<code>~/Documents/ai-video-research/</code>）：<code>Pixelle-Video-分析.md</code>（阿里22.5K⭐短视频引擎）、<code>Huobao-Drama-分析.md</code>（火爆短剧12.7K⭐）、<code>LocalMiniDrama-分析.md</code>（本地短剧生成器652⭐）</li>
+<li><code>references/api-providers.md</code> — LLM API 中转站验证记录（Sub2API/Codex/DeepSeek）</li>
+<li><code>references/tirith-workarounds.md</code> — cron 模式下安全扫描器绕过技巧（pipe/interpreter/unicode 拦截）</li>
+<li><code>references/vision-api-providers.md</code> — 🆕 <strong>视觉理解 API 对比</strong>（阶跃星辰 vs 百炼 qwen-vl-max，定价、实测、调用示例）</li>
+<li><code>/home/kaindy/ai-drama-platform/comfyui-bridge/generate_frames.py</code> — Jellyfish → ComfyUI 出图桥接脚本</li>
+<li><code>scripts/generate_frames_comfyui.py</code> — Jellyfish prompt → ComfyUI 图像生成桥接脚本</li>
+<li><code>scripts/e2e-pipeline-test.py</code> — E2E 管线自动化测试脚本（创建项目→章节→分镜→提取→验证），cron 兼容</li>
+<li><code>scripts/search_bilibili.py</code> — B站搜索工具脚本（06-08重构：改用 <code>search/type</code> 端点，<code>search/all/v2</code> 已失效。支持多关键词/播放量过滤/JSON输出/视频详情获取/pubdate排序/0.5s速率限制）</li>
+</ul>
+<h2 id="jellyfish-本地开发环境已验证">Jellyfish 本地开发环境（已验证）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#jellyfish-本地开发环境已验证" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>前置条件</p>
+<ul>
+<li>Python 3.12+, uv, Node.js, Redis</li>
+<li><strong>LLM API Key 必须配置</strong>：AI Agent（分镜/提取）依赖 OpenAI 兼容接口</li>
+<li>无 Docker 时直接本地跑（已验证可行）</li>
+</ul>
+<p>⚠️ 关键 Pitfall：API Key 双源问题</p>
+<p>Jellyfish <strong>从 providers 表读 API key</strong>，而非 <code>.env</code> 文件。启动时 bootstrap 把 <code>.env</code> 的 <code>OPENAI_API_KEY</code> 写入 providers 表一次。之后如果改了 <code>.env</code>，<strong>必须同步更新 DB 中的 providers.api_key</strong>，否则 Celery worker 调用 LLM 会 401。</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 同步 key 到 DB（改完 .env 后必做）</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">python3</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -c</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> &quot;</span></span>
+<span data-line><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">import sqlite3, re</span></span>
+<span data-line><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">db = sqlite3.connect('backend/jellyfish.db')</span></span>
+<span data-line><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">with open('backend/.env') as f:</span></span>
+<span data-line><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">    key = re.search(r'OPENAI_API_KEY=(.+)', f.read()).group(1).strip()</span></span>
+<span data-line><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">db.execute(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">\&quot;</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">UPDATE providers SET api_key=? WHERE key='openai'</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">\&quot;</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">, (key,))</span></span>
+<span data-line><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">db.commit()</span></span>
+<span data-line><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">print('Key synced to DB')</span></span>
+<span data-line><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;</span></span></code></pre></figure>
+<p><strong>症状</strong>：Celery 任务秒失败，<code>error_message: 'Error code: 401 - Authentication Fails, Your api key: **** is invalid'</code></p>
+<p>快速启动（本环境 — 2026-05-10 当前状态）</p>
+<p><strong>三种启动方式</strong>：</p>
+<p><strong>A. 本地开发模式（当前运行中 — 2026-05-11 验证）</strong>：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 后端 (已运行，PID 55575)</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">cd</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> Jellyfish/backend</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">uv</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> run</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> uvicorn</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> app.main:app</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --host</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0.0.0.0</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --port</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 8000</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> &amp;</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 前端 (已运行)  </span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">cd</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> Jellyfish/front</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">pnpm</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> dev</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">  # → http://localhost:7788</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># Celery Worker (已运行，3 进程)</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">cd</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> Jellyfish/backend</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">uv</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> run</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> celery</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -A</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> app.core.celery_app</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> worker</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --loglevel=info</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --concurrency=2</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> &amp;</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># ⚠️ 路径是 app.core.celery_app（不是 app.core.tasks.celery_app，后者报 Unable to load）</span></span></code></pre></figure>
+<p><strong>B. Docker 全栈模式</strong>：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">cd</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> Jellyfish</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">docker</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> compose</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --profile</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> full</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> up</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -d</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 包含: postgres + redis + backend + celery + frontend</span></span></code></pre></figure>
+<p><strong>C. Docker 精简模式（无前端）</strong>：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">docker</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> compose</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --profile</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> production</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> up</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -d</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 包含: postgres + redis + backend + celery</span></span></code></pre></figure>
+<p>详细配置见 <code>Jellyfish/docker-compose.yml</code>（2026-05-10 创建）。</p>
+<p>Style 枚举（创建 Project 时必须用中文值）</p>
+<ul>
+<li>ProjectStyle: 真人都市, 真人科幻, 真人古装, 动漫科幻, 动漫3D, 国漫, 水墨画</li>
+<li>VisualStyle: 现实, 动漫</li>
+</ul>
+<p>已验证端点
+<code>GET /health</code>, <code>POST /api/v1/studio/projects</code>, <code>POST /api/v1/studio/chapters</code>,\n<code>POST /api/v1/script-processing/divide-async</code>, <code>POST .../extract-async</code>,\n<code>POST /api/v1/film/tasks/shot-frame-prompts</code>,
+<code>GET /api/v1/llm/providers</code>, <code>GET /api/v1/llm/models</code>,
+<code>GET /api/v1/studio/projects/style-options</code>,
+<code>GET /api/v1/studio/shots/runtime-summary</code></p>
+<p>任务状态轮询
+Celery 任务完成后状态值是 <code>succeeded</code>（不是 <code>completed</code>）。轮询时需匹配两者：
+<code>status in ('succeeded', 'failed', 'completed', 'cancelled')</code>。
+任务状态查询端点：<code>GET /api/v1/film/tasks/{task_id}/status</code>。
+<code>POST /api/v1/script-processing/divide</code> (同步), <code>POST .../divide-async</code> (异步),
+<code>POST /api/v1/script-processing/extract</code> (同步，需传 script_division),
+<code>POST .../extract-async</code> (异步，需传 script_division),
+<code>GET /api/v1/film/tasks/{task_id}/status</code> (轮询 Celery 任务)。</p>
+<p>前端目录</p>
+<ul>
+<li>前端代码在 <code>Jellyfish/front/</code>（不是 <code>frontend/</code>）</li>
+<li>使用 pnpm，需 <code>export PATH=&quot;$HOME/.npm-global/bin:$PATH&quot;</code></li>
+<li>启动前必须跑 <code>pnpm run openapi:update</code> 同步后端 API 类型</li>
+</ul>
+<p>阻塞点</p>
+<p>阻塞点</p>
+<ul>
+<li>无 LLM Key 时 CRUD API 可用，<code>/script-processing/*</code> 失败</li>
+<li>Swagger: <code>http://localhost:8000/docs</code></li>
+<li><strong>DB 与 .env 的 Key 不一致</strong>：Jellyfish 从 <code>providers</code> 表读 key，Celery/uvicorn 都用这个。<code>.env</code> 更新后需同步 DB：<code>UPDATE providers SET api_key='...' WHERE id='ds-openai';</code></li>
+<li><strong>Chapter 字段名陷阱</strong>：存储剧本用 <code>raw_text</code>（不是 <code>script_text</code>）。<code>script_text</code> 是 divide/extract 端点的参数名，Chapter CRUD 用 <code>raw_text</code></li>
+<li><strong>Chapter POST 500 变通</strong>：SQLite 模式下 POST chapter 偶发 500，用 PATCH 更新已有空 chapter 的 <code>raw_text</code> 可绕过</li>
+</ul>
+<p>ComfyUI 桥接（已验证）</p>
+<ul>
+<li>桥接脚本：<code>comfyui-bridge/generate_frames.py</code>，从 Jellyfish DB 读取 <code>task_kind='shot_frame_prompt'</code> → ComfyUI API 出图</li>
+<li>HF 模型下载：huggingface.co 被 GFW 阻断 → 用 <code>hf-mirror.com</code> 镜像</li>
+<li>RTX 3050 4GB → 仅 SD 1.5 可行，启动加 <code>--lowvram</code></li>
+<li>Jellyfish 从 <code>providers</code> 表读 API key（非 .env），换 key 时必须同步更新 DB</li>
+<li>Celery worker 启动可能卡死无输出，加 <code>--pool=solo</code> 保稳</li>
+<li>帧类型枚举：<code>first</code> / <code>last</code> / <code>key</code>（非 <code>first_frame</code>）</li>
+<li>元素提取必传 <code>script_division</code> 对象</li>
+</ul>
+<p>已验证端到端流水线（2026-05-09 DeepSeek 驱动，2026-05-10 补充 Docker/同步端点验证）</p>
+<p>以下链路在本 WSL 环境完整跑通，可作为冒烟测试参考：</p>
+<p><strong>当前环境状态（2026-05-11 最新）</strong>：</p>
+<ul>
+<li>后端: FastAPI <code>:8000</code> (pid 55575)，Health check OK</li>
+<li>前端: Vite dev server <code>:7788</code></li>
+<li>Celery: 3 workers (concurrency=2)，Redis 消息队列</li>
+<li>DB: SQLite <code>jellyfish.db</code>，volcengine provider 已注册但 API Key 为占位符</li>
+<li>ComfyUI: <code>:8188</code>，GPU RTX 3050 4GB，SD 1.5 模型已加载</li>
+<li>E2E v5 测试通过: 393字剧本 → 11 分镜 → 2角色/1场景/3道具 → 5/10 shots ready</li>
+<li>⚠️ 火山引擎 API Key 需替换为真实 Key（当前 DB 中为占位符，返回 401）</li>
+</ul>
+<pre><code>剧本 → 分镜拆解(5镜) → 元素提取(角色/场景/道具) → 5镜头创建
+</code></pre>
+<p><strong>1. 创建项目 + 章节</strong></p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="python" data-theme="github-light github-dark"><code data-language="python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> urllib.request, json, uuid</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">BASE</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> =</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> &quot;http://localhost:8000/api/v1&quot;</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 创建项目</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">pid </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> str</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(uuid.uuid4())</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">data </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> {</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;id&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: pid, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;name&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;测试短剧&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;style&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;真人都市&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;visual_style&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;现实&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># POST /api/v1/studio/projects</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 创建章节（id 必填，由客户端生成 UUID）</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">cid </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> str</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(uuid.uuid4())</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">data </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> {</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;id&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: cid, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;project_id&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: pid, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;index&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">1</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;title&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;第一集&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;raw_text&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;（剧本全文）&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># POST /api/v1/studio/chapters</span></span></code></pre></figure>
+<p><strong>2. 分镜拆解</strong></p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="python" data-theme="github-light github-dark"><code data-language="python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># POST /api/v1/script-processing/divide-async</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">data </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> {</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;project_id&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: pid, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;chapter_id&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: cid, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;script_text&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: script, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;write_to_db&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">True</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># → Celery task, poll GET /api/v1/film/tasks/{task_id}/status</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 状态: running → succeeded (not &quot;completed&quot;)</span></span></code></pre></figure>
+<p><strong>3. 元素提取</strong>（需先有 script_division 结果）</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="python" data-theme="github-light github-dark"><code data-language="python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">script_division </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> {</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;shots&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [{</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;index&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: i, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;shot_name&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;...&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}]}</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">data </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> {</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;project_id&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: pid, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;chapter_id&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: cid, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;script_division&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: script_division}</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># POST /api/v1/script-processing/extract-async</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># → 结果写入 shot_extracted_candidates 表（29 候选：角色/场景/道具/服装）</span></span></code></pre></figure>
+<p><strong>4. 帧 Prompt 生成</strong></p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="python" data-theme="github-light github-dark"><code data-language="python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">data </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> {</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;project_id&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: pid, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;chapter_id&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: cid, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;shot_id&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: sid, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;frame_type&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;first&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># frame_type 必须是 first/last/key，不能是 first_frame</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># POST /api/v1/film/tasks/shot-frame-prompts</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># → 结果在 generation_tasks.result JSON 的 prompt 字段</span></span></code></pre></figure>
+<p><strong>任务状态轮询</strong>：status 值可能是 <code>succeeded</code>（不是 <code>completed</code>），<code>failed</code>，<code>running</code>。</p>
+<p>Shot 准备流程：实体创建 + 候选确认 → Ready（2026-05-10 验证）</p>
+<p>Extract 任务完成后，shot_extracted_candidates 表中有大量 <code>pending</code> 候选。需要创建实体并链接候选，shot 才会自动进入 <code>ready</code> 状态。这是分镜编辑页的核心交互，也是自动化流水线的关键一步。</p>
+<p><strong>Step 1: 创建实体（角色/场景/道具）</strong></p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 角色 — POST /api/v1/studio/entities/character</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 必填: id (客户端生成), project_id, name</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">curl</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -X</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> POST</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> http://localhost:8000/api/v1/studio/entities/character</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> \</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">  -H</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 'Content-Type: application/json'</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> \</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">  -d</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> '{&quot;id&quot;:&quot;char-li-ming&quot;,&quot;project_id&quot;:&quot;0d9b...&quot;,&quot;name&quot;:&quot;李明&quot;,</span></span>
+<span data-line><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">       &quot;description&quot;:&quot;在城市打拼五年的奋斗者&quot;,&quot;tags&quot;:[&quot;主角&quot;],</span></span>
+<span data-line><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">       &quot;style&quot;:&quot;真人都市&quot;,&quot;visual_style&quot;:&quot;现实&quot;}'</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 场景/道具/服装 — POST /api/v1/studio/entities/{scene|prop|costume}</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 必填: id, name。project_id 可选（通过关联表连接）</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">curl</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -X</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> POST</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> http://localhost:8000/api/v1/studio/entities/scene</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> \</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">  -d</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> '{&quot;id&quot;:&quot;scene-rent-room&quot;,&quot;name&quot;:&quot;出租屋&quot;,&quot;tags&quot;:[&quot;室内&quot;,&quot;日&quot;],</span></span>
+<span data-line><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">       &quot;style&quot;:&quot;真人都市&quot;,&quot;visual_style&quot;:&quot;现实&quot;,&quot;project_id&quot;:&quot;0d9b...&quot;}'</span></span></code></pre></figure>
+<p><strong>支持的 entity_type</strong>: <code>actor</code>, <code>character</code>, <code>scene</code>, <code>prop</code>, <code>costume</code></p>
+<p><strong>Style 枚举值</strong>（必须用中文）:</p>
+<ul>
+<li>ProjectStyle: <code>真人都市</code>, <code>真人科幻</code>, <code>真人古装</code>, <code>动漫科幻</code>, <code>动漫3D</code>, <code>国漫</code>, <code>水墨画</code></li>
+<li>VisualStyle: <code>现实</code>, <code>动漫</code></li>
+</ul>
+<p><strong>Step 2: 链接候选到实体</strong></p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 资产候选 — PATCH extracted-candidates/{candidate_id}/link</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">curl</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -X</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> PATCH</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> &quot;.../studio/shots/extracted-candidates/43/link&quot;</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> \</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">  -H</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 'Content-Type: application/json'</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> \</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">  -d</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> '{&quot;linked_entity_id&quot;:&quot;scene-rent-room&quot;}'</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 对白候选 — PATCH extracted-dialogue-candidates/{candidate_id}/accept</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">curl</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -X</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> PATCH</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> &quot;.../studio/shots/extracted-dialogue-candidates/14/accept&quot;</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> \</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">  -H</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 'Content-Type: application/json'</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -d</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> '{}'</span></span></code></pre></figure>
+<p><strong>Step 3: 自动状态转换</strong></p>
+<p>当 shot 的所有 pending 候选都被 link/accept/ignore 后，Jellyfish 内部状态机自动：</p>
+<ul>
+<li><code>shot.status</code> → <code>ready</code></li>
+<li><code>extraction.state</code> → <code>extracted_resolved</code></li>
+<li><code>extraction.pending_asset_count</code> + <code>pending_dialogue_count</code> → <code>0</code></li>
+</ul>
+<p>不需要显式调用”完成”端点。通过 <code>GET shots/{shot_id}/preparation-state</code> 可实时查看状态。</p>
+<p><strong>Step 4: 验证视频准备度</strong></p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">curl</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> http://localhost:8000/api/v1/studio/shots/{shot_id}/video-readiness</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># → {&quot;ready&quot;: true, &quot;issues&quot;: []}</span></span></code></pre></figure>
+<p>详细 API 陷阱见 <code>references/jellyfish-api-quirks.md</code> 第 11-14 条。</p>
+<p>Volcengine/Seedance API Key 配置</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 1. 在 .env 中设置</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">echo</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> &quot;VOLCENGINE_API_KEY=your_ark_key&quot;</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> >></span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> backend/.env</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 2. 运行种子脚本（已打包在 scripts/seed-volcengine-key.py）</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">cd</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> backend</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> &amp;&amp; </span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">python</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> scripts/seed-volcengine-key.py</span></span></code></pre></figure>
+<p>脚本从环境变量读取 key 并更新 providers 表。首次运行会自动注册火山引擎 provider。401 错误说明 key 无效或未同步。</p>
+<p>关键 Pitfall：API Key 双源不一致 🔥</p>
+<p>Jellyfish 的 LLM 调用从 <strong>providers 表</strong> 读取 API key（非 <code>.env</code> 文件）。如果 provider 创建后 <code>.env</code> 的 key 被更换，DB 里的旧 key 不会被自动更新，导致 Celery 任务持续 401。</p>
+<p><strong>症状</strong>：同步/异步分镜提取返回 401 <code>Authentication Fails</code>，但直接 <code>curl</code> / <code>httpx</code> 测试 key 完全正常。</p>
+<p><strong>诊断</strong>：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="python" data-theme="github-light github-dark"><code data-language="python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> sqlite3, re</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">db </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> sqlite3.connect(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">'backend/jellyfish.db'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">db_key </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> db.execute(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;SELECT api_key FROM providers WHERE id='ds-openai'&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">).fetchone()[</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">with</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> open</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">'backend/.env'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">as</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> f:</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    env_key </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> re.search(</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">r</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">'</span><span style="--shiki-light:#032F62;--shiki-dark:#DBEDFF;">OPENAI_API_KEY=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">(.</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">+</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">)</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, f.read()).group(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">1</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">).strip()</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">print</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">f</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Match: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">{</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">db_key </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">==</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> env_key</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">}</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)  </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># False → 需要同步！</span></span></code></pre></figure>
+<p><strong>修复</strong>：直接更新 DB：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="sql" data-theme="github-light github-dark"><code data-language="sql" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">UPDATE</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> providers </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">SET</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> api_key </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> '&lt;new-key>'</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> WHERE</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> id </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 'ds-openai'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">;</span></span></code></pre></figure>
+<p>或通过 API <code>PATCH /api/v1/llm/providers/{id}</code> 更新。更新后<strong>无需重启 uvicorn</strong>（provider 每次请求从 DB 读取）。</p>
+<p>Celery Worker 启动问题</p>
+<p><strong>WSL 环境常见症状</strong>：<code>celery worker</code> 启动后无任何输出，<code>pgrep -f celery</code> 显示进程存在但 hang 60-90s。需要耐心等待，或使用 <code>--pool=solo</code>。</p>
+<p><strong>启动命令</strong>（推荐）：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">cd</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> backend</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">uv</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> run</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> celery</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -A</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> app.core.celery_app</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> worker</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -l</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> info</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --pool=solo</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --concurrency=2</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> &amp;</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># ⚠️ 不是 app.core.tasks.celery_app — 该路径不存在，会报 Unable to load celery application</span></span></code></pre></figure>
+<p><strong>验证</strong>：等 30-90s 后 <code>pgrep -af celery</code> 应有 3-5 个进程，且任务可正常调度。不要以”没输出”判断失败——Celery 在 WSL 可能静默启动。</p>
+<p>任务轮询注意事项</p>
+<ul>
+<li>Celery 任务成功状态是 <code>succeeded</code>（不是 <code>completed</code>），失败状态是 <code>failed</code></li>
+<li>轮询端点：<code>GET /api/v1/film/tasks/{task_id}/status</code></li>
+<li><code>extract-async</code> 的 <code>script_division</code> 参数是 <strong>必填</strong>（object），需从 divide 结果重建传入</li>
+<li>ChapterCreate 需要客户端生成 <code>id</code>（UUID 字符串），不是服务端自动生成</li>
+</ul>
+<h2 id="llm-提供商配置">LLM 提供商配置<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#llm-提供商配置" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>已测试</p>
+<ul>
+<li><strong>DeepSeek</strong> ✅ — OpenAI 兼容，Jellyfish 原生支持，Hermes 已配置</li>
+<li><strong>Sub2API</strong> (codex.lingfei666.site:8080) — Anthropic Messages 格式，端点 <code>/v1/messages</code>，需要平台注册获取 Key。Key 格式非 <code>cr_</code>，平台名 Sub2API（非 Packycode）</li>
+<li><strong>火山引擎</strong> — Jellyfish 已集成，用于 Seedance 2.0 视频生成（<code>contents/generations/tasks</code>）</li>
+</ul>
+<p>⚠️ 关键 Pitfall：providers 表 vs .env 的 Key 不一致</p>
+<p>Jellyfish 从 DB <code>providers</code> 表读 API key（非 <code>.env</code>），Celery worker 和 uvicorn 都走这条路径。
+如果 <code>.env</code> 的 key 更新了但 DB 里没同步，会导致请求持续 401（DeepSeek 返回 <code>Authentication Fails</code>）。
+直接测试 HTTP 请求正常（读 <code>.env</code>），但 Jellyfish 内部调用失败（读 DB）——排查时容易被误导。</p>
+<p><strong>修复</strong>：<code>UPDATE providers SET api_key = '&lt;new_key>' WHERE id = 'ds-openai';</code></p>
+<p>配置方式
+在 <code>.env</code> 设 <code>OPENAI_API_KEY</code> 即可；自定义 base_url 通过 Jellyfish Provider API 添加。</p>
+<h2 id="comfyui-集成已验证">ComfyUI 集成（已验证）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#comfyui-集成已验证" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>本地环境</p>
+<ul>
+<li>WSL2 + RTX 3050 4GB VRAM → 仅 SD 1.5 可行，需 <code>--lowvram</code></li>
+<li>HF 模型下载：huggingface.co 被 GFW 阻断 → <strong>必须使用 hf-mirror.com</strong></li>
+<li>SD 1.5 模型：<code>v1-5-pruned-emaonly.safetensors</code> (~4GB)，下载命令：
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">curl</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -L</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -o</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> models/checkpoints/v1-5-pruned-emaonly.safetensors</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> \</span></span>
+<span data-line><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  &quot;https://hf-mirror.com/stable-diffusion-v1-5/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors&quot;</span></span></code></pre></figure>
+</li>
+<li>ComfyUI 启动：<code>python main.py --listen 127.0.0.1 --port 8188 --lowvram</code></li>
+</ul>
+<p>Jellyfish → ComfyUI 桥接
+桥接脚本：<code>comfyui-bridge/generate_frames.py</code></p>
+<p>流程：</p>
+<ol>
+<li>从 Jellyfish <code>generation_tasks</code> 表读 <code>task_kind = 'shot_frame_prompt'</code> 的结果</li>
+<li>提取 prompt → 构建 ComfyUI API workflow JSON</li>
+<li><code>POST /prompt</code> → 轮询 <code>/history/{id}</code> → 下载 <code>/view</code> 生成图</li>
+</ol>
+<p><strong>注意</strong>：task_kind 是 <code>shot_frame_prompt</code>（单数），不是复数。</p>
+<h2 id="comfyui-集成本地出图">ComfyUI 集成（本地出图）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#comfyui-集成本地出图" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote>
+<p>⚠️ <strong>2026-06-15 更新</strong>：GPT-Image-2 (via aitechflux.com 中转) 已取代 ComfyUI SD1.5 成为主力出图方案。GPT-Image-2 输出质量远超 SD1.5，且不需要本地 GPU。ComfyUI 保留为 fallback。</p>
+</blockquote>
+<h3 id="gpt-image-2-图片生成主力">GPT-Image-2 图片生成（主力）🆕<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#gpt-image-2-图片生成主力" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>API</strong>: <code>POST https://aitechflux.com/v1/images/generations</code>（OpenAI 兼容）
+<strong>模型</strong>: <code>gpt-image-2</code>，最大 2K 分辨率
+<strong>返回</strong>: <code>b64_json</code>（需 base64 解码保存为 PNG）
+<strong>耗时</strong>: ~46 秒/张 (1792×1024)
+<strong>成本</strong>: 通过 aitechflux.com 中转，Key 格式 <code>sk-LU5...</code></p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="python" data-theme="github-light github-dark"><code data-language="python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> json, urllib.request, base64</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">body </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> json.dumps({</span></span>
+<span data-line><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">    &quot;model&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;gpt-image-2&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span data-line><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">    &quot;prompt&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Cinematic portrait...&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span data-line><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">    &quot;n&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">1</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span data-line><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">    &quot;size&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;1792x1024&quot;</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}).encode()</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">req </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> urllib.request.Request(</span></span>
+<span data-line><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">    &quot;https://aitechflux.com/v1/images/generations&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">    data</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">body,</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">    headers</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">{</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Authorization&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">f</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Bearer </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">{</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">key</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">}</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Content-Type&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;application/json&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">result </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> json.loads(urllib.request.urlopen(req, </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">timeout</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">120</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">).read())</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">img_bytes </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> base64.b64decode(result[</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;data&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">][</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">][</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;b64_json&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">])</span></span></code></pre></figure>
+<p><strong>角色参考图 Prompt 模板</strong>：</p>
+<pre><code>&quot;Cinematic character reference sheet of [角色描述]. Multiple angles: front facing, three-quarter view. Clean studio lighting, white background, photorealistic, 16:9.&quot;
+</code></pre>
+<p><strong>场景建立镜头 Prompt 模板</strong>：</p>
+<pre><code>&quot;[场景名] establishing shot, cinematic wide angle. [空间描述+光影+氛围]. Photorealistic, 16:9, film grain.&quot;
+</code></pre>
+<p>⚠️ <strong>内容安全过滤</strong>：GPT-Image-2 拒绝暴力/血腥描述（骨刺、獠牙、毒血等），需降敏处理。详见 <code>references/gpt-image-2-via-aitechflux.md</code> §Content Safety。</p>
+<p>⚠️ <strong>网络代理</strong>：aitechflux.com 偶发 TCP 超时，需 <code>HTTPS_PROXY=http://127.0.0.1:7890</code>。详见同文档 §网络超时。</p>
+<p><strong>场景一致性三层策略</strong>（详见 <code>references/scene-consistency-strategy.md</code>）：</p>
+<ol>
+<li>GPT-Image-2 生成 establishing shot → 每个场景的视觉锚点</li>
+<li>场景 Prompt 模板 → 确保所有镜头色调/光线/空间统一</li>
+<li>Seedance 2.0 全能参考 → 视频生成时注入参考图</li>
+</ol>
+<h3 id="comfyui-本地出图备用">ComfyUI 本地出图（备用）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#comfyui-本地出图备用" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>环境要求</p>
+<ul>
+<li>NVIDIA GPU ≥ 4GB VRAM（SD 1.5 + <code>--lowvram</code> 即可，已验证 RTX 3050 4GB）</li>
+<li>SDXL 建议 ≥ 6GB，Flux 需 ≥ 12GB</li>
+</ul>
+<p>安装</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> clone</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> https://github.com/comfyanonymous/ComfyUI.git</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">cd</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> ComfyUI</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">python3</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -m</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> venv</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> venv</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> &amp;&amp; </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">source</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> venv/bin/activate</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">pip</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> install</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> torch</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> torchvision</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> torchaudio</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --index-url</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> https://download.pytorch.org/whl/cu121</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">pip</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> install</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -r</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> requirements.txt</span></span></code></pre></figure>
+<p>模型下载（国内）
+HuggingFace 被墙，用 hf-mirror.com 镜像：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># SD 1.5（4GB VRAM 推荐，4.0GB 模型）</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">curl</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -L</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -o</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> models/checkpoints/v1-5-pruned-emaonly.safetensors</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> \</span></span>
+<span data-line><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">  &quot;https://hf-mirror.com/stable-diffusion-v1-5/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors&quot;</span></span></code></pre></figure>
+<p>启动</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">source</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> venv/bin/activate</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">python</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> main.py</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --listen</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 127.0.0.1</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --port</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 8188</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --lowvram</span></span></code></pre></figure>
+<p>Jellyfish → ComfyUI 桥接
+桥接脚本 <code>comfyui-bridge/generate_frames.py</code> 从 Jellyfish DB 读取已生成的 shot frame prompt → 调 ComfyUI API 批量出图。用法：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">python</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> comfyui-bridge/generate_frames.py</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --chapter-id</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> &lt;</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">CHAPTER_I</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">D</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> [--dry-run]</span></span></code></pre></figure>
+<p>生成图像保存在 <code>output/frames/</code>。</p>
+<p>已验证链路的模型组合</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>用途</th><th>模型</th><th>硬件</th></tr></thead><tbody><tr><td>出图（首尾帧）</td><td>SD 1.5, 768×512</td><td>RTX 3050 4GB, ~12s/img</td></tr><tr><td>视频生成</td><td>Seedance 2.0 (API)</td><td>云端</td></tr></tbody></table></div>
+<h2 id="自主执行机制">自主执行机制<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#自主执行机制" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>本技能用于 Hermes 驱动的自动化短剧平台开发。确保自主运行：</p>
+<ul>
+<li><strong>Cron</strong>: <code>hermes cron create</code> 创建定时任务（如 <code>0 */4 * * *</code>），自动推进</li>
+<li><strong>Memory</strong>: 持久化项目上下文（路径、状态、阻塞点）</li>
+<li><strong>Todo</strong>: 每轮更新任务列表，Cron 读取继续</li>
+<li><strong>技能</strong>: 关键技术发现保存为技能引用</li>
+</ul></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>关系图谱</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-11" aria-expanded="true"><h3>目录</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#ai-video-production" data-for="ai-video-production">ai-video-production</a></li><li class="depth-0"><a href="#ai-video-productionai-视频生产" data-for="ai-video-productionai-视频生产">AI Video Production（AI 视频生产）</a></li><li class="depth-1"><a href="#触发条件" data-for="触发条件">触发条件</a></li><li class="depth-1"><a href="#核心角色与职责" data-for="核心角色与职责">核心角色与职责</a></li><li class="depth-1"><a href="#整体流程" data-for="整体流程">整体流程</a></li><li class="depth-1"><a href="#真人-ai-短剧管线" data-for="真人-ai-短剧管线">真人 AI 短剧管线</a></li><li class="depth-2"><a href="#ai短剧变现标杆案例2026年6月更新" data-for="ai短剧变现标杆案例2026年6月更新">AI短剧变现标杆案例（2026年6月更新）</a></li><li class="depth-2"><a href="#seedance-20-最新多参使用技巧--2026-06-13" data-for="seedance-20-最新多参使用技巧--2026-06-13">Seedance 2.0 最新多参使用技巧 🆕 (2026-06-13)</a></li><li class="depth-2"><a href="#seedance-20-提示词进阶情绪路线图" data-for="seedance-20-提示词进阶情绪路线图">Seedance 2.0 提示词进阶：情绪路线图</a></li><li class="depth-2"><a href="#hyperframes---codex驱动的全自动视频剪辑革命-2026-06-05-更新-24371-v0673-新采纳者reap" data-for="hyperframes---codex驱动的全自动视频剪辑革命-2026-06-05-更新-24371-v0673-新采纳者reap">Hyperframes 🔥 — Codex驱动的全自动视频剪辑革命 (2026-06-05 更新: ⭐24,371, v0.6.73, 新采纳者reap)</a></li><li class="depth-1"><a href="#ai-漫剧动画管线差异点" data-for="ai-漫剧动画管线差异点">AI 漫剧/动画管线（差异点）</a></li><li class="depth-1"><a href="#传统影视--ai-自动化映射" data-for="传统影视--ai-自动化映射">传统影视 → AI 自动化映射</a></li><li class="depth-1"><a href="#市场数据2026年" data-for="市场数据2026年">市场数据（2026年）</a></li><li class="depth-1"><a href="#平台分析与竞品" data-for="平台分析与竞品">平台分析与竞品</a></li><li class="depth-1"><a href="#平台架构设计" data-for="平台架构设计">平台架构设计</a></li><li class="depth-1"><a href="#实施路线图" data-for="实施路线图">实施路线图</a></li><li class="depth-1"><a href="#关键风险" data-for="关键风险">关键风险</a></li><li class="depth-1"><a href="#参考资料" data-for="参考资料">参考资料</a></li><li class="depth-1"><a href="#jellyfish-本地开发环境已验证" data-for="jellyfish-本地开发环境已验证">Jellyfish 本地开发环境（已验证）</a></li><li class="depth-1"><a href="#llm-提供商配置" data-for="llm-提供商配置">LLM 提供商配置</a></li><li class="depth-1"><a href="#comfyui-集成已验证" data-for="comfyui-集成已验证">ComfyUI 集成（已验证）</a></li><li class="depth-1"><a href="#comfyui-集成本地出图" data-for="comfyui-集成本地出图">ComfyUI 集成（本地出图）</a></li><li class="depth-2"><a href="#gpt-image-2-图片生成主力" data-for="gpt-image-2-图片生成主力">GPT-Image-2 图片生成（主力）🆕</a></li><li class="depth-2"><a href="#comfyui-本地出图备用" data-for="comfyui-本地出图备用">ComfyUI 本地出图（备用）</a></li><li class="depth-1"><a href="#自主执行机制" data-for="自主执行机制">自主执行机制</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../postscript.js" type="module" data-persist="true"></script></html>

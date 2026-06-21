@@ -1,0 +1,31 @@
+filters:
+  and:
+    - 'file.ext == "md"'
+    - or:
+        - 'type == "migration-tracker"'
+        - 'type == "source-index"'
+        - 'file.inFolder("03-maps")'
+properties:
+  file.name:
+    displayName: Note
+  type:
+    displayName: Type
+  status:
+    displayName: Status
+  created:
+    displayName: Created
+  updated:
+    displayName: Updated
+  tags:
+    displayName: Tags
+views:
+  - type: table
+    name: "Migration And Maps"
+    limit: 100
+    order:
+      - file.name
+      - type
+      - status
+      - created
+      - updated
+      - tags

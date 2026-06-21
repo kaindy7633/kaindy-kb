@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr"><head><title>JoyAI-Echo-分析</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="🏠 Kaindy Knowledge Base"/><meta property="og:title" content="JoyAI-Echo-分析"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="JoyAI-Echo-分析"/><meta name="twitter:description" content="JoyAI-Echo 深度分析 分析日期: 2026-06-10 分析仓库: smthemex/ComfyUI_JoyAI_Echo (35⭐) &amp; zhuang2002/ComfyUI_JoyAI_Echo (18⭐) 上游仓库: jd-opensource/JoyAI-Echo (1,252⭐, 110 forks) 一、项目概况 1.1 来源与背景 开发方: 京东 Joy Future Academy Echo Team（李浩然、黄杰等7位作者） 开源时间: 2026-06-02（上游），2026-06-05（smthemex ComfyUI包装），2026-06-06（zhua..."/><meta property="og:description" content="JoyAI-Echo 深度分析 分析日期: 2026-06-10 分析仓库: smthemex/ComfyUI_JoyAI_Echo (35⭐) &amp; zhuang2002/ComfyUI_JoyAI_Echo (18⭐) 上游仓库: jd-opensource/JoyAI-Echo (1,252⭐, 110 forks) 一、项目概况 1.1 来源与背景 开发方: 京东 Joy Future Academy Echo Team（李浩然、黄杰等7位作者） 开源时间: 2026-06-02（上游），2026-06-05（smthemex ComfyUI包装），2026-06-06（zhua..."/><meta property="og:image:alt" content="JoyAI-Echo 深度分析 分析日期: 2026-06-10 分析仓库: smthemex/ComfyUI_JoyAI_Echo (35⭐) &amp; zhuang2002/ComfyUI_JoyAI_Echo (18⭐) 上游仓库: jd-opensource/JoyAI-Echo (1,252⭐, 110 forks) 一、项目概况 1.1 来源与背景 开发方: 京东 Joy Future Academy Echo Team（李浩然、黄杰等7位作者） 开源时间: 2026-06-02（上游），2026-06-05（smthemex ComfyUI包装），2026-06-06（zhua..."/><meta property="twitter:domain" content="kaindy-kb.pages.dev"/><meta property="og:url" content="https://kaindy-kb.pages.dev/20-Research/JoyAI-Echo-分析"/><meta property="twitter:url" content="https://kaindy-kb.pages.dev/20-Research/JoyAI-Echo-分析"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="JoyAI-Echo 深度分析 分析日期: 2026-06-10 分析仓库: smthemex/ComfyUI_JoyAI_Echo (35⭐) &amp; zhuang2002/ComfyUI_JoyAI_Echo (18⭐) 上游仓库: jd-opensource/JoyAI-Echo (1,252⭐, 110 forks) 一、项目概况 1.1 来源与背景 开发方: 京东 Joy Future Academy Echo Team（李浩然、黄杰等7位作者） 开源时间: 2026-06-02（上游），2026-06-05（smthemex ComfyUI包装），2026-06-06（zhua..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUva2FpbmR5L0RvY3VtZW50cy9xdWFydHovcXVhcnR6L2NvbXBvbmVudHMvc3R5bGVzIiwic291cmNlcyI6WyJtZXJtYWlkLmlubGluZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFHRjtFQUNFOzs7QUFLRjtFQUNFO0VBQ0E7OztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTs7QUFJRjtFQUNFO0VBQ0E7RUFDQSIsInNvdXJjZXNDb250ZW50IjpbIi5leHBhbmQtYnV0dG9uIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbG9hdDogcmlnaHQ7XG4gIHBhZGRpbmc6IDAuNHJlbTtcbiAgbWFyZ2luOiAwLjNyZW07XG4gIHJpZ2h0OiAwOyAvLyBOT1RFOiByaWdodCB3aWxsIGJlIHNldCBpbiBtZXJtYWlkLmlubGluZS50c1xuICBjb2xvcjogdmFyKC0tZ3JheSk7XG4gIGJvcmRlci1jb2xvcjogdmFyKC0tZGFyayk7XG4gIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgYm9yZGVyOiAxcHggc29saWQ7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgb3BhY2l0eTogMDtcbiAgdHJhbnNpdGlvbjogMC4ycztcblxuICAmID4gc3ZnIHtcbiAgICBmaWxsOiB2YXIoLS1saWdodCk7XG4gICAgZmlsdGVyOiBjb250cmFzdCgwLjMpO1xuICB9XG5cbiAgJjpob3ZlciB7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIGJvcmRlci1jb2xvcjogdmFyKC0tc2Vjb25kYXJ5KTtcbiAgfVxuXG4gICY6Zm9jdXMge1xuICAgIG91dGxpbmU6IDA7XG4gIH1cbn1cblxucHJlIHtcbiAgJjpob3ZlciA+IC5leHBhbmQtYnV0dG9uIHtcbiAgICBvcGFjaXR5OiAxO1xuICAgIHRyYW5zaXRpb246IDAuMnM7XG4gIH1cbn1cblxuI21lcm1haWQtY29udGFpbmVyIHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICBjb250YWluOiBsYXlvdXQ7XG4gIHotaW5kZXg6IDk5OTtcbiAgbGVmdDogMDtcbiAgdG9wOiAwO1xuICB3aWR0aDogMTAwdnc7XG4gIGhlaWdodDogMTAwdmg7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIGRpc3BsYXk6IG5vbmU7XG4gIGJhY2tkcm9wLWZpbHRlcjogYmx1cig0cHgpO1xuICBiYWNrZ3JvdW5kOiByZ2JhKDAsIDAsIDAsIDAuNSk7XG5cbiAgJi5hY3RpdmUge1xuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgfVxuXG4gICYgPiAjbWVybWFpZC1zcGFjZSB7XG4gICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gICAgYm9yZGVyLXJhZGl1czogNXB4O1xuICAgIHBvc2l0aW9uOiBmaXhlZDtcbiAgICB0b3A6IDUwJTtcbiAgICBsZWZ0OiA1MCU7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7XG4gICAgaGVpZ2h0OiA4MHZoO1xuICAgIHdpZHRoOiA4MHZ3O1xuICAgIG92ZXJmbG93OiBoaWRkZW47XG5cbiAgICAmID4gLm1lcm1haWQtY29udGVudCB7XG4gICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgICB0cmFuc2Zvcm0tb3JpZ2luOiAwIDA7XG4gICAgICB0cmFuc2l0aW9uOiB0cmFuc2Zvcm0gMC4xcyBlYXNlO1xuICAgICAgb3ZlcmZsb3c6IHZpc2libGU7XG4gICAgICBtaW4taGVpZ2h0OiAyMDBweDtcbiAgICAgIG1pbi13aWR0aDogMjAwcHg7XG5cbiAgICAgIHByZSB7XG4gICAgICAgIG1hcmdpbjogMDtcbiAgICAgICAgYm9yZGVyOiBub25lO1xuICAgICAgfVxuXG4gICAgICBzdmcge1xuICAgICAgICBtYXgtd2lkdGg6IG5vbmU7XG4gICAgICAgIGhlaWdodDogYXV0bztcbiAgICAgIH1cbiAgICB9XG5cbiAgICAmID4gLm1lcm1haWQtY29udHJvbHMge1xuICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgYm90dG9tOiAyMHB4O1xuICAgICAgcmlnaHQ6IDIwcHg7XG4gICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgZ2FwOiA4cHg7XG4gICAgICBwYWRkaW5nOiA4cHg7XG4gICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodCk7XG4gICAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgYm9yZGVyLXJhZGl1czogNnB4O1xuICAgICAgYm94LXNoYWRvdzogMCAycHggNHB4IHJnYmEoMCwgMCwgMCwgMC4xKTtcbiAgICAgIHotaW5kZXg6IDI7XG5cbiAgICAgIC5tZXJtYWlkLWNvbnRyb2wtYnV0dG9uIHtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICAgIHdpZHRoOiAzMnB4O1xuICAgICAgICBoZWlnaHQ6IDMycHg7XG4gICAgICAgIHBhZGRpbmc6IDA7XG4gICAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgICAgY29sb3I6IHZhcigtLWRhcmspO1xuICAgICAgICBib3JkZXItcmFkaXVzOiA0cHg7XG4gICAgICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICAgICAgZm9udC1zaXplOiAxNnB4O1xuICAgICAgICBmb250LWZhbWlseTogdmFyKC0tYm9keUZvbnQpO1xuICAgICAgICB0cmFuc2l0aW9uOiBhbGwgMC4ycyBlYXNlO1xuXG4gICAgICAgICY6aG92ZXIge1xuICAgICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIH1cblxuICAgICAgICAmOmFjdGl2ZSB7XG4gICAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDFweCk7XG4gICAgICAgIH1cblxuICAgICAgICAvLyBTdHlsZSB0aGUgcmVzZXQgYnV0dG9uIGRpZmZlcmVudGx5XG4gICAgICAgICY6bnRoLWNoaWxkKDIpIHtcbiAgICAgICAgICB3aWR0aDogYXV0bztcbiAgICAgICAgICBwYWRkaW5nOiAwIDEycHg7XG4gICAgICAgICAgZm9udC1zaXplOiAxNHB4O1xuICAgICAgICB9XG4gICAgICB9XG4gICAgfVxuICB9XG59XG4iXX0= */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://kaindy-kb.pages.dev/index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://kaindy-kb.pages.dev/20-Research/JoyAI-Echo-分析-og-image.webp"/><meta property="og:image:url" content="https://kaindy-kb.pages.dev/20-Research/JoyAI-Echo-分析-og-image.webp"/><meta name="twitter:image" content="https://kaindy-kb.pages.dev/20-Research/JoyAI-Echo-分析-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="20-Research/JoyAI-Echo-分析"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">🏠 Kaindy Knowledge Base</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>搜索</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="搜索些什么" placeholder="搜索些什么"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="暗色模式"><title>暗色模式</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="亮色模式"><title>亮色模式</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="阅读模式"><title>阅读模式</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-985"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>探索</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-985" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../20-Research/">20 Research</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>JoyAI Echo 分析</a></div></nav><h1 class="article-title">JoyAI-Echo-分析</h1><p show-comma="true" class="content-meta"><time datetime="2026-06-15T12:23:17.000Z">2026年6月15日</time><span>20分钟阅读</span></p></div></div><article class="popover-hint"><h1 id="joyai-echo-深度分析">JoyAI-Echo 深度分析<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#joyai-echo-深度分析" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<blockquote>
+<p>分析日期: 2026-06-10<br/>
+分析仓库: smthemex/ComfyUI_JoyAI_Echo (35⭐) &amp; zhuang2002/ComfyUI_JoyAI_Echo (18⭐)<br/>
+上游仓库: jd-opensource/JoyAI-Echo (1,252⭐, 110 forks)</p>
+</blockquote>
+<h2 id="一项目概况">一、项目概况<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#一项目概况" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="11-来源与背景">1.1 来源与背景<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#11-来源与背景" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>开发方</strong>: 京东 Joy Future Academy Echo Team（李浩然、黄杰等7位作者）</li>
+<li><strong>开源时间</strong>: 2026-06-02（上游），2026-06-05（smthemex ComfyUI包装），2026-06-06（zhuang2002 ComfyUI包装）</li>
+<li><strong>定位</strong>: 分钟级多镜头音视频联合生成，直接对标 Seedance 2.0 叙事能力</li>
+<li><strong>论文</strong>: <a href="https://www.researchgate.net/publication/405770309_JoyAI-Echo_Pushing_the_Frontier_of_Long_Audio-Visual_Generation" class="external">ResearchGate<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><strong>许可证</strong>: 仅限学术研究与非商业用途（基于 LTX-2.3 上游许可）</li>
+<li><strong>当前状态</strong>: 推理代码+权重已开源，Director Agent 和 Echo-SR（超分）待发布</li>
+</ul>
+<h3 id="12-两个-comfyui-实现对比">1.2 两个 ComfyUI 实现对比<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#12-两个-comfyui-实现对比" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>维度</th><th>smthemex</th><th>zhuang2002</th></tr></thead><tbody><tr><td>定位</td><td>GGUF 量化版，追求低显存</td><td>bf16 忠实实现，零精度损失</td></tr><tr><td>最低显存</td><td>声称 6GB（3050 可跑）</td><td>48GB+（A6000/H100）</td></tr><tr><td>精度</td><td>Q4_0/Q6_K/Q8_0 GGUF</td><td>完整 bf16</td></tr><tr><td>文本编码器</td><td>GGUF 量化 Gemma-3-12b</td><td>完整 bf16 Gemma-3-12b (~24GB)</td></tr><tr><td>独特功能</td><td>streaming_mode（fast/slow/swap/prefetch）、tile 解码</td><td>SequentialOffloader（逐层卸载）、LLM Enhance 节点、逐镜头即时预览</td></tr><tr><td>模型权重</td><td>smthem/JoyAI-Echo-gguf (HF)</td><td>jdopensource/JoyAI-Echo (HF, ~46GB)</td></tr><tr><td>节点数</td><td>4 个（Model/KSampler/Clip/Encoder）</td><td>6 个（ModelLoader/TextEncode/Generate/SingleShot/PromptFormat/LLMEnhance）</td></tr><tr><td>工作流</td><td>1 个 example_workflow</td><td>3 个 workflows（basic/llm_enhanced/per_shot）</td></tr><tr><td>上游推荐</td><td>社区实现</td><td><strong>官方推荐</strong> ComfyUI 节点</td></tr></tbody></table></div>
+<h3 id="13-上游仓库jd-opensourcejoyai-echo">1.3 上游仓库（jd-opensource/JoyAI-Echo）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#13-上游仓库jd-opensourcejoyai-echo" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>⭐ 1,252 stars | 🍴 110 forks（6天爆发式增长）</li>
+<li>36 commits，代码量 ~23MB</li>
+<li>完整论文 + 项目页面 + HuggingFace 权重</li>
+<li>官方推荐 zhuang2002 的 ComfyUI 实现</li>
+<li>作者团队同时维护 Echo-Memory 和 Echo-Infinity 两个关联项目</li>
+</ul>
+<h2 id="二技术架构深度分析">二、技术架构深度分析<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#二技术架构深度分析" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="21-整体架构">2.1 整体架构<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#21-整体架构" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<pre><code>┌────────────────────────────────────────────────────┐
+│                   JoyAI-Echo                        │
+│                                                     │
+│  ┌──────────┐   ┌──────────┐   ┌───────────────┐  │
+│  │ Gemma-3  │   │  DMD      │   │ LTX-2.3 Base │  │
+│  │ 12B TE   │──→│Distilled  │──→│  Video+Audio │  │
+│  │          │   │Generator  │   │   Generator   │  │
+│  └──────────┘   └──────────┘   └───────────────┘  │
+│                      │              │               │
+│                      ▼              ▼               │
+│  ┌──────────────────────────────────────────────┐  │
+│  │    Paired Audio-Video Memory Bank            │  │
+│  │    ┌──────┐  ┌──────┐  ┌──────┐             │  │
+│  │    │Shot 1│→│Shot 2│→│Shot 3│→ ...         │  │
+│  │    │frame │ │frame │ │frame │               │  │
+│  │    │+audio│ │+audio│ │+audio│               │  │
+│  │    └──────┘  └──────┘  └──────┘             │  │
+│  │         ↓         ↓         ↓                │  │
+│  │    Bidirectional Memory Conditioning         │  │
+│  └──────────────────────────────────────────────┘  │
+│                      │                              │
+│                      ▼                              │
+│  ┌──────────────────────────────────────────────┐  │
+│  │  Two-Stage Distilled Pipeline                │  │
+│  │  Stage1: Low-res (½) → Stage2: Upsample+Refine│  │
+│  └──────────────────────────────────────────────┘  │
+│                      │                              │
+│                      ▼                              │
+│               Output: Video + Audio                  │
+└────────────────────────────────────────────────────┘
+</code></pre>
+<h3 id="22-核心技术一dmddistribution-matching-distillation蒸馏">2.2 核心技术一：DMD（Distribution Matching Distillation）蒸馏<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#22-核心技术一dmddistribution-matching-distillation蒸馏" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>这是什么</strong>：
+DMD 是一种知识蒸馏技术，将原始 LTX-2.3 的多步扩散过程（通常需要 50-100 步）压缩到仅 <strong>8-9 个去噪步骤</strong>。核心思路是通过分布匹配损失训练一个”学生”模型，使其在少量步骤内产生与原始多步扩散相同的输出分布。</p>
+<p><strong>代码证据</strong>：</p>
+<ul>
+<li><code>ltx_pipelines/distilled.py</code> — 两阶段蒸馏管线</li>
+<li><code>configs/inference.yaml</code> — 默认 9 个 sigma 值: <code>[1.0, 0.99375, 0.9875, 0.98125, 0.975, 0.909375, 0.725, 0.421875, 0.0]</code></li>
+<li>速度提升: <strong>7.5x</strong>（论文声称，官方报告值）</li>
+</ul>
+<p><strong>与普通 LTX-2.3 的关系</strong>：</p>
+<ul>
+<li>JoyAI-Echo 基于 LTX-2.3 的 backbone（Transformer + VAE），但：
+<ol>
+<li>使用了 DMD 蒸馏的权重（非原始 LTX-2.3 权重）</li>
+<li>合并了 text encoder 的 connector</li>
+<li>单一 safetensors 发布（~46GB，一次性加载所有组件）</li>
+<li>添加了双向记忆条件机制（LTX-2.3 原始代码没有）</li>
+</ol>
+</li>
+</ul>
+<h3 id="23-核心技术二配对跨模态记忆paired-cross-modal-memory">2.3 核心技术二：配对跨模态记忆（Paired Cross-Modal Memory）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#23-核心技术二配对跨模态记忆paired-cross-modal-memory" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>核心数据结构</strong> — <code>PairedAudioVideoMemoryBank</code>：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="python" data-theme="github-light github-dark"><code data-language="python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">class</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> MemoryEntry</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    frame: List[Image]          </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 9帧视频片段 (clip_num_frames=9)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    audio_latent: Tensor        </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 音频 latent 窗口 [B, T, C]</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    metadata: Dict              </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 选择模式、时间范围等</span></span></code></pre></figure>
+<p><strong>工作流程</strong>：</p>
+<ol>
+<li><strong>Shot 1 无记忆生成</strong>: 纯文本条件 + 随机噪声 → 去噪 → 解码视频+音频</li>
+<li><strong>记忆保存</strong>: 从生成结果中提取帧片段和音频窗口存入 MemoryBank
+<ul>
+<li>视频: 取 9 帧片段（center frame ± 4 帧）</li>
+<li>音频: 通过 Mel-spectrogram 能量分析选择最显著的 96-frame 窗口</li>
+</ul>
+</li>
+<li><strong>Shot 2+ 有记忆生成</strong>:
+<ul>
+<li>将视频记忆帧通过 VAE encoder 编码为 latent</li>
+<li>将音频记忆 latent 拼接注入</li>
+<li>在去噪每一步的 forward 中传入 <code>memory_video</code> + <code>memory_audio</code></li>
+<li>使用 <code>BidirectionalMemory</code> 策略保持一致性</li>
+</ul>
+</li>
+</ol>
+<p><strong>音频窗口选择策略</strong>：</p>
+<ul>
+<li><code>max_response</code>: 选择 Mel-spectrogram 能量最大的窗口</li>
+<li><code>random</code>: 随机选择窗口</li>
+<li>支持 causal 对齐（考虑音频 VAE 的因果卷积）</li>
+</ul>
+<p><strong>视频帧选择策略</strong>：</p>
+<ul>
+<li><code>center</code>: 音频窗口中心时间对应视频帧</li>
+<li><code>first</code>: 窗口起始帧</li>
+<li><code>random</code>: 随机帧</li>
+</ul>
+<p><strong>记忆参数</strong>：</p>
+<ul>
+<li><code>max_size=7</code>: 最多存储 7 个历史镜头</li>
+<li><code>num_fix_frames=3</code>: 前 3 个镜头永久保留（FIFO 只淘汰更早的）</li>
+<li><code>save_mode</code>: random_every_shot_frame（每镜随机存帧）</li>
+</ul>
+<h3 id="24-核心技术三bidirectional-memory-inference双向记忆推理">2.4 核心技术三：Bidirectional Memory Inference（双向记忆推理）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#24-核心技术三bidirectional-memory-inference双向记忆推理" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>与普通条件注入不同，JoyAI-Echo 使用<strong>双向记忆</strong>：</p>
+<pre><code>Shot N 的去噪过程:
+  sigma₁: Generator(noise, text_cond, memory_video, memory_audio) → pred_x0
+  sigma₂: Generator(re_corrupt(pred_x0), text_cond, memory_video, memory_audio) → ...
+  ...
+  sigma₉: → 最终 latent
+</code></pre>
+<p><strong>关键区别</strong>：</p>
+<ul>
+<li>普通 LTX-2.3: 仅文本条件，每次独立生成</li>
+<li>JoyAI-Echo: 文本 + 视频记忆 + 音频记忆，在整个去噪轨迹中持续注入</li>
+<li>支持 <code>memory_position_mode: &quot;reference&quot;</code> — 记忆帧作为参考位置嵌入</li>
+</ul>
+<p><strong>代码路径</strong>：</p>
+<pre><code>inference.py → run_prompt_file()
+  └─ for each shot:
+       ├─ encode memory frames via video VAE (if memory exists)
+       ├─ generator.generate_BidirectionalMemory() or generate_BidirectionalAV()
+       │   └─ ltx_wrapper.py → forward() with memory_video + memory_audio
+       ├─ decode video + audio via VAE decoders
+       └─ memory_bank.save_memory_slot() → next shot
+</code></pre>
+<h3 id="25-模型架构细节">2.5 模型架构细节<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#25-模型架构细节" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>基础模型</strong>: LTX-2.3 (Lightricks)</p>
+<ul>
+<li>patch_size = (1, 1, 1): 无空间/时间分组，每个 token = 128 维 latent</li>
+<li>Video latent FPS: 3.0 (24fps / 8 VAE 压缩)</li>
+<li>Audio latent FPS: 25.0 (16kHz / 160 / 4)</li>
+<li>视频-音频时间对齐比: ~8.33</li>
+<li>VAE 空间压缩: 32× (736→23, 1280→40)</li>
+<li>默认分辨率: 1280×736, 241帧, 25fps → ~9.6s/镜头</li>
+</ul>
+<p><strong>文本编码器</strong>: Gemma-3-12b-it (Google)</p>
+<ul>
+<li>双 prompt 模板: <code>gemma_t2v_system_prompt.txt</code>, <code>gemma_i2v_system_prompt.txt</code></li>
+<li>通过 connector 投影到 LTX-2.3 的文本条件空间</li>
+<li>bf16 精度: ~24GB 显存</li>
+</ul>
+<p><strong>生成器</strong>: X0Model + DMD 蒸馏权重</p>
+<ul>
+<li>输入: 噪声 latent + 文本条件 + (可选) 记忆视频 latent + 记忆音频 latent</li>
+<li>输出: x0 预测 (velocity → x0 转换)</li>
+<li>8-9 步 Euler 去噪</li>
+</ul>
+<h3 id="26-两阶段蒸馏管线">2.6 两阶段蒸馏管线<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#26-两阶段蒸馏管线" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<pre><code>Stage 1 (低分辨率):
+  输入: prompt → text condition
+  生成: ¼ 原始分辨率 latent (640×368)
+  去噪: 9步 Euler + 蒸馏 sigma 序列
+  → 半分辨率 video latent + audio latent
+
+Stage 2 (上采样 + 精炼):
+  输入: Stage 1 输出 + spatial upsampler
+  上采样: 2× pixel shuffle upsampler
+  去噪: 额外蒸馏 sigma 序列
+  → 全分辨率 (1280×736) video latent + audio latent
+
+解码:
+  video VAE decoder → [F, H, W, C] uint8 视频帧
+  audio VAE decoder + vocoder → waveform
+</code></pre>
+<h2 id="三硬件需求分析">三、硬件需求分析<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#三硬件需求分析" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="31-官方要求上游-joyai-echo">3.1 官方要求（上游 JoyAI-Echo）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#31-官方要求上游-joyai-echo" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>配置</th><th>要求</th></tr></thead><tbody><tr><td>默认 (241帧, 1280×736)</td><td><strong>46-50GB</strong> 峰值显存</td></tr><tr><td>推荐 GPU</td><td>H100/A100 80GB 或 48GB GPU</td></tr><tr><td>减少帧数</td><td><code>--num-frames 121</code> 降低显存</td></tr><tr><td>Python</td><td>3.11+</td></tr><tr><td>PyTorch</td><td>2.8.0, CUDA 12.8</td></tr><tr><td>ffmpeg</td><td>视频拼接必需</td></tr></tbody></table></div>
+<h3 id="32-smthemex-gguf-版低显存路线">3.2 smthemex GGUF 版（低显存路线）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#32-smthemex-gguf-版低显存路线" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>声称 <strong>6GB VRAM</strong> 可跑 5 分钟 848×512 长视频</li>
+<li>模型量化：Q4_0/Q6_K/Q8_0 GGUF</li>
+<li>Gemma-3 文本编码器：GGUF Q4_0 (~2GB)</li>
+<li>支持 streaming_mode: fast/swap/slow/prefetch</li>
+<li>支持 tile 解码（降低 VAE 显存）</li>
+<li><strong>未验证</strong>：6GB 声称来自 README，社区 issue #8 反映”241帧只有4秒视频”</li>
+</ul>
+<h3 id="33-zhuang2002-bf16-版高精度路线">3.3 zhuang2002 bf16 版（高精度路线）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#33-zhuang2002-bf16-版高精度路线" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>48GB+ 显存</strong>（A6000/H100/A100 推荐）</li>
+<li>3 阶段 GPU 热切换：编码(~24GB TE) → 去噪(~30GB Generator) → 解码(VAE)</li>
+<li>SequentialOffloader：逐层卸载，将 Generator 峰值从 30GB 降至 2-3GB</li>
+<li>低显存模式 (low_vram=True)：文本编码器在 CPU 上运行</li>
+<li>估计：24GB GPU 可通过 <code>low_vram + sequential_offload</code> 运行</li>
+</ul>
+<h3 id="34-我们的硬件匹配度">3.4 我们的硬件匹配度<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#34-我们的硬件匹配度" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>环境</th><th>JoyAI-Echo 可行性</th></tr></thead><tbody><tr><td>RTX 3050 4GB</td><td>❌ 不可行（即使 GGUF 版 6GB 也超限）</td></tr><tr><td>RTX 4090 24GB</td><td>⚠️ GGUF 版可行，bf16 版需 sequential_offload</td></tr><tr><td>A6000 48GB</td><td>✅ bf16 版+热切换可行</td></tr><tr><td>A100 80GB</td><td>✅ 全精度无压力</td></tr><tr><td>云端 H100</td><td>✅ 官方推荐配置</td></tr></tbody></table></div>
+<h2 id="四与-seedance-20-对比">四、与 Seedance 2.0 对比<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#四与-seedance-20-对比" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="41-核心能力对比">4.1 核心能力对比<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#41-核心能力对比" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>维度</th><th>Seedance 2.0</th><th>JoyAI-Echo</th></tr></thead><tbody><tr><td><strong>生成方式</strong></td><td>云端 API（闭源）</td><td>本地 ComfyUI（开源）</td></tr><tr><td><strong>视频时长</strong></td><td>最长 2 分钟</td><td>理论不限（逐镜头拼接），单镜 9.6s</td></tr><tr><td><strong>多镜头叙事</strong></td><td>✅ 原生（Image2故事板）</td><td>✅ 通过记忆链</td></tr><tr><td><strong>音视频同步</strong></td><td>✅ 原生</td><td>✅ 联合生成（同 pipeline）</td></tr><tr><td><strong>角色一致性</strong></td><td>✅ 四模态输入</td><td>✅ 配对跨模态记忆</td></tr><tr><td><strong>I2V 支持</strong></td><td>✅</td><td>❌ 当前版本不支持（计划中）</td></tr><tr><td><strong>速度</strong></td><td>云端排队（分钟级）</td><td>本地 7.5x 蒸馏加速</td></tr><tr><td><strong>成本</strong></td><td>API 调用费</td><td>硬件+电费</td></tr><tr><td><strong>可控性</strong></td><td>有限（API 参数）</td><td>高（ComfyUI 节点完全可控）</td></tr><tr><td><strong>分辨率</strong></td><td>1080p-2K</td><td>1280×736（当前），计划超分</td></tr><tr><td><strong>FPS</strong></td><td>未公开</td><td>25fps 可控</td></tr><tr><td><strong>音频质量</strong></td><td>未知</td><td>24kHz 采样率</td></tr><tr><td><strong>许可证</strong></td><td>商业 API</td><td><strong>仅学术研究/非商业</strong></td></tr></tbody></table></div>
+<h3 id="42-优劣势分析">4.2 优劣势分析<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#42-优劣势分析" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>JoyAI-Echo 优势</strong>：</p>
+<ol>
+<li>🏆 <strong>开源可控</strong>：完全本地部署，无 API 依赖，数据不外泄</li>
+<li>🏆 <strong>记忆链机制</strong>：配对音视频记忆是 Seedance 2.0 没有的显式创新</li>
+<li>🏆 <strong>成本潜力</strong>：一次硬件投入，无限使用（对比 API 按量付费）</li>
+<li>🏆 <strong>ComfyUI 集成</strong>：可与现有 LTX2.3 管线无缝衔接</li>
+<li>🏆 <strong>7.5x 加速</strong>：DMD 蒸馏让长视频生成实用化</li>
+</ol>
+<p><strong>JoyAI-Echo 劣势</strong>：</p>
+<ol>
+<li>🔴 <strong>非商业许可</strong>：这是我们最大的阻塞点</li>
+<li>🔴 <strong>硬件门槛高</strong>：bf16 版需 48GB+，GGUF 版未充分验证</li>
+<li>🔴 <strong>无 I2V</strong>：无法做”图生视频”（分镜图转视频），限制了短剧管线</li>
+<li>🔴 <strong>年轻项目</strong>：创建仅 5 天，社区尚未充分验证，bug 多（6 个 open issues）</li>
+<li>🔴 <strong>分辨率偏低</strong>：1280×736 不是最终输出分辨率，需等 Echo-SR 超分模块</li>
+<li>🔴 <strong>T2V 依赖</strong>：所有镜头由文本驱动，无法用参考图精确控制</li>
+</ol>
+<h3 id="43-与-ltx-23-的关系">4.3 与 LTX-2.3 的关系<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#43-与-ltx-23-的关系" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>维度</th><th>原始 LTX-2.3</th><th>JoyAI-Echo</th></tr></thead><tbody><tr><td>去噪步数</td><td>50-100 步</td><td>8-9 步 (DMD 蒸馏)</td></tr><tr><td>多镜头记忆</td><td>❌ 无</td><td>✅ 配对音视频记忆</td></tr><tr><td>联合音视频</td><td>✅ 有</td><td>✅ 有（继承）</td></tr><tr><td>权重格式</td><td>多文件 + LoRA</td><td>单文件 safetensors</td></tr><tr><td>文本编码器</td><td>内置</td><td>Gemma-3 独立加载</td></tr><tr><td>社区生态</td><td>成熟（导演节点、PromptRelay、Singularity）</td><td>初期</td></tr></tbody></table></div>
+<p><strong>关键区别</strong>: JoyAI-Echo = LTX-2.3 backbone + DMD 蒸馏加速 + 跨模态记忆链 + Gemma-3 TE</p>
+<h2 id="五与我们的-ai-短剧管线集成可行性">五、与我们的 AI 短剧管线集成可行性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#五与我们的-ai-短剧管线集成可行性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="51-当前管线架构">5.1 当前管线架构<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#51-当前管线架构" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<pre><code>剧本 → [Jellyfish] → 分镜拆解 → 元素提取 → 镜头创建
+                           ↓
+              [ComfyUI Bridge] → 出图（首尾帧）
+                           ↓
+              [视频生成 Provider]
+              ├── Seedance 2.0 API（主力）
+              ├── LTX-2.3 ComfyUI（备选）
+              ├── Kling 3.0 API
+              └── Wan2.7 API
+                           ↓
+              [剪辑/合成] → 成品视频
+</code></pre>
+<h3 id="52-joyai-echo-集成方案">5.2 JoyAI-Echo 集成方案<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#52-joyai-echo-集成方案" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>方案 A：作为 ComfyUI Bridge 的新 Provider（推荐）</strong></p>
+<pre><code>Jellyfish → ComfyUI Bridge → JoyAI-Echo Workflow
+                                ├── JoyEcho_ModelLoader
+                                ├── JoyEcho_LLMEnhance（分镜提示词增强）
+                                ├── JoyEcho_SingleShotGenerate × N
+                                │   └── memory chain
+                                └── VideoCombine + Save
+</code></pre>
+<ul>
+<li><strong>优势</strong>: 复用现有 ComfyUI 桥接基础设施</li>
+<li><strong>工作流</strong>: Jellyfish 生成分镜描述 → 传入 JoyAI-Echo workfow JSON → 多镜头记忆链生成 → 输出拼接视频</li>
+<li><strong>改动点</strong>: 添加 <code>JoyEchoWorkflowBuilder</code> 类，类似现有 <code>WorkflowFactory</code></li>
+</ul>
+<p><strong>方案 B：作为独立的 Video Provider</strong></p>
+<pre><code>Jellyfish → Video Provider → JoyAI Echo Engine
+              ├── encode prompt → memory chain generation → decode
+              └── 返回 video/audio tensor
+</code></pre>
+<ul>
+<li><strong>优势</strong>: 与 Seedance/Kling Provider 统一接口</li>
+<li><strong>劣势</strong>: 需要独立管理 JoyAI-Echo 模型生命周期</li>
+</ul>
+<h3 id="53-集成阻塞点">5.3 集成阻塞点<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#53-集成阻塞点" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>阻塞点</th><th>严重度</th><th>说明</th></tr></thead><tbody><tr><td>🔴 <strong>非商业许可</strong></td><td>致命</td><td>我们做的是生产级短剧平台，不能依赖学术研究许可的模型</td></tr><tr><td>🟡 <strong>无 I2V</strong></td><td>高</td><td>短剧管线核心是”分镜图→视频”，纯 T2V 无法满足精确控制需求</td></tr><tr><td>🟡 <strong>硬件门槛</strong></td><td>高</td><td>当前测试环境 RTX 3050 4GB 无法运行</td></tr><tr><td>🟡 <strong>项目成熟度</strong></td><td>中</td><td>5 天新生儿，issue 反映 241 帧实际只出 4 秒</td></tr><tr><td>🟢 <strong>ComfyUI 集成</strong></td><td>低</td><td>两个实现都已在 ComfyUI custom_nodes 可用</td></tr><tr><td>🟢 <strong>API 兼容</strong></td><td>低</td><td>Engine 层可直接用 Python API 调用，不依赖 ComfyUI</td></tr></tbody></table></div>
+<h3 id="54-推荐策略">5.4 推荐策略<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#54-推荐策略" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>当前阶段 (2026-06)：观察，不集成</strong></p>
+<p>理由：</p>
+<ol>
+<li>非商业许可直接排除生产使用</li>
+<li>I2V 缺失让它在短剧管线中的角色极有限</li>
+<li>项目太新，社区验证不足</li>
+<li>等待后续版本：I2V + Echo-SR + Director Agent + 许可证更新</li>
+</ol>
+<p><strong>中期 (1-2 个月后) 如果许可证放松</strong>：</p>
+<ul>
+<li>作为 LTX-2.3 的增强替代方案</li>
+<li>利用其记忆链机制做长视频一致性</li>
+<li>但前提是 I2V 发布</li>
+</ul>
+<p><strong>替代路径</strong>：</p>
+<ul>
+<li>原始 LTX-2.3 + Singularity + PromptRelay + 导演节点组合已经提供了类似能力</li>
+<li>LTX-2.3 生态在 6 月初爆发（社区验证 121K 播放短剧一致性方案）</li>
+<li>我们的 <code>ai-video-production</code> 技能已详细记录了 LTX-2.3 生态</li>
+</ul>
+<h2 id="六技术洞察与启示">六、技术洞察与启示<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#六技术洞察与启示" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="61-值得借鉴的设计">6.1 值得借鉴的设计<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#61-值得借鉴的设计" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li>
+<p><strong>配对音视频记忆</strong>: 这个设计很聪明 — 不是简单地用前一帧做条件，而是同时存视频+音频，用 Mel-spectrogram 能量选择最显著的音频段，保证后续镜头的声音特征一致。这对我们的短剧角色声音一致性有直接参考价值。</p>
+</li>
+<li>
+<p><strong>DMD 蒸馏</strong>: 7.5x 加速 + 低步数 = 长视频生成的实际可用性。如果我们自训练或微调 LTX-2.3 做短剧专用模型，DMD 蒸馏是必经之路。</p>
+</li>
+<li>
+<p><strong>GPU 热切换</strong>: 三阶段显存管理（编码→去噪→解码）使 24GB GPU 可跑 46GB 的管线。这对我们的低端硬件环境至关重要。</p>
+</li>
+<li>
+<p><strong>SequentialOffloader</strong>: zhuang2002 的逐层卸载设计很精巧 — 通过 PyTorch forward hooks 只 keep 当前执行的 transformer block 在 GPU 上，其他全在 CPU。峰值从 30GB 降至 2-3GB。</p>
+</li>
+</ol>
+<h3 id="62-对我们路线图的影响">6.2 对我们路线图的影响<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#62-对我们路线图的影响" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>组件</th><th>当前依赖</th><th>JoyAI-Echo 的启示</th></tr></thead><tbody><tr><td>视频生成</td><td>Seedance 2.0 API</td><td>DMD 蒸馏思路可用于 LTX-2.3 微调</td></tr><tr><td>角色一致性</td><td>Seedance 参考图</td><td>记忆链机制可自实现（不依赖 JoyAI）</td></tr><tr><td>音视频同步</td><td>Seedance 原生</td><td>联合生成 pipeline 值得关注</td></tr><tr><td>多镜头叙事</td><td>各自独立生成</td><td>记忆条件注入是正确方向</td></tr><tr><td>本地部署</td><td>LTX-2.3 原始</td><td>GGUF 量化 + 热切换是关键路径</td></tr></tbody></table></div>
+<h3 id="63-关键风险">6.3 关键风险<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#63-关键风险" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>京东可能收紧许可证</strong>: 目前非商业，但京东可能会在后续版本提供商业许可（付费）</li>
+<li><strong>Seedance 2.0 也在进化</strong>: 字节有更多资源、更成熟的产品。Seedance 2.1 已在泄露</li>
+<li><strong>LTX-2.3 社区更成熟</strong>: 导演节点、PromptRelay、Singularity 三件套已在生产中使用</li>
+<li><strong>硬件军备竞赛</strong>: 即便 GGUF 版声称 6GB，实际生产质量可能大幅下降</li>
+</ol>
+<h2 id="七结论">七、结论<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#七结论" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>JoyAI-Echo 是一个有创新但尚不成熟的工具</strong>。它的核心技术（DMD 蒸馏 + 配对跨模态记忆）值得关注和学习，但当前阶段<strong>不建议集成到生产管线</strong>。</p>
+<p><strong>关键原因</strong>：</p>
+<ol>
+<li>非商业许可（致命阻塞）</li>
+<li>无 I2V 支持（限制了短剧使用场景）</li>
+<li>项目仅 5 天历史，未经充分验证</li>
+<li>我们的主要依赖 Seedance 2.0 仍是最强选择</li>
+</ol>
+<p><strong>关注点</strong>：</p>
+<ul>
+<li>等待 I2V + Echo-SR + Director Agent 发布</li>
+<li>关注许可证变更（可能提供商业许可）</li>
+<li>持续跟踪社区验证结果</li>
+<li>从技术中学习 DMD 蒸馏和记忆链设计，用于自研管线</li>
+</ul>
+<p><strong>类比</strong>: JoyAI-Echo 之于 LTX-2.3，类似 Singularity 之于原始 LTX-2.3 — 都是在基础上做增强。但 JoyAI-Echo 团队更强（京东研究院），如果持续迭代，半年后可能是 Seedance 2.0 的有力开源替代。</p>
+<hr/>
+<h2 id="附录仓库文件结构">附录：仓库文件结构<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#附录仓库文件结构" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="smthemexcomfyui_joyai_echo-主仓库">smthemex/ComfyUI_JoyAI_Echo (主仓库)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#smthemexcomfyui_joyai_echo-主仓库" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<pre><code>JoyAI_Echo/                    # 上游推理引擎
+├── inference.py               # 统一推理入口 (843行)
+├── layer_streaming.py         # 层级流式加载
+├── utils.py                   # streaming 上下文管理器
+├── configs/
+│   ├── inference.yaml         # 推理配置
+│   └── gemma/                 # Gemma-3 tokenizer 配置
+├── ltx_core/                  # LTX-2.3 核心库
+│   ├── model/                 # Transformer, VAE (video+audio), Upsampler
+│   ├── loader/                # 模型加载器
+│   ├── components/            # 扩散组件
+│   ├── conditioning/          # 条件类型
+│   └── text_encoders/gemma/   # Gemma-3 文本编码器
+├── ltx_distillation/          # DMD 蒸馏层
+│   ├── models/                # LTX2Wrapper, TextEncoderWrapper, VAEWrapper
+│   ├── inference/             # Bidirectional, Memory Bidirectional, MemoryMultishot
+│   └── audio_memory.py        # 音频记忆窗口选择
+├── ltx_pipelines/             # 推理管线
+│   ├── distilled.py           # 两阶段蒸馏管线
+│   └── utils/                 # 工具函数
+├── prompts/                   # 8 个测试提示词文件
+│   └── story_writer_system_prompt.md
+└── scripts/
+    └── multishot_inference_dmd.py  # 多镜头推理脚本
+JoyAI_Echo_node.py             # ComfyUI 节点 (180行)
+node_utils.py                  # 节点工具
+load_utils.py                  # GGUF 加载器 (605行)
+example_workflows/             # 1 个示例工作流
+</code></pre>
+<h3 id="zhuang2002comfyui_joyai_echo-官方推荐">zhuang2002/ComfyUI_JoyAI_Echo (官方推荐)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#zhuang2002comfyui_joyai_echo-官方推荐" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<pre><code>nodes.py                       # 6 个 ComfyUI 节点 (1182行)
+install.py                     # 自动安装脚本
+libs/                          # 复制的 ltx_core + ltx_distillation + ltx_pipelines
+prompts/                       # 8 个测试提示词 + 2 个 system prompt
+  ├── long_story_writer_system_prompt.md
+  └── short_story_writer_system_prompt.md
+workflows/                     # 3 个工作流 JSON
+  ├── joyai_echo_basic.json
+  ├── joyai_echo_llm_enhanced.json
+  └── joyai_echo_per_shot.json
+</code></pre></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>关系图谱</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-480" aria-expanded="true"><h3>目录</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#joyai-echo-深度分析" data-for="joyai-echo-深度分析">JoyAI-Echo 深度分析</a></li><li class="depth-1"><a href="#一项目概况" data-for="一项目概况">一、项目概况</a></li><li class="depth-2"><a href="#11-来源与背景" data-for="11-来源与背景">1.1 来源与背景</a></li><li class="depth-2"><a href="#12-两个-comfyui-实现对比" data-for="12-两个-comfyui-实现对比">1.2 两个 ComfyUI 实现对比</a></li><li class="depth-2"><a href="#13-上游仓库jd-opensourcejoyai-echo" data-for="13-上游仓库jd-opensourcejoyai-echo">1.3 上游仓库（jd-opensource/JoyAI-Echo）</a></li><li class="depth-1"><a href="#二技术架构深度分析" data-for="二技术架构深度分析">二、技术架构深度分析</a></li><li class="depth-2"><a href="#21-整体架构" data-for="21-整体架构">2.1 整体架构</a></li><li class="depth-2"><a href="#22-核心技术一dmddistribution-matching-distillation蒸馏" data-for="22-核心技术一dmddistribution-matching-distillation蒸馏">2.2 核心技术一：DMD（Distribution Matching Distillation）蒸馏</a></li><li class="depth-2"><a href="#23-核心技术二配对跨模态记忆paired-cross-modal-memory" data-for="23-核心技术二配对跨模态记忆paired-cross-modal-memory">2.3 核心技术二：配对跨模态记忆（Paired Cross-Modal Memory）</a></li><li class="depth-2"><a href="#24-核心技术三bidirectional-memory-inference双向记忆推理" data-for="24-核心技术三bidirectional-memory-inference双向记忆推理">2.4 核心技术三：Bidirectional Memory Inference（双向记忆推理）</a></li><li class="depth-2"><a href="#25-模型架构细节" data-for="25-模型架构细节">2.5 模型架构细节</a></li><li class="depth-2"><a href="#26-两阶段蒸馏管线" data-for="26-两阶段蒸馏管线">2.6 两阶段蒸馏管线</a></li><li class="depth-1"><a href="#三硬件需求分析" data-for="三硬件需求分析">三、硬件需求分析</a></li><li class="depth-2"><a href="#31-官方要求上游-joyai-echo" data-for="31-官方要求上游-joyai-echo">3.1 官方要求（上游 JoyAI-Echo）</a></li><li class="depth-2"><a href="#32-smthemex-gguf-版低显存路线" data-for="32-smthemex-gguf-版低显存路线">3.2 smthemex GGUF 版（低显存路线）</a></li><li class="depth-2"><a href="#33-zhuang2002-bf16-版高精度路线" data-for="33-zhuang2002-bf16-版高精度路线">3.3 zhuang2002 bf16 版（高精度路线）</a></li><li class="depth-2"><a href="#34-我们的硬件匹配度" data-for="34-我们的硬件匹配度">3.4 我们的硬件匹配度</a></li><li class="depth-1"><a href="#四与-seedance-20-对比" data-for="四与-seedance-20-对比">四、与 Seedance 2.0 对比</a></li><li class="depth-2"><a href="#41-核心能力对比" data-for="41-核心能力对比">4.1 核心能力对比</a></li><li class="depth-2"><a href="#42-优劣势分析" data-for="42-优劣势分析">4.2 优劣势分析</a></li><li class="depth-2"><a href="#43-与-ltx-23-的关系" data-for="43-与-ltx-23-的关系">4.3 与 LTX-2.3 的关系</a></li><li class="depth-1"><a href="#五与我们的-ai-短剧管线集成可行性" data-for="五与我们的-ai-短剧管线集成可行性">五、与我们的 AI 短剧管线集成可行性</a></li><li class="depth-2"><a href="#51-当前管线架构" data-for="51-当前管线架构">5.1 当前管线架构</a></li><li class="depth-2"><a href="#52-joyai-echo-集成方案" data-for="52-joyai-echo-集成方案">5.2 JoyAI-Echo 集成方案</a></li><li class="depth-2"><a href="#53-集成阻塞点" data-for="53-集成阻塞点">5.3 集成阻塞点</a></li><li class="depth-2"><a href="#54-推荐策略" data-for="54-推荐策略">5.4 推荐策略</a></li><li class="depth-1"><a href="#六技术洞察与启示" data-for="六技术洞察与启示">六、技术洞察与启示</a></li><li class="depth-2"><a href="#61-值得借鉴的设计" data-for="61-值得借鉴的设计">6.1 值得借鉴的设计</a></li><li class="depth-2"><a href="#62-对我们路线图的影响" data-for="62-对我们路线图的影响">6.2 对我们路线图的影响</a></li><li class="depth-2"><a href="#63-关键风险" data-for="63-关键风险">6.3 关键风险</a></li><li class="depth-1"><a href="#七结论" data-for="七结论">七、结论</a></li><li class="depth-1"><a href="#附录仓库文件结构" data-for="附录仓库文件结构">附录：仓库文件结构</a></li><li class="depth-2"><a href="#smthemexcomfyui_joyai_echo-主仓库" data-for="smthemexcomfyui_joyai_echo-主仓库">smthemex/ComfyUI_JoyAI_Echo (主仓库)</a></li><li class="depth-2"><a href="#zhuang2002comfyui_joyai_echo-官方推荐" data-for="zhuang2002comfyui_joyai_echo-官方推荐">zhuang2002/ComfyUI_JoyAI_Echo (官方推荐)</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../postscript.js" type="module" data-persist="true"></script></html>

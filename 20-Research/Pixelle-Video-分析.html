@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr"><head><title>Pixelle-Video-分析</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="🏠 Kaindy Knowledge Base"/><meta property="og:title" content="Pixelle-Video-分析"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Pixelle-Video-分析"/><meta name="twitter:description" content="Pixelle-Video 深度分析 来源: GitHub AIDC-AI/Pixelle-Video | ★22,501 | Apache-2.0 | 分析日期: 2026-06-15 项目概述 Pixelle-Video 是阿里巴巴 AIDC-AI 团队（核心来自哈工大/阿里）开源的全自动 AI 短视频引擎，定位”一句话生成完整短视频”——输入主题即可自动完成文案撰写、配图/视频生成、语音合成、BGM添加和视频合成。 维度数据Stars22,501Forks3,191Issues (Open)127主语言Python许可证Apache 2.0创建时间2025-11-07最新Commit20..."/><meta property="og:description" content="Pixelle-Video 深度分析 来源: GitHub AIDC-AI/Pixelle-Video | ★22,501 | Apache-2.0 | 分析日期: 2026-06-15 项目概述 Pixelle-Video 是阿里巴巴 AIDC-AI 团队（核心来自哈工大/阿里）开源的全自动 AI 短视频引擎，定位”一句话生成完整短视频”——输入主题即可自动完成文案撰写、配图/视频生成、语音合成、BGM添加和视频合成。 维度数据Stars22,501Forks3,191Issues (Open)127主语言Python许可证Apache 2.0创建时间2025-11-07最新Commit20..."/><meta property="og:image:alt" content="Pixelle-Video 深度分析 来源: GitHub AIDC-AI/Pixelle-Video | ★22,501 | Apache-2.0 | 分析日期: 2026-06-15 项目概述 Pixelle-Video 是阿里巴巴 AIDC-AI 团队（核心来自哈工大/阿里）开源的全自动 AI 短视频引擎，定位”一句话生成完整短视频”——输入主题即可自动完成文案撰写、配图/视频生成、语音合成、BGM添加和视频合成。 维度数据Stars22,501Forks3,191Issues (Open)127主语言Python许可证Apache 2.0创建时间2025-11-07最新Commit20..."/><meta property="twitter:domain" content="kaindy-kb.pages.dev"/><meta property="og:url" content="https://kaindy-kb.pages.dev/20-Research/Pixelle-Video-分析"/><meta property="twitter:url" content="https://kaindy-kb.pages.dev/20-Research/Pixelle-Video-分析"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Pixelle-Video 深度分析 来源: GitHub AIDC-AI/Pixelle-Video | ★22,501 | Apache-2.0 | 分析日期: 2026-06-15 项目概述 Pixelle-Video 是阿里巴巴 AIDC-AI 团队（核心来自哈工大/阿里）开源的全自动 AI 短视频引擎，定位”一句话生成完整短视频”——输入主题即可自动完成文案撰写、配图/视频生成、语音合成、BGM添加和视频合成。 维度数据Stars22,501Forks3,191Issues (Open)127主语言Python许可证Apache 2.0创建时间2025-11-07最新Commit20..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUva2FpbmR5L0RvY3VtZW50cy9xdWFydHovcXVhcnR6L2NvbXBvbmVudHMvc3R5bGVzIiwic291cmNlcyI6WyJtZXJtYWlkLmlubGluZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFHRjtFQUNFOzs7QUFLRjtFQUNFO0VBQ0E7OztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTs7QUFJRjtFQUNFO0VBQ0E7RUFDQSIsInNvdXJjZXNDb250ZW50IjpbIi5leHBhbmQtYnV0dG9uIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbG9hdDogcmlnaHQ7XG4gIHBhZGRpbmc6IDAuNHJlbTtcbiAgbWFyZ2luOiAwLjNyZW07XG4gIHJpZ2h0OiAwOyAvLyBOT1RFOiByaWdodCB3aWxsIGJlIHNldCBpbiBtZXJtYWlkLmlubGluZS50c1xuICBjb2xvcjogdmFyKC0tZ3JheSk7XG4gIGJvcmRlci1jb2xvcjogdmFyKC0tZGFyayk7XG4gIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgYm9yZGVyOiAxcHggc29saWQ7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgb3BhY2l0eTogMDtcbiAgdHJhbnNpdGlvbjogMC4ycztcblxuICAmID4gc3ZnIHtcbiAgICBmaWxsOiB2YXIoLS1saWdodCk7XG4gICAgZmlsdGVyOiBjb250cmFzdCgwLjMpO1xuICB9XG5cbiAgJjpob3ZlciB7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIGJvcmRlci1jb2xvcjogdmFyKC0tc2Vjb25kYXJ5KTtcbiAgfVxuXG4gICY6Zm9jdXMge1xuICAgIG91dGxpbmU6IDA7XG4gIH1cbn1cblxucHJlIHtcbiAgJjpob3ZlciA+IC5leHBhbmQtYnV0dG9uIHtcbiAgICBvcGFjaXR5OiAxO1xuICAgIHRyYW5zaXRpb246IDAuMnM7XG4gIH1cbn1cblxuI21lcm1haWQtY29udGFpbmVyIHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICBjb250YWluOiBsYXlvdXQ7XG4gIHotaW5kZXg6IDk5OTtcbiAgbGVmdDogMDtcbiAgdG9wOiAwO1xuICB3aWR0aDogMTAwdnc7XG4gIGhlaWdodDogMTAwdmg7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIGRpc3BsYXk6IG5vbmU7XG4gIGJhY2tkcm9wLWZpbHRlcjogYmx1cig0cHgpO1xuICBiYWNrZ3JvdW5kOiByZ2JhKDAsIDAsIDAsIDAuNSk7XG5cbiAgJi5hY3RpdmUge1xuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgfVxuXG4gICYgPiAjbWVybWFpZC1zcGFjZSB7XG4gICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gICAgYm9yZGVyLXJhZGl1czogNXB4O1xuICAgIHBvc2l0aW9uOiBmaXhlZDtcbiAgICB0b3A6IDUwJTtcbiAgICBsZWZ0OiA1MCU7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7XG4gICAgaGVpZ2h0OiA4MHZoO1xuICAgIHdpZHRoOiA4MHZ3O1xuICAgIG92ZXJmbG93OiBoaWRkZW47XG5cbiAgICAmID4gLm1lcm1haWQtY29udGVudCB7XG4gICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgICB0cmFuc2Zvcm0tb3JpZ2luOiAwIDA7XG4gICAgICB0cmFuc2l0aW9uOiB0cmFuc2Zvcm0gMC4xcyBlYXNlO1xuICAgICAgb3ZlcmZsb3c6IHZpc2libGU7XG4gICAgICBtaW4taGVpZ2h0OiAyMDBweDtcbiAgICAgIG1pbi13aWR0aDogMjAwcHg7XG5cbiAgICAgIHByZSB7XG4gICAgICAgIG1hcmdpbjogMDtcbiAgICAgICAgYm9yZGVyOiBub25lO1xuICAgICAgfVxuXG4gICAgICBzdmcge1xuICAgICAgICBtYXgtd2lkdGg6IG5vbmU7XG4gICAgICAgIGhlaWdodDogYXV0bztcbiAgICAgIH1cbiAgICB9XG5cbiAgICAmID4gLm1lcm1haWQtY29udHJvbHMge1xuICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgYm90dG9tOiAyMHB4O1xuICAgICAgcmlnaHQ6IDIwcHg7XG4gICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgZ2FwOiA4cHg7XG4gICAgICBwYWRkaW5nOiA4cHg7XG4gICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodCk7XG4gICAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgYm9yZGVyLXJhZGl1czogNnB4O1xuICAgICAgYm94LXNoYWRvdzogMCAycHggNHB4IHJnYmEoMCwgMCwgMCwgMC4xKTtcbiAgICAgIHotaW5kZXg6IDI7XG5cbiAgICAgIC5tZXJtYWlkLWNvbnRyb2wtYnV0dG9uIHtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICAgIHdpZHRoOiAzMnB4O1xuICAgICAgICBoZWlnaHQ6IDMycHg7XG4gICAgICAgIHBhZGRpbmc6IDA7XG4gICAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgICAgY29sb3I6IHZhcigtLWRhcmspO1xuICAgICAgICBib3JkZXItcmFkaXVzOiA0cHg7XG4gICAgICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICAgICAgZm9udC1zaXplOiAxNnB4O1xuICAgICAgICBmb250LWZhbWlseTogdmFyKC0tYm9keUZvbnQpO1xuICAgICAgICB0cmFuc2l0aW9uOiBhbGwgMC4ycyBlYXNlO1xuXG4gICAgICAgICY6aG92ZXIge1xuICAgICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIH1cblxuICAgICAgICAmOmFjdGl2ZSB7XG4gICAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDFweCk7XG4gICAgICAgIH1cblxuICAgICAgICAvLyBTdHlsZSB0aGUgcmVzZXQgYnV0dG9uIGRpZmZlcmVudGx5XG4gICAgICAgICY6bnRoLWNoaWxkKDIpIHtcbiAgICAgICAgICB3aWR0aDogYXV0bztcbiAgICAgICAgICBwYWRkaW5nOiAwIDEycHg7XG4gICAgICAgICAgZm9udC1zaXplOiAxNHB4O1xuICAgICAgICB9XG4gICAgICB9XG4gICAgfVxuICB9XG59XG4iXX0= */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://kaindy-kb.pages.dev/index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://kaindy-kb.pages.dev/20-Research/Pixelle-Video-分析-og-image.webp"/><meta property="og:image:url" content="https://kaindy-kb.pages.dev/20-Research/Pixelle-Video-分析-og-image.webp"/><meta name="twitter:image" content="https://kaindy-kb.pages.dev/20-Research/Pixelle-Video-分析-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="20-Research/Pixelle-Video-分析"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">🏠 Kaindy Knowledge Base</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>搜索</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="搜索些什么" placeholder="搜索些什么"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="暗色模式"><title>暗色模式</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="亮色模式"><title>亮色模式</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="阅读模式"><title>阅读模式</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-991"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>探索</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-991" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../20-Research/">20 Research</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>Pixelle Video 分析</a></div></nav><h1 class="article-title">Pixelle-Video-分析</h1><p show-comma="true" class="content-meta"><time datetime="2026-06-15T12:23:17.000Z">2026年6月15日</time><span>15分钟阅读</span></p></div></div><article class="popover-hint"><h1 id="pixelle-video-深度分析">Pixelle-Video 深度分析<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#pixelle-video-深度分析" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<blockquote>
+<p>来源: GitHub AIDC-AI/Pixelle-Video | ★22,501 | Apache-2.0 | 分析日期: 2026-06-15</p>
+</blockquote>
+<hr/>
+<h2 id="项目概述">项目概述<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#项目概述" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Pixelle-Video 是<strong>阿里巴巴 AIDC-AI 团队</strong>（核心来自哈工大/阿里）开源的<strong>全自动 AI 短视频引擎</strong>，定位”一句话生成完整短视频”——输入主题即可自动完成文案撰写、配图/视频生成、语音合成、BGM添加和视频合成。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>维度</th><th>数据</th></tr></thead><tbody><tr><td>Stars</td><td>22,501</td></tr><tr><td>Forks</td><td>3,191</td></tr><tr><td>Issues (Open)</td><td>127</td></tr><tr><td>主语言</td><td>Python</td></tr><tr><td>许可证</td><td>Apache 2.0</td></tr><tr><td>创建时间</td><td>2025-11-07</td></tr><tr><td>最新Commit</td><td>2026-06-14 (lazy load API clients + fix null LLM content)</td></tr><tr><td>最新Release</td><td>v0.1.15 (2026-01-27) - Windows一键整合包 (398MB, 46,854 downloads)</td></tr><tr><td>学术背景</td><td>团队在 SIGGRAPH Asia 2024、ACL 2025 有相关论文 (FilmAgent, Anim-Director, ComfyUI-Copilot, AniMaker)</td></tr></tbody></table></div>
+<hr/>
+<h2 id="核心架构">核心架构<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#核心架构" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="整体架构图-三层分离">整体架构图 (三层分离)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#整体架构图-三层分离" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<pre><code>┌─────────────────────────────────────────────────────────────────┐
+│                    Pixelle-Video Architecture                    │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                  │
+│  ┌──────────────┐  ┌──────────────────────────────────────┐     │
+│  │ Streamlit    │  │ FastAPI Backend (api/app.py)          │     │
+│  │ Web UI       │  │  • /api/llm, /api/tts, /api/image    │     │
+│  │ (web/app.py) │  │  • /api/video/generate/{sync,async}  │     │
+│  │ Port: 8501   │  │  • /api/tasks/{task_id}              │     │
+│  └──────┬───────┘  │  • /api/files, /api/content, ...     │     │
+│         │          │  Port: 8000 (with Swagger /docs)     │     │
+│         │          └────────────────┬─────────────────────┘     │
+│         │                          │                            │
+│  ┌──────┴──────────────────────────┴──────────────────────┐    │
+│  │           PixelleVideoCore (Service Layer)               │    │
+│  │  pixelle_video/service.py                                │    │
+│  │                                                          │    │
+│  │  ┌─────────┬──────────┬──────────┬──────────┬─────────┐ │    │
+│  │  │ LLM     │ TTS      │ Media    │ API_Media│ Video   │ │    │
+│  │  │ Service │ Service  │ Service  │ Service  │ Service │ │    │
+│  │  │ (OpenAI │ (Edge/   │ (ComfyUI │ (DashSco │ (Frame  │ │    │
+│  │  │  SDK)   │ ComfyUI) │ workflows│ pe/Kling │ compos) │ │    │
+│  │  └────┬────┴────┬─────┴────┬─────┴────┬─────┴────┬────┘ │    │
+│  │       │         │          │          │          │      │    │
+│  │  ┌────┴─────────┴──────────┴──────────┴──────────┴────┐ │    │
+│  │  │              Pipelines (视频生成流水线)               │ │    │
+│  │  │  • StandardPipeline (标准: 主题→文案→图→配音→合成)    │ │    │
+│  │  │  • CustomPipeline (自定义模板)                       │ │    │
+│  │  │  • AssetBasedPipeline (素材驱动: 图片/视频→AI分析)   │ │    │
+│  │  └─────────────────────────────────────────────────────┘ │    │
+│  └──────────────────────────────────────────────────────────┘    │
+│                                                                  │
+│  ┌──────────────────────────────────────────────────────────┐    │
+│  │             Media Source (三合一生成层)                     │    │
+│  │  ┌─────────────────┬────────────────┬──────────────────┐ │    │
+│  │  │ SelfHost        │ RunningHub     │ Direct API       │ │    │
+│  │  │ (本地ComfyUI)   │ (云端工作流)    │ (DashScope/      │ │    │
+│  │  │ Port: 8188      │ API Key 调用    │  OpenAI/Kling/   │ │    │
+│  │  │ N/A             │ 24G/48G VRAM   │  Seedream/       │ │    │
+│  │  │                 │                │  Seedance)       │ │    │
+│  │  └─────────────────┴────────────────┴──────────────────┘ │    │
+│  └──────────────────────────────────────────────────────────┘    │
+│                                                                  │
+│  ┌──────────────────────────────────────────────────────────┐    │
+│  │         Docker Compose (Production Deployment)             │    │
+│  │  • init (alpine) → api (FastAPI:8000) → web (Streamlit)   │    │
+│  │  • 统一 Dockerfile (Python 3.11-slim + uv + ffmpeg)       │    │
+│  │  • Volume挂载: config.yaml, data/, output/                │    │
+│  └──────────────────────────────────────────────────────────┘    │
+└─────────────────────────────────────────────────────────────────┘
+</code></pre>
+<h3 id="配置模型-pixelle_videoconfigschemapy">配置模型 (pixelle_video/config/schema.py)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#配置模型-pixelle_videoconfigschemapy" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="python" data-theme="github-light github-dark"><code data-language="python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">PixelleVideoConfig</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  ├── project_name</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  ├── llm: LLMConfig</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  │     ├── api_key, base_url, model</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  │     └── 支持: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">GPT</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, 通义千问, DeepSeek, Ollama 等</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  ├── api_providers: APIProvidersConfig  ★</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">2026</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-</span><span style="--shiki-light:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic;">06新增</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  │     ├── common: { print_model_input, local_proxy }</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  │     ├── openai: APIKeyProviderConfig (GPT图像)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  │     ├── dashscope: APIKeyProviderConfig (Wan</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">/</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">万相)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  │     ├── deepseek: APIKeyProviderConfig</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  │     ├── gemini: APIKeyProviderConfig</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  │     ├── ark: APIKeyProviderConfig (火山引擎Seedream</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">/</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">Seedance)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  │     └── kling: AccessSecretProviderConfig (可灵视频)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  ├── comfyui: ComfyUIConfig</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  │     ├── comfyui_url, comfyui_api_key</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  │     ├── runninghub_api_key, runninghub_concurrent_limit (</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">1</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">10</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  │     ├── runninghub_instance_type (</span><span style="--shiki-light:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic;">24G</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">/</span><span style="--shiki-light:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic;">48G</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  │     ├── tts: { inference_mode: local</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">|</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">comfyui, local: {voice, speed} }</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  │     ├── image: { default_workflow, prompt_prefix }</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  │     └── video: { default_workflow, prompt_prefix }</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  └── template: TemplateConfig</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">        └── default_template: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;1080x1920/default.html&quot;</span></span></code></pre></figure>
+<hr/>
+<h2 id="核心功能深度剖析">核心功能深度剖析<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#核心功能深度剖析" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="1-短视频生成引擎---输入输出方式">1. 短视频生成引擎 - 输入输出方式<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-短视频生成引擎---输入输出方式" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>管线名称</th><th>输入</th><th>处理流程</th><th>输出</th></tr></thead><tbody><tr><td><strong>⚡ Quick Create</strong> (标准)</td><td>主题词 / 固定脚本文案</td><td>LLM生成文案 → 分镜 → 图/VLM → TTS → 逐帧合成 → BGM</td><td>MP4视频</td></tr><tr><td><strong>📦 Asset Based</strong> (素材驱动)</td><td>用户上传图片/视频</td><td>VLM分析素材 → 生成脚本 → 按脚本生成视频片段</td><td>MP4视频</td></tr><tr><td><strong>🤖 Digital Human</strong> (数字人口播)</td><td>人物形象图 + 商品图 + 文案</td><td>前置图片生成 → 口播视频合成 (数字人+商品)</td><td>MP4视频</td></tr><tr><td><strong>🖼️ Image-to-Video</strong> (图生视频)</td><td>图片 + 提示词</td><td>图片→视频生成 (音画同步)</td><td>MP4视频</td></tr><tr><td><strong>💃 Action Transfer</strong> (动作迁移)</td><td>参考视频 + 图片</td><td>动作迁移 (wan2.7-videoedit)</td><td>MP4视频</td></tr></tbody></table></div>
+<p><strong>模板系统</strong>:</p>
+<ul>
+<li><code>static_*.html</code>: 静态文本模板（无需AI媒体）</li>
+<li><code>image_*.html</code>: AI图片背景模板</li>
+<li><code>video_*.html</code>: AI视频背景模板</li>
+<li>支持竖屏(1080x1920)、横屏(1920x1080)、方形(1080x1080)</li>
+</ul>
+<h3 id="2-comfyui--tts--图生视频的集成模式">2. ComfyUI / TTS / 图生视频的集成模式<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-comfyui--tts--图生视频的集成模式" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>三合一媒体源架构</strong>是 Pixelle-Video 最核心的设计亮点：</p>
+<pre><code>每个管线步骤可独立选择媒体来源:
+  
+  ┌──────────────────────────────────────────────┐
+  │        Workflow Source Selector               │
+  │                                                │
+  │  &quot;前置图片生成服务&quot;  →  ○ 本地ComfyUI         │
+  │                          ○ RunningHub          │
+  │                          ○ API 模型             │
+  │                                                │
+  │  然后从对应源选择具体工作流/模型:              │
+  │    SelfHost: workflows/selfhost/*.json         │
+  │    RunningHub: workflows/runninghub/*.json     │
+  │    API: api/{provider}/{model_name}            │
+  └──────────────────────────────────────────────┘
+</code></pre>
+<p><strong>ComfyUI 集成 (ComfyKit 封装)</strong>:</p>
+<ul>
+<li>使用自研 <code>comfykit</code> 库封装 ComfyUI API 调用</li>
+<li>工作流 JSON 文件放在 <code>workflows/{source}/</code> 目录自动扫描</li>
+<li>SelfHost: 本地/自建 ComfyUI (默认 <a href="http://127.0.0.1:8188" class="external">http://127.0.0.1:8188<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>)</li>
+<li>RunningHub: 云端 ComfyUI 服务 (支持并发控制 1-10, 24G/48G 规格)</li>
+<li><strong>关键设计</strong>: 每个工作流都是独立的 JSON 文件，松耦合，可随时替换</li>
+</ul>
+<p><strong>TTS 管线</strong>:</p>
+<ul>
+<li>本地模式: Edge-TTS (edge-tts 7.2.7, 多语言支持含中/英/韩/日/法/德/俄/西)</li>
+<li>ComfyUI 模式: 通过工作流使用 Index-TTS、Spark-TTS 等模型</li>
+<li>支持参考音频上传（声音克隆）</li>
+<li>自定义音色: voice + speed + 参考音频</li>
+</ul>
+<p><strong>图生视频 (Image-to-Video)</strong>:</p>
+<ul>
+<li>ComfyUI 工作流: 如 <code>video_wan2.1_fusionx.json</code></li>
+<li>RunningHub 云端: <code>i2v_LTX2.json</code></li>
+<li>直连 API:
+<ul>
+<li>DashScope: Wan2.7-i2v (首帧/首尾帧图生视频, 音频驱动, 多镜头)</li>
+<li>Kling: Kling V3/V2.6/V2.5-Turbo</li>
+<li>Seedance: doubao-seedance-2.0/1.0</li>
+</ul>
+</li>
+<li>输出规格: 2-15秒, 720P/1080P, 16:9/9:16/1:1/4:3/3:4, 24/30fps</li>
+</ul>
+<h3 id="3-api-媒体模型能力矩阵-2026-06最新">3. API 媒体模型能力矩阵 (2026-06最新)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-api-媒体模型能力矩阵-2026-06最新" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>支持<strong>4大供应商 25+模型</strong>，有详细的模型能力元数据：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>能力类型</th><th>代表模型</th><th>供应商</th></tr></thead><tbody><tr><td>Text-to-Video (T2V)</td><td>Wan2.7-t2v, HappyHorse-1.0</td><td>DashScope</td></tr><tr><td>Image-to-Video (I2V)</td><td>Wan2.7-i2v, HappyHorse-1.0-i2v</td><td>DashScope</td></tr><tr><td>Reference-to-Video (R2V)</td><td>Wan2.7-r2v (数字人,多角色,原生音频)</td><td>DashScope</td></tr><tr><td>Video Editing</td><td>Wan2.7-videoedit (动作迁移,视频编辑)</td><td>DashScope</td></tr><tr><td>Video Generation</td><td>Kling V3/V2.6/V2.5-Turbo</td><td>Kling</td></tr><tr><td>Image Generation</td><td>GPT-Image-2, Doubao-Seedream-5.0/4.5/4.0</td><td>OpenAI/ARK</td></tr><tr><td>T2V/I2V</td><td>Doubao-Seedance-2.0/1.0</td><td>ARK</td></tr></tbody></table></div>
+<h3 id="4-fastapi-后端-restful-设计">4. FastAPI 后端 RESTful 设计<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-fastapi-后端-restful-设计" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<pre><code>/api/
+├── POST /llm/chat            → LLM对话
+├── POST /tts/generate        → TTS语音合成
+├── POST /image/generate      → 图片生成
+├── POST /content/narration   → LLM生成文案
+├── POST /video/generate/sync  → 同步视频生成(小视频&lt;30s)
+├── POST /video/generate/async → 异步视频生成(带任务追踪)
+├── GET  /tasks/{task_id}     → 查询任务进度
+├── GET  /files/{path}        → 静态文件访问
+├── GET  /resources/list      → 资源列表
+└── POST /frame/render        → 单帧渲染
+</code></pre>
+<hr/>
+<h2 id="与-jellyfish-架构对比">与 Jellyfish 架构对比<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#与-jellyfish-架构对比" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote>
+<p><em>注: Jellyfish 指代我方 AI 短剧管线项目。以下对比基于 Pixelle-Video 代码分析及对 Jellyfish 管线的一般性推断。</em></p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>对比维度</th><th>Pixelle-Video</th><th>Jellyfish (我方)</th><th>差异评估</th></tr></thead><tbody><tr><td><strong>定位</strong></td><td>泛短视频全自动引擎</td><td>AI短剧(多集叙事)管线</td><td>P-V更通用，我方更垂直</td></tr><tr><td><strong>前端</strong></td><td>Streamlit (快速原型级)</td><td>定制Web UI</td><td>P-V UI简陋但功能全</td></tr><tr><td><strong>后端</strong></td><td>FastAPI + 异步任务管理</td><td>待确认</td><td>P-V的API层设计可直接借鉴</td></tr><tr><td><strong>LLM集成</strong></td><td>OpenAI SDK → 多模型</td><td>待确认</td><td>P-V链路更统一</td></tr><tr><td><strong>媒体生成</strong></td><td>ComfyUI/RunningHub/直连API三合一</td><td>主要ComfyUI</td><td>P-V的三源架构是亮点</td></tr><tr><td><strong>TTS</strong></td><td>Edge-TTS + ComfyUI工作流</td><td>待确认</td><td>P-V的本地+云端双模式值得参考</td></tr><tr><td><strong>管线模式</strong></td><td>模板方法模式 (LinearVideoPipeline)</td><td>待确认</td><td>P-V的PipelineContext+生命周期方法很清晰</td></tr><tr><td><strong>配置系统</strong></td><td>Pydantic Schema + YAML</td><td>待确认</td><td>P-V配置分层清晰，验证强</td></tr><tr><td><strong>部署</strong></td><td>Docker-Compose (api+web分离)</td><td>待确认</td><td>可直接借用</td></tr><tr><td><strong>多语言</strong></td><td>中/英 i18n (JSON key-value)</td><td>待确认</td><td>P-V i18n方案轻量实用</td></tr><tr><td><strong>历史管理</strong></td><td>Session持久化 + 任务追踪</td><td>待确认</td><td>完善的任务生命周期管理</td></tr><tr><td><strong>学术积累</strong></td><td>4篇顶会论文背书</td><td>—</td><td>P-V有扎实的学术基础</td></tr></tbody></table></div>
+<h3 id="核心差异总结">核心差异总结<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#核心差异总结" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>Pixelle-Video 强项</strong>: 全链路自动化、多模型供应商适配、产品化程度高</li>
+<li><strong>Pixelle-Video 弱项</strong>: 短剧叙事能力弱(无角色一致性、剧情编排、多集管理)</li>
+<li><strong>我方机会</strong>: 在短剧垂直领域，P-V 目前不构成直接竞争；但其技术方案高度可复用</li>
+</ol>
+<hr/>
+<h2 id="可借鉴模块-按优先级排序">可借鉴模块 (按优先级排序)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#可借鉴模块-按优先级排序" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="-优先级1-立即引入">🔥 优先级1: 立即引入<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-优先级1-立即引入" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="1-comfyui-三合一媒体源架构">1. ComfyUI 三合一媒体源架构<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-comfyui-三合一媒体源架构" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<pre><code>借鉴方案: workflows/{source}/*.json 的分源组织 + ComfyBaseService
+价值: 让 Jellyfish 同时支持本地ComfyUI + 云端RunningHub + 直连API
+文件: pixelle_video/services/comfy_base_service.py
+      pixelle_video/services/media.py (workflow扫描逻辑)
+      pixelle_video/services/api_media.py (API媒体适配器)
+</code></pre>
+<h4 id="2-api-provider-直连模型适配层">2. API Provider 直连模型适配层<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-api-provider-直连模型适配层" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<pre><code>借鉴方案: APIProviderMediaService 的模型能力元数据系统
+价值: 直接调用DashScope/Kling/Seedance等API，无需经过ComfyUI
+关键代码: IMAGE_MODELS / VIDEO_MODELS 字典 + VIDEO_MODEL_CAPABILITIES
+文件: pixelle_video/services/api_media.py (815行, 非常完整)
+</code></pre>
+<h4 id="3-fastapi-异步任务管理系统">3. FastAPI 异步任务管理系统<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-fastapi-异步任务管理系统" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<pre><code>借鉴方案: api/tasks/manager.py + api/tasks/models.py
+价值: 完善的任务生命周期管理 (PENDING→RUNNING→COMPLETED/FAILED/CANCELLED)
+流程: sync API (小视频&lt;30s) + async API (大视频带 task_id 追踪)
+</code></pre>
+<h3 id="-优先级2-中期借鉴">🔥 优先级2: 中期借鉴<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-优先级2-中期借鉴" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="4-linearvideopipeline-模板方法模式">4. LinearVideoPipeline 模板方法模式<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-linearvideopipeline-模板方法模式" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<pre><code>借鉴方案: setup_environment → generate_content → process_frames → compose_video → finalize
+价值: 清晰的管线生命周期，PipelineContext 上下文传递
+文件: pixelle_video/pipelines/linear.py
+</code></pre>
+<h4 id="5-配置系统-pydantic-schema">5. 配置系统 (Pydantic Schema)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#5-配置系统-pydantic-schema" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<pre><code>借鉴方案: pydantic BaseModel + Field + 严格的类型验证
+价值: API Providers 配置的强类型化（APIKeyProvider / AccessSecretProvider）
+文件: pixelle_video/config/schema.py
+</code></pre>
+<h4 id="6-pipeline-ui-注册机制">6. Pipeline UI 注册机制<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#6-pipeline-ui-注册机制" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<pre><code>借鉴方案: PipelineUI 基类 + register_pipeline_ui 装饰器模式
+价值: 可插拔的管线UI，每个管线自包含渲染逻辑
+文件: web/pipelines/base.py + web/pipelines/__init__.py
+</code></pre>
+<h3 id="-优先级3-可选参考">🔥 优先级3: 可选参考<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-优先级3-可选参考" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="7-tts-双模式设计">7. TTS 双模式设计<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#7-tts-双模式设计" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<pre><code>Edge-TTS (本地免费) + ComfyUI 工作流 (高质量)
+两种模式通过 inference_mode 配置无缝切换
+文件: pixelle_video/services/tts_service.py
+</code></pre>
+<h4 id="8-html模板渲染骨架">8. HTML模板渲染骨架<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#8-html模板渲染骨架" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<pre><code>视频帧基于HTML模板渲染 (Jinja2风格变量替换)
+支持 static_/image_/video_ 三种模板类型
+路径: templates/
+</code></pre>
+<hr/>
+<h2 id="威胁评估与建议">威胁评估与建议<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#威胁评估与建议" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="竞争威胁评级--中低">竞争威胁评级: <strong>🟡 中低</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#竞争威胁评级--中低" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>威胁维度</th><th>评分</th><th>说明</th></tr></thead><tbody><tr><td><strong>产品成熟度</strong></td><td>⭐⭐⭐⭐</td><td>v0.1.15已有Windows整合包，下载量>46K，产品化较好</td></tr><tr><td><strong>社区活力</strong></td><td>⭐⭐⭐⭐⭐</td><td>22K star + 3.2K fork，增长速度极快</td></tr><tr><td><strong>技术深度</strong></td><td>⭐⭐⭐⭐</td><td>三合一媒体源+25+模型支持，学术背书强</td></tr><tr><td><strong>短剧方向覆盖</strong></td><td>⭐⭐</td><td>目前无角色一致性、剧情编排、多集管理能力</td></tr><tr><td><strong>团队背景</strong></td><td>⭐⭐⭐⭐</td><td>阿里AIDC-AI + 哈工大，有持续投入能力</td></tr><tr><td><strong>商业化风险</strong></td><td>⭐⭐</td><td>Apache-2.0开源，目前无收费模式</td></tr></tbody></table></div>
+<h3 id="关键判断">关键判断<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#关键判断" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li>
+<p><strong>短期内不构成直接威胁</strong>: Pixelle-Video 定位泛短视频，缺少短剧所需的角色管理、分集叙事、情绪控制和一致性保障能力。</p>
+</li>
+<li>
+<p><strong>中期可能扩展至短剧</strong>: 团队有 FilmAgent/Anim-Director/AniMaker 等研究成果，具备短剧技术储备，可能将研究成果产品化到 Pixelle-Video 中。</p>
+</li>
+<li>
+<p><strong>媒体生成层高度重叠</strong>: P-V 与 Jellyfish 在底层(TTS/图片/视频生成)使用相同技术栈(ComfyUI/DashScope/Kling)，意味着双方可在模型层共享生态。</p>
+</li>
+</ol>
+<h3 id="行动建议">行动建议<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#行动建议" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>优先级</th><th>行动项</th><th>预期收益</th></tr></thead><tbody><tr><td><strong>P0</strong></td><td>引入 API Provider 直连适配层 (DashScope/Kling/Seedance)</td><td>减少对 ComfyUI 依赖，降低部署复杂度</td></tr><tr><td><strong>P0</strong></td><td>复用 ComfyBaseService 的 workflow 扫描+三源架构</td><td>提升媒体生成灵活性和可维护性</td></tr><tr><td><strong>P1</strong></td><td>参考 FastAPI 异步任务管理系统设计</td><td>完善 Jellyfish 的任务调度能力</td></tr><tr><td><strong>P1</strong></td><td>采用 PipelineUI 注册机制实现管线可插拔</td><td>支持快速添加新的短剧生成管线</td></tr><tr><td><strong>P2</strong></td><td>监控 P-V 的 GitHub Release 和 Commit</td><td>及时发现短剧相关功能的新增</td></tr><tr><td><strong>P2</strong></td><td>关注 FilmAgent/AniMaker 论文代码</td><td>评估是否可直接集成到 Jellyfish</td></tr></tbody></table></div>
+<hr/>
+<h2 id="附录-关键文件路径索引">附录: 关键文件路径索引<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#附录-关键文件路径索引" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>文件</th><th>用途</th><th>行数</th></tr></thead><tbody><tr><td><code>web/app.py</code></td><td>Streamlit 入口</td><td>62</td></tr><tr><td><code>api/app.py</code></td><td>FastAPI 入口 + 路由注册</td><td>191</td></tr><tr><td><code>pixelle_video/service.py</code></td><td>核心服务层 PixelleVideoCore</td><td>315</td></tr><tr><td><code>pixelle_video/config/schema.py</code></td><td>Pydantic 配置模型</td><td>145</td></tr><tr><td><code>pixelle_video/pipelines/linear.py</code></td><td>模板方法管线基类</td><td>~250</td></tr><tr><td><code>pixelle_video/pipelines/standard.py</code></td><td>标准视频生成管线</td><td>518</td></tr><tr><td><code>pixelle_video/services/api_media.py</code></td><td>直连API媒体适配 (核心)</td><td>815</td></tr><tr><td><code>pixelle_video/services/comfy_base_service.py</code></td><td>ComfyUI 工作流基类</td><td>~200</td></tr><tr><td><code>pixelle_video/services/tts_service.py</code></td><td>TTS 服务 (EdgeTT+ComfyUI)</td><td>318</td></tr><tr><td><code>pixelle_video/services/media.py</code></td><td>媒体生成服务</td><td>318</td></tr><tr><td><code>api/routers/video.py</code></td><td>视频生成 API 路由</td><td>290</td></tr><tr><td><code>api/tasks/models.py</code></td><td>异步任务模型</td><td>70</td></tr><tr><td><code>web/pipelines/__init__.py</code></td><td>管线注册中心</td><td>38</td></tr><tr><td><code>web/pipelines/digital_human.py</code></td><td>数字人管线UI</td><td>964</td></tr><tr><td><code>docker-compose.yml</code></td><td>Docker 部署配置</td><td>123</td></tr><tr><td><code>Dockerfile</code></td><td>镜像构建</td><td>77</td></tr></tbody></table></div>
+<hr/>
+<blockquote>
+<p><strong>分析结论</strong>: Pixelle-Video 是目前最完善的<strong>开源全自动短视频引擎</strong>，其 ComfyUI/RunningHub/直连API 三合一媒体源架构、FastAPI 任务系统、Pipeline 可插拔 UI 设计都对 Jellyfish 有直接借鉴价值。但在<strong>短剧多集叙事、角色一致性、剧情编排</strong>方面仍是空白，这是 Jellyfish 的核心差异化方向。</p>
+</blockquote></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>关系图谱</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-486" aria-expanded="true"><h3>目录</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#pixelle-video-深度分析" data-for="pixelle-video-深度分析">Pixelle-Video 深度分析</a></li><li class="depth-1"><a href="#项目概述" data-for="项目概述">项目概述</a></li><li class="depth-1"><a href="#核心架构" data-for="核心架构">核心架构</a></li><li class="depth-2"><a href="#整体架构图-三层分离" data-for="整体架构图-三层分离">整体架构图 (三层分离)</a></li><li class="depth-2"><a href="#配置模型-pixelle_videoconfigschemapy" data-for="配置模型-pixelle_videoconfigschemapy">配置模型 (pixelle_video/config/schema.py)</a></li><li class="depth-1"><a href="#核心功能深度剖析" data-for="核心功能深度剖析">核心功能深度剖析</a></li><li class="depth-2"><a href="#1-短视频生成引擎---输入输出方式" data-for="1-短视频生成引擎---输入输出方式">1. 短视频生成引擎 - 输入输出方式</a></li><li class="depth-2"><a href="#2-comfyui--tts--图生视频的集成模式" data-for="2-comfyui--tts--图生视频的集成模式">2. ComfyUI / TTS / 图生视频的集成模式</a></li><li class="depth-2"><a href="#3-api-媒体模型能力矩阵-2026-06最新" data-for="3-api-媒体模型能力矩阵-2026-06最新">3. API 媒体模型能力矩阵 (2026-06最新)</a></li><li class="depth-2"><a href="#4-fastapi-后端-restful-设计" data-for="4-fastapi-后端-restful-设计">4. FastAPI 后端 RESTful 设计</a></li><li class="depth-1"><a href="#与-jellyfish-架构对比" data-for="与-jellyfish-架构对比">与 Jellyfish 架构对比</a></li><li class="depth-2"><a href="#核心差异总结" data-for="核心差异总结">核心差异总结</a></li><li class="depth-1"><a href="#可借鉴模块-按优先级排序" data-for="可借鉴模块-按优先级排序">可借鉴模块 (按优先级排序)</a></li><li class="depth-2"><a href="#-优先级1-立即引入" data-for="-优先级1-立即引入">🔥 优先级1: 立即引入</a></li><li class="depth-2"><a href="#-优先级2-中期借鉴" data-for="-优先级2-中期借鉴">🔥 优先级2: 中期借鉴</a></li><li class="depth-2"><a href="#-优先级3-可选参考" data-for="-优先级3-可选参考">🔥 优先级3: 可选参考</a></li><li class="depth-1"><a href="#威胁评估与建议" data-for="威胁评估与建议">威胁评估与建议</a></li><li class="depth-2"><a href="#竞争威胁评级--中低" data-for="竞争威胁评级--中低">竞争威胁评级: 🟡 中低</a></li><li class="depth-2"><a href="#关键判断" data-for="关键判断">关键判断</a></li><li class="depth-2"><a href="#行动建议" data-for="行动建议">行动建议</a></li><li class="depth-1"><a href="#附录-关键文件路径索引" data-for="附录-关键文件路径索引">附录: 关键文件路径索引</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../postscript.js" type="module" data-persist="true"></script></html>

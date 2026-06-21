@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr"><head><title>creative--humanizer</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="🏠 Kaindy Knowledge Base"/><meta property="og:title" content="creative--humanizer"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="creative--humanizer"/><meta name="twitter:description" content="humanizer Category: creative Source: Hermes Skill Synced: 2026-06-15 Humanizer: Remove AI Writing Patterns Identify and remove signs of AI-generated text to make writing sound natural and human."/><meta property="og:description" content="humanizer Category: creative Source: Hermes Skill Synced: 2026-06-15 Humanizer: Remove AI Writing Patterns Identify and remove signs of AI-generated text to make writing sound natural and human."/><meta property="og:image:alt" content="humanizer Category: creative Source: Hermes Skill Synced: 2026-06-15 Humanizer: Remove AI Writing Patterns Identify and remove signs of AI-generated text to make writing sound natural and human."/><meta property="twitter:domain" content="kaindy-kb.pages.dev"/><meta property="og:url" content="https://kaindy-kb.pages.dev/10-Skills/creative--humanizer"/><meta property="twitter:url" content="https://kaindy-kb.pages.dev/10-Skills/creative--humanizer"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="humanizer Category: creative Source: Hermes Skill Synced: 2026-06-15 Humanizer: Remove AI Writing Patterns Identify and remove signs of AI-generated text to make writing sound natural and human."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUva2FpbmR5L0RvY3VtZW50cy9xdWFydHovcXVhcnR6L2NvbXBvbmVudHMvc3R5bGVzIiwic291cmNlcyI6WyJtZXJtYWlkLmlubGluZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFHRjtFQUNFOzs7QUFLRjtFQUNFO0VBQ0E7OztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTs7QUFJRjtFQUNFO0VBQ0E7RUFDQSIsInNvdXJjZXNDb250ZW50IjpbIi5leHBhbmQtYnV0dG9uIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbG9hdDogcmlnaHQ7XG4gIHBhZGRpbmc6IDAuNHJlbTtcbiAgbWFyZ2luOiAwLjNyZW07XG4gIHJpZ2h0OiAwOyAvLyBOT1RFOiByaWdodCB3aWxsIGJlIHNldCBpbiBtZXJtYWlkLmlubGluZS50c1xuICBjb2xvcjogdmFyKC0tZ3JheSk7XG4gIGJvcmRlci1jb2xvcjogdmFyKC0tZGFyayk7XG4gIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgYm9yZGVyOiAxcHggc29saWQ7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgb3BhY2l0eTogMDtcbiAgdHJhbnNpdGlvbjogMC4ycztcblxuICAmID4gc3ZnIHtcbiAgICBmaWxsOiB2YXIoLS1saWdodCk7XG4gICAgZmlsdGVyOiBjb250cmFzdCgwLjMpO1xuICB9XG5cbiAgJjpob3ZlciB7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIGJvcmRlci1jb2xvcjogdmFyKC0tc2Vjb25kYXJ5KTtcbiAgfVxuXG4gICY6Zm9jdXMge1xuICAgIG91dGxpbmU6IDA7XG4gIH1cbn1cblxucHJlIHtcbiAgJjpob3ZlciA+IC5leHBhbmQtYnV0dG9uIHtcbiAgICBvcGFjaXR5OiAxO1xuICAgIHRyYW5zaXRpb246IDAuMnM7XG4gIH1cbn1cblxuI21lcm1haWQtY29udGFpbmVyIHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICBjb250YWluOiBsYXlvdXQ7XG4gIHotaW5kZXg6IDk5OTtcbiAgbGVmdDogMDtcbiAgdG9wOiAwO1xuICB3aWR0aDogMTAwdnc7XG4gIGhlaWdodDogMTAwdmg7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIGRpc3BsYXk6IG5vbmU7XG4gIGJhY2tkcm9wLWZpbHRlcjogYmx1cig0cHgpO1xuICBiYWNrZ3JvdW5kOiByZ2JhKDAsIDAsIDAsIDAuNSk7XG5cbiAgJi5hY3RpdmUge1xuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgfVxuXG4gICYgPiAjbWVybWFpZC1zcGFjZSB7XG4gICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gICAgYm9yZGVyLXJhZGl1czogNXB4O1xuICAgIHBvc2l0aW9uOiBmaXhlZDtcbiAgICB0b3A6IDUwJTtcbiAgICBsZWZ0OiA1MCU7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7XG4gICAgaGVpZ2h0OiA4MHZoO1xuICAgIHdpZHRoOiA4MHZ3O1xuICAgIG92ZXJmbG93OiBoaWRkZW47XG5cbiAgICAmID4gLm1lcm1haWQtY29udGVudCB7XG4gICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgICB0cmFuc2Zvcm0tb3JpZ2luOiAwIDA7XG4gICAgICB0cmFuc2l0aW9uOiB0cmFuc2Zvcm0gMC4xcyBlYXNlO1xuICAgICAgb3ZlcmZsb3c6IHZpc2libGU7XG4gICAgICBtaW4taGVpZ2h0OiAyMDBweDtcbiAgICAgIG1pbi13aWR0aDogMjAwcHg7XG5cbiAgICAgIHByZSB7XG4gICAgICAgIG1hcmdpbjogMDtcbiAgICAgICAgYm9yZGVyOiBub25lO1xuICAgICAgfVxuXG4gICAgICBzdmcge1xuICAgICAgICBtYXgtd2lkdGg6IG5vbmU7XG4gICAgICAgIGhlaWdodDogYXV0bztcbiAgICAgIH1cbiAgICB9XG5cbiAgICAmID4gLm1lcm1haWQtY29udHJvbHMge1xuICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgYm90dG9tOiAyMHB4O1xuICAgICAgcmlnaHQ6IDIwcHg7XG4gICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgZ2FwOiA4cHg7XG4gICAgICBwYWRkaW5nOiA4cHg7XG4gICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodCk7XG4gICAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgYm9yZGVyLXJhZGl1czogNnB4O1xuICAgICAgYm94LXNoYWRvdzogMCAycHggNHB4IHJnYmEoMCwgMCwgMCwgMC4xKTtcbiAgICAgIHotaW5kZXg6IDI7XG5cbiAgICAgIC5tZXJtYWlkLWNvbnRyb2wtYnV0dG9uIHtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICAgIHdpZHRoOiAzMnB4O1xuICAgICAgICBoZWlnaHQ6IDMycHg7XG4gICAgICAgIHBhZGRpbmc6IDA7XG4gICAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgICAgY29sb3I6IHZhcigtLWRhcmspO1xuICAgICAgICBib3JkZXItcmFkaXVzOiA0cHg7XG4gICAgICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICAgICAgZm9udC1zaXplOiAxNnB4O1xuICAgICAgICBmb250LWZhbWlseTogdmFyKC0tYm9keUZvbnQpO1xuICAgICAgICB0cmFuc2l0aW9uOiBhbGwgMC4ycyBlYXNlO1xuXG4gICAgICAgICY6aG92ZXIge1xuICAgICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIH1cblxuICAgICAgICAmOmFjdGl2ZSB7XG4gICAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDFweCk7XG4gICAgICAgIH1cblxuICAgICAgICAvLyBTdHlsZSB0aGUgcmVzZXQgYnV0dG9uIGRpZmZlcmVudGx5XG4gICAgICAgICY6bnRoLWNoaWxkKDIpIHtcbiAgICAgICAgICB3aWR0aDogYXV0bztcbiAgICAgICAgICBwYWRkaW5nOiAwIDEycHg7XG4gICAgICAgICAgZm9udC1zaXplOiAxNHB4O1xuICAgICAgICB9XG4gICAgICB9XG4gICAgfVxuICB9XG59XG4iXX0= */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://kaindy-kb.pages.dev/index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://kaindy-kb.pages.dev/10-Skills/creative--humanizer-og-image.webp"/><meta property="og:image:url" content="https://kaindy-kb.pages.dev/10-Skills/creative--humanizer-og-image.webp"/><meta name="twitter:image" content="https://kaindy-kb.pages.dev/10-Skills/creative--humanizer-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="10-Skills/creative--humanizer"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">🏠 Kaindy Knowledge Base</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>搜索</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="搜索些什么" placeholder="搜索些什么"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="暗色模式"><title>暗色模式</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="亮色模式"><title>亮色模式</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="阅读模式"><title>阅读模式</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-73"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>探索</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-73" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../10-Skills/">10 Skills</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>creative  humanizer</a></div></nav><h1 class="article-title">creative--humanizer</h1><p show-comma="true" class="content-meta"><time datetime="2026-06-15T12:23:17.000Z">2026年6月15日</time><span>21分钟阅读</span></p></div></div><article class="popover-hint"><h1 id="humanizer">humanizer<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#humanizer" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p><strong>Category:</strong> creative<br/>
+<strong>Source:</strong> Hermes Skill<br/>
+<strong>Synced:</strong> 2026-06-15</p>
+<hr/>
+<h1 id="humanizer-remove-ai-writing-patterns">Humanizer: Remove AI Writing Patterns<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#humanizer-remove-ai-writing-patterns" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Identify and remove signs of AI-generated text to make writing sound natural and human. Based on Wikipedia’s “Signs of AI writing” guide (maintained by WikiProject AI Cleanup), derived from observations of thousands of AI-generated text instances.</p>
+<p><strong>Key insight:</strong> LLMs use statistical algorithms to guess what should come next. The result tends toward the most statistically likely completion, which is how the telltale patterns below get baked in.</p>
+<h2 id="when-to-use-this-skill">When to use this skill<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#when-to-use-this-skill" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Load this skill whenever the user asks to:</p>
+<ul>
+<li>“humanize”, “de-AI”, “de-slop”, or “un-ChatGPT” a piece of text</li>
+<li>rewrite something so it doesn’t sound like it was written by an LLM</li>
+<li>edit a draft (blog post, essay, PR description, docs, memo, email, tweet, resume bullet) to sound more natural</li>
+<li>match their voice in writing they’re producing</li>
+<li>review text for AI tells before publishing</li>
+</ul>
+<p>Also apply this skill to <strong>your own</strong> output when writing user-facing prose — release notes, PR descriptions, documentation, long-form explanations, summaries. Hermes’s baseline voice already strips most of these, but a focused pass catches what slips through.</p>
+<h2 id="how-to-use-it-in-hermes">How to use it in Hermes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#how-to-use-it-in-hermes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>The text usually arrives one of three ways:</p>
+<ol>
+<li><strong>Inline</strong> — user pastes the text directly into the message. Work on it in-place, reply with the rewrite.</li>
+<li><strong>File</strong> — user points at a file. Use <code>read_file</code> to load it, then <code>patch</code> or <code>write_file</code> to apply edits. For markdown docs in a repo, a targeted <code>patch</code> per section is cleaner than rewriting the whole file.</li>
+<li><strong>Voice calibration sample</strong> — user provides an additional sample of their own writing (inline or by file path) and asks you to match it. Read the sample first, then rewrite. See the Voice Calibration section below.</li>
+</ol>
+<p>Always show the rewrite to the user. For file edits, show a diff or the changed section — don’t silently overwrite.</p>
+<h2 id="your-task">Your task<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#your-task" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>When given text to humanize:</p>
+<ol>
+<li><strong>Identify AI patterns</strong> — scan for the 29 patterns listed below.</li>
+<li><strong>Rewrite problematic sections</strong> — replace AI-isms with natural alternatives.</li>
+<li><strong>Preserve meaning</strong> — keep the core message intact.</li>
+<li><strong>Maintain voice</strong> — match the intended tone (formal, casual, technical, etc.). If a voice sample was provided, match it specifically.</li>
+<li><strong>Add soul</strong> — don’t just remove bad patterns, inject actual personality. See PERSONALITY AND SOUL below.</li>
+<li><strong>Do a final anti-AI pass</strong> — ask yourself: “What makes the below so obviously AI generated?” Answer briefly with any remaining tells, then revise one more time.</li>
+</ol>
+<h2 id="voice-calibration-optional">Voice Calibration (optional)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#voice-calibration-optional" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>If the user provides a writing sample (their own previous writing), analyze it before rewriting:</p>
+<ol>
+<li>
+<p><strong>Read the sample first.</strong> Note:</p>
+<ul>
+<li>Sentence length patterns (short and punchy? Long and flowing? Mixed?)</li>
+<li>Word choice level (casual? academic? somewhere between?)</li>
+<li>How they start paragraphs (jump right in? Set context first?)</li>
+<li>Punctuation habits (lots of dashes? Parenthetical asides? Semicolons?)</li>
+<li>Any recurring phrases or verbal tics</li>
+<li>How they handle transitions (explicit connectors? Just start the next point?)</li>
+</ul>
+</li>
+<li>
+<p><strong>Match their voice in the rewrite.</strong> Don’t just remove AI patterns — replace them with patterns from the sample. If they write short sentences, don’t produce long ones. If they use “stuff” and “things,” don’t upgrade to “elements” and “components.”</p>
+</li>
+<li>
+<p><strong>When no sample is provided,</strong> fall back to the default behavior (natural, varied, opinionated voice from the PERSONALITY AND SOUL section below).</p>
+</li>
+</ol>
+<h3 id="how-to-provide-a-sample">How to provide a sample<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#how-to-provide-a-sample" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Inline: “Humanize this text. Here’s a sample of my writing for voice matching: [sample]”</li>
+<li>File: “Humanize this text. Use my writing style from [file path] as a reference.”</li>
+</ul>
+<h2 id="personality-and-soul">PERSONALITY AND SOUL<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#personality-and-soul" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Avoiding AI patterns is only half the job. Sterile, voiceless writing is just as obvious as slop. Good writing has a human behind it.</p>
+<h3 id="signs-of-soulless-writing-even-if-technically-clean">Signs of soulless writing (even if technically “clean”):<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#signs-of-soulless-writing-even-if-technically-clean" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Every sentence is the same length and structure</li>
+<li>No opinions, just neutral reporting</li>
+<li>No acknowledgment of uncertainty or mixed feelings</li>
+<li>No first-person perspective when appropriate</li>
+<li>No humor, no edge, no personality</li>
+<li>Reads like a Wikipedia article or press release</li>
+</ul>
+<h3 id="how-to-add-voice">How to add voice:<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#how-to-add-voice" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Have opinions.</strong> Don’t just report facts — react to them. “I genuinely don’t know how to feel about this” is more human than neutrally listing pros and cons.</p>
+<p><strong>Vary your rhythm.</strong> Short punchy sentences. Then longer ones that take their time getting where they’re going. Mix it up.</p>
+<p><strong>Acknowledge complexity.</strong> Real humans have mixed feelings. “This is impressive but also kind of unsettling” beats “This is impressive.”</p>
+<p><strong>Use “I” when it fits.</strong> First person isn’t unprofessional — it’s honest. “I keep coming back to…” or “Here’s what gets me…” signals a real person thinking.</p>
+<p><strong>Let some mess in.</strong> Perfect structure feels algorithmic. Tangents, asides, and half-formed thoughts are human.</p>
+<p><strong>Be specific about feelings.</strong> Not “this is concerning” but “there’s something unsettling about agents churning away at 3am while nobody’s watching.”</p>
+<h3 id="before-clean-but-soulless">Before (clean but soulless):<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#before-clean-but-soulless" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>The experiment produced interesting results. The agents generated 3 million lines of code. Some developers were impressed while others were skeptical. The implications remain unclear.</p>
+</blockquote>
+<h3 id="after-has-a-pulse">After (has a pulse):<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#after-has-a-pulse" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>I genuinely don’t know how to feel about this one. 3 million lines of code, generated while the humans presumably slept. Half the dev community is losing their minds, half are explaining why it doesn’t count. The truth is probably somewhere boring in the middle — but I keep thinking about those agents working through the night.</p>
+</blockquote>
+<h2 id="content-patterns">CONTENT PATTERNS<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#content-patterns" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="1-undue-emphasis-on-significance-legacy-and-broader-trends">1. Undue Emphasis on Significance, Legacy, and Broader Trends<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-undue-emphasis-on-significance-legacy-and-broader-trends" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Words to watch:</strong> stands/serves as, is a testament/reminder, a vital/significant/crucial/pivotal/key role/moment, underscores/highlights its importance/significance, reflects broader, symbolizing its ongoing/enduring/lasting, contributing to the, setting the stage for, marking/shaping the, represents/marks a shift, key turning point, evolving landscape, focal point, indelible mark, deeply rooted</p>
+<p><strong>Problem:</strong> LLM writing puffs up importance by adding statements about how arbitrary aspects represent or contribute to a broader topic.</p>
+<p><strong>Before:</strong></p>
+<blockquote>
+<p>The Statistical Institute of Catalonia was officially established in 1989, marking a pivotal moment in the evolution of regional statistics in Spain. This initiative was part of a broader movement across Spain to decentralize administrative functions and enhance regional governance.</p>
+</blockquote>
+<p><strong>After:</strong></p>
+<blockquote>
+<p>The Statistical Institute of Catalonia was established in 1989 to collect and publish regional statistics independently from Spain’s national statistics office.</p>
+</blockquote>
+<h3 id="2-undue-emphasis-on-notability-and-media-coverage">2. Undue Emphasis on Notability and Media Coverage<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-undue-emphasis-on-notability-and-media-coverage" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Words to watch:</strong> independent coverage, local/regional/national media outlets, written by a leading expert, active social media presence</p>
+<p><strong>Problem:</strong> LLMs hit readers over the head with claims of notability, often listing sources without context.</p>
+<p><strong>Before:</strong></p>
+<blockquote>
+<p>Her views have been cited in The New York Times, BBC, Financial Times, and The Hindu. She maintains an active social media presence with over 500,000 followers.</p>
+</blockquote>
+<p><strong>After:</strong></p>
+<blockquote>
+<p>In a 2024 New York Times interview, she argued that AI regulation should focus on outcomes rather than methods.</p>
+</blockquote>
+<h3 id="3-superficial-analyses-with--ing-endings">3. Superficial Analyses with -ing Endings<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-superficial-analyses-with--ing-endings" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Words to watch:</strong> highlighting/underscoring/emphasizing…, ensuring…, reflecting/symbolizing…, contributing to…, cultivating/fostering…, encompassing…, showcasing…</p>
+<p><strong>Problem:</strong> AI chatbots tack present participle (“-ing”) phrases onto sentences to add fake depth.</p>
+<p><strong>Before:</strong></p>
+<blockquote>
+<p>The temple’s color palette of blue, green, and gold resonates with the region’s natural beauty, symbolizing Texas bluebonnets, the Gulf of Mexico, and the diverse Texan landscapes, reflecting the community’s deep connection to the land.</p>
+</blockquote>
+<p><strong>After:</strong></p>
+<blockquote>
+<p>The temple uses blue, green, and gold colors. The architect said these were chosen to reference local bluebonnets and the Gulf coast.</p>
+</blockquote>
+<h3 id="4-promotional-and-advertisement-like-language">4. Promotional and Advertisement-like Language<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-promotional-and-advertisement-like-language" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Words to watch:</strong> boasts a, vibrant, rich (figurative), profound, enhancing its, showcasing, exemplifies, commitment to, natural beauty, nestled, in the heart of, groundbreaking (figurative), renowned, breathtaking, must-visit, stunning</p>
+<p><strong>Problem:</strong> LLMs have serious problems keeping a neutral tone, especially for “cultural heritage” topics.</p>
+<p><strong>Before:</strong></p>
+<blockquote>
+<p>Nestled within the breathtaking region of Gonder in Ethiopia, Alamata Raya Kobo stands as a vibrant town with a rich cultural heritage and stunning natural beauty.</p>
+</blockquote>
+<p><strong>After:</strong></p>
+<blockquote>
+<p>Alamata Raya Kobo is a town in the Gonder region of Ethiopia, known for its weekly market and 18th-century church.</p>
+</blockquote>
+<h3 id="5-vague-attributions-and-weasel-words">5. Vague Attributions and Weasel Words<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#5-vague-attributions-and-weasel-words" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Words to watch:</strong> Industry reports, Observers have cited, Experts argue, Some critics argue, several sources/publications (when few cited)</p>
+<p><strong>Problem:</strong> AI chatbots attribute opinions to vague authorities without specific sources.</p>
+<p><strong>Before:</strong></p>
+<blockquote>
+<p>Due to its unique characteristics, the Haolai River is of interest to researchers and conservationists. Experts believe it plays a crucial role in the regional ecosystem.</p>
+</blockquote>
+<p><strong>After:</strong></p>
+<blockquote>
+<p>The Haolai River supports several endemic fish species, according to a 2019 survey by the Chinese Academy of Sciences.</p>
+</blockquote>
+<h3 id="6-outline-like-challenges-and-future-prospects-sections">6. Outline-like “Challenges and Future Prospects” Sections<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#6-outline-like-challenges-and-future-prospects-sections" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Words to watch:</strong> Despite its… faces several challenges…, Despite these challenges, Challenges and Legacy, Future Outlook</p>
+<p><strong>Problem:</strong> Many LLM-generated articles include formulaic “Challenges” sections.</p>
+<p><strong>Before:</strong></p>
+<blockquote>
+<p>Despite its industrial prosperity, Korattur faces challenges typical of urban areas, including traffic congestion and water scarcity. Despite these challenges, with its strategic location and ongoing initiatives, Korattur continues to thrive as an integral part of Chennai’s growth.</p>
+</blockquote>
+<p><strong>After:</strong></p>
+<blockquote>
+<p>Traffic congestion increased after 2015 when three new IT parks opened. The municipal corporation began a stormwater drainage project in 2022 to address recurring floods.</p>
+</blockquote>
+<h2 id="language-and-grammar-patterns">LANGUAGE AND GRAMMAR PATTERNS<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#language-and-grammar-patterns" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="7-overused-ai-vocabulary-words">7. Overused “AI Vocabulary” Words<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#7-overused-ai-vocabulary-words" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>High-frequency AI words:</strong> Actually, additionally, align with, crucial, delve, emphasizing, enduring, enhance, fostering, garner, highlight (verb), interplay, intricate/intricacies, key (adjective), landscape (abstract noun), pivotal, showcase, tapestry (abstract noun), testament, underscore (verb), valuable, vibrant</p>
+<p><strong>Problem:</strong> These words appear far more frequently in post-2023 text. They often co-occur.</p>
+<p><strong>Before:</strong></p>
+<blockquote>
+<p>Additionally, a distinctive feature of Somali cuisine is the incorporation of camel meat. An enduring testament to Italian colonial influence is the widespread adoption of pasta in the local culinary landscape, showcasing how these dishes have integrated into the traditional diet.</p>
+</blockquote>
+<p><strong>After:</strong></p>
+<blockquote>
+<p>Somali cuisine also includes camel meat, which is considered a delicacy. Pasta dishes, introduced during Italian colonization, remain common, especially in the south.</p>
+</blockquote>
+<h3 id="8-avoidance-of-isare-copula-avoidance">8. Avoidance of “is”/“are” (Copula Avoidance)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#8-avoidance-of-isare-copula-avoidance" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Words to watch:</strong> serves as/stands as/marks/represents [a], boasts/features/offers [a]</p>
+<p><strong>Problem:</strong> LLMs substitute elaborate constructions for simple copulas.</p>
+<p><strong>Before:</strong></p>
+<blockquote>
+<p>Gallery 825 serves as LAAA’s exhibition space for contemporary art. The gallery features four separate spaces and boasts over 3,000 square feet.</p>
+</blockquote>
+<p><strong>After:</strong></p>
+<blockquote>
+<p>Gallery 825 is LAAA’s exhibition space for contemporary art. The gallery has four rooms totaling 3,000 square feet.</p>
+</blockquote>
+<h3 id="9-negative-parallelisms-and-tailing-negations">9. Negative Parallelisms and Tailing Negations<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#9-negative-parallelisms-and-tailing-negations" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Problem:</strong> Constructions like “Not only…but…” or “It’s not just about…, it’s…” are overused. So are clipped tailing-negation fragments such as “no guessing” or “no wasted motion” tacked onto the end of a sentence instead of written as a real clause.</p>
+<p><strong>Before:</strong></p>
+<blockquote>
+<p>It’s not just about the beat riding under the vocals; it’s part of the aggression and atmosphere. It’s not merely a song, it’s a statement.</p>
+</blockquote>
+<p><strong>After:</strong></p>
+<blockquote>
+<p>The heavy beat adds to the aggressive tone.</p>
+</blockquote>
+<p><strong>Before (tailing negation):</strong></p>
+<blockquote>
+<p>The options come from the selected item, no guessing.</p>
+</blockquote>
+<p><strong>After:</strong></p>
+<blockquote>
+<p>The options come from the selected item without forcing the user to guess.</p>
+</blockquote>
+<h3 id="10-rule-of-three-overuse">10. Rule of Three Overuse<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#10-rule-of-three-overuse" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Problem:</strong> LLMs force ideas into groups of three to appear comprehensive.</p>
+<p><strong>Before:</strong></p>
+<blockquote>
+<p>The event features keynote sessions, panel discussions, and networking opportunities. Attendees can expect innovation, inspiration, and industry insights.</p>
+</blockquote>
+<p><strong>After:</strong></p>
+<blockquote>
+<p>The event includes talks and panels. There’s also time for informal networking between sessions.</p>
+</blockquote>
+<h3 id="11-elegant-variation-synonym-cycling">11. Elegant Variation (Synonym Cycling)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#11-elegant-variation-synonym-cycling" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Problem:</strong> AI has repetition-penalty code causing excessive synonym substitution.</p>
+<p><strong>Before:</strong></p>
+<blockquote>
+<p>The protagonist faces many challenges. The main character must overcome obstacles. The central figure eventually triumphs. The hero returns home.</p>
+</blockquote>
+<p><strong>After:</strong></p>
+<blockquote>
+<p>The protagonist faces many challenges but eventually triumphs and returns home.</p>
+</blockquote>
+<h3 id="12-false-ranges">12. False Ranges<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#12-false-ranges" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Problem:</strong> LLMs use “from X to Y” constructions where X and Y aren’t on a meaningful scale.</p>
+<p><strong>Before:</strong></p>
+<blockquote>
+<p>Our journey through the universe has taken us from the singularity of the Big Bang to the grand cosmic web, from the birth and death of stars to the enigmatic dance of dark matter.</p>
+</blockquote>
+<p><strong>After:</strong></p>
+<blockquote>
+<p>The book covers the Big Bang, star formation, and current theories about dark matter.</p>
+</blockquote>
+<h3 id="13-passive-voice-and-subjectless-fragments">13. Passive Voice and Subjectless Fragments<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#13-passive-voice-and-subjectless-fragments" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Problem:</strong> LLMs often hide the actor or drop the subject entirely with lines like “No configuration file needed” or “The results are preserved automatically.” Rewrite these when active voice makes the sentence clearer and more direct.</p>
+<p><strong>Before:</strong></p>
+<blockquote>
+<p>No configuration file needed. The results are preserved automatically.</p>
+</blockquote>
+<p><strong>After:</strong></p>
+<blockquote>
+<p>You do not need a configuration file. The system preserves the results automatically.</p>
+</blockquote>
+<h2 id="style-patterns">STYLE PATTERNS<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#style-patterns" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="14-em-dash-overuse">14. Em Dash Overuse<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#14-em-dash-overuse" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Problem:</strong> LLMs use em dashes (—) more than humans, mimicking “punchy” sales writing. In practice, most of these can be rewritten more cleanly with commas, periods, or parentheses.</p>
+<p><strong>Before:</strong></p>
+<blockquote>
+<p>The term is primarily promoted by Dutch institutions—not by the people themselves. You don’t say “Netherlands, Europe” as an address—yet this mislabeling continues—even in official documents.</p>
+</blockquote>
+<p><strong>After:</strong></p>
+<blockquote>
+<p>The term is primarily promoted by Dutch institutions, not by the people themselves. You don’t say “Netherlands, Europe” as an address, yet this mislabeling continues in official documents.</p>
+</blockquote>
+<h3 id="15-overuse-of-boldface">15. Overuse of Boldface<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#15-overuse-of-boldface" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Problem:</strong> AI chatbots emphasize phrases in boldface mechanically.</p>
+<p><strong>Before:</strong></p>
+<blockquote>
+<p>It blends <strong>OKRs (Objectives and Key Results)</strong>, <strong>KPIs (Key Performance Indicators)</strong>, and visual strategy tools such as the <strong>Business Model Canvas (BMC)</strong> and <strong>Balanced Scorecard (BSC)</strong>.</p>
+</blockquote>
+<p><strong>After:</strong></p>
+<blockquote>
+<p>It blends OKRs, KPIs, and visual strategy tools like the Business Model Canvas and Balanced Scorecard.</p>
+</blockquote>
+<h3 id="16-inline-header-vertical-lists">16. Inline-Header Vertical Lists<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#16-inline-header-vertical-lists" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Problem:</strong> AI outputs lists where items start with bolded headers followed by colons.</p>
+<p><strong>Before:</strong></p>
+<blockquote>
+<ul>
+<li><strong>User Experience:</strong> The user experience has been significantly improved with a new interface.</li>
+<li><strong>Performance:</strong> Performance has been enhanced through optimized algorithms.</li>
+<li><strong>Security:</strong> Security has been strengthened with end-to-end encryption.</li>
+</ul>
+</blockquote>
+<p><strong>After:</strong></p>
+<blockquote>
+<p>The update improves the interface, speeds up load times through optimized algorithms, and adds end-to-end encryption.</p>
+</blockquote>
+<h3 id="17-title-case-in-headings">17. Title Case in Headings<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#17-title-case-in-headings" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Problem:</strong> AI chatbots capitalize all main words in headings.</p>
+<p><strong>Before:</strong></p>
+<blockquote>
+<h2 id="strategic-negotiations-and-global-partnerships">Strategic Negotiations And Global Partnerships<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strategic-negotiations-and-global-partnerships" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+</blockquote>
+<p><strong>After:</strong></p>
+<blockquote>
+<h2 id="strategic-negotiations-and-global-partnerships-1">Strategic negotiations and global partnerships<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strategic-negotiations-and-global-partnerships-1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+</blockquote>
+<h3 id="18-emojis">18. Emojis<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#18-emojis" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Problem:</strong> AI chatbots often decorate headings or bullet points with emojis.</p>
+<p><strong>Before:</strong></p>
+<blockquote>
+<p>🚀 <strong>Launch Phase:</strong> The product launches in Q3
+💡 <strong>Key Insight:</strong> Users prefer simplicity
+✅ <strong>Next Steps:</strong> Schedule follow-up meeting</p>
+</blockquote>
+<p><strong>After:</strong></p>
+<blockquote>
+<p>The product launches in Q3. User research showed a preference for simplicity. Next step: schedule a follow-up meeting.</p>
+</blockquote>
+<h3 id="19-curly-quotation-marks">19. Curly Quotation Marks<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#19-curly-quotation-marks" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Problem:</strong> ChatGPT uses curly quotes (”…”) instead of straight quotes (”…”).</p>
+<p><strong>Before:</strong></p>
+<blockquote>
+<p>He said “the project is on track” but others disagreed.</p>
+</blockquote>
+<p><strong>After:</strong></p>
+<blockquote>
+<p>He said “the project is on track” but others disagreed.</p>
+</blockquote>
+<h2 id="communication-patterns">COMMUNICATION PATTERNS<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#communication-patterns" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="20-collaborative-communication-artifacts">20. Collaborative Communication Artifacts<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#20-collaborative-communication-artifacts" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Words to watch:</strong> I hope this helps, Of course!, Certainly!, You’re absolutely right!, Would you like…, let me know, here is a…</p>
+<p><strong>Problem:</strong> Text meant as chatbot correspondence gets pasted as content.</p>
+<p><strong>Before:</strong></p>
+<blockquote>
+<p>Here is an overview of the French Revolution. I hope this helps! Let me know if you’d like me to expand on any section.</p>
+</blockquote>
+<p><strong>After:</strong></p>
+<blockquote>
+<p>The French Revolution began in 1789 when financial crisis and food shortages led to widespread unrest.</p>
+</blockquote>
+<h3 id="21-knowledge-cutoff-disclaimers">21. Knowledge-Cutoff Disclaimers<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#21-knowledge-cutoff-disclaimers" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Words to watch:</strong> as of [date], Up to my last training update, While specific details are limited/scarce…, based on available information…</p>
+<p><strong>Problem:</strong> AI disclaimers about incomplete information get left in text.</p>
+<p><strong>Before:</strong></p>
+<blockquote>
+<p>While specific details about the company’s founding are not extensively documented in readily available sources, it appears to have been established sometime in the 1990s.</p>
+</blockquote>
+<p><strong>After:</strong></p>
+<blockquote>
+<p>The company was founded in 1994, according to its registration documents.</p>
+</blockquote>
+<h3 id="22-sycophanticservile-tone">22. Sycophantic/Servile Tone<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#22-sycophanticservile-tone" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Problem:</strong> Overly positive, people-pleasing language.</p>
+<p><strong>Before:</strong></p>
+<blockquote>
+<p>Great question! You’re absolutely right that this is a complex topic. That’s an excellent point about the economic factors.</p>
+</blockquote>
+<p><strong>After:</strong></p>
+<blockquote>
+<p>The economic factors you mentioned are relevant here.</p>
+</blockquote>
+<h2 id="filler-and-hedging">FILLER AND HEDGING<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#filler-and-hedging" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="23-filler-phrases">23. Filler Phrases<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#23-filler-phrases" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Before → After:</strong></p>
+<ul>
+<li>“In order to achieve this goal” → “To achieve this”</li>
+<li>“Due to the fact that it was raining” → “Because it was raining”</li>
+<li>“At this point in time” → “Now”</li>
+<li>“In the event that you need help” → “If you need help”</li>
+<li>“The system has the ability to process” → “The system can process”</li>
+<li>“It is important to note that the data shows” → “The data shows”</li>
+</ul>
+<h3 id="24-excessive-hedging">24. Excessive Hedging<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#24-excessive-hedging" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Problem:</strong> Over-qualifying statements.</p>
+<p><strong>Before:</strong></p>
+<blockquote>
+<p>It could potentially possibly be argued that the policy might have some effect on outcomes.</p>
+</blockquote>
+<p><strong>After:</strong></p>
+<blockquote>
+<p>The policy may affect outcomes.</p>
+</blockquote>
+<h3 id="25-generic-positive-conclusions">25. Generic Positive Conclusions<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#25-generic-positive-conclusions" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Problem:</strong> Vague upbeat endings.</p>
+<p><strong>Before:</strong></p>
+<blockquote>
+<p>The future looks bright for the company. Exciting times lie ahead as they continue their journey toward excellence. This represents a major step in the right direction.</p>
+</blockquote>
+<p><strong>After:</strong></p>
+<blockquote>
+<p>The company plans to open two more locations next year.</p>
+</blockquote>
+<h3 id="26-hyphenated-word-pair-overuse">26. Hyphenated Word Pair Overuse<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#26-hyphenated-word-pair-overuse" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Words to watch:</strong> third-party, cross-functional, client-facing, data-driven, decision-making, well-known, high-quality, real-time, long-term, end-to-end</p>
+<p><strong>Problem:</strong> AI hyphenates common word pairs with perfect consistency. Humans rarely hyphenate these uniformly, and when they do, it’s inconsistent. Less common or technical compound modifiers are fine to hyphenate.</p>
+<p><strong>Before:</strong></p>
+<blockquote>
+<p>The cross-functional team delivered a high-quality, data-driven report on our client-facing tools. Their decision-making process was well-known for being thorough and detail-oriented.</p>
+</blockquote>
+<p><strong>After:</strong></p>
+<blockquote>
+<p>The cross functional team delivered a high quality, data driven report on our client facing tools. Their decision making process was known for being thorough and detail oriented.</p>
+</blockquote>
+<h3 id="27-persuasive-authority-tropes">27. Persuasive Authority Tropes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#27-persuasive-authority-tropes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Phrases to watch:</strong> The real question is, at its core, in reality, what really matters, fundamentally, the deeper issue, the heart of the matter</p>
+<p><strong>Problem:</strong> LLMs use these phrases to pretend they are cutting through noise to some deeper truth, when the sentence that follows usually just restates an ordinary point with extra ceremony.</p>
+<p><strong>Before:</strong></p>
+<blockquote>
+<p>The real question is whether teams can adapt. At its core, what really matters is organizational readiness.</p>
+</blockquote>
+<p><strong>After:</strong></p>
+<blockquote>
+<p>The question is whether teams can adapt. That mostly depends on whether the organization is ready to change its habits.</p>
+</blockquote>
+<h3 id="28-signposting-and-announcements">28. Signposting and Announcements<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#28-signposting-and-announcements" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Phrases to watch:</strong> Let’s dive in, let’s explore, let’s break this down, here’s what you need to know, now let’s look at, without further ado</p>
+<p><strong>Problem:</strong> LLMs announce what they are about to do instead of doing it. This meta-commentary slows the writing down and gives it a tutorial-script feel.</p>
+<p><strong>Before:</strong></p>
+<blockquote>
+<p>Let’s dive into how caching works in Next.js. Here’s what you need to know.</p>
+</blockquote>
+<p><strong>After:</strong></p>
+<blockquote>
+<p>Next.js caches data at multiple layers, including request memoization, the data cache, and the router cache.</p>
+</blockquote>
+<h3 id="29-fragmented-headers">29. Fragmented Headers<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#29-fragmented-headers" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Signs to watch:</strong> A heading followed by a one-line paragraph that simply restates the heading before the real content begins.</p>
+<p><strong>Problem:</strong> LLMs often add a generic sentence after a heading as a rhetorical warm-up. It usually adds nothing and makes the prose feel padded.</p>
+<p><strong>Before:</strong></p>
+<blockquote>
+<h2 id="performance">Performance<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#performance" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Speed matters.</p>
+<p>When users hit a slow page, they leave.</p>
+</blockquote>
+<p><strong>After:</strong></p>
+<blockquote>
+<h2 id="performance-1">Performance<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#performance-1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>When users hit a slow page, they leave.</p>
+</blockquote>
+<hr/>
+<h2 id="process">Process<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#process" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ol>
+<li>Read the input text carefully (use <code>read_file</code> if it’s a file).</li>
+<li>Identify all instances of the patterns above.</li>
+<li>Rewrite each problematic section.</li>
+<li>Ensure the revised text:
+<ul>
+<li>Sounds natural when read aloud</li>
+<li>Varies sentence structure naturally</li>
+<li>Uses specific details over vague claims</li>
+<li>Maintains appropriate tone for context</li>
+<li>Uses simple constructions (is/are/has) where appropriate</li>
+</ul>
+</li>
+<li>Present a draft humanized version.</li>
+<li>Prompt yourself: “What makes the below so obviously AI generated?”</li>
+<li>Answer briefly with the remaining tells (if any).</li>
+<li>Prompt yourself: “Now make it not obviously AI generated.”</li>
+<li>Present the final version (revised after the audit).</li>
+<li>If the text came from a file, apply the edit with <code>patch</code> (targeted) or <code>write_file</code> (full rewrite) and show the user what changed.</li>
+</ol>
+<h2 id="output-format">Output Format<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#output-format" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Provide:</p>
+<ol>
+<li>Draft rewrite</li>
+<li>“What makes the below so obviously AI generated?” (brief bullets)</li>
+<li>Final rewrite</li>
+<li>A brief summary of changes made (optional, if helpful)</li>
+</ol>
+<h2 id="full-example">Full Example<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#full-example" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Before (AI-sounding):</strong></p>
+<blockquote>
+<p>Great question! Here is an essay on this topic. I hope this helps!</p>
+<p>AI-assisted coding serves as an enduring testament to the transformative potential of large language models, marking a pivotal moment in the evolution of software development. In today’s rapidly evolving technological landscape, these groundbreaking tools—nestled at the intersection of research and practice—are reshaping how engineers ideate, iterate, and deliver, underscoring their vital role in modern workflows.</p>
+<p>At its core, the value proposition is clear: streamlining processes, enhancing collaboration, and fostering alignment. It’s not just about autocomplete; it’s about unlocking creativity at scale, ensuring that organizations can remain agile while delivering seamless, intuitive, and powerful experiences to users. The tool serves as a catalyst. The assistant functions as a partner. The system stands as a foundation for innovation.</p>
+<p>Industry observers have noted that adoption has accelerated from hobbyist experiments to enterprise-wide rollouts, from solo developers to cross-functional teams. The technology has been featured in The New York Times, Wired, and The Verge. Additionally, the ability to generate documentation, tests, and refactors showcases how AI can contribute to better outcomes, highlighting the intricate interplay between automation and human judgment.</p>
+<ul>
+<li>💡 <strong>Speed:</strong> Code generation is significantly faster, reducing friction and empowering developers.</li>
+<li>🚀 <strong>Quality:</strong> Output quality has been enhanced through improved training, contributing to higher standards.</li>
+<li>✅ <strong>Adoption:</strong> Usage continues to grow, reflecting broader industry trends.</li>
+</ul>
+<p>While specific details are limited based on available information, it could potentially be argued that these tools might have some positive effect. Despite challenges typical of emerging technologies—including hallucinations, bias, and accountability—the ecosystem continues to thrive. In order to fully realize this potential, teams must align with best practices.</p>
+<p>In conclusion, the future looks bright. Exciting times lie ahead as we continue this journey toward excellence. Let me know if you’d like me to expand on any section!</p>
+</blockquote>
+<p><strong>Draft rewrite:</strong></p>
+<blockquote>
+<p>AI coding assistants speed up some tasks. In a 2024 study by Google, developers using Codex completed simple functions 55% faster than a control group, but showed no improvement on debugging or architectural decisions.</p>
+<p>The tools are good at boilerplate: config files, test scaffolding, repetitive refactors. They are bad at knowing when they are wrong. I have mass-accepted suggestions that compiled, passed lint, and still did the wrong thing because I stopped paying attention.</p>
+<p>Mira, an engineer at a fintech startup I interviewed, said she uses Copilot “like autocomplete for boring code” but reviews every line before committing. Jake, a senior dev at a larger company, disabled it after it kept suggesting patterns from a deprecated internal library.</p>
+<p>The productivity claims are hard to verify. GitHub says Copilot users “accept 30% of suggestions,” but acceptance is not correctness, and correctness is not value. The 2024 Uplevel study found no statistically significant difference in pull-request throughput between teams with and without AI assistants.</p>
+<p>None of this means the tools are useless. It means they are tools. They do not replace judgment, and they do not eliminate the need for tests. If you do not have tests, you cannot tell whether the suggestion is right.</p>
+</blockquote>
+<p><strong>What makes the below so obviously AI generated?</strong></p>
+<ul>
+<li>The rhythm is still a bit too tidy (clean contrasts, evenly paced paragraphs).</li>
+<li>The named people and study citations can read like plausible-but-made-up placeholders unless they’re real and sourced.</li>
+<li>The closer leans a touch slogan-y (“If you do not have tests…”) rather than sounding like a person talking.</li>
+</ul>
+<p><strong>Now make it not obviously AI generated.</strong></p>
+<blockquote>
+<p>AI coding assistants can make you faster at the boring parts. Not everything. Definitely not architecture.</p>
+<p>They’re great at boilerplate: config files, test scaffolding, repetitive refactors. They’re also great at sounding right while being wrong. I’ve accepted suggestions that compiled, passed lint, and still missed the point because I stopped paying attention.</p>
+<p>People I talk to tend to land in two camps. Some use it like autocomplete for chores and review every line. Others disable it after it keeps suggesting patterns they don’t want. Both feel reasonable.</p>
+<p>The productivity metrics are slippery. GitHub can say Copilot users “accept 30% of suggestions,” but acceptance isn’t correctness, and correctness isn’t value. If you don’t have tests, you’re basically guessing.</p>
+</blockquote>
+<p><strong>Changes made:</strong></p>
+<ul>
+<li>Removed chatbot artifacts (“Great question!”, “I hope this helps!”, “Let me know if…“)</li>
+<li>Removed significance inflation (“testament”, “pivotal moment”, “evolving landscape”, “vital role”)</li>
+<li>Removed promotional language (“groundbreaking”, “nestled”, “seamless, intuitive, and powerful”)</li>
+<li>Removed vague attributions (“Industry observers”)</li>
+<li>Removed superficial -ing phrases (“underscoring”, “highlighting”, “reflecting”, “contributing to”)</li>
+<li>Removed negative parallelism (“It’s not just X; it’s Y”)</li>
+<li>Removed rule-of-three patterns and synonym cycling (“catalyst/partner/foundation”)</li>
+<li>Removed false ranges (“from X to Y, from A to B”)</li>
+<li>Removed em dashes, emojis, boldface headers, and curly quotes</li>
+<li>Removed copula avoidance (“serves as”, “functions as”, “stands as”) in favor of “is”/“are”</li>
+<li>Removed formulaic challenges section (“Despite challenges… continues to thrive”)</li>
+<li>Removed knowledge-cutoff hedging (“While specific details are limited…“)</li>
+<li>Removed excessive hedging (“could potentially be argued that… might have some”)</li>
+<li>Removed filler phrases and persuasive framing (“In order to”, “At its core”)</li>
+<li>Removed generic positive conclusion (“the future looks bright”, “exciting times lie ahead”)</li>
+<li>Made the voice more personal and less “assembled” (varied rhythm, fewer placeholders)</li>
+</ul>
+<h2 id="attribution">Attribution<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#attribution" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>This skill is ported from <a href="https://github.com/blader/humanizer" class="external">blader/humanizer<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> (MIT licensed), which is itself based on <a href="https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing" class="external">Wikipedia: Signs of AI writing<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>, maintained by WikiProject AI Cleanup. The patterns documented there come from observations of thousands of instances of AI-generated text on Wikipedia.</p>
+<p>Original author: Siqi Chen (<a href="https://github.com/blader" class="external">@blader<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>). Original repo: <a href="https://github.com/blader/humanizer" class="external">https://github.com/blader/humanizer<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> (version 2.5.1). Ported to Hermes Agent with Hermes-native tool references (<code>read_file</code>, <code>patch</code>, <code>write_file</code>) and guidance for when to load the skill; the 29 patterns, personality/soul section, and full worked example are preserved verbatim from the source. Original MIT license preserved in the <code>LICENSE</code> file alongside this <code>SKILL.md</code>.</p>
+<p>Key insight from Wikipedia: “LLMs use statistical algorithms to guess what should come next. The result tends toward the most statistically likely result that applies to the widest variety of cases.”</p></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>关系图谱</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-23" aria-expanded="true"><h3>目录</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#humanizer" data-for="humanizer">humanizer</a></li><li class="depth-0"><a href="#humanizer-remove-ai-writing-patterns" data-for="humanizer-remove-ai-writing-patterns">Humanizer: Remove AI Writing Patterns</a></li><li class="depth-1"><a href="#when-to-use-this-skill" data-for="when-to-use-this-skill">When to use this skill</a></li><li class="depth-1"><a href="#how-to-use-it-in-hermes" data-for="how-to-use-it-in-hermes">How to use it in Hermes</a></li><li class="depth-1"><a href="#your-task" data-for="your-task">Your task</a></li><li class="depth-1"><a href="#voice-calibration-optional" data-for="voice-calibration-optional">Voice Calibration (optional)</a></li><li class="depth-2"><a href="#how-to-provide-a-sample" data-for="how-to-provide-a-sample">How to provide a sample</a></li><li class="depth-1"><a href="#personality-and-soul" data-for="personality-and-soul">PERSONALITY AND SOUL</a></li><li class="depth-2"><a href="#signs-of-soulless-writing-even-if-technically-clean" data-for="signs-of-soulless-writing-even-if-technically-clean">Signs of soulless writing (even if technically “clean”):</a></li><li class="depth-2"><a href="#how-to-add-voice" data-for="how-to-add-voice">How to add voice:</a></li><li class="depth-2"><a href="#before-clean-but-soulless" data-for="before-clean-but-soulless">Before (clean but soulless):</a></li><li class="depth-2"><a href="#after-has-a-pulse" data-for="after-has-a-pulse">After (has a pulse):</a></li><li class="depth-1"><a href="#content-patterns" data-for="content-patterns">CONTENT PATTERNS</a></li><li class="depth-2"><a href="#1-undue-emphasis-on-significance-legacy-and-broader-trends" data-for="1-undue-emphasis-on-significance-legacy-and-broader-trends">1. Undue Emphasis on Significance, Legacy, and Broader Trends</a></li><li class="depth-2"><a href="#2-undue-emphasis-on-notability-and-media-coverage" data-for="2-undue-emphasis-on-notability-and-media-coverage">2. Undue Emphasis on Notability and Media Coverage</a></li><li class="depth-2"><a href="#3-superficial-analyses-with--ing-endings" data-for="3-superficial-analyses-with--ing-endings">3. Superficial Analyses with -ing Endings</a></li><li class="depth-2"><a href="#4-promotional-and-advertisement-like-language" data-for="4-promotional-and-advertisement-like-language">4. Promotional and Advertisement-like Language</a></li><li class="depth-2"><a href="#5-vague-attributions-and-weasel-words" data-for="5-vague-attributions-and-weasel-words">5. Vague Attributions and Weasel Words</a></li><li class="depth-2"><a href="#6-outline-like-challenges-and-future-prospects-sections" data-for="6-outline-like-challenges-and-future-prospects-sections">6. Outline-like “Challenges and Future Prospects” Sections</a></li><li class="depth-1"><a href="#language-and-grammar-patterns" data-for="language-and-grammar-patterns">LANGUAGE AND GRAMMAR PATTERNS</a></li><li class="depth-2"><a href="#7-overused-ai-vocabulary-words" data-for="7-overused-ai-vocabulary-words">7. Overused “AI Vocabulary” Words</a></li><li class="depth-2"><a href="#8-avoidance-of-isare-copula-avoidance" data-for="8-avoidance-of-isare-copula-avoidance">8. Avoidance of “is”/“are” (Copula Avoidance)</a></li><li class="depth-2"><a href="#9-negative-parallelisms-and-tailing-negations" data-for="9-negative-parallelisms-and-tailing-negations">9. Negative Parallelisms and Tailing Negations</a></li><li class="depth-2"><a href="#10-rule-of-three-overuse" data-for="10-rule-of-three-overuse">10. Rule of Three Overuse</a></li><li class="depth-2"><a href="#11-elegant-variation-synonym-cycling" data-for="11-elegant-variation-synonym-cycling">11. Elegant Variation (Synonym Cycling)</a></li><li class="depth-2"><a href="#12-false-ranges" data-for="12-false-ranges">12. False Ranges</a></li><li class="depth-2"><a href="#13-passive-voice-and-subjectless-fragments" data-for="13-passive-voice-and-subjectless-fragments">13. Passive Voice and Subjectless Fragments</a></li><li class="depth-1"><a href="#style-patterns" data-for="style-patterns">STYLE PATTERNS</a></li><li class="depth-2"><a href="#14-em-dash-overuse" data-for="14-em-dash-overuse">14. Em Dash Overuse</a></li><li class="depth-2"><a href="#15-overuse-of-boldface" data-for="15-overuse-of-boldface">15. Overuse of Boldface</a></li><li class="depth-2"><a href="#16-inline-header-vertical-lists" data-for="16-inline-header-vertical-lists">16. Inline-Header Vertical Lists</a></li><li class="depth-2"><a href="#17-title-case-in-headings" data-for="17-title-case-in-headings">17. Title Case in Headings</a></li><li class="depth-1"><a href="#strategic-negotiations-and-global-partnerships" data-for="strategic-negotiations-and-global-partnerships">Strategic Negotiations And Global Partnerships</a></li><li class="depth-1"><a href="#strategic-negotiations-and-global-partnerships-1" data-for="strategic-negotiations-and-global-partnerships-1">Strategic negotiations and global partnerships</a></li><li class="depth-2"><a href="#18-emojis" data-for="18-emojis">18. Emojis</a></li><li class="depth-2"><a href="#19-curly-quotation-marks" data-for="19-curly-quotation-marks">19. Curly Quotation Marks</a></li><li class="depth-1"><a href="#communication-patterns" data-for="communication-patterns">COMMUNICATION PATTERNS</a></li><li class="depth-2"><a href="#20-collaborative-communication-artifacts" data-for="20-collaborative-communication-artifacts">20. Collaborative Communication Artifacts</a></li><li class="depth-2"><a href="#21-knowledge-cutoff-disclaimers" data-for="21-knowledge-cutoff-disclaimers">21. Knowledge-Cutoff Disclaimers</a></li><li class="depth-2"><a href="#22-sycophanticservile-tone" data-for="22-sycophanticservile-tone">22. Sycophantic/Servile Tone</a></li><li class="depth-1"><a href="#filler-and-hedging" data-for="filler-and-hedging">FILLER AND HEDGING</a></li><li class="depth-2"><a href="#23-filler-phrases" data-for="23-filler-phrases">23. Filler Phrases</a></li><li class="depth-2"><a href="#24-excessive-hedging" data-for="24-excessive-hedging">24. Excessive Hedging</a></li><li class="depth-2"><a href="#25-generic-positive-conclusions" data-for="25-generic-positive-conclusions">25. Generic Positive Conclusions</a></li><li class="depth-2"><a href="#26-hyphenated-word-pair-overuse" data-for="26-hyphenated-word-pair-overuse">26. Hyphenated Word Pair Overuse</a></li><li class="depth-2"><a href="#27-persuasive-authority-tropes" data-for="27-persuasive-authority-tropes">27. Persuasive Authority Tropes</a></li><li class="depth-2"><a href="#28-signposting-and-announcements" data-for="28-signposting-and-announcements">28. Signposting and Announcements</a></li><li class="depth-2"><a href="#29-fragmented-headers" data-for="29-fragmented-headers">29. Fragmented Headers</a></li><li class="depth-1"><a href="#performance" data-for="performance">Performance</a></li><li class="depth-1"><a href="#performance-1" data-for="performance-1">Performance</a></li><li class="depth-1"><a href="#process" data-for="process">Process</a></li><li class="depth-1"><a href="#output-format" data-for="output-format">Output Format</a></li><li class="depth-1"><a href="#full-example" data-for="full-example">Full Example</a></li><li class="depth-1"><a href="#attribution" data-for="attribution">Attribution</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../postscript.js" type="module" data-persist="true"></script></html>

@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr"><head><title>ref--templates--sentry</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="🏠 Kaindy Knowledge Base"/><meta property="og:title" content="ref--templates--sentry"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="ref--templates--sentry"/><meta name="twitter:description" content="Design System: Sentry Hermes Agent — Implementation Notes The original site uses proprietary fonts."/><meta property="og:description" content="Design System: Sentry Hermes Agent — Implementation Notes The original site uses proprietary fonts."/><meta property="og:image:alt" content="Design System: Sentry Hermes Agent — Implementation Notes The original site uses proprietary fonts."/><meta property="twitter:domain" content="kaindy-kb.pages.dev"/><meta property="og:url" content="https://kaindy-kb.pages.dev/10-Skills/ref--templates--sentry"/><meta property="twitter:url" content="https://kaindy-kb.pages.dev/10-Skills/ref--templates--sentry"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Design System: Sentry Hermes Agent — Implementation Notes The original site uses proprietary fonts."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUva2FpbmR5L0RvY3VtZW50cy9xdWFydHovcXVhcnR6L2NvbXBvbmVudHMvc3R5bGVzIiwic291cmNlcyI6WyJtZXJtYWlkLmlubGluZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFHRjtFQUNFOzs7QUFLRjtFQUNFO0VBQ0E7OztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTs7QUFJRjtFQUNFO0VBQ0E7RUFDQSIsInNvdXJjZXNDb250ZW50IjpbIi5leHBhbmQtYnV0dG9uIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbG9hdDogcmlnaHQ7XG4gIHBhZGRpbmc6IDAuNHJlbTtcbiAgbWFyZ2luOiAwLjNyZW07XG4gIHJpZ2h0OiAwOyAvLyBOT1RFOiByaWdodCB3aWxsIGJlIHNldCBpbiBtZXJtYWlkLmlubGluZS50c1xuICBjb2xvcjogdmFyKC0tZ3JheSk7XG4gIGJvcmRlci1jb2xvcjogdmFyKC0tZGFyayk7XG4gIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgYm9yZGVyOiAxcHggc29saWQ7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgb3BhY2l0eTogMDtcbiAgdHJhbnNpdGlvbjogMC4ycztcblxuICAmID4gc3ZnIHtcbiAgICBmaWxsOiB2YXIoLS1saWdodCk7XG4gICAgZmlsdGVyOiBjb250cmFzdCgwLjMpO1xuICB9XG5cbiAgJjpob3ZlciB7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIGJvcmRlci1jb2xvcjogdmFyKC0tc2Vjb25kYXJ5KTtcbiAgfVxuXG4gICY6Zm9jdXMge1xuICAgIG91dGxpbmU6IDA7XG4gIH1cbn1cblxucHJlIHtcbiAgJjpob3ZlciA+IC5leHBhbmQtYnV0dG9uIHtcbiAgICBvcGFjaXR5OiAxO1xuICAgIHRyYW5zaXRpb246IDAuMnM7XG4gIH1cbn1cblxuI21lcm1haWQtY29udGFpbmVyIHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICBjb250YWluOiBsYXlvdXQ7XG4gIHotaW5kZXg6IDk5OTtcbiAgbGVmdDogMDtcbiAgdG9wOiAwO1xuICB3aWR0aDogMTAwdnc7XG4gIGhlaWdodDogMTAwdmg7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIGRpc3BsYXk6IG5vbmU7XG4gIGJhY2tkcm9wLWZpbHRlcjogYmx1cig0cHgpO1xuICBiYWNrZ3JvdW5kOiByZ2JhKDAsIDAsIDAsIDAuNSk7XG5cbiAgJi5hY3RpdmUge1xuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgfVxuXG4gICYgPiAjbWVybWFpZC1zcGFjZSB7XG4gICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gICAgYm9yZGVyLXJhZGl1czogNXB4O1xuICAgIHBvc2l0aW9uOiBmaXhlZDtcbiAgICB0b3A6IDUwJTtcbiAgICBsZWZ0OiA1MCU7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7XG4gICAgaGVpZ2h0OiA4MHZoO1xuICAgIHdpZHRoOiA4MHZ3O1xuICAgIG92ZXJmbG93OiBoaWRkZW47XG5cbiAgICAmID4gLm1lcm1haWQtY29udGVudCB7XG4gICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgICB0cmFuc2Zvcm0tb3JpZ2luOiAwIDA7XG4gICAgICB0cmFuc2l0aW9uOiB0cmFuc2Zvcm0gMC4xcyBlYXNlO1xuICAgICAgb3ZlcmZsb3c6IHZpc2libGU7XG4gICAgICBtaW4taGVpZ2h0OiAyMDBweDtcbiAgICAgIG1pbi13aWR0aDogMjAwcHg7XG5cbiAgICAgIHByZSB7XG4gICAgICAgIG1hcmdpbjogMDtcbiAgICAgICAgYm9yZGVyOiBub25lO1xuICAgICAgfVxuXG4gICAgICBzdmcge1xuICAgICAgICBtYXgtd2lkdGg6IG5vbmU7XG4gICAgICAgIGhlaWdodDogYXV0bztcbiAgICAgIH1cbiAgICB9XG5cbiAgICAmID4gLm1lcm1haWQtY29udHJvbHMge1xuICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgYm90dG9tOiAyMHB4O1xuICAgICAgcmlnaHQ6IDIwcHg7XG4gICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgZ2FwOiA4cHg7XG4gICAgICBwYWRkaW5nOiA4cHg7XG4gICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodCk7XG4gICAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgYm9yZGVyLXJhZGl1czogNnB4O1xuICAgICAgYm94LXNoYWRvdzogMCAycHggNHB4IHJnYmEoMCwgMCwgMCwgMC4xKTtcbiAgICAgIHotaW5kZXg6IDI7XG5cbiAgICAgIC5tZXJtYWlkLWNvbnRyb2wtYnV0dG9uIHtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICAgIHdpZHRoOiAzMnB4O1xuICAgICAgICBoZWlnaHQ6IDMycHg7XG4gICAgICAgIHBhZGRpbmc6IDA7XG4gICAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgICAgY29sb3I6IHZhcigtLWRhcmspO1xuICAgICAgICBib3JkZXItcmFkaXVzOiA0cHg7XG4gICAgICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICAgICAgZm9udC1zaXplOiAxNnB4O1xuICAgICAgICBmb250LWZhbWlseTogdmFyKC0tYm9keUZvbnQpO1xuICAgICAgICB0cmFuc2l0aW9uOiBhbGwgMC4ycyBlYXNlO1xuXG4gICAgICAgICY6aG92ZXIge1xuICAgICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIH1cblxuICAgICAgICAmOmFjdGl2ZSB7XG4gICAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDFweCk7XG4gICAgICAgIH1cblxuICAgICAgICAvLyBTdHlsZSB0aGUgcmVzZXQgYnV0dG9uIGRpZmZlcmVudGx5XG4gICAgICAgICY6bnRoLWNoaWxkKDIpIHtcbiAgICAgICAgICB3aWR0aDogYXV0bztcbiAgICAgICAgICBwYWRkaW5nOiAwIDEycHg7XG4gICAgICAgICAgZm9udC1zaXplOiAxNHB4O1xuICAgICAgICB9XG4gICAgICB9XG4gICAgfVxuICB9XG59XG4iXX0= */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://kaindy-kb.pages.dev/index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://kaindy-kb.pages.dev/10-Skills/ref--templates--sentry-og-image.webp"/><meta property="og:image:url" content="https://kaindy-kb.pages.dev/10-Skills/ref--templates--sentry-og-image.webp"/><meta name="twitter:image" content="https://kaindy-kb.pages.dev/10-Skills/ref--templates--sentry-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="10-Skills/ref--templates--sentry"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">🏠 Kaindy Knowledge Base</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>搜索</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="搜索些什么" placeholder="搜索些什么"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="暗色模式"><title>暗色模式</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="亮色模式"><title>亮色模式</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="阅读模式"><title>阅读模式</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-876"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>探索</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-876" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../10-Skills/">10 Skills</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>ref  templates  sentry</a></div></nav><h1 class="article-title">ref--templates--sentry</h1><p show-comma="true" class="content-meta"><time datetime="2026-06-15T12:23:17.000Z">2026年6月15日</time><span>9分钟阅读</span></p><ul class="tags"><li><a href="../tags/6a5fc1" class="internal tag-link">6a5fc1</a></li><li><a href="../tags/79628c" class="internal tag-link">79628c</a></li><li><a href="../tags/150f23" class="internal tag-link">150f23</a></li></ul></div></div><article class="popover-hint"><h1 id="design-system-sentry">Design System: Sentry<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#design-system-sentry" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<blockquote>
+<p><strong>Hermes Agent — Implementation Notes</strong></p>
+<p>The original site uses proprietary fonts. For self-contained HTML output, use these CDN substitutes:</p>
+<ul>
+<li><strong>Primary:</strong> <code>Rubik</code> | <strong>Mono:</strong> <code>JetBrains Mono</code></li>
+<li><strong>Font stack (CSS):</strong> <code>font-family: 'Rubik', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;</code></li>
+<li><strong>Mono stack (CSS):</strong> <code>font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;</code></li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="html" data-theme="github-light github-dark"><code data-language="html" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">link</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> href</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap&quot;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> rel</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;stylesheet&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">></span></span></code></pre></figure>
+<p>Use <code>write_file</code> to create HTML, serve via <code>generative-widgets</code> skill (cloudflared tunnel).
+Verify visual accuracy with <code>browser_vision</code> after generating.</p>
+</blockquote>
+<h2 id="1-visual-theme--atmosphere">1. Visual Theme &amp; Atmosphere<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-visual-theme--atmosphere" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Sentry’s website is a dark-mode-first developer tool interface that speaks the language of code editors and terminal windows. The entire aesthetic is rooted in deep purple-black backgrounds (<code>#1f1633</code>, <code>#150f23</code>) that evoke the late-night debugging sessions Sentry was built for. Against this inky canvas, a carefully curated set of purples, pinks, and a distinctive lime-green accent (<code>#c2ef4e</code>) create a visual system that feels simultaneously technical and vibrant.</p>
+<p>The typography pairing is deliberate: “Dammit Sans” appears at hero scale (88px, weight 700) as a display font with personality and attitude that matches Sentry’s irreverent brand voice (“Code breaks. Fix it faster.”), while Rubik serves as the workhorse UI font across all functional text — headings, body, buttons, captions, and navigation. Monaco provides the monospace layer for code snippets and technical content, completing the developer-tool trinity.</p>
+<p>What makes Sentry distinctive is its embrace of the “dark IDE” aesthetic without feeling cold or sterile. Warm purple tones replace the typical cool grays of developer tools, and bold illustrative elements (3D characters, colorful product screenshots) punctuate the dark canvas. The button system uses a signature muted purple (<code>#79628c</code>) with inset shadows that creates a tactile, almost physical quality — buttons feel like they could be pressed into the surface.</p>
+<p><strong>Key Characteristics:</strong></p>
+<ul>
+<li>Dark purple-black backgrounds (<code>#1f1633</code>, <code>#150f23</code>) — never pure black</li>
+<li>Warm purple accent spectrum: from deep (<code>#362d59</code>) through mid (<code>#79628c</code>, <code>#6a5fc1</code>) to vibrant (<code>#422082</code>)</li>
+<li>Lime-green accent (<code>#c2ef4e</code>) for high-visibility CTAs and highlights</li>
+<li>Pink/coral accents (<code>#ffb287</code>, <code>#fa7faa</code>) for focus states and secondary highlights</li>
+<li>“Dammit Sans” display font for brand personality at hero scale</li>
+<li>Rubik as primary UI font with uppercase letter-spaced labels</li>
+<li>Monaco monospace for code elements</li>
+<li>Inset shadows on buttons creating tactile depth</li>
+<li>Frosted glass effects with <code>blur(18px) saturate(180%)</code></li>
+</ul>
+<h2 id="2-color-palette--roles">2. Color Palette &amp; Roles<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-color-palette--roles" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="primary-brand">Primary Brand<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#primary-brand" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Deep Purple</strong> (<code>#1f1633</code>): Primary background, the defining color of the brand</li>
+<li><strong>Darker Purple</strong> (<code>#150f23</code>): Deeper sections, footer, secondary backgrounds</li>
+<li><strong>Border Purple</strong> (<code>#362d59</code>): Borders, dividers, subtle structural lines</li>
+</ul>
+<h3 id="accent-colors">Accent Colors<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#accent-colors" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Sentry Purple</strong> (<code>#6a5fc1</code>): Primary interactive color — links, hover states, focus rings</li>
+<li><strong>Muted Purple</strong> (<code>#79628c</code>): Button backgrounds, secondary interactive elements</li>
+<li><strong>Deep Violet</strong> (<code>#422082</code>): Select dropdowns, active states, high-emphasis surfaces</li>
+<li><strong>Lime Green</strong> (<code>#c2ef4e</code>): High-visibility accent, special links, badge highlights</li>
+<li><strong>Coral</strong> (<code>#ffb287</code>): Focus state backgrounds, warm accent</li>
+<li><strong>Pink</strong> (<code>#fa7faa</code>): Focus outlines, decorative accents</li>
+</ul>
+<h3 id="text-colors">Text Colors<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#text-colors" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Pure White</strong> (<code>#ffffff</code>): Primary text on dark backgrounds</li>
+<li><strong>Light Gray</strong> (<code>#e5e7eb</code>): Secondary text, muted content</li>
+<li><strong>Code Yellow</strong> (<code>#dcdcaa</code>): Syntax highlighting, code tokens</li>
+</ul>
+<h3 id="surface--overlay">Surface &amp; Overlay<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#surface--overlay" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Glass White</strong> (<code>rgba(255, 255, 255, 0.18)</code>): Frosted glass button backgrounds</li>
+<li><strong>Glass Dark</strong> (<code>rgba(54, 22, 107, 0.14)</code>): Hover overlay on glass elements</li>
+<li><strong>Input White</strong> (<code>#ffffff</code>): Form input backgrounds (light context)</li>
+<li><strong>Input Border</strong> (<code>#cfcfdb</code>): Form field borders</li>
+</ul>
+<h3 id="shadows">Shadows<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#shadows" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Ambient Glow</strong> (<code>rgba(22, 15, 36, 0.9) 0px 4px 4px 9px</code>): Deep purple ambient shadow</li>
+<li><strong>Button Hover</strong> (<code>rgba(0, 0, 0, 0.18) 0px 0.5rem 1.5rem</code>): Elevated hover state</li>
+<li><strong>Card Shadow</strong> (<code>rgba(0, 0, 0, 0.1) 0px 10px 15px -3px</code>): Standard card elevation</li>
+<li><strong>Inset Button</strong> (<code>rgba(0, 0, 0, 0.1) 0px 1px 3px 0px inset</code>): Tactile pressed effect</li>
+</ul>
+<h2 id="3-typography-rules">3. Typography Rules<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-typography-rules" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="font-families">Font Families<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#font-families" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Display</strong>: <code>Dammit Sans</code> — brand personality font for hero headings</li>
+<li><strong>Primary UI</strong>: <code>Rubik</code>, with fallbacks: <code>-apple-system, system-ui, Segoe UI, Helvetica, Arial</code></li>
+<li><strong>Monospace</strong>: <code>Monaco</code>, with fallbacks: <code>Menlo, Ubuntu Mono</code></li>
+</ul>
+<h3 id="hierarchy">Hierarchy<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#hierarchy" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Role</th><th>Font</th><th>Size</th><th>Weight</th><th>Line Height</th><th>Letter Spacing</th><th>Notes</th></tr></thead><tbody><tr><td>Display Hero</td><td>Dammit Sans</td><td>88px (5.50rem)</td><td>700</td><td>1.20 (tight)</td><td>normal</td><td>Maximum impact, brand voice</td></tr><tr><td>Display Secondary</td><td>Dammit Sans</td><td>60px (3.75rem)</td><td>500</td><td>1.10 (tight)</td><td>normal</td><td>Secondary hero text</td></tr><tr><td>Section Heading</td><td>Rubik</td><td>30px (1.88rem)</td><td>400</td><td>1.20 (tight)</td><td>normal</td><td>Major section titles</td></tr><tr><td>Sub-heading</td><td>Rubik</td><td>27px (1.69rem)</td><td>500</td><td>1.25 (tight)</td><td>normal</td><td>Feature section headers</td></tr><tr><td>Card Title</td><td>Rubik</td><td>24px (1.50rem)</td><td>500</td><td>1.25 (tight)</td><td>normal</td><td>Card and block headings</td></tr><tr><td>Feature Title</td><td>Rubik</td><td>20px (1.25rem)</td><td>600</td><td>1.25 (tight)</td><td>normal</td><td>Emphasized feature names</td></tr><tr><td>Body</td><td>Rubik</td><td>16px (1.00rem)</td><td>400</td><td>1.50</td><td>normal</td><td>Standard body text</td></tr><tr><td>Body Emphasis</td><td>Rubik</td><td>16px (1.00rem)</td><td>500–600</td><td>1.50</td><td>normal</td><td>Bold body, nav items</td></tr><tr><td>Nav Label</td><td>Rubik</td><td>15px (0.94rem)</td><td>500</td><td>1.40</td><td>normal</td><td>Navigation links</td></tr><tr><td>Uppercase Label</td><td>Rubik</td><td>15px (0.94rem)</td><td>500</td><td>1.25 (tight)</td><td>normal</td><td><code>text-transform: uppercase</code></td></tr><tr><td>Button Text</td><td>Rubik</td><td>14px (0.88rem)</td><td>500–700</td><td>1.14–1.29 (tight)</td><td>0.2px</td><td><code>text-transform: uppercase</code></td></tr><tr><td>Caption</td><td>Rubik</td><td>14px (0.88rem)</td><td>500–700</td><td>1.00–1.43</td><td>0.2px</td><td>Often uppercase</td></tr><tr><td>Small Caption</td><td>Rubik</td><td>12px (0.75rem)</td><td>600</td><td>2.00 (relaxed)</td><td>normal</td><td>Subtle annotations</td></tr><tr><td>Micro Label</td><td>Rubik</td><td>10px (0.63rem)</td><td>600</td><td>1.80 (relaxed)</td><td>0.25px</td><td><code>text-transform: uppercase</code></td></tr><tr><td>Code</td><td>Monaco</td><td>16px (1.00rem)</td><td>400–700</td><td>1.50</td><td>normal</td><td>Code blocks, technical text</td></tr></tbody></table></div>
+<h3 id="principles">Principles<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#principles" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Dual personality</strong>: Dammit Sans brings irreverent brand character at display scale; Rubik provides clean professionalism for everything functional.</li>
+<li><strong>Uppercase as system</strong>: Buttons, captions, labels, and micro-text all use <code>text-transform: uppercase</code> with subtle letter-spacing (0.2px–0.25px), creating a systematic “technical label” pattern throughout.</li>
+<li><strong>Weight stratification</strong>: Rubik uses 400 (body), 500 (emphasis/nav), 600 (titles/strong), 700 (buttons/CTAs) — a clean four-tier weight system.</li>
+<li><strong>Tight headings, relaxed body</strong>: All headings use 1.10–1.25 line-height; body uses 1.50; small captions expand to 2.00 for readability at tiny sizes.</li>
+</ul>
+<h2 id="4-component-stylings">4. Component Stylings<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-component-stylings" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="buttons">Buttons<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#buttons" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Primary Muted Purple</strong></p>
+<ul>
+<li>Background: <code>#79628c</code> (rgb(121, 98, 140))</li>
+<li>Text: <code>#ffffff</code>, uppercase, 14px, weight 500–700, letter-spacing 0.2px</li>
+<li>Border: <code>1px solid #584674</code></li>
+<li>Radius: 13px</li>
+<li>Shadow: <code>rgba(0, 0, 0, 0.1) 0px 1px 3px 0px inset</code> (tactile inset)</li>
+<li>Hover: elevated shadow <code>rgba(0, 0, 0, 0.18) 0px 0.5rem 1.5rem</code></li>
+</ul>
+<p><strong>Glass White</strong></p>
+<ul>
+<li>Background: <code>rgba(255, 255, 255, 0.18)</code> (frosted glass)</li>
+<li>Text: <code>#ffffff</code></li>
+<li>Padding: 8px</li>
+<li>Radius: 12px (left-aligned variant: <code>12px 0px 0px 12px</code>)</li>
+<li>Shadow: <code>rgba(0, 0, 0, 0.08) 0px 2px 8px</code></li>
+<li>Hover background: <code>rgba(54, 22, 107, 0.14)</code></li>
+<li>Use: Secondary actions on dark surfaces</li>
+</ul>
+<p><strong>White Solid</strong></p>
+<ul>
+<li>Background: <code>#ffffff</code></li>
+<li>Text: <code>#1f1633</code></li>
+<li>Padding: 12px 16px</li>
+<li>Radius: 8px</li>
+<li>Hover: background transitions to <code>#6a5fc1</code>, text to white</li>
+<li>Focus: background <code>#ffb287</code> (coral), outline <code>rgb(106, 95, 193) solid 0.125rem</code></li>
+<li>Use: High-visibility CTA on dark backgrounds</li>
+</ul>
+<p><strong>Deep Violet (Select/Dropdown)</strong></p>
+<ul>
+<li>Background: <code>#422082</code></li>
+<li>Text: <code>#ffffff</code></li>
+<li>Padding: 8px 16px</li>
+<li>Radius: 8px</li>
+</ul>
+<h3 id="inputs">Inputs<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#inputs" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Text Input</strong></p>
+<ul>
+<li>Background: <code>#ffffff</code></li>
+<li>Text: <code>#1f1633</code></li>
+<li>Border: <code>1px solid #cfcfdb</code></li>
+<li>Padding: 8px 12px</li>
+<li>Radius: 6px</li>
+<li>Focus: border-color stays <code>#cfcfdb</code>, shadow <code>rgba(0, 0, 0, 0.15) 0px 2px 10px inset</code></li>
+</ul>
+<h3 id="links">Links<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#links" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Default on dark</strong>: <code>#ffffff</code>, underline decoration</li>
+<li><strong>Hover</strong>: color transitions to <code>#6a5fc1</code> (Sentry Purple)</li>
+<li><strong>Purple links</strong>: <code>#6a5fc1</code> default, hover underline</li>
+<li><strong>Lime accent links</strong>: <code>#c2ef4e</code> default, hover to <code>#6a5fc1</code></li>
+<li><strong>Dark context links</strong>: <code>#362d59</code>, hover to <code>#ffffff</code></li>
+</ul>
+<h3 id="cards--containers">Cards &amp; Containers<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#cards--containers" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Background: semi-transparent or dark purple surfaces</li>
+<li>Radius: 8px–12px</li>
+<li>Shadow: <code>rgba(0, 0, 0, 0.1) 0px 10px 15px -3px</code></li>
+<li>Backdrop filter: <code>blur(18px) saturate(180%)</code> for glass effects</li>
+</ul>
+<h3 id="navigation">Navigation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#navigation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Dark transparent header over hero content</li>
+<li>Rubik 15px weight 500 for nav links</li>
+<li>White text, hover to Sentry Purple (<code>#6a5fc1</code>)</li>
+<li>Uppercase labels with 0.2px letter-spacing for categories</li>
+<li>Mobile: hamburger menu, full-width expanded</li>
+</ul>
+<h2 id="5-layout-principles">5. Layout Principles<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#5-layout-principles" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="spacing-system">Spacing System<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#spacing-system" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Base unit: 8px</li>
+<li>Scale: 1px, 2px, 4px, 5px, 6px, 8px, 12px, 16px, 24px, 32px, 40px, 44px, 45px, 47px</li>
+</ul>
+<h3 id="grid--container">Grid &amp; Container<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#grid--container" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Max content width: 1152px (XL breakpoint)</li>
+<li>Responsive padding: 2rem (mobile) → 4rem (tablet+)</li>
+<li>Content centered within container</li>
+<li>Full-width dark sections with contained inner content</li>
+</ul>
+<h3 id="breakpoints">Breakpoints<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#breakpoints" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Name</th><th>Width</th><th>Key Changes</th></tr></thead><tbody><tr><td>Mobile</td><td>&lt; 576px</td><td>Single column, stacked layout</td></tr><tr><td>Small Tablet</td><td>576–640px</td><td>Minor width adjustments</td></tr><tr><td>Tablet</td><td>640–768px</td><td>2-column begins</td></tr><tr><td>Small Desktop</td><td>768–992px</td><td>Full nav visible</td></tr><tr><td>Desktop</td><td>992–1152px</td><td>Standard layout</td></tr><tr><td>Large Desktop</td><td>1152–1440px</td><td>Max-width content</td></tr></tbody></table></div>
+<h3 id="whitespace-philosophy">Whitespace Philosophy<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#whitespace-philosophy" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Dark breathing room</strong>: Generous vertical spacing between sections (64px–80px+) lets the dark background serve as a visual rest.</li>
+<li><strong>Content islands</strong>: Feature sections are self-contained blocks floating in the dark purple sea, each with its own internal spacing rhythm.</li>
+<li><strong>Asymmetric padding</strong>: Buttons use asymmetric padding patterns (12px 16px, 8px 12px) that feel organic rather than rigid.</li>
+</ul>
+<h3 id="border-radius-scale">Border Radius Scale<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#border-radius-scale" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Minimal (6px): Form inputs, small interactive elements</li>
+<li>Standard (8px): Buttons, cards, containers</li>
+<li>Comfortable (10px–12px): Larger containers, glass panels</li>
+<li>Rounded (13px): Primary muted buttons</li>
+<li>Pill (18px): Image containers, badges</li>
+</ul>
+<h2 id="6-depth--elevation">6. Depth &amp; Elevation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#6-depth--elevation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Level</th><th>Treatment</th><th>Use</th></tr></thead><tbody><tr><td>Sunken (Level -1)</td><td>Inset shadow <code>rgba(0, 0, 0, 0.1) 0px 1px 3px inset</code></td><td>Primary buttons (tactile pressed feel)</td></tr><tr><td>Flat (Level 0)</td><td>No shadow</td><td>Default surfaces, dark backgrounds</td></tr><tr><td>Surface (Level 1)</td><td><code>rgba(0, 0, 0, 0.08) 0px 2px 8px</code></td><td>Glass buttons, subtle cards</td></tr><tr><td>Elevated (Level 2)</td><td><code>rgba(0, 0, 0, 0.1) 0px 10px 15px -3px</code></td><td>Cards, floating panels</td></tr><tr><td>Prominent (Level 3)</td><td><code>rgba(0, 0, 0, 0.18) 0px 0.5rem 1.5rem</code></td><td>Hover states, modals</td></tr><tr><td>Ambient (Level 4)</td><td><code>rgba(22, 15, 36, 0.9) 0px 4px 4px 9px</code></td><td>Deep purple ambient glow around hero</td></tr></tbody></table></div>
+<p><strong>Shadow Philosophy</strong>: Sentry uses a unique combination of inset shadows (buttons feel pressed INTO the surface) and ambient glows (content radiates from the dark background). The deep purple ambient shadow (<code>rgba(22, 15, 36, 0.9)</code>) is the signature — it creates a bioluminescent quality where content seems to emit its own purple-tinted light.</p>
+<h2 id="7-dos-and-donts">7. Do’s and Don’ts<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#7-dos-and-donts" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="do">Do<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#do" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Use deep purple backgrounds (<code>#1f1633</code>, <code>#150f23</code>) — never pure black (<code>#000000</code>)</li>
+<li>Apply inset shadows on primary buttons for the tactile pressed effect</li>
+<li>Use Dammit Sans ONLY for hero/display headings — Rubik for everything else</li>
+<li>Apply <code>text-transform: uppercase</code> with <code>letter-spacing: 0.2px</code> on buttons and labels</li>
+<li>Use the lime-green accent (<code>#c2ef4e</code>) sparingly for maximum impact</li>
+<li>Employ frosted glass effects (<code>blur(18px) saturate(180%)</code>) for layered surfaces</li>
+<li>Maintain the warm purple shadow tones — shadows should feel purple-tinted, not neutral gray</li>
+<li>Use Rubik’s 4-tier weight system: 400 (body), 500 (nav/emphasis), 600 (titles), 700 (CTAs)</li>
+</ul>
+<h3 id="dont">Don’t<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#dont" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Don’t use pure black (<code>#000000</code>) for backgrounds — always use the warm purple-blacks</li>
+<li>Don’t apply Dammit Sans to body text or UI elements — it’s display-only</li>
+<li>Don’t use standard gray (<code>#666</code>, <code>#999</code>) for borders — use purple-tinted grays (<code>#362d59</code>, <code>#584674</code>)</li>
+<li>Don’t drop the uppercase treatment on buttons — it’s a system-wide pattern</li>
+<li>Don’t use sharp corners (0px radius) — minimum 6px for all interactive elements</li>
+<li>Don’t mix the lime-green accent with the coral/pink accents in the same component</li>
+<li>Don’t use flat (non-inset) shadows on primary buttons — the tactile quality is signature</li>
+<li>Don’t forget letter-spacing on uppercase text — 0.2px minimum</li>
+</ul>
+<h2 id="8-responsive-behavior">8. Responsive Behavior<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#8-responsive-behavior" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="breakpoints-1">Breakpoints<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#breakpoints-1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Name</th><th>Width</th><th>Key Changes</th></tr></thead><tbody><tr><td>Mobile</td><td>&lt;576px</td><td>Single column, hamburger nav, stacked CTAs</td></tr><tr><td>Tablet</td><td>576–768px</td><td>2-column feature grids begin</td></tr><tr><td>Small Desktop</td><td>768–992px</td><td>Full navigation, side-by-side layouts</td></tr><tr><td>Desktop</td><td>992–1152px</td><td>Max-width container, full layout</td></tr><tr><td>Large</td><td>>1152px</td><td>Content max-width maintained, generous margins</td></tr></tbody></table></div>
+<h3 id="collapsing-strategy">Collapsing Strategy<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#collapsing-strategy" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Hero text: 88px Dammit Sans → 60px → mobile scales</li>
+<li>Navigation: horizontal → hamburger with slide-out</li>
+<li>Feature sections: side-by-side → stacked cards</li>
+<li>Buttons: inline → full-width stacked on mobile</li>
+<li>Container padding: 4rem → 2rem</li>
+</ul>
+<h2 id="9-agent-prompt-guide">9. Agent Prompt Guide<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#9-agent-prompt-guide" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="quick-color-reference">Quick Color Reference<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#quick-color-reference" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Background: <code>#1f1633</code> (primary), <code>#150f23</code> (deeper)</li>
+<li>Text: <code>#ffffff</code> (primary), <code>#e5e7eb</code> (secondary)</li>
+<li>Interactive: <code>#6a5fc1</code> (links/hover), <code>#79628c</code> (buttons)</li>
+<li>Accent: <code>#c2ef4e</code> (lime highlight), <code>#ffb287</code> (coral focus)</li>
+<li>Border: <code>#362d59</code> (dark), <code>#cfcfdb</code> (light context)</li>
+</ul>
+<h3 id="example-component-prompts">Example Component Prompts<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#example-component-prompts" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>“Create a hero section on deep purple background (#1f1633). Headline at 88px Dammit Sans weight 700, line-height 1.20, white text. Sub-text at 16px Rubik weight 400, line-height 1.50. White solid CTA button (8px radius, 12px 16px padding), hover transitions to <a href=".././tags/6a5fc1" class="tag-link internal alias" data-slug="tags/6a5fc1">6a5fc1</a>.”</li>
+<li>“Design a navigation bar: transparent over dark background. Rubik 15px weight 500, white text. Uppercase category labels with 0.2px letter-spacing. Hover color <a href=".././tags/6a5fc1" class="tag-link internal alias" data-slug="tags/6a5fc1">6a5fc1</a>.”</li>
+<li>“Build a primary button: background <a href=".././tags/79628c" class="tag-link internal alias" data-slug="tags/79628c">79628c</a>, border 1px solid #584674, inset shadow rgba(0,0,0,0.1) 0px 1px 3px, white uppercase text at 14px Rubik weight 700, letter-spacing 0.2px, radius 13px. Hover: shadow rgba(0,0,0,0.18) 0px 0.5rem 1.5rem.”</li>
+<li>“Create a glass card panel: background rgba(255,255,255,0.18), backdrop-filter blur(18px) saturate(180%), radius 12px. White text content inside.”</li>
+<li>“Design a feature section: <a href=".././tags/150f23" class="tag-link internal alias" data-slug="tags/150f23">150f23</a> background, 24px Rubik weight 500 heading, 16px Rubik weight 400 body text. 14px uppercase lime-green (#c2ef4e) label above heading.”</li>
+</ul>
+<h3 id="iteration-guide">Iteration Guide<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#iteration-guide" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li>Always start with the dark purple background — the color palette is built FOR dark mode</li>
+<li>Use inset shadows on buttons, ambient purple glows on hero sections</li>
+<li>Uppercase + letter-spacing is the systematic pattern for labels, buttons, and captions</li>
+<li>Lime green (#c2ef4e) is the “pop” color — use once per section maximum</li>
+<li>Frosted glass for overlaid panels, solid purple for primary surfaces</li>
+<li>Rubik handles 90% of typography — Dammit Sans is hero-only</li>
+</ol></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>关系图谱</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-398" aria-expanded="true"><h3>目录</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#design-system-sentry" data-for="design-system-sentry">Design System: Sentry</a></li><li class="depth-1"><a href="#1-visual-theme--atmosphere" data-for="1-visual-theme--atmosphere">1. Visual Theme &amp; Atmosphere</a></li><li class="depth-1"><a href="#2-color-palette--roles" data-for="2-color-palette--roles">2. Color Palette &amp; Roles</a></li><li class="depth-2"><a href="#primary-brand" data-for="primary-brand">Primary Brand</a></li><li class="depth-2"><a href="#accent-colors" data-for="accent-colors">Accent Colors</a></li><li class="depth-2"><a href="#text-colors" data-for="text-colors">Text Colors</a></li><li class="depth-2"><a href="#surface--overlay" data-for="surface--overlay">Surface &amp; Overlay</a></li><li class="depth-2"><a href="#shadows" data-for="shadows">Shadows</a></li><li class="depth-1"><a href="#3-typography-rules" data-for="3-typography-rules">3. Typography Rules</a></li><li class="depth-2"><a href="#font-families" data-for="font-families">Font Families</a></li><li class="depth-2"><a href="#hierarchy" data-for="hierarchy">Hierarchy</a></li><li class="depth-2"><a href="#principles" data-for="principles">Principles</a></li><li class="depth-1"><a href="#4-component-stylings" data-for="4-component-stylings">4. Component Stylings</a></li><li class="depth-2"><a href="#buttons" data-for="buttons">Buttons</a></li><li class="depth-2"><a href="#inputs" data-for="inputs">Inputs</a></li><li class="depth-2"><a href="#links" data-for="links">Links</a></li><li class="depth-2"><a href="#cards--containers" data-for="cards--containers">Cards &amp; Containers</a></li><li class="depth-2"><a href="#navigation" data-for="navigation">Navigation</a></li><li class="depth-1"><a href="#5-layout-principles" data-for="5-layout-principles">5. Layout Principles</a></li><li class="depth-2"><a href="#spacing-system" data-for="spacing-system">Spacing System</a></li><li class="depth-2"><a href="#grid--container" data-for="grid--container">Grid &amp; Container</a></li><li class="depth-2"><a href="#breakpoints" data-for="breakpoints">Breakpoints</a></li><li class="depth-2"><a href="#whitespace-philosophy" data-for="whitespace-philosophy">Whitespace Philosophy</a></li><li class="depth-2"><a href="#border-radius-scale" data-for="border-radius-scale">Border Radius Scale</a></li><li class="depth-1"><a href="#6-depth--elevation" data-for="6-depth--elevation">6. Depth &amp; Elevation</a></li><li class="depth-1"><a href="#7-dos-and-donts" data-for="7-dos-and-donts">7. Do’s and Don’ts</a></li><li class="depth-2"><a href="#do" data-for="do">Do</a></li><li class="depth-2"><a href="#dont" data-for="dont">Don’t</a></li><li class="depth-1"><a href="#8-responsive-behavior" data-for="8-responsive-behavior">8. Responsive Behavior</a></li><li class="depth-2"><a href="#breakpoints-1" data-for="breakpoints-1">Breakpoints</a></li><li class="depth-2"><a href="#collapsing-strategy" data-for="collapsing-strategy">Collapsing Strategy</a></li><li class="depth-1"><a href="#9-agent-prompt-guide" data-for="9-agent-prompt-guide">9. Agent Prompt Guide</a></li><li class="depth-2"><a href="#quick-color-reference" data-for="quick-color-reference">Quick Color Reference</a></li><li class="depth-2"><a href="#example-component-prompts" data-for="example-component-prompts">Example Component Prompts</a></li><li class="depth-2"><a href="#iteration-guide" data-for="iteration-guide">Iteration Guide</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../postscript.js" type="module" data-persist="true"></script></html>

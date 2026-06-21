@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr"><head><title>ref--touchdesigner-mcp--operators</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="🏠 Kaindy Knowledge Base"/><meta property="og:title" content="ref--touchdesigner-mcp--operators"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="ref--touchdesigner-mcp--operators"/><meta name="twitter:description" content="TouchDesigner Operator Reference Operator Families Overview TouchDesigner has 6 operator families."/><meta property="og:description" content="TouchDesigner Operator Reference Operator Families Overview TouchDesigner has 6 operator families."/><meta property="og:image:alt" content="TouchDesigner Operator Reference Operator Families Overview TouchDesigner has 6 operator families."/><meta property="twitter:domain" content="kaindy-kb.pages.dev"/><meta property="og:url" content="https://kaindy-kb.pages.dev/10-Skills/ref--touchdesigner-mcp--operators"/><meta property="twitter:url" content="https://kaindy-kb.pages.dev/10-Skills/ref--touchdesigner-mcp--operators"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="TouchDesigner Operator Reference Operator Families Overview TouchDesigner has 6 operator families."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUva2FpbmR5L0RvY3VtZW50cy9xdWFydHovcXVhcnR6L2NvbXBvbmVudHMvc3R5bGVzIiwic291cmNlcyI6WyJtZXJtYWlkLmlubGluZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFHRjtFQUNFOzs7QUFLRjtFQUNFO0VBQ0E7OztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTs7QUFJRjtFQUNFO0VBQ0E7RUFDQSIsInNvdXJjZXNDb250ZW50IjpbIi5leHBhbmQtYnV0dG9uIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbG9hdDogcmlnaHQ7XG4gIHBhZGRpbmc6IDAuNHJlbTtcbiAgbWFyZ2luOiAwLjNyZW07XG4gIHJpZ2h0OiAwOyAvLyBOT1RFOiByaWdodCB3aWxsIGJlIHNldCBpbiBtZXJtYWlkLmlubGluZS50c1xuICBjb2xvcjogdmFyKC0tZ3JheSk7XG4gIGJvcmRlci1jb2xvcjogdmFyKC0tZGFyayk7XG4gIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgYm9yZGVyOiAxcHggc29saWQ7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgb3BhY2l0eTogMDtcbiAgdHJhbnNpdGlvbjogMC4ycztcblxuICAmID4gc3ZnIHtcbiAgICBmaWxsOiB2YXIoLS1saWdodCk7XG4gICAgZmlsdGVyOiBjb250cmFzdCgwLjMpO1xuICB9XG5cbiAgJjpob3ZlciB7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIGJvcmRlci1jb2xvcjogdmFyKC0tc2Vjb25kYXJ5KTtcbiAgfVxuXG4gICY6Zm9jdXMge1xuICAgIG91dGxpbmU6IDA7XG4gIH1cbn1cblxucHJlIHtcbiAgJjpob3ZlciA+IC5leHBhbmQtYnV0dG9uIHtcbiAgICBvcGFjaXR5OiAxO1xuICAgIHRyYW5zaXRpb246IDAuMnM7XG4gIH1cbn1cblxuI21lcm1haWQtY29udGFpbmVyIHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICBjb250YWluOiBsYXlvdXQ7XG4gIHotaW5kZXg6IDk5OTtcbiAgbGVmdDogMDtcbiAgdG9wOiAwO1xuICB3aWR0aDogMTAwdnc7XG4gIGhlaWdodDogMTAwdmg7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIGRpc3BsYXk6IG5vbmU7XG4gIGJhY2tkcm9wLWZpbHRlcjogYmx1cig0cHgpO1xuICBiYWNrZ3JvdW5kOiByZ2JhKDAsIDAsIDAsIDAuNSk7XG5cbiAgJi5hY3RpdmUge1xuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgfVxuXG4gICYgPiAjbWVybWFpZC1zcGFjZSB7XG4gICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gICAgYm9yZGVyLXJhZGl1czogNXB4O1xuICAgIHBvc2l0aW9uOiBmaXhlZDtcbiAgICB0b3A6IDUwJTtcbiAgICBsZWZ0OiA1MCU7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7XG4gICAgaGVpZ2h0OiA4MHZoO1xuICAgIHdpZHRoOiA4MHZ3O1xuICAgIG92ZXJmbG93OiBoaWRkZW47XG5cbiAgICAmID4gLm1lcm1haWQtY29udGVudCB7XG4gICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgICB0cmFuc2Zvcm0tb3JpZ2luOiAwIDA7XG4gICAgICB0cmFuc2l0aW9uOiB0cmFuc2Zvcm0gMC4xcyBlYXNlO1xuICAgICAgb3ZlcmZsb3c6IHZpc2libGU7XG4gICAgICBtaW4taGVpZ2h0OiAyMDBweDtcbiAgICAgIG1pbi13aWR0aDogMjAwcHg7XG5cbiAgICAgIHByZSB7XG4gICAgICAgIG1hcmdpbjogMDtcbiAgICAgICAgYm9yZGVyOiBub25lO1xuICAgICAgfVxuXG4gICAgICBzdmcge1xuICAgICAgICBtYXgtd2lkdGg6IG5vbmU7XG4gICAgICAgIGhlaWdodDogYXV0bztcbiAgICAgIH1cbiAgICB9XG5cbiAgICAmID4gLm1lcm1haWQtY29udHJvbHMge1xuICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgYm90dG9tOiAyMHB4O1xuICAgICAgcmlnaHQ6IDIwcHg7XG4gICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgZ2FwOiA4cHg7XG4gICAgICBwYWRkaW5nOiA4cHg7XG4gICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodCk7XG4gICAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgYm9yZGVyLXJhZGl1czogNnB4O1xuICAgICAgYm94LXNoYWRvdzogMCAycHggNHB4IHJnYmEoMCwgMCwgMCwgMC4xKTtcbiAgICAgIHotaW5kZXg6IDI7XG5cbiAgICAgIC5tZXJtYWlkLWNvbnRyb2wtYnV0dG9uIHtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICAgIHdpZHRoOiAzMnB4O1xuICAgICAgICBoZWlnaHQ6IDMycHg7XG4gICAgICAgIHBhZGRpbmc6IDA7XG4gICAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgICAgY29sb3I6IHZhcigtLWRhcmspO1xuICAgICAgICBib3JkZXItcmFkaXVzOiA0cHg7XG4gICAgICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICAgICAgZm9udC1zaXplOiAxNnB4O1xuICAgICAgICBmb250LWZhbWlseTogdmFyKC0tYm9keUZvbnQpO1xuICAgICAgICB0cmFuc2l0aW9uOiBhbGwgMC4ycyBlYXNlO1xuXG4gICAgICAgICY6aG92ZXIge1xuICAgICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIH1cblxuICAgICAgICAmOmFjdGl2ZSB7XG4gICAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDFweCk7XG4gICAgICAgIH1cblxuICAgICAgICAvLyBTdHlsZSB0aGUgcmVzZXQgYnV0dG9uIGRpZmZlcmVudGx5XG4gICAgICAgICY6bnRoLWNoaWxkKDIpIHtcbiAgICAgICAgICB3aWR0aDogYXV0bztcbiAgICAgICAgICBwYWRkaW5nOiAwIDEycHg7XG4gICAgICAgICAgZm9udC1zaXplOiAxNHB4O1xuICAgICAgICB9XG4gICAgICB9XG4gICAgfVxuICB9XG59XG4iXX0= */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://kaindy-kb.pages.dev/index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://kaindy-kb.pages.dev/10-Skills/ref--touchdesigner-mcp--operators-og-image.webp"/><meta property="og:image:url" content="https://kaindy-kb.pages.dev/10-Skills/ref--touchdesigner-mcp--operators-og-image.webp"/><meta name="twitter:image" content="https://kaindy-kb.pages.dev/10-Skills/ref--touchdesigner-mcp--operators-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="10-Skills/ref--touchdesigner-mcp--operators"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">🏠 Kaindy Knowledge Base</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>搜索</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="搜索些什么" placeholder="搜索些什么"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="暗色模式"><title>暗色模式</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="亮色模式"><title>亮色模式</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="阅读模式"><title>阅读模式</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-931"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>探索</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-931" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../10-Skills/">10 Skills</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>ref  touchdesigner mcp  operators</a></div></nav><h1 class="article-title">ref--touchdesigner-mcp--operators</h1><p show-comma="true" class="content-meta"><time datetime="2026-06-15T12:23:17.000Z">2026年6月15日</time><span>6分钟阅读</span></p></div></div><article class="popover-hint"><h1 id="touchdesigner-operator-reference">TouchDesigner Operator Reference<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#touchdesigner-operator-reference" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<h2 id="operator-families-overview">Operator Families Overview<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#operator-families-overview" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>TouchDesigner has 6 operator families. Each family processes a specific data type and is color-coded in the UI. Operators can only connect to others of the SAME family (with cross-family converters as the bridge).</p>
+<h2 id="tops--texture-operators-purple">TOPs — Texture Operators (Purple)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#tops--texture-operators-purple" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>2D image/texture processing on the GPU. The workhorse of visual output.</p>
+<h3 id="generators-create-images-from-nothing">Generators (create images from nothing)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#generators-create-images-from-nothing" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Operator</th><th>Type Name</th><th>Key Parameters</th><th>Use</th></tr></thead><tbody><tr><td>Noise TOP</td><td><code>noiseTop</code></td><td><code>type</code> (0-6), <code>monochrome</code>, <code>seed</code>, <code>period</code>, <code>harmonics</code>, <code>exponent</code>, <code>amp</code>, <code>offset</code>, <code>resolutionw/h</code></td><td>Procedural noise textures — Perlin, Simplex, Sparse, etc. Foundation of generative art.</td></tr><tr><td>Constant TOP</td><td><code>constantTop</code></td><td><code>colorr/g/b/a</code>, <code>resolutionw/h</code></td><td>Solid color. Use as background or blend input.</td></tr><tr><td>Text TOP</td><td><code>textTop</code></td><td><code>text</code>, <code>fontsizex</code>, <code>fontfile</code>, <code>alignx/y</code>, <code>colorr/g/b</code></td><td>Render text to texture. Supports multi-line, word wrap.</td></tr><tr><td>Ramp TOP</td><td><code>rampTop</code></td><td><code>type</code> (0=horizontal, 1=vertical, 2=radial, 3=circular), <code>phase</code>, <code>period</code></td><td>Gradient textures for masking, color mapping.</td></tr><tr><td>Circle TOP</td><td><code>circleTop</code></td><td><code>radiusx/y</code>, <code>centerx/y</code>, <code>width</code></td><td>Circles, rings, ellipses.</td></tr><tr><td>Rectangle TOP</td><td><code>rectangleTop</code></td><td><code>sizex/y</code>, <code>centerx/y</code>, <code>softness</code></td><td>Rectangles with optional softness.</td></tr><tr><td>GLSL TOP</td><td><code>glslTop</code></td><td><code>dat</code> (points to shader DAT), <code>resolutionw/h</code>, <code>outputformat</code>, custom uniforms</td><td>Custom fragment shaders. Most powerful TOP for custom visuals.</td></tr><tr><td>GLSL Multi TOP</td><td><code>glslmultiTop</code></td><td><code>dat</code>, <code>numinputs</code>, <code>numoutputs</code>, <code>numcomputepasses</code></td><td>Multi-pass GLSL with compute shaders. Advanced.</td></tr><tr><td>Render TOP</td><td><code>renderTop</code></td><td><code>camera</code>, <code>geometry</code>, <code>lights</code>, <code>resolutionw/h</code></td><td>Renders 3D scenes (SOPs + MATs + Camera/Light COMPs).</td></tr></tbody></table></div>
+<h3 id="filters-modify-a-single-input">Filters (modify a single input)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#filters-modify-a-single-input" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Operator</th><th>Type Name</th><th>Key Parameters</th><th>Use</th></tr></thead><tbody><tr><td>Level TOP</td><td><code>levelTop</code></td><td><code>opacity</code>, <code>brightness1/2</code>, <code>gamma1/2</code>, <code>contrast</code>, <code>invert</code>, <code>blacklevel/whitelevel</code></td><td>Brightness, contrast, gamma, levels. Essential color correction.</td></tr><tr><td>Blur TOP</td><td><code>blurTop</code></td><td><code>sizex/y</code>, <code>type</code> (0=Gaussian, 1=Box, 2=Bartlett)</td><td>Gaussian/box blur.</td></tr><tr><td>Transform TOP</td><td><code>transformTop</code></td><td><code>tx/ty</code>, <code>sx/sy</code>, <code>rz</code>, <code>pivotx/y</code>, <code>extend</code> (0=Hold, 1=Zero, 2=Repeat, 3=Mirror)</td><td>Translate, scale, rotate textures.</td></tr><tr><td>HSV Adjust TOP</td><td><code>hsvadjustTop</code></td><td><code>hueoffset</code>, <code>saturationmult</code>, <code>valuemult</code></td><td>HSV color adjustments.</td></tr><tr><td>Lookup TOP</td><td><code>lookupTop</code></td><td>(input: texture + lookup table)</td><td>Color remapping via lookup table texture.</td></tr><tr><td>Edge TOP</td><td><code>edgeTop</code></td><td><code>type</code> (0=Sobel, 1=Frei-Chen)</td><td>Edge detection.</td></tr><tr><td>Displace TOP</td><td><code>displaceTop</code></td><td><code>scalex/y</code></td><td>Pixel displacement using a second input as displacement map.</td></tr><tr><td>Flip TOP</td><td><code>flipTop</code></td><td><code>flipx</code>, <code>flipy</code>, <code>flop</code> (diagonal)</td><td>Mirror/flip textures.</td></tr><tr><td>Crop TOP</td><td><code>cropTop</code></td><td><code>cropleft/right/top/bottom</code></td><td>Crop region of texture.</td></tr><tr><td>Resolution TOP</td><td><code>resolutionTop</code></td><td><code>resolutionw/h</code>, <code>outputresolution</code></td><td>Resize textures.</td></tr><tr><td>Null TOP</td><td><code>nullTop</code></td><td>(none significant)</td><td>Pass-through. Use for organization, referencing, feedback delay.</td></tr><tr><td>Cache TOP</td><td><code>cacheTop</code></td><td><code>length</code>, <code>step</code></td><td>Store N frames of history. Useful for trails, time effects.</td></tr></tbody></table></div>
+<h3 id="compositors-combine-multiple-inputs">Compositors (combine multiple inputs)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#compositors-combine-multiple-inputs" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Operator</th><th>Type Name</th><th>Key Parameters</th><th>Use</th></tr></thead><tbody><tr><td>Composite TOP</td><td><code>compositeTop</code></td><td><code>operand</code> (0-31: Over, Add, Multiply, Screen, etc.)</td><td>Blend two textures with standard compositing modes.</td></tr><tr><td>Over TOP</td><td><code>overTop</code></td><td>(simple alpha compositing)</td><td>Layer with alpha. Simpler than Composite.</td></tr><tr><td>Add TOP</td><td><code>addTop</code></td><td>(additive blend)</td><td>Additive blending. Great for glow, light effects.</td></tr><tr><td>Multiply TOP</td><td><code>multiplyTop</code></td><td>(multiplicative blend)</td><td>Multiply blend. Good for masking, darkening.</td></tr><tr><td>Switch TOP</td><td><code>switchTop</code></td><td><code>index</code> (0-based)</td><td>Switch between multiple inputs by index.</td></tr><tr><td>Cross TOP</td><td><code>crossTop</code></td><td><code>cross</code> (0.0-1.0)</td><td>Crossfade between two inputs.</td></tr></tbody></table></div>
+<h3 id="io-inputoutput">I/O (input/output)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#io-inputoutput" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Operator</th><th>Type Name</th><th>Key Parameters</th><th>Use</th></tr></thead><tbody><tr><td>Movie File In TOP</td><td><code>moviefileinTop</code></td><td><code>file</code>, <code>speed</code>, <code>trim</code>, <code>index</code></td><td>Load video files, image sequences.</td></tr><tr><td>Movie File Out TOP</td><td><code>moviefileoutTop</code></td><td><code>file</code>, <code>type</code> (codec), <code>record</code> (toggle)</td><td>Record/export video files.</td></tr><tr><td>NDI In TOP</td><td><code>ndiinTop</code></td><td><code>sourcename</code></td><td>Receive NDI video streams.</td></tr><tr><td>NDI Out TOP</td><td><code>ndioutTop</code></td><td><code>sourcename</code></td><td>Send NDI video streams.</td></tr><tr><td>Syphon Spout In/Out TOP</td><td><code>syphonspoutinTop</code> / <code>syphonspoutoutTop</code></td><td><code>servername</code></td><td>Inter-app texture sharing.</td></tr><tr><td>Video Device In TOP</td><td><code>videodeviceinTop</code></td><td><code>device</code></td><td>Webcam/capture card input.</td></tr><tr><td>Feedback TOP</td><td><code>feedbackTop</code></td><td><code>top</code> (path to the TOP to feed back)</td><td>One-frame delay feedback. Essential for recursive effects.</td></tr></tbody></table></div>
+<h3 id="converters">Converters<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#converters" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Operator</th><th>Type Name</th><th>Direction</th><th>Use</th></tr></thead><tbody><tr><td>CHOP to TOP</td><td><code>choptopTop</code></td><td>CHOP <span>→</span> TOP</td><td>Visualize channel data as texture (waveform, spectrum display).</td></tr><tr><td>TOP to CHOP</td><td><code>topchopChop</code></td><td>TOP <span>→</span> CHOP</td><td>Sample texture pixels as channel data.</td></tr></tbody></table></div>
+<h2 id="chops--channel-operators-green">CHOPs — Channel Operators (Green)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#chops--channel-operators-green" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Time-varying numeric data: audio, animation curves, sensor data, control signals.</p>
+<h3 id="generators">Generators<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#generators" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Operator</th><th>Type Name</th><th>Key Parameters</th><th>Use</th></tr></thead><tbody><tr><td>Constant CHOP</td><td><code>constantChop</code></td><td><code>name0/value0</code>, <code>name1/value1</code>…</td><td>Static named channels. Control panel for parameters.</td></tr><tr><td>LFO CHOP</td><td><code>lfoChop</code></td><td><code>frequency</code>, <code>type</code> (0=Sin, 1=Tri, 2=Square, 3=Ramp, 4=Pulse), <code>amp</code>, <code>offset</code>, <code>phase</code></td><td>Low frequency oscillator. Animation driver.</td></tr><tr><td>Noise CHOP</td><td><code>noiseChop</code></td><td><code>type</code>, <code>roughness</code>, <code>period</code>, <code>amp</code>, <code>seed</code>, <code>channels</code></td><td>Smooth random motion. Organic animation.</td></tr><tr><td>Pattern CHOP</td><td><code>patternChop</code></td><td><code>type</code> (0=Sine, 1=Triangle, …), <code>length</code>, <code>cycles</code></td><td>Generate waveform patterns.</td></tr><tr><td>Timer CHOP</td><td><code>timerChop</code></td><td><code>length</code>, <code>play</code>, <code>cue</code>, <code>cycles</code></td><td>Countdown/count-up timer with cue points.</td></tr><tr><td>Count CHOP</td><td><code>countChop</code></td><td><code>threshold</code>, <code>limittype</code>, <code>limitmin/max</code></td><td>Event counter with wrapping/clamping.</td></tr></tbody></table></div>
+<h3 id="audio">Audio<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#audio" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Operator</th><th>Type Name</th><th>Key Parameters</th><th>Use</th></tr></thead><tbody><tr><td>Audio File In CHOP</td><td><code>audiofileinChop</code></td><td><code>file</code>, <code>volume</code>, <code>play</code>, <code>speed</code>, <code>trim</code></td><td>Play audio files.</td></tr><tr><td>Audio Device In CHOP</td><td><code>audiodeviceinChop</code></td><td><code>device</code>, <code>channels</code></td><td>Live microphone/line input.</td></tr><tr><td>Audio Spectrum CHOP</td><td><code>audiospectrumChop</code></td><td><code>size</code> (FFT size), <code>outputformat</code> (0=Power, 1=Magnitude)</td><td>FFT frequency analysis.</td></tr><tr><td>Audio Band EQ CHOP</td><td><code>audiobandeqChop</code></td><td><code>bands</code>, <code>gaindb</code> per band</td><td>Frequency band isolation.</td></tr><tr><td>Audio Device Out CHOP</td><td><code>audiodeviceoutChop</code></td><td><code>device</code></td><td>Audio playback output.</td></tr></tbody></table></div>
+<h3 id="mathlogic">Math/Logic<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mathlogic" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Operator</th><th>Type Name</th><th>Key Parameters</th><th>Use</th></tr></thead><tbody><tr><td>Math CHOP</td><td><code>mathChop</code></td><td><code>preoff</code>, <code>gain</code>, <code>postoff</code>, <code>chanop</code> (0=Off, 1=Add, 2=Subtract, 3=Multiply…)</td><td>Math operations on channels. The Swiss army knife.</td></tr><tr><td>Logic CHOP</td><td><code>logicChop</code></td><td><code>preop</code> (0=Off, 1=AND, 2=OR, 3=XOR, 4=NAND), <code>convert</code></td><td>Boolean logic on channels.</td></tr><tr><td>Filter CHOP</td><td><code>filterChop</code></td><td><code>type</code> (0=Low Pass, 1=Band Pass, 2=High Pass, 3=Notch), <code>cutofffreq</code>, <code>filterwidth</code></td><td>Smooth, dampen, filter signals.</td></tr><tr><td>Lag CHOP</td><td><code>lagChop</code></td><td><code>lag1/2</code>, <code>overshoot1/2</code></td><td>Smooth transitions with overshoot.</td></tr><tr><td>Limit CHOP</td><td><code>limitChop</code></td><td><code>type</code> (0=Clamp, 1=Loop, 2=ZigZag), <code>min/max</code></td><td>Clamp or wrap channel values.</td></tr><tr><td>Speed CHOP</td><td><code>speedChop</code></td><td>(none significant)</td><td>Integrate values (velocity to position, acceleration to velocity).</td></tr><tr><td>Trigger CHOP</td><td><code>triggerChop</code></td><td><code>attack</code>, <code>peak</code>, <code>decay</code>, <code>sustain</code>, <code>release</code></td><td>ADSR envelope from trigger events.</td></tr><tr><td>Select CHOP</td><td><code>selectChop</code></td><td><code>chop</code> (path), <code>channames</code></td><td>Reference channels from another CHOP.</td></tr><tr><td>Merge CHOP</td><td><code>mergeChop</code></td><td><code>align</code> (0=Extend, 1=Trim to First, 2=Trim to Shortest)</td><td>Combine channels from multiple CHOPs.</td></tr><tr><td>Null CHOP</td><td><code>nullChop</code></td><td>(none significant)</td><td>Pass-through for organization and referencing.</td></tr></tbody></table></div>
+<h3 id="input-devices">Input Devices<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#input-devices" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Operator</th><th>Type Name</th><th>Use</th></tr></thead><tbody><tr><td>Mouse In CHOP</td><td><code>mouseinChop</code></td><td>Mouse position, buttons, wheel.</td></tr><tr><td>Keyboard In CHOP</td><td><code>keyboardinChop</code></td><td>Keyboard key states.</td></tr><tr><td>MIDI In CHOP</td><td><code>midiinChop</code></td><td>MIDI note/CC input.</td></tr><tr><td>OSC In CHOP</td><td><code>oscinChop</code></td><td>OSC message input (network).</td></tr></tbody></table></div>
+<h2 id="sops--surface-operators-blue">SOPs — Surface Operators (Blue)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#sops--surface-operators-blue" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>3D geometry: points, polygons, NURBS, meshes.</p>
+<h3 id="generators-1">Generators<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#generators-1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Operator</th><th>Type Name</th><th>Key Parameters</th><th>Use</th></tr></thead><tbody><tr><td>Grid SOP</td><td><code>gridSop</code></td><td><code>rows</code>, <code>cols</code>, <code>sizex/y</code>, <code>type</code> (0=Polygon, 1=Mesh, 2=NURBS)</td><td>Flat grid mesh. Foundation for displacement, instancing.</td></tr><tr><td>Sphere SOP</td><td><code>sphereSop</code></td><td><code>type</code>, <code>rows</code>, <code>cols</code>, <code>radius</code></td><td>Sphere geometry.</td></tr><tr><td>Box SOP</td><td><code>boxSop</code></td><td><code>sizex/y/z</code></td><td>Box geometry.</td></tr><tr><td>Torus SOP</td><td><code>torusSop</code></td><td><code>radiusx/y</code>, <code>rows</code>, <code>cols</code></td><td>Donut shape.</td></tr><tr><td>Circle SOP</td><td><code>circleSop</code></td><td><code>type</code>, <code>radius</code>, <code>divs</code></td><td>Circle/ring geometry.</td></tr><tr><td>Line SOP</td><td><code>lineSop</code></td><td><code>dist</code>, <code>points</code></td><td>Line segments.</td></tr><tr><td>Text SOP</td><td><code>textSop</code></td><td><code>text</code>, <code>fontsizex</code>, <code>fontfile</code>, <code>extrude</code></td><td>3D text geometry.</td></tr></tbody></table></div>
+<h3 id="modifiers">Modifiers<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#modifiers" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Operator</th><th>Type Name</th><th>Key Parameters</th><th>Use</th></tr></thead><tbody><tr><td>Transform SOP</td><td><code>transformSop</code></td><td><code>tx/ty/tz</code>, <code>rx/ry/rz</code>, <code>sx/sy/sz</code></td><td>Transform geometry (translate, rotate, scale).</td></tr><tr><td>Noise SOP</td><td><code>noiseSop</code></td><td><code>type</code>, <code>amp</code>, <code>period</code>, <code>roughness</code></td><td>Deform geometry with noise.</td></tr><tr><td>Sort SOP</td><td><code>sortSop</code></td><td><code>ptsort</code>, <code>primsort</code></td><td>Reorder points/primitives.</td></tr><tr><td>Facet SOP</td><td><code>facetSop</code></td><td><code>unique</code>, <code>consolidate</code>, <code>computenormals</code></td><td>Normals, consolidation, unique points.</td></tr><tr><td>Merge SOP</td><td><code>mergeSop</code></td><td>(none significant)</td><td>Combine multiple geometry inputs.</td></tr><tr><td>Null SOP</td><td><code>nullSop</code></td><td>(none significant)</td><td>Pass-through.</td></tr></tbody></table></div>
+<h2 id="dats--data-operators-white">DATs — Data Operators (White)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#dats--data-operators-white" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Text, tables, scripts, network data.</p>
+<h3 id="core">Core<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#core" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Operator</th><th>Type Name</th><th>Key Parameters</th><th>Use</th></tr></thead><tbody><tr><td>Table DAT</td><td><code>tableDat</code></td><td>(edit content directly)</td><td>Spreadsheet-like data tables.</td></tr><tr><td>Text DAT</td><td><code>textDat</code></td><td>(edit content directly)</td><td>Arbitrary text content. Shader code, configs, scripts.</td></tr><tr><td>Script DAT</td><td><code>scriptDat</code></td><td><code>language</code> (0=Python, 1=C++)</td><td>Custom callbacks and DAT processing.</td></tr><tr><td>CHOP Execute DAT</td><td><code>chopexecDat</code></td><td><code>chop</code> (path to watch), callbacks</td><td>Trigger Python on CHOP value changes.</td></tr><tr><td>DAT Execute DAT</td><td><code>datexecDat</code></td><td><code>dat</code> (path to watch)</td><td>Trigger Python on DAT content changes.</td></tr><tr><td>Panel Execute DAT</td><td><code>panelexecDat</code></td><td><code>panel</code></td><td>Trigger Python on UI panel events.</td></tr></tbody></table></div>
+<h3 id="io">I/O<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#io" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Operator</th><th>Type Name</th><th>Key Parameters</th><th>Use</th></tr></thead><tbody><tr><td>Web DAT</td><td><code>webDat</code></td><td><code>url</code>, <code>fetchmethod</code> (0=GET, 1=POST)</td><td>HTTP requests. API integration.</td></tr><tr><td>TCP/IP DAT</td><td><code>tcpipDat</code></td><td><code>address</code>, <code>port</code>, <code>mode</code></td><td>TCP networking.</td></tr><tr><td>OSC In DAT</td><td><code>oscinDat</code></td><td><code>port</code></td><td>Receive OSC as text messages.</td></tr><tr><td>Serial DAT</td><td><code>serialDat</code></td><td><code>port</code>, <code>baudrate</code></td><td>Serial port communication (Arduino, etc.).</td></tr><tr><td>File In DAT</td><td><code>fileinDat</code></td><td><code>file</code></td><td>Read text files.</td></tr><tr><td>File Out DAT</td><td><code>fileoutDat</code></td><td><code>file</code>, <code>write</code></td><td>Write text files.</td></tr></tbody></table></div>
+<h3 id="conversions">Conversions<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#conversions" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Operator</th><th>Type Name</th><th>Direction</th><th>Use</th></tr></thead><tbody><tr><td>DAT to CHOP</td><td><code>dattochopChop</code></td><td>DAT <span>→</span> CHOP</td><td>Convert table data to channels.</td></tr><tr><td>CHOP to DAT</td><td><code>choptodatDat</code></td><td>CHOP <span>→</span> DAT</td><td>Convert channel data to table rows.</td></tr><tr><td>SOP to DAT</td><td><code>soptodatDat</code></td><td>SOP <span>→</span> DAT</td><td>Extract geometry data as table.</td></tr></tbody></table></div>
+<h2 id="mats--material-operators-yellow">MATs — Material Operators (Yellow)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mats--material-operators-yellow" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Materials for 3D rendering in Render TOP / Geometry COMP.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Operator</th><th>Type Name</th><th>Key Parameters</th><th>Use</th></tr></thead><tbody><tr><td>Phong MAT</td><td><code>phongMat</code></td><td><code>diff_colorr/g/b</code>, <code>spec_colorr/g/b</code>, <code>shininess</code>, <code>colormap</code>, <code>normalmap</code></td><td>Classic Phong shading. Simple, fast.</td></tr><tr><td>PBR MAT</td><td><code>pbrMat</code></td><td><code>basecolorr/g/b</code>, <code>metallic</code>, <code>roughness</code>, <code>normalmap</code>, <code>emitcolorr/g/b</code></td><td>Physically-based rendering. Realistic materials.</td></tr><tr><td>GLSL MAT</td><td><code>glslMat</code></td><td><code>dat</code> (shader DAT), custom uniforms</td><td>Custom vertex + fragment shaders for 3D.</td></tr><tr><td>Constant MAT</td><td><code>constMat</code></td><td><code>colorr/g/b</code>, <code>colormap</code></td><td>Flat unlit color/texture. No shading.</td></tr><tr><td>Point Sprite MAT</td><td><code>pointspriteMat</code></td><td><code>colormap</code>, <code>scale</code></td><td>Render points as camera-facing sprites. Great for particles.</td></tr><tr><td>Wireframe MAT</td><td><code>wireframeMat</code></td><td><code>colorr/g/b</code>, <code>width</code></td><td>Wireframe rendering.</td></tr><tr><td>Depth MAT</td><td><code>depthMat</code></td><td><code>near</code>, <code>far</code></td><td>Render depth buffer as grayscale.</td></tr></tbody></table></div>
+<h2 id="comps--component-operators-gray">COMPs — Component Operators (Gray)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#comps--component-operators-gray" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Containers, 3D scene elements, UI components.</p>
+<h3 id="3d-scene">3D Scene<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3d-scene" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Operator</th><th>Type Name</th><th>Key Parameters</th><th>Use</th></tr></thead><tbody><tr><td>Geometry COMP</td><td><code>geometryComp</code></td><td><code>material</code> (path), <code>instancechop</code> (path), <code>instancing</code> (toggle)</td><td>Renders geometry with material. Instancing host.</td></tr><tr><td>Camera COMP</td><td><code>cameraComp</code></td><td><code>tx/ty/tz</code>, <code>rx/ry/rz</code>, <code>fov</code>, <code>near/far</code></td><td>Camera for Render TOP.</td></tr><tr><td>Light COMP</td><td><code>lightComp</code></td><td><code>lighttype</code> (0=Point, 1=Directional, 2=Spot, 3=Cone), <code>dimmer</code>, <code>colorr/g/b</code></td><td>Lighting for 3D scenes.</td></tr><tr><td>Ambient Light COMP</td><td><code>ambientlightComp</code></td><td><code>dimmer</code>, <code>colorr/g/b</code></td><td>Ambient lighting.</td></tr><tr><td>Environment Light COMP</td><td><code>envlightComp</code></td><td><code>envmap</code></td><td>Image-based lighting (IBL).</td></tr></tbody></table></div>
+<h3 id="containers">Containers<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#containers" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Operator</th><th>Type Name</th><th>Key Parameters</th><th>Use</th></tr></thead><tbody><tr><td>Container COMP</td><td><code>containerComp</code></td><td><code>w</code>, <code>h</code>, <code>bgcolor1/2/3</code></td><td>UI container. Holds other COMPs for panel layouts.</td></tr><tr><td>Base COMP</td><td><code>baseComp</code></td><td>(none significant)</td><td>Generic container. Networks-inside-networks.</td></tr><tr><td>Replicator COMP</td><td><code>replicatorComp</code></td><td><code>template</code>, <code>operatorsdat</code></td><td>Clone a template operator N times from a table.</td></tr></tbody></table></div>
+<h3 id="utilities">Utilities<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#utilities" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Operator</th><th>Type Name</th><th>Key Parameters</th><th>Use</th></tr></thead><tbody><tr><td>Window COMP</td><td><code>windowComp</code></td><td><code>winw/h</code>, <code>winoffsetx/y</code>, <code>monitor</code>, <code>borders</code></td><td>Output window for display/projection.</td></tr><tr><td>Select COMP</td><td><code>selectComp</code></td><td><code>rowcol</code>, <code>panel</code></td><td>Select and display content from elsewhere.</td></tr><tr><td>Engine COMP</td><td><code>engineComp</code></td><td><code>tox</code>, <code>externaltox</code></td><td>Load external .tox components. Sub-process isolation.</td></tr></tbody></table></div>
+<h2 id="cross-family-converter-summary">Cross-Family Converter Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#cross-family-converter-summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>From</th><th>To</th><th>Operator</th><th>Type Name</th></tr></thead><tbody><tr><td>CHOP</td><td>TOP</td><td>CHOP to TOP</td><td><code>choptopTop</code></td></tr><tr><td>TOP</td><td>CHOP</td><td>TOP to CHOP</td><td><code>topchopChop</code></td></tr><tr><td>DAT</td><td>CHOP</td><td>DAT to CHOP</td><td><code>dattochopChop</code></td></tr><tr><td>CHOP</td><td>DAT</td><td>CHOP to DAT</td><td><code>choptodatDat</code></td></tr><tr><td>SOP</td><td>CHOP</td><td>SOP to CHOP</td><td><code>soptochopChop</code></td></tr><tr><td>CHOP</td><td>SOP</td><td>CHOP to SOP</td><td><code>choptosopSop</code></td></tr><tr><td>SOP</td><td>DAT</td><td>SOP to DAT</td><td><code>soptodatDat</code></td></tr><tr><td>DAT</td><td>SOP</td><td>DAT to SOP</td><td><code>dattosopSop</code></td></tr><tr><td>SOP</td><td>TOP</td><td>(use Render TOP + Geometry COMP)</td><td>—</td></tr><tr><td>TOP</td><td>SOP</td><td>TOP to SOP</td><td><code>toptosopSop</code></td></tr></tbody></table></div></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>关系图谱</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-426" aria-expanded="true"><h3>目录</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#touchdesigner-operator-reference" data-for="touchdesigner-operator-reference">TouchDesigner Operator Reference</a></li><li class="depth-1"><a href="#operator-families-overview" data-for="operator-families-overview">Operator Families Overview</a></li><li class="depth-1"><a href="#tops--texture-operators-purple" data-for="tops--texture-operators-purple">TOPs — Texture Operators (Purple)</a></li><li class="depth-2"><a href="#generators-create-images-from-nothing" data-for="generators-create-images-from-nothing">Generators (create images from nothing)</a></li><li class="depth-2"><a href="#filters-modify-a-single-input" data-for="filters-modify-a-single-input">Filters (modify a single input)</a></li><li class="depth-2"><a href="#compositors-combine-multiple-inputs" data-for="compositors-combine-multiple-inputs">Compositors (combine multiple inputs)</a></li><li class="depth-2"><a href="#io-inputoutput" data-for="io-inputoutput">I/O (input/output)</a></li><li class="depth-2"><a href="#converters" data-for="converters">Converters</a></li><li class="depth-1"><a href="#chops--channel-operators-green" data-for="chops--channel-operators-green">CHOPs — Channel Operators (Green)</a></li><li class="depth-2"><a href="#generators" data-for="generators">Generators</a></li><li class="depth-2"><a href="#audio" data-for="audio">Audio</a></li><li class="depth-2"><a href="#mathlogic" data-for="mathlogic">Math/Logic</a></li><li class="depth-2"><a href="#input-devices" data-for="input-devices">Input Devices</a></li><li class="depth-1"><a href="#sops--surface-operators-blue" data-for="sops--surface-operators-blue">SOPs — Surface Operators (Blue)</a></li><li class="depth-2"><a href="#generators-1" data-for="generators-1">Generators</a></li><li class="depth-2"><a href="#modifiers" data-for="modifiers">Modifiers</a></li><li class="depth-1"><a href="#dats--data-operators-white" data-for="dats--data-operators-white">DATs — Data Operators (White)</a></li><li class="depth-2"><a href="#core" data-for="core">Core</a></li><li class="depth-2"><a href="#io" data-for="io">I/O</a></li><li class="depth-2"><a href="#conversions" data-for="conversions">Conversions</a></li><li class="depth-1"><a href="#mats--material-operators-yellow" data-for="mats--material-operators-yellow">MATs — Material Operators (Yellow)</a></li><li class="depth-1"><a href="#comps--component-operators-gray" data-for="comps--component-operators-gray">COMPs — Component Operators (Gray)</a></li><li class="depth-2"><a href="#3d-scene" data-for="3d-scene">3D Scene</a></li><li class="depth-2"><a href="#containers" data-for="containers">Containers</a></li><li class="depth-2"><a href="#utilities" data-for="utilities">Utilities</a></li><li class="depth-1"><a href="#cross-family-converter-summary" data-for="cross-family-converter-summary">Cross-Family Converter Summary</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../postscript.js" type="module" data-persist="true"></script></html>

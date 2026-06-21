@@ -1,0 +1,31 @@
+filters:
+  and:
+    - 'file.ext == "md"'
+    - 'file.inFolder("06-inbox")'
+properties:
+  file.name:
+    displayName: Inbox Note
+  file.folder:
+    displayName: Agent Folder
+  type:
+    displayName: Type
+  status:
+    displayName: Status
+  created:
+    displayName: Created
+  updated:
+    displayName: Updated
+  tags:
+    displayName: Tags
+views:
+  - type: table
+    name: "Inbox Items"
+    limit: 200
+    order:
+      - file.name
+      - file.folder
+      - type
+      - status
+      - created
+      - updated
+      - tags

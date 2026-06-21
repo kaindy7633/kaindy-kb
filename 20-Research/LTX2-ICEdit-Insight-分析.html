@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr"><head><title>LTX2-ICEdit-Insight-分析</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="🏠 Kaindy Knowledge Base"/><meta property="og:title" content="LTX2-ICEdit-Insight-分析"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="LTX2-ICEdit-Insight-分析"/><meta name="twitter:description" content="LTX2-ICEdit-Insight 深度分析 分析时间: 2026-06-12 仓库: Valiant-Cat/LTX2-ICEdit-Insight 论文: Research Square: rs-9775063 HuggingFace: joyfox/LTX2.3-ICEdit-Insight 作者: 重庆威能猫科技有限公司 AI Lab (Fan Tang, Siyuan Li) DOI: 10.21203/rs.3.rs-9775063/v1 一、仓库概览 指标数值⭐ Stars109 (2026-06-12, 06-06 发现时 104)🍴 Forks5📜 License无明..."/><meta property="og:description" content="LTX2-ICEdit-Insight 深度分析 分析时间: 2026-06-12 仓库: Valiant-Cat/LTX2-ICEdit-Insight 论文: Research Square: rs-9775063 HuggingFace: joyfox/LTX2.3-ICEdit-Insight 作者: 重庆威能猫科技有限公司 AI Lab (Fan Tang, Siyuan Li) DOI: 10.21203/rs.3.rs-9775063/v1 一、仓库概览 指标数值⭐ Stars109 (2026-06-12, 06-06 发现时 104)🍴 Forks5📜 License无明..."/><meta property="og:image:alt" content="LTX2-ICEdit-Insight 深度分析 分析时间: 2026-06-12 仓库: Valiant-Cat/LTX2-ICEdit-Insight 论文: Research Square: rs-9775063 HuggingFace: joyfox/LTX2.3-ICEdit-Insight 作者: 重庆威能猫科技有限公司 AI Lab (Fan Tang, Siyuan Li) DOI: 10.21203/rs.3.rs-9775063/v1 一、仓库概览 指标数值⭐ Stars109 (2026-06-12, 06-06 发现时 104)🍴 Forks5📜 License无明..."/><meta property="twitter:domain" content="kaindy-kb.pages.dev"/><meta property="og:url" content="https://kaindy-kb.pages.dev/20-Research/LTX2-ICEdit-Insight-分析"/><meta property="twitter:url" content="https://kaindy-kb.pages.dev/20-Research/LTX2-ICEdit-Insight-分析"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="LTX2-ICEdit-Insight 深度分析 分析时间: 2026-06-12 仓库: Valiant-Cat/LTX2-ICEdit-Insight 论文: Research Square: rs-9775063 HuggingFace: joyfox/LTX2.3-ICEdit-Insight 作者: 重庆威能猫科技有限公司 AI Lab (Fan Tang, Siyuan Li) DOI: 10.21203/rs.3.rs-9775063/v1 一、仓库概览 指标数值⭐ Stars109 (2026-06-12, 06-06 发现时 104)🍴 Forks5📜 License无明..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUva2FpbmR5L0RvY3VtZW50cy9xdWFydHovcXVhcnR6L2NvbXBvbmVudHMvc3R5bGVzIiwic291cmNlcyI6WyJtZXJtYWlkLmlubGluZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFHRjtFQUNFOzs7QUFLRjtFQUNFO0VBQ0E7OztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTs7QUFJRjtFQUNFO0VBQ0E7RUFDQSIsInNvdXJjZXNDb250ZW50IjpbIi5leHBhbmQtYnV0dG9uIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbG9hdDogcmlnaHQ7XG4gIHBhZGRpbmc6IDAuNHJlbTtcbiAgbWFyZ2luOiAwLjNyZW07XG4gIHJpZ2h0OiAwOyAvLyBOT1RFOiByaWdodCB3aWxsIGJlIHNldCBpbiBtZXJtYWlkLmlubGluZS50c1xuICBjb2xvcjogdmFyKC0tZ3JheSk7XG4gIGJvcmRlci1jb2xvcjogdmFyKC0tZGFyayk7XG4gIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgYm9yZGVyOiAxcHggc29saWQ7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgb3BhY2l0eTogMDtcbiAgdHJhbnNpdGlvbjogMC4ycztcblxuICAmID4gc3ZnIHtcbiAgICBmaWxsOiB2YXIoLS1saWdodCk7XG4gICAgZmlsdGVyOiBjb250cmFzdCgwLjMpO1xuICB9XG5cbiAgJjpob3ZlciB7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIGJvcmRlci1jb2xvcjogdmFyKC0tc2Vjb25kYXJ5KTtcbiAgfVxuXG4gICY6Zm9jdXMge1xuICAgIG91dGxpbmU6IDA7XG4gIH1cbn1cblxucHJlIHtcbiAgJjpob3ZlciA+IC5leHBhbmQtYnV0dG9uIHtcbiAgICBvcGFjaXR5OiAxO1xuICAgIHRyYW5zaXRpb246IDAuMnM7XG4gIH1cbn1cblxuI21lcm1haWQtY29udGFpbmVyIHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICBjb250YWluOiBsYXlvdXQ7XG4gIHotaW5kZXg6IDk5OTtcbiAgbGVmdDogMDtcbiAgdG9wOiAwO1xuICB3aWR0aDogMTAwdnc7XG4gIGhlaWdodDogMTAwdmg7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIGRpc3BsYXk6IG5vbmU7XG4gIGJhY2tkcm9wLWZpbHRlcjogYmx1cig0cHgpO1xuICBiYWNrZ3JvdW5kOiByZ2JhKDAsIDAsIDAsIDAuNSk7XG5cbiAgJi5hY3RpdmUge1xuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgfVxuXG4gICYgPiAjbWVybWFpZC1zcGFjZSB7XG4gICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gICAgYm9yZGVyLXJhZGl1czogNXB4O1xuICAgIHBvc2l0aW9uOiBmaXhlZDtcbiAgICB0b3A6IDUwJTtcbiAgICBsZWZ0OiA1MCU7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7XG4gICAgaGVpZ2h0OiA4MHZoO1xuICAgIHdpZHRoOiA4MHZ3O1xuICAgIG92ZXJmbG93OiBoaWRkZW47XG5cbiAgICAmID4gLm1lcm1haWQtY29udGVudCB7XG4gICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgICB0cmFuc2Zvcm0tb3JpZ2luOiAwIDA7XG4gICAgICB0cmFuc2l0aW9uOiB0cmFuc2Zvcm0gMC4xcyBlYXNlO1xuICAgICAgb3ZlcmZsb3c6IHZpc2libGU7XG4gICAgICBtaW4taGVpZ2h0OiAyMDBweDtcbiAgICAgIG1pbi13aWR0aDogMjAwcHg7XG5cbiAgICAgIHByZSB7XG4gICAgICAgIG1hcmdpbjogMDtcbiAgICAgICAgYm9yZGVyOiBub25lO1xuICAgICAgfVxuXG4gICAgICBzdmcge1xuICAgICAgICBtYXgtd2lkdGg6IG5vbmU7XG4gICAgICAgIGhlaWdodDogYXV0bztcbiAgICAgIH1cbiAgICB9XG5cbiAgICAmID4gLm1lcm1haWQtY29udHJvbHMge1xuICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgYm90dG9tOiAyMHB4O1xuICAgICAgcmlnaHQ6IDIwcHg7XG4gICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgZ2FwOiA4cHg7XG4gICAgICBwYWRkaW5nOiA4cHg7XG4gICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodCk7XG4gICAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgYm9yZGVyLXJhZGl1czogNnB4O1xuICAgICAgYm94LXNoYWRvdzogMCAycHggNHB4IHJnYmEoMCwgMCwgMCwgMC4xKTtcbiAgICAgIHotaW5kZXg6IDI7XG5cbiAgICAgIC5tZXJtYWlkLWNvbnRyb2wtYnV0dG9uIHtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICAgIHdpZHRoOiAzMnB4O1xuICAgICAgICBoZWlnaHQ6IDMycHg7XG4gICAgICAgIHBhZGRpbmc6IDA7XG4gICAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgICAgY29sb3I6IHZhcigtLWRhcmspO1xuICAgICAgICBib3JkZXItcmFkaXVzOiA0cHg7XG4gICAgICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICAgICAgZm9udC1zaXplOiAxNnB4O1xuICAgICAgICBmb250LWZhbWlseTogdmFyKC0tYm9keUZvbnQpO1xuICAgICAgICB0cmFuc2l0aW9uOiBhbGwgMC4ycyBlYXNlO1xuXG4gICAgICAgICY6aG92ZXIge1xuICAgICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIH1cblxuICAgICAgICAmOmFjdGl2ZSB7XG4gICAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDFweCk7XG4gICAgICAgIH1cblxuICAgICAgICAvLyBTdHlsZSB0aGUgcmVzZXQgYnV0dG9uIGRpZmZlcmVudGx5XG4gICAgICAgICY6bnRoLWNoaWxkKDIpIHtcbiAgICAgICAgICB3aWR0aDogYXV0bztcbiAgICAgICAgICBwYWRkaW5nOiAwIDEycHg7XG4gICAgICAgICAgZm9udC1zaXplOiAxNHB4O1xuICAgICAgICB9XG4gICAgICB9XG4gICAgfVxuICB9XG59XG4iXX0= */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://kaindy-kb.pages.dev/index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://kaindy-kb.pages.dev/20-Research/LTX2-ICEdit-Insight-分析-og-image.webp"/><meta property="og:image:url" content="https://kaindy-kb.pages.dev/20-Research/LTX2-ICEdit-Insight-分析-og-image.webp"/><meta name="twitter:image" content="https://kaindy-kb.pages.dev/20-Research/LTX2-ICEdit-Insight-分析-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="20-Research/LTX2-ICEdit-Insight-分析"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">🏠 Kaindy Knowledge Base</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>搜索</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="搜索些什么" placeholder="搜索些什么"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="暗色模式"><title>暗色模式</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="亮色模式"><title>亮色模式</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="阅读模式"><title>阅读模式</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-986"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>探索</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-986" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../20-Research/">20 Research</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>LTX2 ICEdit Insight 分析</a></div></nav><h1 class="article-title">LTX2-ICEdit-Insight-分析</h1><p show-comma="true" class="content-meta"><time datetime="2026-06-15T12:23:17.000Z">2026年6月15日</time><span>10分钟阅读</span></p></div></div><article class="popover-hint"><h1 id="ltx2-icedit-insight-深度分析">LTX2-ICEdit-Insight 深度分析<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#ltx2-icedit-insight-深度分析" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<blockquote>
+<p><strong>分析时间</strong>: 2026-06-12
+<strong>仓库</strong>: <a href="https://github.com/Valiant-Cat/LTX2-ICEdit-Insight" class="external">Valiant-Cat/LTX2-ICEdit-Insight<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>
+<strong>论文</strong>: <a href="https://www.researchsquare.com/article/rs-9775063/v1" class="external">Research Square: rs-9775063<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>
+<strong>HuggingFace</strong>: <a href="https://huggingface.co/joyfox/LTX2.3-ICEdit-Insight" class="external">joyfox/LTX2.3-ICEdit-Insight<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>
+<strong>作者</strong>: 重庆威能猫科技有限公司 AI Lab (Fan Tang, Siyuan Li)
+<strong>DOI</strong>: 10.21203/rs.3.rs-9775063/v1</p>
+</blockquote>
+<hr/>
+<h2 id="一仓库概览">一、仓库概览<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#一仓库概览" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>指标</th><th>数值</th></tr></thead><tbody><tr><td>⭐ Stars</td><td><strong>109</strong> (2026-06-12, 06-06 发现时 104)</td></tr><tr><td>🍴 Forks</td><td>5</td></tr><tr><td>📜 License</td><td>无明确 License (⚠️ 需确认商用)</td></tr><tr><td>🐍 语言</td><td>Python</td></tr><tr><td>📅 创建</td><td>2026-04-23</td></tr><tr><td>🔄 最后推送</td><td>2026-06-01</td></tr><tr><td>🌿 默认分支</td><td>main</td></tr><tr><td>🤗 模型仓库</td><td>joyfox/LTX2.3-ICEdit-Insight</td></tr></tbody></table></div>
+<h2 id="二核心技术架构">二、核心技术架构<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#二核心技术架构" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="21-三大核心创新">2.1 三大核心创新<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#21-三大核心创新" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="tada-task-aware-decoupled-adapter">TADA (Task-Aware Decoupled Adapter)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#tada-task-aware-decoupled-adapter" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>替代传统单一 LoRA 的方案</li>
+<li><strong>任务感知门控</strong>：根据任务类型（修复/高清/去水印/去字幕）自动激活不同的适配器分支</li>
+<li><strong>分支解耦注入</strong>：将”结构恢复”和”纹理/语义编辑”分离为独立的注入通道</li>
+<li><strong>弱正交约束</strong>：减轻共享骨干网络上的任务干扰</li>
+</ul>
+<h4 id="fglc-flow-guided-latent-consistency">FGLC (Flow-Guided Latent Consistency)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#fglc-flow-guided-latent-consistency" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>在潜空间实现时序一致性</li>
+<li><strong>光流对齐</strong>：跨帧运动先验引导注意力偏置</li>
+<li><strong>跨帧滑窗关联</strong>：相邻帧间建立关联，降低闪烁</li>
+<li><strong>遮挡补全稳定性</strong>：运动区域和遮挡区域更自然的背景重建</li>
+</ul>
+<h4 id="pmtr-progressive-multi-task-routing">PMTR (Progressive Multi-Task Routing)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#pmtr-progressive-multi-task-routing" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>渐进式课程学习策略</li>
+<li>协同任务路由：单模型同时支持多任务</li>
+<li>提高联合训练的收敛稳定性和泛化表现</li>
+</ul>
+<h3 id="22-流水线架构">2.2 流水线架构<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#22-流水线架构" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>默认单阶段推理</strong> (推荐，single_stage=True):</p>
+<pre><code>输入视频 → Video VAE Encoder → IC-LoRA引导(参考帧拼接到去噪序列)
+→ Transformer扩散(融合LoRA权重) → Video VAE Decoder → 输出MP4
+</code></pre>
+<p>Sigma 序列: <code>[1.0 → 0.9375 → 0.8125 → 0.5625 → 0.25 → 0.0]</code></p>
+<p><strong>两阶段推理</strong> (—two-stage):</p>
+<pre><code>输入视频 → VAE Encoder @半分辨率 → Stage1扩散(IC-LoRA引导)
+→ VideoUpsampler ×2 → Stage2精修(无IC-LoRA) → VAE Decoder → 输出MP4
+</code></pre>
+<ul>
+<li>Stage1 sigma: <code>[1.0 → 0.9375 → 0.8125 → 0.5625 → 0.25 → 0.0]</code></li>
+<li>Stage2 sigma: <code>[0.85 → 0.7250 → 0.4219 → 0.0]</code></li>
+</ul>
+<p>⚠️ <strong>关键发现</strong>: 默认单阶段全分辨率，避免两阶段 Stage2 换脸/内容漂移。这是与其他 LTX 视频编辑方案的重要区别。</p>
+<h3 id="23-关键技术修复fp8兼容">2.3 关键技术修复（FP8兼容）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#23-关键技术修复fp8兼容" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>FP8 权重反量化</strong>：<code>apply_loras</code> 前将 <code>fp8_input_scaled</code> 反量化为 <code>bf16</code>，避免 LoRA delta 方向错误</li>
+<li><strong>一体化 checkpoint 兼容</strong>：VAE/Audio VAE/Vocoder 复用 SDK 内置 key filter，Gemma 使用 <code>GEMMA_HF_TEXT_ONLY_KEY_OPS</code></li>
+<li><strong>自带 ltx_vendor SDK</strong>：无需外部 LTX-2/ 目录，通过 <code>sys.path.insert(0, &quot;ltx_vendor&quot;)</code> 加载</li>
+</ol>
+<h2 id="三四大功能模式">三、四大功能模式<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#三四大功能模式" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>模式</th><th>参数</th><th>IC-LoRA 文件</th><th>典型 Prompt</th></tr></thead><tbody><tr><td><strong>视频修复</strong></td><td><code>--mode restoration</code></td><td><code>ltx2.3-video-restoration-general.safetensors</code></td><td>消除伪影、重建高频细节</td></tr><tr><td><strong>视频高清</strong></td><td><code>--mode hd</code></td><td><code>ltx2.3-ic-video-upscale-general.safetensors</code></td><td>提升清晰度、色彩表现力</td></tr><tr><td><strong>去水印</strong></td><td><code>--mode watermark_rm</code></td><td><code>ltx2.3-ic-watermark-remove-general.safetensors</code></td><td>去除短视频平台水印与遮挡</td></tr><tr><td><strong>去字幕</strong></td><td><code>--mode subtitle_rm</code></td><td><code>ltx2.3-ic-subtitles-remove-general.safetensors</code></td><td>去除字幕文字与遮挡</td></tr></tbody></table></div>
+<blockquote>
+<p>通用视频编辑（instruction-driven semantic editing）仍在训练中，当前未开放。</p>
+</blockquote>
+<h2 id="四硬件需求">四、硬件需求<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#四硬件需求" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="最低配置">最低配置<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#最低配置" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>项目</th><th>要求</th></tr></thead><tbody><tr><td>GPU</td><td>NVIDIA RTX 4090 (24GB) 或等同 Ada Lovelace / Hopper 架构</td></tr><tr><td>CUDA</td><td>12.4+</td></tr><tr><td>Python</td><td>3.10+</td></tr><tr><td>ffmpeg</td><td>系统级安装</td></tr></tbody></table></div>
+<h3 id="vram-估算-rtx-4090-24gb">VRAM 估算 (RTX 4090 24GB)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#vram-估算-rtx-4090-24gb" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>配置</th><th>峰值 VRAM</th><th>备注</th></tr></thead><tbody><tr><td>704×1184 × 217 帧</td><td>~20GB+</td><td>需关闭其他 GPU 进程</td></tr><tr><td>704×1184 × 97 帧</td><td>~17GB</td><td><strong>最常用</strong></td></tr><tr><td>704×1184 × 25 帧</td><td>~14GB</td><td>快速测试</td></tr><tr><td>512×288 × 217 帧</td><td>~8GB</td><td>低分辨率全时长</td></tr></tbody></table></div>
+<h3 id="优化建议">优化建议<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#优化建议" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 1. 启用 layer streaming 预取</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">--streaming-prefetch-count</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 2</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 2. 使用 expandable_segments</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">export</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> PYTORCH_CUDA_ALLOC_CONF</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">expandable_segments:True</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 3. 关闭 ComfyUI 等 GPU 进程</span></span></code></pre></figure>
+<h3 id="分辨率约束">分辨率约束<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#分辨率约束" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>单阶段</strong>: height/width 必须是 <strong>32 的倍数</strong></li>
+<li><strong>两阶段</strong>: height/width 必须是 <strong>64 的倍数</strong></li>
+<li><strong>帧数</strong>: <code>8k + 1</code> (如 25/97/217)</li>
+<li>常见: 输入 270×480 → 输出 704×1184</li>
+</ul>
+<h2 id="五安装方法">五、安装方法<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#五安装方法" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 1. 环境</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">conda</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> create</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -n</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> LTX2-icedit</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> python=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">3.12</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -y</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">conda</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> activate</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> LTX2-icedit</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 2. PyTorch (CUDA 12.4/12.8)</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">pip</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> install</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> torch</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> torchaudio</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --index-url</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> https://download.pytorch.org/whl/cu128</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 3. 依赖</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> clone</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> https://github.com/Valiant-Cat/LTX2-ICEdit-Insight</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">cd</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> LTX2-ICEdit-Insight</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">pip</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> install</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -r</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> requirements.txt</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 4. ffmpeg</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">sudo</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> apt</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> install</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> ffmpeg</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 5. 下载模型 (从 HuggingFace: joyfox/LTX2.3-ICEdit-Insight)</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># models/checkpoints/ltx-2.3-edit-insight-dev-fp8.safetensors</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># models/latent_upscale_models/ltx-2.3-spatial-upscaler-x2-1.1.safetensors</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># models/gemma_configs/</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># models/loras/ltx2.3-train/*.safetensors</span></span></code></pre></figure>
+<h3 id="huggingface-模型清单">HuggingFace 模型清单<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#huggingface-模型清单" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>组件</th><th>文件</th></tr></thead><tbody><tr><td>Insight Checkpoint (一体化)</td><td><code>ltx-2.3-edit-insight-dev-fp8.safetensors</code></td></tr><tr><td>空间上采样器</td><td><code>ltx-2.3-spatial-upscaler-x2-1.1.safetensors</code></td></tr><tr><td>Gemma 文本编码器</td><td><code>models/gemma_configs/</code></td></tr><tr><td>视频修复 IC-LoRA</td><td><code>ltx2.3-video-restoration-general.safetensors</code></td></tr><tr><td>视频高清 IC-LoRA</td><td><code>ltx2.3-ic-video-upscale-general.safetensors</code></td></tr><tr><td>去水印 IC-LoRA</td><td><code>ltx2.3-ic-watermark-remove-general.safetensors</code></td></tr><tr><td>去字幕 IC-LoRA</td><td><code>ltx2.3-ic-subtitles-remove-general.safetensors</code></td></tr></tbody></table></div>
+<h3 id="快速使用">快速使用<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#快速使用" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 预处理 (可选, 缩放到 480p)</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">python</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> preprocess_video.py</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> ./inputs/video.mp4</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> ./inputs/input_480p.mp4</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 一键脚本</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">bash</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> run_restoration.sh</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">                        # 视频修复</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">bash</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> run_hd.sh</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">                                 # 视频高清</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">bash</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> run_watermark_rm.sh</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">                       # 去水印</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">bash</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> run_subtitle_rm.sh</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">                        # 去字幕</span></span></code></pre></figure>
+<h2 id="六comfyui-集成方案">六、ComfyUI 集成方案<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#六comfyui-集成方案" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="关键发现-ic-lora-不依赖-insight-一体化-checkpoint">关键发现: IC-LoRA <strong>不依赖 Insight 一体化 checkpoint</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#关键发现-ic-lora-不依赖-insight-一体化-checkpoint" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>IC-LoRA 权重可以直接挂载到 ComfyUI 中的 <strong>LTX-2.3 官方原生模型</strong> 上。仓库提供两个参考工作流：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>工作流文件</th><th>适用场景</th></tr></thead><tbody><tr><td><code>LTX-2.3-ICLORA编辑-官方模型版本.json</code></td><td>官方原生模型 + IC-LoRA</td></tr><tr><td><code>LTX-2.3-IC编辑-comfyui模型版本.json</code></td><td>ComfyUI 分离模型格式</td></tr></tbody></table></div>
+<h3 id="comfyui-节点映射">ComfyUI 节点映射<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#comfyui-节点映射" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>ComfyUI 节点</th><th>功能</th></tr></thead><tbody><tr><td><code>LTXICLoRALoaderModelOnly</code></td><td>加载 IC-LoRA (默认 strength=1.0)</td></tr><tr><td><code>LTXAddVideoICLoRAGuide</code></td><td>通过 reference latent 注入 IC-LoRA 引导</td></tr><tr><td><code>SamplerCustomAdvanced / LTXVSampler</code></td><td>扩散采样</td></tr><tr><td><code>LTXDecodeVideo / VAEDecode</code></td><td>解码输出</td></tr></tbody></table></div>
+<h3 id="导入步骤">导入步骤<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#导入步骤" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li>ComfyUI → Load/Import Workflow</li>
+<li>导入对应 JSON 文件</li>
+<li>下载缺失模型 + 输入视频</li>
+<li>运行</li>
+</ol>
+<h2 id="七与-ai-短剧生产管线的融合评估">七、与 AI 短剧生产管线的融合评估<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#七与-ai-短剧生产管线的融合评估" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="当前管线-jellyfish--comfyui--ltx23">当前管线: Jellyfish + ComfyUI + LTX2.3<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#当前管线-jellyfish--comfyui--ltx23" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<pre><code>剧本(LMM) → 分镜(DeepSeek) → 角色资产(ComfyUI 出图)
+→ 视频生成(Seedance API/LTX2.3) → 配音(TTS) → 剪辑导出
+</code></pre>
+<h3 id="ltx2-icedit-insight-融入点">LTX2-ICEdit-Insight 融入点<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#ltx2-icedit-insight-融入点" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="1--预处理阶段-最大价值">1. 🔥 预处理阶段 (最大价值)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1--预处理阶段-最大价值" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p><strong>场景</strong>: 从多平台采集的短剧素材（抖音/快手/B站），存在水印、字幕、画质低劣</p>
+<pre><code>原始素材(带水印/字幕/低清)
+    ↓ LTX2-ICEdit-Insight
+清洁素材(无水印/无字幕/高清)
+    ↓ Jellyfish 正常管线
+最终成片
+</code></pre>
+<p><strong>价值</strong>:</p>
+<ul>
+<li>解决”素材污染”问题，很多高播放短剧视频带了水印无法直接二创</li>
+<li>低清老视频修复后可作为 AI 短剧的 reference 素材</li>
+<li>可显著降低手动去水印/去字幕的人工成本</li>
+</ul>
+<h4 id="2--后处理阶段">2. 🔥 后处理阶段<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2--后处理阶段" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p><strong>场景</strong>: AI 生成视频的最终抛光</p>
+<pre><code>AI 生成视频(LTX2.3/Seedance)
+    ↓ LTX2-ICEdit-Insight (hd 模式)
+高清成品(去伪影/增强纹理/色彩增强)
+</code></pre>
+<p><strong>价值</strong>:</p>
+<ul>
+<li>LTX2.3 视频生成本身可能有伪影/闪烁 → IC-Edit 可以做最终修复</li>
+<li>将低分辨率输出升级到 704×1184 高清</li>
+</ul>
+<h4 id="3--comfyui-深度整合-最优路径">3. 🔥🔥 ComfyUI 深度整合 (最优路径)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3--comfyui-深度整合-最优路径" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p><strong>场景</strong>: 与现有 ComfyUI 工作流无缝衔接</p>
+<pre><code>ComfyUI 工作流:
+  LTXLoadVideoModel → LTXICLoRALoaderModelOnly → LTXAddVideoICLoRAGuide
+  → ... (其他处理节点) → LTXDecodeVideo → 输出
+</code></pre>
+<p><strong>价值</strong>:</p>
+<ul>
+<li><strong>不需要 Insight checkpoint</strong>，直接用现有 LTX-2.3 模型</li>
+<li>可作为 ComfyUI 工作流的一个”清洗模块”</li>
+<li>与 Jellyfish 的 ComfyUI 桥接（<code>comfyui-bridge/generate_frames.py</code>）天然兼容</li>
+</ul>
+<h4 id="4-jellyfish-provider-集成">4. Jellyfish Provider 集成<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-jellyfish-provider-集成" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p><strong>场景</strong>: 将 IC-Edit 封装为 Jellyfish 的一个 Provider</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="python" data-theme="github-light github-dark"><code data-language="python" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;"># 新增 IC-Edit Provider</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">class</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> ICEditProvider</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    modes </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> [</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">'restoration'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">'hd'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">'watermark_rm'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">'subtitle_rm'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    </span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    def</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> process</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(self, input_video, mode, params):</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">        # 调用 run_pipeline.py 或 ComfyUI API</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">        pass</span></span></code></pre></figure>
+<h3 id="融合优先级评估">融合优先级评估<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#融合优先级评估" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>融合方案</th><th>价值</th><th>难度</th><th>硬件门槛</th><th>优先级</th></tr></thead><tbody><tr><td>ComfyUI 工作流集成</td><td>⭐⭐⭐⭐⭐</td><td>低</td><td>24GB GPU</td><td>🔥🔥🔥 最高</td></tr><tr><td>预处理管道</td><td>⭐⭐⭐⭐</td><td>中</td><td>24GB GPU</td><td>🔥🔥 高</td></tr><tr><td>后处理管道</td><td>⭐⭐⭐</td><td>中</td><td>24GB GPU</td><td>🔥 中</td></tr><tr><td>Jellyfish Provider</td><td>⭐⭐⭐</td><td>高</td><td>24GB GPU</td><td>待评估</td></tr></tbody></table></div>
+<h3 id="️-约束与风险">⚠️ 约束与风险<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#️-约束与风险" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>硬件门槛高</strong>: 24GB VRAM (RTX 4090)，当前本地 RTX 3050 4GB 不可用</li>
+<li><strong>云端方案</strong>: Running Hub 已上，可通过 API 调用（待确认 API 可用性）</li>
+<li><strong>许可证不明确</strong>: README 无 License 声明，商用前需确认</li>
+<li><strong>通用编辑未开放</strong>: instruction-driven semantic editing 仍在训练</li>
+<li><strong>与 Bernini 定位不同</strong>: Bernini 做视频编辑/替换，IC-Edit 做视频修复/增强，两者互补</li>
+</ol>
+<h2 id="八与-bernini-的对比">八、与 Bernini 的对比<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#八与-bernini-的对比" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>维度</th><th>Bernini</th><th>LTX2-ICEdit-Insight</th></tr></thead><tbody><tr><td>开发者</td><td>字节跳动</td><td>重庆威能猫科技</td></tr><tr><td>定位</td><td>视频编辑（换装/天气/背景）</td><td>视频修复/增强（去水印/高清）</td></tr><tr><td>架构</td><td>MLLM + DiT</td><td>LTX-2.3 + Task-Aware LoRA</td></tr><tr><td>ComfyUI</td><td>已有整合节点</td><td>提供工作流 JSON</td></tr><tr><td>硬件</td><td>16GB+</td><td>24GB+</td></tr><tr><td>优势</td><td>语义编辑、无需遮罩</td><td>修复质量、时序稳定</td></tr><tr><td>互补性</td><td>做”改”</td><td>做”修”</td></tr></tbody></table></div>
+<p><strong>结论</strong>: 两者是互补关系，非竞争。Bernini 做编辑替换，IC-Edit 做修复增强。</p>
+<h2 id="九推荐行动">九、推荐行动<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#九推荐行动" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ol>
+<li><strong>立即</strong>: 获取 HF 模型权重，在 ComfyUI 中测试 IC-LoRA 挂载效果</li>
+<li><strong>短期</strong>: 构建”去水印→高清修复”的 ComfyUI 预处理工作流</li>
+<li><strong>中期</strong>: 将预处理工作流集成到 Jellyfish 管线中</li>
+<li><strong>长期</strong>: 待通用编辑开放后，评估完整融合方案</li>
+</ol>
+<h2 id="十信息来源">十、信息来源<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#十信息来源" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>GitHub: <a href="https://github.com/Valiant-Cat/LTX2-ICEdit-Insight" class="external">https://github.com/Valiant-Cat/LTX2-ICEdit-Insight<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li>HuggingFace: <a href="https://huggingface.co/joyfox/LTX2.3-ICEdit-Insight" class="external">https://huggingface.co/joyfox/LTX2.3-ICEdit-Insight<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li>论文: <a href="https://www.researchsquare.com/article/rs-9775063/v1" class="external">https://www.researchsquare.com/article/rs-9775063/v1<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li>B站: HyLan_L “去字幕！去水印！去模糊！高清放大！LTX2.3 IC edit lora-insight！效果爆炸！” (641播放, 06-06)</li>
+</ul></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>关系图谱</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-481" aria-expanded="true"><h3>目录</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#ltx2-icedit-insight-深度分析" data-for="ltx2-icedit-insight-深度分析">LTX2-ICEdit-Insight 深度分析</a></li><li class="depth-1"><a href="#一仓库概览" data-for="一仓库概览">一、仓库概览</a></li><li class="depth-1"><a href="#二核心技术架构" data-for="二核心技术架构">二、核心技术架构</a></li><li class="depth-2"><a href="#21-三大核心创新" data-for="21-三大核心创新">2.1 三大核心创新</a></li><li class="depth-2"><a href="#22-流水线架构" data-for="22-流水线架构">2.2 流水线架构</a></li><li class="depth-2"><a href="#23-关键技术修复fp8兼容" data-for="23-关键技术修复fp8兼容">2.3 关键技术修复（FP8兼容）</a></li><li class="depth-1"><a href="#三四大功能模式" data-for="三四大功能模式">三、四大功能模式</a></li><li class="depth-1"><a href="#四硬件需求" data-for="四硬件需求">四、硬件需求</a></li><li class="depth-2"><a href="#最低配置" data-for="最低配置">最低配置</a></li><li class="depth-2"><a href="#vram-估算-rtx-4090-24gb" data-for="vram-估算-rtx-4090-24gb">VRAM 估算 (RTX 4090 24GB)</a></li><li class="depth-2"><a href="#优化建议" data-for="优化建议">优化建议</a></li><li class="depth-2"><a href="#分辨率约束" data-for="分辨率约束">分辨率约束</a></li><li class="depth-1"><a href="#五安装方法" data-for="五安装方法">五、安装方法</a></li><li class="depth-2"><a href="#huggingface-模型清单" data-for="huggingface-模型清单">HuggingFace 模型清单</a></li><li class="depth-2"><a href="#快速使用" data-for="快速使用">快速使用</a></li><li class="depth-1"><a href="#六comfyui-集成方案" data-for="六comfyui-集成方案">六、ComfyUI 集成方案</a></li><li class="depth-2"><a href="#关键发现-ic-lora-不依赖-insight-一体化-checkpoint" data-for="关键发现-ic-lora-不依赖-insight-一体化-checkpoint">关键发现: IC-LoRA 不依赖 Insight 一体化 checkpoint</a></li><li class="depth-2"><a href="#comfyui-节点映射" data-for="comfyui-节点映射">ComfyUI 节点映射</a></li><li class="depth-2"><a href="#导入步骤" data-for="导入步骤">导入步骤</a></li><li class="depth-1"><a href="#七与-ai-短剧生产管线的融合评估" data-for="七与-ai-短剧生产管线的融合评估">七、与 AI 短剧生产管线的融合评估</a></li><li class="depth-2"><a href="#当前管线-jellyfish--comfyui--ltx23" data-for="当前管线-jellyfish--comfyui--ltx23">当前管线: Jellyfish + ComfyUI + LTX2.3</a></li><li class="depth-2"><a href="#ltx2-icedit-insight-融入点" data-for="ltx2-icedit-insight-融入点">LTX2-ICEdit-Insight 融入点</a></li><li class="depth-2"><a href="#融合优先级评估" data-for="融合优先级评估">融合优先级评估</a></li><li class="depth-2"><a href="#️-约束与风险" data-for="️-约束与风险">⚠️ 约束与风险</a></li><li class="depth-1"><a href="#八与-bernini-的对比" data-for="八与-bernini-的对比">八、与 Bernini 的对比</a></li><li class="depth-1"><a href="#九推荐行动" data-for="九推荐行动">九、推荐行动</a></li><li class="depth-1"><a href="#十信息来源" data-for="十信息来源">十、信息来源</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../postscript.js" type="module" data-persist="true"></script></html>

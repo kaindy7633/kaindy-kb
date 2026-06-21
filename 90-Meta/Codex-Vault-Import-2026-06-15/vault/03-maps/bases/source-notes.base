@@ -1,0 +1,25 @@
+filters:
+  and:
+    - 'file.ext == "md"'
+    - 'type == "source-index"'
+properties:
+  file.name:
+    displayName: Source Note
+  created:
+    displayName: Created
+  tags:
+    displayName: Tags
+  file.folder:
+    displayName: Folder
+  file.mtime:
+    displayName: Modified
+views:
+  - type: table
+    name: "Source Indexes"
+    limit: 100
+    order:
+      - file.name
+      - created
+      - tags
+      - file.folder
+      - file.mtime

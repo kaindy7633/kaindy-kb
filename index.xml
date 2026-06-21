@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+      <title>🏠 Kaindy Knowledge Base</title>
+      <link>https://kaindy-kb.pages.dev</link>
+      <description>最近的10条笔记 on 🏠 Kaindy Knowledge Base</description>
+      <generator>Quartz -- quartz.jzhao.xyz</generator>
+      <item>
+    <title>daily-note-template</title>
+    <link>https://kaindy-kb.pages.dev/90-Meta/Codex-Vault-Import-2026-06-15/vault/05-templates/daily-note-template</link>
+    <guid>https://kaindy-kb.pages.dev/90-Meta/Codex-Vault-Import-2026-06-15/vault/05-templates/daily-note-template</guid>
+    <description><![CDATA[ {{date:YYYY-MM-DD}} Work Log Durable Facts Decisions Follow-Ups [ ] Links . ]]></description>
+    <pubDate>Sun, 21 Jun 2026 20:01:08 GMT</pubDate>
+  </item><item>
+    <title>agent-work-summary-template</title>
+    <link>https://kaindy-kb.pages.dev/90-Meta/Codex-Vault-Import-2026-06-15/vault/05-templates/agent-work-summary-template</link>
+    <guid>https://kaindy-kb.pages.dev/90-Meta/Codex-Vault-Import-2026-06-15/vault/05-templates/agent-work-summary-template</guid>
+    <description><![CDATA[ {{date:YYYY-MM-DD}} Agent Work Summary Work Performed Durable Facts Decisions Verification Evidence Source Links Or Paths Follow-Ups [ ] Promotion Targets . ]]></description>
+    <pubDate>Sun, 21 Jun 2026 20:01:08 GMT</pubDate>
+  </item><item>
+    <title>project-memory-template</title>
+    <link>https://kaindy-kb.pages.dev/90-Meta/Codex-Vault-Import-2026-06-15/vault/05-templates/project-memory-template</link>
+    <guid>https://kaindy-kb.pages.dev/90-Meta/Codex-Vault-Import-2026-06-15/vault/05-templates/project-memory-template</guid>
+    <description><![CDATA[ {{title}} What This Project Is Current State Durable Decisions Important Commands Verification Baseline Open Follow-Ups [ ] Related Notes . ]]></description>
+    <pubDate>Sun, 21 Jun 2026 20:01:07 GMT</pubDate>
+  </item><item>
+    <title>douyin-tutorial-7647302370040752827</title>
+    <link>https://kaindy-kb.pages.dev/90-Meta/Codex-Vault-Import-2026-06-15/vault/docs/douyin-tutorial-7647302370040752827</link>
+    <guid>https://kaindy-kb.pages.dev/90-Meta/Codex-Vault-Import-2026-06-15/vault/docs/douyin-tutorial-7647302370040752827</guid>
+    <description><![CDATA[ Douyin Tutorial - Obsidian AI Shared Brain Retrieval Notes The Douyin page rendered in the browser and exposed title, author, chapter data, summary, and description through the page DOM and render data. ]]></description>
+    <pubDate>Mon, 15 Jun 2026 13:14:23 GMT</pubDate>
+  </item><item>
+    <title>2026-06-05-git-shared-vault-bootstrap</title>
+    <link>https://kaindy-kb.pages.dev/90-Meta/Codex-Vault-Import-2026-06-15/vault/docs/superpowers/plans/2026-06-05-git-shared-vault-bootstrap</link>
+    <guid>https://kaindy-kb.pages.dev/90-Meta/Codex-Vault-Import-2026-06-15/vault/docs/superpowers/plans/2026-06-05-git-shared-vault-bootstrap</guid>
+    <description><![CDATA[ Git Shared Vault Bootstrap Implementation Plan For agentic workers: REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. ]]></description>
+    <pubDate>Mon, 15 Jun 2026 13:14:23 GMT</pubDate>
+  </item><item>
+    <title>README</title>
+    <link>https://kaindy-kb.pages.dev/90-Meta/Codex-Vault-Import-2026-06-15/vault/02-resources/README</link>
+    <guid>https://kaindy-kb.pages.dev/90-Meta/Codex-Vault-Import-2026-06-15/vault/02-resources/README</guid>
+    <description><![CDATA[ Resources Store clipped tutorials, articles, docs, screenshots notes, and research sources here. ]]></description>
+    <pubDate>Mon, 15 Jun 2026 13:14:23 GMT</pubDate>
+  </item><item>
+    <title>codex-knowledge-source-index-2026-06-05</title>
+    <link>https://kaindy-kb.pages.dev/90-Meta/Codex-Vault-Import-2026-06-15/vault/02-resources/codex-knowledge-source-index-2026-06-05</link>
+    <guid>https://kaindy-kb.pages.dev/90-Meta/Codex-Vault-Import-2026-06-15/vault/02-resources/codex-knowledge-source-index-2026-06-05</guid>
+    <description><![CDATA[ Codex Knowledge Source Index - 2026-06-05 Source Paths /Users/kaindy/.codex/REFERENCE.md /Users/kaindy/.codex/knowledge/INDEX.md /Users/kaindy/.codex/knowledge/workspaces/ /Users/kaindy/.codex/knowledge/decisions/ /Users/kaindy/.codex/memories/MEMORY.md Import Batch This first import batch created: ... ]]></description>
+    <pubDate>Mon, 15 Jun 2026 13:14:23 GMT</pubDate>
+  </item><item>
+    <title>local-ai-memory-source-coverage-audit-2026-06-05</title>
+    <link>https://kaindy-kb.pages.dev/90-Meta/Codex-Vault-Import-2026-06-15/vault/02-resources/local-ai-memory-source-coverage-audit-2026-06-05</link>
+    <guid>https://kaindy-kb.pages.dev/90-Meta/Codex-Vault-Import-2026-06-15/vault/02-resources/local-ai-memory-source-coverage-audit-2026-06-05</guid>
+    <description><![CDATA[ Local AI Memory Source Coverage Audit - 2026-06-05 Objective Check whether the current Obsidian vault covers the local Codex and Claude memory sources that should become shared, model-neutral knowledge. ]]></description>
+    <pubDate>Mon, 15 Jun 2026 13:14:23 GMT</pubDate>
+  </item><item>
+    <title>workspace-registry-coverage-audit-2026-06-05</title>
+    <link>https://kaindy-kb.pages.dev/90-Meta/Codex-Vault-Import-2026-06-15/vault/02-resources/workspace-registry-coverage-audit-2026-06-05</link>
+    <guid>https://kaindy-kb.pages.dev/90-Meta/Codex-Vault-Import-2026-06-15/vault/02-resources/workspace-registry-coverage-audit-2026-06-05</guid>
+    <description><![CDATA[ Workspace Registry Coverage Audit - 2026-06-05 Objective Verify whether workspaces registered under ~/.codex/knowledge/workspaces/ still point to readable local paths and file-first entry docs. ]]></description>
+    <pubDate>Mon, 15 Jun 2026 13:14:23 GMT</pubDate>
+  </item><item>
+    <title>README</title>
+    <link>https://kaindy-kb.pages.dev/90-Meta/Codex-Vault-Import-2026-06-15/vault/03-maps/README</link>
+    <guid>https://kaindy-kb.pages.dev/90-Meta/Codex-Vault-Import-2026-06-15/vault/03-maps/README</guid>
+    <description><![CDATA[ Maps Use this folder for map-of-content notes, diagrams, Canvas files, and graph entry points. ]]></description>
+    <pubDate>Mon, 15 Jun 2026 13:14:23 GMT</pubDate>
+  </item>
+    </channel>
+  </rss>

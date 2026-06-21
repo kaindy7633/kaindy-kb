@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr"><head><title>autonomous-ai-agents--claude-code</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="🏠 Kaindy Knowledge Base"/><meta property="og:title" content="autonomous-ai-agents--claude-code"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="autonomous-ai-agents--claude-code"/><meta name="twitter:description" content="claude-code Category: autonomous-ai-agents Source: Hermes Skill Synced: 2026-06-15 Claude Code — Hermes Orchestration Guide Delegate coding tasks to Claude Code (Anthropic’s autonomous coding agent CLI) via the Hermes terminal."/><meta property="og:description" content="claude-code Category: autonomous-ai-agents Source: Hermes Skill Synced: 2026-06-15 Claude Code — Hermes Orchestration Guide Delegate coding tasks to Claude Code (Anthropic’s autonomous coding agent CLI) via the Hermes terminal."/><meta property="og:image:alt" content="claude-code Category: autonomous-ai-agents Source: Hermes Skill Synced: 2026-06-15 Claude Code — Hermes Orchestration Guide Delegate coding tasks to Claude Code (Anthropic’s autonomous coding agent CLI) via the Hermes terminal."/><meta property="twitter:domain" content="kaindy-kb.pages.dev"/><meta property="og:url" content="https://kaindy-kb.pages.dev/10-Skills/autonomous-ai-agents--claude-code"/><meta property="twitter:url" content="https://kaindy-kb.pages.dev/10-Skills/autonomous-ai-agents--claude-code"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="claude-code Category: autonomous-ai-agents Source: Hermes Skill Synced: 2026-06-15 Claude Code — Hermes Orchestration Guide Delegate coding tasks to Claude Code (Anthropic’s autonomous coding agent CLI) via the Hermes terminal."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUva2FpbmR5L0RvY3VtZW50cy9xdWFydHovcXVhcnR6L2NvbXBvbmVudHMvc3R5bGVzIiwic291cmNlcyI6WyJtZXJtYWlkLmlubGluZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFHRjtFQUNFOzs7QUFLRjtFQUNFO0VBQ0E7OztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTs7QUFJRjtFQUNFO0VBQ0E7RUFDQSIsInNvdXJjZXNDb250ZW50IjpbIi5leHBhbmQtYnV0dG9uIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbG9hdDogcmlnaHQ7XG4gIHBhZGRpbmc6IDAuNHJlbTtcbiAgbWFyZ2luOiAwLjNyZW07XG4gIHJpZ2h0OiAwOyAvLyBOT1RFOiByaWdodCB3aWxsIGJlIHNldCBpbiBtZXJtYWlkLmlubGluZS50c1xuICBjb2xvcjogdmFyKC0tZ3JheSk7XG4gIGJvcmRlci1jb2xvcjogdmFyKC0tZGFyayk7XG4gIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgYm9yZGVyOiAxcHggc29saWQ7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgb3BhY2l0eTogMDtcbiAgdHJhbnNpdGlvbjogMC4ycztcblxuICAmID4gc3ZnIHtcbiAgICBmaWxsOiB2YXIoLS1saWdodCk7XG4gICAgZmlsdGVyOiBjb250cmFzdCgwLjMpO1xuICB9XG5cbiAgJjpob3ZlciB7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIGJvcmRlci1jb2xvcjogdmFyKC0tc2Vjb25kYXJ5KTtcbiAgfVxuXG4gICY6Zm9jdXMge1xuICAgIG91dGxpbmU6IDA7XG4gIH1cbn1cblxucHJlIHtcbiAgJjpob3ZlciA+IC5leHBhbmQtYnV0dG9uIHtcbiAgICBvcGFjaXR5OiAxO1xuICAgIHRyYW5zaXRpb246IDAuMnM7XG4gIH1cbn1cblxuI21lcm1haWQtY29udGFpbmVyIHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICBjb250YWluOiBsYXlvdXQ7XG4gIHotaW5kZXg6IDk5OTtcbiAgbGVmdDogMDtcbiAgdG9wOiAwO1xuICB3aWR0aDogMTAwdnc7XG4gIGhlaWdodDogMTAwdmg7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIGRpc3BsYXk6IG5vbmU7XG4gIGJhY2tkcm9wLWZpbHRlcjogYmx1cig0cHgpO1xuICBiYWNrZ3JvdW5kOiByZ2JhKDAsIDAsIDAsIDAuNSk7XG5cbiAgJi5hY3RpdmUge1xuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgfVxuXG4gICYgPiAjbWVybWFpZC1zcGFjZSB7XG4gICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gICAgYm9yZGVyLXJhZGl1czogNXB4O1xuICAgIHBvc2l0aW9uOiBmaXhlZDtcbiAgICB0b3A6IDUwJTtcbiAgICBsZWZ0OiA1MCU7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7XG4gICAgaGVpZ2h0OiA4MHZoO1xuICAgIHdpZHRoOiA4MHZ3O1xuICAgIG92ZXJmbG93OiBoaWRkZW47XG5cbiAgICAmID4gLm1lcm1haWQtY29udGVudCB7XG4gICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgICB0cmFuc2Zvcm0tb3JpZ2luOiAwIDA7XG4gICAgICB0cmFuc2l0aW9uOiB0cmFuc2Zvcm0gMC4xcyBlYXNlO1xuICAgICAgb3ZlcmZsb3c6IHZpc2libGU7XG4gICAgICBtaW4taGVpZ2h0OiAyMDBweDtcbiAgICAgIG1pbi13aWR0aDogMjAwcHg7XG5cbiAgICAgIHByZSB7XG4gICAgICAgIG1hcmdpbjogMDtcbiAgICAgICAgYm9yZGVyOiBub25lO1xuICAgICAgfVxuXG4gICAgICBzdmcge1xuICAgICAgICBtYXgtd2lkdGg6IG5vbmU7XG4gICAgICAgIGhlaWdodDogYXV0bztcbiAgICAgIH1cbiAgICB9XG5cbiAgICAmID4gLm1lcm1haWQtY29udHJvbHMge1xuICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgYm90dG9tOiAyMHB4O1xuICAgICAgcmlnaHQ6IDIwcHg7XG4gICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgZ2FwOiA4cHg7XG4gICAgICBwYWRkaW5nOiA4cHg7XG4gICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodCk7XG4gICAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgYm9yZGVyLXJhZGl1czogNnB4O1xuICAgICAgYm94LXNoYWRvdzogMCAycHggNHB4IHJnYmEoMCwgMCwgMCwgMC4xKTtcbiAgICAgIHotaW5kZXg6IDI7XG5cbiAgICAgIC5tZXJtYWlkLWNvbnRyb2wtYnV0dG9uIHtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICAgIHdpZHRoOiAzMnB4O1xuICAgICAgICBoZWlnaHQ6IDMycHg7XG4gICAgICAgIHBhZGRpbmc6IDA7XG4gICAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgICAgY29sb3I6IHZhcigtLWRhcmspO1xuICAgICAgICBib3JkZXItcmFkaXVzOiA0cHg7XG4gICAgICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICAgICAgZm9udC1zaXplOiAxNnB4O1xuICAgICAgICBmb250LWZhbWlseTogdmFyKC0tYm9keUZvbnQpO1xuICAgICAgICB0cmFuc2l0aW9uOiBhbGwgMC4ycyBlYXNlO1xuXG4gICAgICAgICY6aG92ZXIge1xuICAgICAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICAgIH1cblxuICAgICAgICAmOmFjdGl2ZSB7XG4gICAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDFweCk7XG4gICAgICAgIH1cblxuICAgICAgICAvLyBTdHlsZSB0aGUgcmVzZXQgYnV0dG9uIGRpZmZlcmVudGx5XG4gICAgICAgICY6bnRoLWNoaWxkKDIpIHtcbiAgICAgICAgICB3aWR0aDogYXV0bztcbiAgICAgICAgICBwYWRkaW5nOiAwIDEycHg7XG4gICAgICAgICAgZm9udC1zaXplOiAxNHB4O1xuICAgICAgICB9XG4gICAgICB9XG4gICAgfVxuICB9XG59XG4iXX0= */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://kaindy-kb.pages.dev/index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://kaindy-kb.pages.dev/10-Skills/autonomous-ai-agents--claude-code-og-image.webp"/><meta property="og:image:url" content="https://kaindy-kb.pages.dev/10-Skills/autonomous-ai-agents--claude-code-og-image.webp"/><meta name="twitter:image" content="https://kaindy-kb.pages.dev/10-Skills/autonomous-ai-agents--claude-code-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="10-Skills/autonomous-ai-agents--claude-code"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">🏠 Kaindy Knowledge Base</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>搜索</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="搜索些什么" placeholder="搜索些什么"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="暗色模式"><title>暗色模式</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="亮色模式"><title>亮色模式</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="阅读模式"><title>阅读模式</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-24"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>探索</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-24" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../10-Skills/">10 Skills</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>autonomous ai agents  claude code</a></div></nav><h1 class="article-title">autonomous-ai-agents--claude-code</h1><p show-comma="true" class="content-meta"><time datetime="2026-06-15T12:23:17.000Z">2026年6月15日</time><span>21分钟阅读</span></p></div></div><article class="popover-hint"><h1 id="claude-code">claude-code<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#claude-code" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p><strong>Category:</strong> autonomous-ai-agents<br/>
+<strong>Source:</strong> Hermes Skill<br/>
+<strong>Synced:</strong> 2026-06-15</p>
+<hr/>
+<h1 id="claude-code--hermes-orchestration-guide">Claude Code — Hermes Orchestration Guide<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#claude-code--hermes-orchestration-guide" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Delegate coding tasks to <a href="https://code.claude.com/docs/en/cli-reference" class="external">Claude Code<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> (Anthropic’s autonomous coding agent CLI) via the Hermes terminal. Claude Code v2.x can read files, write code, run shell commands, spawn subagents, and manage git workflows autonomously.</p>
+<h2 id="prerequisites">Prerequisites<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#prerequisites" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>Install:</strong> <code>npm install -g @anthropic-ai/claude-code</code></li>
+<li><strong>Auth:</strong> run <code>claude</code> once to log in (browser OAuth for Pro/Max, or set <code>ANTHROPIC_API_KEY</code>)</li>
+<li><strong>Console auth:</strong> <code>claude auth login --console</code> for API key billing</li>
+<li><strong>SSO auth:</strong> <code>claude auth login --sso</code> for Enterprise</li>
+<li><strong>Check status:</strong> <code>claude auth status</code> (JSON) or <code>claude auth status --text</code> (human-readable)</li>
+<li><strong>Health check:</strong> <code>claude doctor</code> — checks auto-updater and installation health</li>
+<li><strong>Version check:</strong> <code>claude --version</code> (requires v2.x+)</li>
+<li><strong>Update:</strong> <code>claude update</code> or <code>claude upgrade</code></li>
+</ul>
+<h2 id="two-orchestration-modes">Two Orchestration Modes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#two-orchestration-modes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Hermes interacts with Claude Code in two fundamentally different ways. Choose based on the task.</p>
+<h3 id="mode-1-print-mode--p--non-interactive-preferred-for-most-tasks">Mode 1: Print Mode (<code>-p</code>) — Non-Interactive (PREFERRED for most tasks)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mode-1-print-mode--p--non-interactive-preferred-for-most-tasks" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Print mode runs a one-shot task, returns the result, and exits. No PTY needed. No interactive prompts. This is the cleanest integration path.</p>
+<pre><code>terminal(command=&quot;claude -p 'Add error handling to all API calls in src/' --allowedTools 'Read,Edit' --max-turns 10&quot;, workdir=&quot;/path/to/project&quot;, timeout=120)
+</code></pre>
+<p><strong>When to use print mode:</strong></p>
+<ul>
+<li>One-shot coding tasks (fix a bug, add a feature, refactor)</li>
+<li>CI/CD automation and scripting</li>
+<li>Structured data extraction with <code>--json-schema</code></li>
+<li>Piped input processing (<code>cat file | claude -p &quot;analyze this&quot;</code>)</li>
+<li><strong>Codebase/config investigation</strong> — read files, search patterns, reverse-engineer configuration, understand architecture, research how a system works. Use <code>--allowedTools 'Read,Bash,WebSearch'</code> and <code>--max-turns 10-15</code>. Proven effective for tasks like “investigate how Hermes provider config works and report exact syntax.”</li>
+<li>Any task where you don’t need multi-turn conversation</li>
+</ul>
+<p><strong>Print mode skips ALL interactive dialogs</strong> — no workspace trust prompt, no permission confirmations. This makes it ideal for automation.</p>
+<h3 id="mode-2-interactive-pty-via-tmux--multi-turn-sessions">Mode 2: Interactive PTY via tmux — Multi-Turn Sessions<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mode-2-interactive-pty-via-tmux--multi-turn-sessions" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Interactive mode gives you a full conversational REPL where you can send follow-up prompts, use slash commands, and watch Claude work in real time. <strong>Requires tmux orchestration.</strong></p>
+<pre><code># Start a tmux session
+terminal(command=&quot;tmux new-session -d -s claude-work -x 140 -y 40&quot;)
+
+# Launch Claude Code inside it
+terminal(command=&quot;tmux send-keys -t claude-work 'cd /path/to/project &amp;&amp; claude' Enter&quot;)
+
+# Wait for startup, then send your task
+# (after ~3-5 seconds for the welcome screen)
+terminal(command=&quot;sleep 5 &amp;&amp; tmux send-keys -t claude-work 'Refactor the auth module to use JWT tokens' Enter&quot;)
+
+# Monitor progress by capturing the pane
+terminal(command=&quot;sleep 15 &amp;&amp; tmux capture-pane -t claude-work -p -S -50&quot;)
+
+# Send follow-up tasks
+terminal(command=&quot;tmux send-keys -t claude-work 'Now add unit tests for the new JWT code' Enter&quot;)
+
+# Exit when done
+terminal(command=&quot;tmux send-keys -t claude-work '/exit' Enter&quot;)
+</code></pre>
+<p><strong>When to use interactive mode:</strong></p>
+<ul>
+<li>Multi-turn iterative work (refactor → review → fix → test cycle)</li>
+<li>Tasks requiring human-in-the-loop decisions</li>
+<li>Exploratory coding sessions</li>
+<li>When you need to use Claude’s slash commands (<code>/compact</code>, <code>/review</code>, <code>/model</code>)</li>
+</ul>
+<h2 id="pty-dialog-handling-critical-for-interactive-mode">PTY Dialog Handling (CRITICAL for Interactive Mode)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#pty-dialog-handling-critical-for-interactive-mode" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Claude Code presents up to two confirmation dialogs on first launch. You MUST handle these via tmux send-keys:</p>
+<h3 id="dialog-1-workspace-trust-first-visit-to-a-directory">Dialog 1: Workspace Trust (first visit to a directory)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#dialog-1-workspace-trust-first-visit-to-a-directory" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<pre><code>❯ 1. Yes, I trust this folder    ← DEFAULT (just press Enter)
+  2. No, exit
+</code></pre>
+<p><strong>Handling:</strong> <code>tmux send-keys -t &lt;session> Enter</code> — default selection is correct.</p>
+<h3 id="dialog-2-bypass-permissions-warning-only-with-dangerously-skip-permissions">Dialog 2: Bypass Permissions Warning (only with —dangerously-skip-permissions)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#dialog-2-bypass-permissions-warning-only-with-dangerously-skip-permissions" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<pre><code>❯ 1. No, exit                    ← DEFAULT (WRONG choice!)
+  2. Yes, I accept
+</code></pre>
+<p><strong>Handling:</strong> Must navigate DOWN first, then Enter:</p>
+<pre><code>tmux send-keys -t &lt;session> Down &amp;&amp; sleep 0.3 &amp;&amp; tmux send-keys -t &lt;session> Enter
+</code></pre>
+<h3 id="robust-dialog-handling-pattern">Robust Dialog Handling Pattern<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#robust-dialog-handling-pattern" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<pre><code># Launch with permissions bypass
+terminal(command=&quot;tmux send-keys -t claude-work 'claude --dangerously-skip-permissions \&quot;your task\&quot;' Enter&quot;)
+
+# Handle trust dialog (Enter for default &quot;Yes&quot;)
+terminal(command=&quot;sleep 4 &amp;&amp; tmux send-keys -t claude-work Enter&quot;)
+
+# Handle permissions dialog (Down then Enter for &quot;Yes, I accept&quot;)
+terminal(command=&quot;sleep 3 &amp;&amp; tmux send-keys -t claude-work Down &amp;&amp; sleep 0.3 &amp;&amp; tmux send-keys -t claude-work Enter&quot;)
+
+# Now wait for Claude to work
+terminal(command=&quot;sleep 15 &amp;&amp; tmux capture-pane -t claude-work -p -S -60&quot;)
+</code></pre>
+<p><strong>Note:</strong> After the first trust acceptance for a directory, the trust dialog won’t appear again. Only the permissions dialog recurs each time you use <code>--dangerously-skip-permissions</code>.</p>
+<h2 id="cli-subcommands">CLI Subcommands<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#cli-subcommands" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Subcommand</th><th>Purpose</th></tr></thead><tbody><tr><td><code>claude</code></td><td>Start interactive REPL</td></tr><tr><td><code>claude &quot;query&quot;</code></td><td>Start REPL with initial prompt</td></tr><tr><td><code>claude -p &quot;query&quot;</code></td><td>Print mode (non-interactive, exits when done)</td></tr><tr><td><code>cat file | claude -p &quot;query&quot;</code></td><td>Pipe content as stdin context</td></tr><tr><td><code>claude -c</code></td><td>Continue the most recent conversation in this directory</td></tr><tr><td><code>claude -r &quot;id&quot;</code></td><td>Resume a specific session by ID or name</td></tr><tr><td><code>claude auth login</code></td><td>Sign in (add <code>--console</code> for API billing, <code>--sso</code> for Enterprise)</td></tr><tr><td><code>claude auth status</code></td><td>Check login status (returns JSON; <code>--text</code> for human-readable)</td></tr><tr><td><code>claude mcp add &lt;name> -- &lt;cmd></code></td><td>Add an MCP server</td></tr><tr><td><code>claude mcp list</code></td><td>List configured MCP servers</td></tr><tr><td><code>claude mcp remove &lt;name></code></td><td>Remove an MCP server</td></tr><tr><td><code>claude agents</code></td><td>List configured agents</td></tr><tr><td><code>claude doctor</code></td><td>Run health checks on installation and auto-updater</td></tr><tr><td><code>claude update</code> / <code>claude upgrade</code></td><td>Update Claude Code to latest version</td></tr><tr><td><code>claude remote-control</code></td><td>Start server to control Claude from claude.ai or mobile app</td></tr><tr><td><code>claude install [target]</code></td><td>Install native build (stable, latest, or specific version)</td></tr><tr><td><code>claude setup-token</code></td><td>Set up long-lived auth token (requires subscription)</td></tr><tr><td><code>claude plugin</code> / <code>claude plugins</code></td><td>Manage Claude Code plugins</td></tr><tr><td><code>claude auto-mode</code></td><td>Inspect auto mode classifier configuration</td></tr></tbody></table></div>
+<h2 id="print-mode-deep-dive">Print Mode Deep Dive<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#print-mode-deep-dive" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="structured-json-output">Structured JSON Output<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#structured-json-output" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<pre><code>terminal(command=&quot;claude -p 'Analyze auth.py for security issues' --output-format json --max-turns 5&quot;, workdir=&quot;/project&quot;, timeout=120)
+</code></pre>
+<p>Returns a JSON object with:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="json" data-theme="github-light github-dark"><code data-language="json" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">{</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">  &quot;type&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;result&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">  &quot;subtype&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;success&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">  &quot;result&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;The analysis text...&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">  &quot;session_id&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;75e2167f-...&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">  &quot;num_turns&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">3</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">  &quot;total_cost_usd&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">0.0787</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">  &quot;duration_ms&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">10276</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">  &quot;stop_reason&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;end_turn&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">  &quot;terminal_reason&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;completed&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">  &quot;usage&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: { </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">&quot;input_tokens&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">5</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">&quot;output_tokens&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">603</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic;">...</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> },</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">  &quot;modelUsage&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: { </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">&quot;claude-sonnet-4-6&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: { </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">&quot;costUSD&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">0.078</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">&quot;contextWindow&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">200000</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> } }</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}</span></span></code></pre></figure>
+<p><strong>Key fields:</strong> <code>session_id</code> for resumption, <code>num_turns</code> for agentic loop count, <code>total_cost_usd</code> for spend tracking, <code>subtype</code> for success/error detection (<code>success</code>, <code>error_max_turns</code>, <code>error_budget</code>).</p>
+<h3 id="streaming-json-output">Streaming JSON Output<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#streaming-json-output" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>For real-time token streaming, use <code>stream-json</code> with <code>--verbose</code>:</p>
+<pre><code>terminal(command=&quot;claude -p 'Write a summary' --output-format stream-json --verbose --include-partial-messages&quot;, timeout=60)
+</code></pre>
+<p>Returns newline-delimited JSON events. Filter with jq for live text:</p>
+<pre><code>claude -p &quot;Explain X&quot; --output-format stream-json --verbose --include-partial-messages | \
+  jq -rj 'select(.type == &quot;stream_event&quot; and .event.delta.type? == &quot;text_delta&quot;) | .event.delta.text'
+</code></pre>
+<p>Stream events include <code>system/api_retry</code> with <code>attempt</code>, <code>max_retries</code>, and <code>error</code> fields (e.g., <code>rate_limit</code>, <code>billing_error</code>).</p>
+<h3 id="bidirectional-streaming">Bidirectional Streaming<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#bidirectional-streaming" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>For real-time input AND output streaming:</p>
+<pre><code>claude -p &quot;task&quot; --input-format stream-json --output-format stream-json --replay-user-messages
+</code></pre>
+<p><code>--replay-user-messages</code> re-emits user messages on stdout for acknowledgment.</p>
+<h3 id="piped-input">Piped Input<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#piped-input" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<pre><code># Pipe a file for analysis
+terminal(command=&quot;cat src/auth.py | claude -p 'Review this code for bugs' --max-turns 1&quot;, timeout=60)
+
+# Pipe multiple files
+terminal(command=&quot;cat src/*.py | claude -p 'Find all TODO comments' --max-turns 1&quot;, timeout=60)
+
+# Pipe command output
+terminal(command=&quot;git diff HEAD~3 | claude -p 'Summarize these changes' --max-turns 1&quot;, timeout=60)
+</code></pre>
+<h3 id="json-schema-for-structured-extraction">JSON Schema for Structured Extraction<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#json-schema-for-structured-extraction" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<pre><code>terminal(command=&quot;claude -p 'List all functions in src/' --output-format json --json-schema '{\&quot;type\&quot;:\&quot;object\&quot;,\&quot;properties\&quot;:{\&quot;functions\&quot;:{\&quot;type\&quot;:\&quot;array\&quot;,\&quot;items\&quot;:{\&quot;type\&quot;:\&quot;string\&quot;}}},\&quot;required\&quot;:[\&quot;functions\&quot;]}' --max-turns 5&quot;, workdir=&quot;/project&quot;, timeout=90)
+</code></pre>
+<p>Parse <code>structured_output</code> from the JSON result. Claude validates output against the schema before returning.</p>
+<h3 id="session-continuation">Session Continuation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#session-continuation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<pre><code># Start a task
+terminal(command=&quot;claude -p 'Start refactoring the database layer' --output-format json --max-turns 10 > /tmp/session.json&quot;, workdir=&quot;/project&quot;, timeout=180)
+
+# Resume with session ID
+terminal(command=&quot;claude -p 'Continue and add connection pooling' --resume $(cat /tmp/session.json | python3 -c 'import json,sys; print(json.load(sys.stdin)[\&quot;session_id\&quot;])') --max-turns 5&quot;, workdir=&quot;/project&quot;, timeout=120)
+
+# Or resume the most recent session in the same directory
+terminal(command=&quot;claude -p 'What did you do last time?' --continue --max-turns 1&quot;, workdir=&quot;/project&quot;, timeout=30)
+
+# Fork a session (new ID, keeps history)
+terminal(command=&quot;claude -p 'Try a different approach' --resume &lt;id> --fork-session --max-turns 10&quot;, workdir=&quot;/project&quot;, timeout=120)
+</code></pre>
+<h3 id="bare-mode-for-ciscripting">Bare Mode for CI/Scripting<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#bare-mode-for-ciscripting" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<pre><code>terminal(command=&quot;claude --bare -p 'Run all tests and report failures' --allowedTools 'Read,Bash' --max-turns 10&quot;, workdir=&quot;/project&quot;, timeout=180)
+</code></pre>
+<p><code>--bare</code> skips hooks, plugins, MCP discovery, and CLAUDE.md loading. Fastest startup. Requires <code>ANTHROPIC_API_KEY</code> (skips OAuth).</p>
+<p>To selectively load context in bare mode:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>To load</th><th>Flag</th></tr></thead><tbody><tr><td>System prompt additions</td><td><code>--append-system-prompt &quot;text&quot;</code> or <code>--append-system-prompt-file path</code></td></tr><tr><td>Settings</td><td><code>--settings &lt;file-or-json></code></td></tr><tr><td>MCP servers</td><td><code>--mcp-config &lt;file-or-json></code></td></tr><tr><td>Custom agents</td><td><code>--agents '&lt;json>'</code></td></tr></tbody></table></div>
+<h3 id="fallback-model-for-overload">Fallback Model for Overload<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#fallback-model-for-overload" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<pre><code>terminal(command=&quot;claude -p 'task' --fallback-model haiku --max-turns 5&quot;, timeout=90)
+</code></pre>
+<p>Automatically falls back to the specified model when the default is overloaded (print mode only).</p>
+<h2 id="complete-cli-flags-reference">Complete CLI Flags Reference<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#complete-cli-flags-reference" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="session--environment">Session &amp; Environment<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#session--environment" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Flag</th><th>Effect</th></tr></thead><tbody><tr><td><code>-p, --print</code></td><td>Non-interactive one-shot mode (exits when done)</td></tr><tr><td><code>-c, --continue</code></td><td>Resume most recent conversation in current directory</td></tr><tr><td><code>-r, --resume &lt;id></code></td><td>Resume specific session by ID or name (interactive picker if no ID)</td></tr><tr><td><code>--fork-session</code></td><td>When resuming, create new session ID instead of reusing original</td></tr><tr><td><code>--session-id &lt;uuid></code></td><td>Use a specific UUID for the conversation</td></tr><tr><td><code>--no-session-persistence</code></td><td>Don’t save session to disk (print mode only)</td></tr><tr><td><code>--add-dir &lt;paths...></code></td><td>Grant Claude access to additional working directories</td></tr><tr><td><code>-w, --worktree [name]</code></td><td>Run in an isolated git worktree at <code>.claude/worktrees/&lt;name></code></td></tr><tr><td><code>--tmux</code></td><td>Create a tmux session for the worktree (requires <code>--worktree</code>)</td></tr><tr><td><code>--ide</code></td><td>Auto-connect to a valid IDE on startup</td></tr><tr><td><code>--chrome</code> / <code>--no-chrome</code></td><td>Enable/disable Chrome browser integration for web testing</td></tr><tr><td><code>--from-pr [number]</code></td><td>Resume session linked to a specific GitHub PR</td></tr><tr><td><code>--file &lt;specs...></code></td><td>File resources to download at startup (format: <code>file_id:relative_path</code>)</td></tr></tbody></table></div>
+<h3 id="model--performance">Model &amp; Performance<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#model--performance" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Flag</th><th>Effect</th></tr></thead><tbody><tr><td><code>--model &lt;alias></code></td><td>Model selection: <code>sonnet</code>, <code>opus</code>, <code>haiku</code>, or full name like <code>claude-sonnet-4-6</code></td></tr><tr><td><code>--effort &lt;level></code></td><td>Reasoning depth: <code>low</code>, <code>medium</code>, <code>high</code>, <code>max</code>, <code>auto</code></td></tr><tr><td><code>--max-turns &lt;n></code></td><td>Limit agentic loops (print mode only; prevents runaway)</td></tr><tr><td><code>--max-budget-usd &lt;n></code></td><td>Cap API spend in dollars (print mode only)</td></tr><tr><td><code>--fallback-model &lt;model></code></td><td>Auto-fallback when default model is overloaded (print mode only)</td></tr><tr><td><code>--betas &lt;betas...></code></td><td>Beta headers to include in API requests (API key users only)</td></tr></tbody></table></div>
+<h3 id="permission--safety">Permission &amp; Safety<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#permission--safety" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Flag</th><th>Effect</th></tr></thead><tbody><tr><td><code>--dangerously-skip-permissions</code></td><td>Auto-approve ALL tool use (file writes, bash, network, etc.)</td></tr><tr><td><code>--allow-dangerously-skip-permissions</code></td><td>Enable bypass as an <em>option</em> without enabling it by default</td></tr><tr><td><code>--permission-mode &lt;mode></code></td><td><code>default</code>, <code>acceptEdits</code>, <code>plan</code>, <code>auto</code>, <code>dontAsk</code>, <code>bypassPermissions</code></td></tr><tr><td><code>--allowedTools &lt;tools...></code></td><td>Whitelist specific tools (comma or space-separated)</td></tr><tr><td><code>--disallowedTools &lt;tools...></code></td><td>Blacklist specific tools</td></tr><tr><td><code>--tools &lt;tools...></code></td><td>Override built-in tool set (<code>&quot;&quot;</code> = none, <code>&quot;default&quot;</code> = all, or tool names)</td></tr></tbody></table></div>
+<h3 id="output--input-format">Output &amp; Input Format<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#output--input-format" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Flag</th><th>Effect</th></tr></thead><tbody><tr><td><code>--output-format &lt;fmt></code></td><td><code>text</code> (default), <code>json</code> (single result object), <code>stream-json</code> (newline-delimited)</td></tr><tr><td><code>--input-format &lt;fmt></code></td><td><code>text</code> (default) or <code>stream-json</code> (real-time streaming input)</td></tr><tr><td><code>--json-schema &lt;schema></code></td><td>Force structured JSON output matching a schema</td></tr><tr><td><code>--verbose</code></td><td>Full turn-by-turn output</td></tr><tr><td><code>--include-partial-messages</code></td><td>Include partial message chunks as they arrive (stream-json + print)</td></tr><tr><td><code>--replay-user-messages</code></td><td>Re-emit user messages on stdout (stream-json bidirectional)</td></tr></tbody></table></div>
+<h3 id="system-prompt--context">System Prompt &amp; Context<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#system-prompt--context" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Flag</th><th>Effect</th></tr></thead><tbody><tr><td><code>--append-system-prompt &lt;text></code></td><td><strong>Add</strong> to the default system prompt (preserves built-in capabilities)</td></tr><tr><td><code>--append-system-prompt-file &lt;path></code></td><td><strong>Add</strong> file contents to the default system prompt</td></tr><tr><td><code>--system-prompt &lt;text></code></td><td><strong>Replace</strong> the entire system prompt (use —append instead usually)</td></tr><tr><td><code>--system-prompt-file &lt;path></code></td><td><strong>Replace</strong> the system prompt with file contents</td></tr><tr><td><code>--bare</code></td><td>Skip hooks, plugins, MCP discovery, CLAUDE.md, OAuth (fastest startup)</td></tr><tr><td><code>--agents '&lt;json>'</code></td><td>Define custom subagents dynamically as JSON</td></tr><tr><td><code>--mcp-config &lt;path></code></td><td>Load MCP servers from JSON file (repeatable)</td></tr><tr><td><code>--strict-mcp-config</code></td><td>Only use MCP servers from <code>--mcp-config</code>, ignoring all other MCP configs</td></tr><tr><td><code>--settings &lt;file-or-json></code></td><td>Load additional settings from a JSON file or inline JSON</td></tr><tr><td><code>--setting-sources &lt;sources></code></td><td>Comma-separated sources to load: <code>user</code>, <code>project</code>, <code>local</code></td></tr><tr><td><code>--plugin-dir &lt;paths...></code></td><td>Load plugins from directories for this session only</td></tr><tr><td><code>--disable-slash-commands</code></td><td>Disable all skills/slash commands</td></tr></tbody></table></div>
+<h3 id="debugging">Debugging<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#debugging" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Flag</th><th>Effect</th></tr></thead><tbody><tr><td><code>-d, --debug [filter]</code></td><td>Enable debug logging with optional category filter (e.g., <code>&quot;api,hooks&quot;</code>, <code>&quot;!1p,!file&quot;</code>)</td></tr><tr><td><code>--debug-file &lt;path></code></td><td>Write debug logs to file (implicitly enables debug mode)</td></tr></tbody></table></div>
+<h3 id="agent-teams">Agent Teams<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#agent-teams" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Flag</th><th>Effect</th></tr></thead><tbody><tr><td><code>--teammate-mode &lt;mode></code></td><td>How agent teams display: <code>auto</code>, <code>in-process</code>, or <code>tmux</code></td></tr><tr><td><code>--brief</code></td><td>Enable <code>SendUserMessage</code> tool for agent-to-user communication</td></tr></tbody></table></div>
+<h3 id="tool-name-syntax-for-allowedtools--disallowedtools">Tool Name Syntax for —allowedTools / —disallowedTools<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#tool-name-syntax-for-allowedtools--disallowedtools" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<pre><code>Read                    # All file reading
+Edit                    # File editing (existing files)
+Write                   # File creation (new files)
+Bash                    # All shell commands
+Bash(git *)             # Only git commands
+Bash(git commit *)      # Only git commit commands
+Bash(npm run lint:*)    # Pattern matching with wildcards
+WebSearch               # Web search capability
+WebFetch                # Web page fetching
+mcp__&lt;server>__&lt;tool>   # Specific MCP tool
+</code></pre>
+<h2 id="settings--configuration">Settings &amp; Configuration<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#settings--configuration" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="settings-hierarchy-highest-to-lowest-priority">Settings Hierarchy (highest to lowest priority)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#settings-hierarchy-highest-to-lowest-priority" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>CLI flags</strong> — override everything</li>
+<li><strong>Local project:</strong> <code>.claude/settings.local.json</code> (personal, gitignored)</li>
+<li><strong>Project:</strong> <code>.claude/settings.json</code> (shared, git-tracked)</li>
+<li><strong>User:</strong> <code>~/.claude/settings.json</code> (global)</li>
+</ol>
+<h3 id="permissions-in-settings">Permissions in Settings<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#permissions-in-settings" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="json" data-theme="github-light github-dark"><code data-language="json" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">{</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">  &quot;permissions&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: {</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">    &quot;allow&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Bash(npm run lint:*)&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;WebSearch&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Read&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">],</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">    &quot;ask&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Write(*.ts)&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Bash(git push*)&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">],</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">    &quot;deny&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Read(.env)&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Bash(rm -rf *)&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  }</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}</span></span></code></pre></figure>
+<h3 id="memory-files-claudemd-hierarchy">Memory Files (CLAUDE.md) Hierarchy<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#memory-files-claudemd-hierarchy" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>Global:</strong> <code>~/.claude/CLAUDE.md</code> — applies to all projects</li>
+<li><strong>Project:</strong> <code>./CLAUDE.md</code> — project-specific context (git-tracked)</li>
+<li><strong>Local:</strong> <code>.claude/CLAUDE.local.md</code> — personal project overrides (gitignored)</li>
+</ol>
+<p>Use the <code>#</code> prefix in interactive mode to quickly add to memory: <code># Always use 2-space indentation</code>.</p>
+<h2 id="interactive-session-slash-commands">Interactive Session: Slash Commands<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#interactive-session-slash-commands" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="session--context">Session &amp; Context<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#session--context" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Command</th><th>Purpose</th></tr></thead><tbody><tr><td><code>/help</code></td><td>Show all commands (including custom and MCP commands)</td></tr><tr><td><code>/compact [focus]</code></td><td>Compress context to save tokens; CLAUDE.md survives compaction. E.g., <code>/compact focus on auth logic</code></td></tr><tr><td><code>/clear</code></td><td>Wipe conversation history for a fresh start</td></tr><tr><td><code>/context</code></td><td>Visualize context usage as a colored grid with optimization tips</td></tr><tr><td><code>/cost</code></td><td>View token usage with per-model and cache-hit breakdowns</td></tr><tr><td><code>/resume</code></td><td>Switch to or resume a different session</td></tr><tr><td><code>/rewind</code></td><td>Revert to a previous checkpoint in conversation or code</td></tr><tr><td><code>/btw &lt;question></code></td><td>Ask a side question without adding to context cost</td></tr><tr><td><code>/status</code></td><td>Show version, connectivity, and session info</td></tr><tr><td><code>/todos</code></td><td>List tracked action items from the conversation</td></tr><tr><td><code>/exit</code> or <code>Ctrl+D</code></td><td>End session</td></tr></tbody></table></div>
+<h3 id="development--review">Development &amp; Review<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#development--review" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Command</th><th>Purpose</th></tr></thead><tbody><tr><td><code>/review</code></td><td>Request code review of current changes</td></tr><tr><td><code>/security-review</code></td><td>Perform security analysis of current changes</td></tr><tr><td><code>/plan [description]</code></td><td>Enter Plan mode with auto-start for task planning</td></tr><tr><td><code>/loop [interval]</code></td><td>Schedule recurring tasks within the session</td></tr><tr><td><code>/batch</code></td><td>Auto-create worktrees for large parallel changes (5-30 worktrees)</td></tr></tbody></table></div>
+<h3 id="configuration--tools">Configuration &amp; Tools<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#configuration--tools" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Command</th><th>Purpose</th></tr></thead><tbody><tr><td><code>/model [model]</code></td><td>Switch models mid-session (use arrow keys to adjust effort)</td></tr><tr><td><code>/effort [level]</code></td><td>Set reasoning effort: <code>low</code>, <code>medium</code>, <code>high</code>, <code>max</code>, or <code>auto</code></td></tr><tr><td><code>/init</code></td><td>Create a CLAUDE.md file for project memory</td></tr><tr><td><code>/memory</code></td><td>Open CLAUDE.md for editing</td></tr><tr><td><code>/config</code></td><td>Open interactive settings configuration</td></tr><tr><td><code>/permissions</code></td><td>View/update tool permissions</td></tr><tr><td><code>/agents</code></td><td>Manage specialized subagents</td></tr><tr><td><code>/mcp</code></td><td>Interactive UI to manage MCP servers</td></tr><tr><td><code>/add-dir</code></td><td>Add additional working directories (useful for monorepos)</td></tr><tr><td><code>/usage</code></td><td>Show plan limits and rate limit status</td></tr><tr><td><code>/voice</code></td><td>Enable push-to-talk voice mode (20 languages; hold Space to record, release to send)</td></tr><tr><td><code>/release-notes</code></td><td>Interactive picker for version release notes</td></tr></tbody></table></div>
+<h3 id="custom-slash-commands">Custom Slash Commands<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#custom-slash-commands" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Create <code>.claude/commands/&lt;name>.md</code> (project-shared) or <code>~/.claude/commands/&lt;name>.md</code> (personal):</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="markdown" data-theme="github-light github-dark"><code data-language="markdown" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;"># .claude/commands/deploy.md</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">Run the deploy pipeline:</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">1.</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> Run all tests</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">2.</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> Build the Docker image</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">3.</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> Push to registry</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">4.</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> Update the $ARGUMENTS environment (default: staging)</span></span></code></pre></figure>
+<p>Usage: <code>/deploy production</code> — <code>$ARGUMENTS</code> is replaced with the user’s input.</p>
+<h3 id="skills-natural-language-invocation">Skills (Natural Language Invocation)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#skills-natural-language-invocation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Unlike slash commands (manually invoked), skills in <code>.claude/skills/</code> are markdown guides that Claude invokes automatically via natural language when the task matches:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="markdown" data-theme="github-light github-dark"><code data-language="markdown" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;"># .claude/skills/database-migration.md</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">When asked to create or modify database migrations:</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">1.</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> Use Alembic for migration generation</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">2.</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> Always create a rollback function</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">3.</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> Test migrations against a local database copy</span></span></code></pre></figure>
+<h2 id="interactive-session-keyboard-shortcuts">Interactive Session: Keyboard Shortcuts<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#interactive-session-keyboard-shortcuts" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="general-controls">General Controls<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#general-controls" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody><tr><td><code>Ctrl+C</code></td><td>Cancel current input or generation</td></tr><tr><td><code>Ctrl+D</code></td><td>Exit session</td></tr><tr><td><code>Ctrl+R</code></td><td>Reverse search command history</td></tr><tr><td><code>Ctrl+B</code></td><td>Background a running task</td></tr><tr><td><code>Ctrl+V</code></td><td>Paste image into conversation</td></tr><tr><td><code>Ctrl+O</code></td><td>Transcript mode — see Claude’s thinking process</td></tr><tr><td><code>Ctrl+G</code> or <code>Ctrl+X Ctrl+E</code></td><td>Open prompt in external editor</td></tr><tr><td><code>Esc Esc</code></td><td>Rewind conversation or code state / summarize</td></tr></tbody></table></div>
+<h3 id="mode-toggles">Mode Toggles<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mode-toggles" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody><tr><td><code>Shift+Tab</code></td><td>Cycle permission modes (Normal → Auto-Accept → Plan)</td></tr><tr><td><code>Alt+P</code></td><td>Switch model</td></tr><tr><td><code>Alt+T</code></td><td>Toggle thinking mode</td></tr><tr><td><code>Alt+O</code></td><td>Toggle Fast Mode</td></tr></tbody></table></div>
+<h3 id="multiline-input">Multiline Input<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#multiline-input" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody><tr><td><code>\</code> + <code>Enter</code></td><td>Quick newline</td></tr><tr><td><code>Shift+Enter</code></td><td>Newline (alternative)</td></tr><tr><td><code>Ctrl+J</code></td><td>Newline (alternative)</td></tr></tbody></table></div>
+<h3 id="input-prefixes">Input Prefixes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#input-prefixes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Prefix</th><th>Action</th></tr></thead><tbody><tr><td><code>!</code></td><td>Execute bash directly, bypassing AI (e.g., <code>!npm test</code>). Use <code>!</code> alone to toggle shell mode.</td></tr><tr><td><code>@</code></td><td>Reference files/directories with autocomplete (e.g., <code>@./src/api/</code>)</td></tr><tr><td><code>#</code></td><td>Quick add to CLAUDE.md memory (e.g., <code># Use 2-space indentation</code>)</td></tr><tr><td><code>/</code></td><td>Slash commands</td></tr></tbody></table></div>
+<h3 id="pro-tip-ultrathink">Pro Tip: “ultrathink”<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#pro-tip-ultrathink" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Use the keyword “ultrathink” in your prompt for maximum reasoning effort on a specific turn. This triggers the deepest thinking mode regardless of the current <code>/effort</code> setting.</p>
+<h2 id="vision--image-batch-processing">Vision / Image Batch Processing<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#vision--image-batch-processing" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Claude models (sonnet-4-6, opus-4-8) have native vision. Use the <code>Read</code> tool to load images and Claude will analyze them. For multi-frame video analysis, batch processing is needed because <strong>proxy/transit services often have image context limits</strong> (e.g., aicodestudy.com: ~3 frames per call before 400 errors).</p>
+<h3 id="batch-script">Batch Script<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#batch-script" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Use <code>batch_frame_analyzer.py</code> (see <code>scripts/batch_frame_analyzer.py</code>) to automatically split frames into batches of 3, call Claude Code for each batch, handle retries (fall back to batches of 2 on failure), and aggregate results into a single markdown file.</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">ANTHROPIC_AUTH_TOKEN</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;sk-...&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> ANTHROPIC_BASE_URL</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;https://proxy.example.com&quot;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> \</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">python3 </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">scripts/batch_frame_analyzer.py</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> /path/to/frames/</span></span></code></pre></figure>
+<h3 id="manual-batch-invocation">Manual Batch Invocation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#manual-batch-invocation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>When the script isn’t available, batch manually:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">claude</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -p</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> &quot;Read frame_001.jpg frame_002.jpg frame_003.jpg from /tmp/frames/. Describe each briefly in Chinese.&quot;</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> \</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">  --model</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> claude-sonnet-4-6</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --max-turns</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 5</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --allowedTools</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> &quot;Read&quot;</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> \</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">  --output-format</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> json</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --no-session-persistence</span></span></code></pre></figure>
+<h3 id="image-size-tips">Image Size Tips<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#image-size-tips" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>JPEG at quality 3 (<code>-q:v 3</code> in ffmpeg) is the sweet spot: readable text, small file size</li>
+<li>For 1080p screenshots, ~60KB per frame is typical</li>
+<li>If frames are too large, pre-scale: <code>ffmpeg -i input.mp4 -vf &quot;fps=1/60,scale=1024:-1&quot; -q:v 3 frames/frame_%03d.jpg</code></li>
+</ul>
+<h3 id="quick-review-print-mode">Quick Review (Print Mode)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#quick-review-print-mode" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<pre><code>terminal(command=&quot;cd /path/to/repo &amp;&amp; git diff main...feature-branch | claude -p 'Review this diff for bugs, security issues, and style problems. Be thorough.' --max-turns 1&quot;, timeout=60)
+</code></pre>
+<h3 id="deep-review-interactive--worktree">Deep Review (Interactive + Worktree)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#deep-review-interactive--worktree" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<pre><code>terminal(command=&quot;tmux new-session -d -s review -x 140 -y 40&quot;)
+terminal(command=&quot;tmux send-keys -t review 'cd /path/to/repo &amp;&amp; claude -w pr-review' Enter&quot;)
+terminal(command=&quot;sleep 5 &amp;&amp; tmux send-keys -t review Enter&quot;)  # Trust dialog
+terminal(command=&quot;sleep 2 &amp;&amp; tmux send-keys -t review 'Review all changes vs main. Check for bugs, security issues, race conditions, and missing tests.' Enter&quot;)
+terminal(command=&quot;sleep 30 &amp;&amp; tmux capture-pane -t review -p -S -60&quot;)
+</code></pre>
+<h3 id="pr-review-from-number">PR Review from Number<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#pr-review-from-number" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<pre><code>terminal(command=&quot;claude -p 'Review this PR thoroughly' --from-pr 42 --max-turns 10&quot;, workdir=&quot;/path/to/repo&quot;, timeout=120)
+</code></pre>
+<h3 id="claude-worktree-with-tmux">Claude Worktree with tmux<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#claude-worktree-with-tmux" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<pre><code>terminal(command=&quot;claude -w feature-x --tmux&quot;, workdir=&quot;/path/to/repo&quot;)
+</code></pre>
+<p>Creates an isolated git worktree at <code>.claude/worktrees/feature-x</code> AND a tmux session for it. Uses iTerm2 native panes when available; add <code>--tmux=classic</code> for traditional tmux.</p>
+<h2 id="parallel-claude-instances">Parallel Claude Instances<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#parallel-claude-instances" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Run multiple independent Claude tasks simultaneously:</p>
+<pre><code># Task 1: Fix backend
+terminal(command=&quot;tmux new-session -d -s task1 -x 140 -y 40 &amp;&amp; tmux send-keys -t task1 'cd ~/project &amp;&amp; claude -p \&quot;Fix the auth bug in src/auth.py\&quot; --allowedTools \&quot;Read,Edit\&quot; --max-turns 10' Enter&quot;)
+
+# Task 2: Write tests
+terminal(command=&quot;tmux new-session -d -s task2 -x 140 -y 40 &amp;&amp; tmux send-keys -t task2 'cd ~/project &amp;&amp; claude -p \&quot;Write integration tests for the API endpoints\&quot; --allowedTools \&quot;Read,Write,Bash\&quot; --max-turns 15' Enter&quot;)
+
+# Task 3: Update docs
+terminal(command=&quot;tmux new-session -d -s task3 -x 140 -y 40 &amp;&amp; tmux send-keys -t task3 'cd ~/project &amp;&amp; claude -p \&quot;Update README.md with the new API endpoints\&quot; --allowedTools \&quot;Read,Edit\&quot; --max-turns 5' Enter&quot;)
+
+# Monitor all
+terminal(command=&quot;sleep 30 &amp;&amp; for s in task1 task2 task3; do echo '=== '$s' ==='; tmux capture-pane -t $s -p -S -5 2>/dev/null; done&quot;)
+</code></pre>
+<h2 id="claudemd--project-context-file">CLAUDE.md — Project Context File<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#claudemd--project-context-file" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Claude Code auto-loads <code>CLAUDE.md</code> from the project root. Use it to persist project context:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="markdown" data-theme="github-light github-dark"><code data-language="markdown" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;"># Project: My API</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">## Architecture</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> FastAPI backend with SQLAlchemy ORM</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> PostgreSQL database, Redis cache</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> pytest for testing with 90% coverage target</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">## Key Commands</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> `make test`</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> — run full test suite</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> `make lint`</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> — ruff + mypy</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> `make dev`</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> — start dev server on :8000</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">## Code Standards</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> Type hints on all public functions</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> Docstrings in Google style</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 2-space indentation for YAML, 4-space for Python</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> No wildcard imports</span></span></code></pre></figure>
+<p><strong>Be specific.</strong> Instead of “Write good code”, use “Use 2-space indentation for JS” or “Name test files with <code>.test.ts</code> suffix.” Specific instructions save correction cycles.</p>
+<h3 id="rules-directory-modular-claudemd">Rules Directory (Modular CLAUDE.md)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#rules-directory-modular-claudemd" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>For projects with many rules, use the rules directory instead of one massive CLAUDE.md:</p>
+<ul>
+<li><strong>Project rules:</strong> <code>.claude/rules/*.md</code> — team-shared, git-tracked</li>
+<li><strong>User rules:</strong> <code>~/.claude/rules/*.md</code> — personal, global</li>
+</ul>
+<p>Each <code>.md</code> file in the rules directory is loaded as additional context. This is cleaner than cramming everything into a single CLAUDE.md.</p>
+<h3 id="auto-memory">Auto-Memory<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#auto-memory" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Claude automatically stores learned project context in <code>~/.claude/projects/&lt;project>/memory/</code>.</p>
+<ul>
+<li><strong>Limit:</strong> 25KB or 200 lines per project</li>
+<li>This is separate from CLAUDE.md — it’s Claude’s own notes about the project, accumulated across sessions</li>
+</ul>
+<h2 id="custom-subagents">Custom Subagents<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#custom-subagents" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Define specialized agents in <code>.claude/agents/</code> (project), <code>~/.claude/agents/</code> (personal), or via <code>--agents</code> CLI flag (session):</p>
+<h3 id="agent-location-priority">Agent Location Priority<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#agent-location-priority" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><code>.claude/agents/</code> — project-level, team-shared</li>
+<li><code>--agents</code> CLI flag — session-specific, dynamic</li>
+<li><code>~/.claude/agents/</code> — user-level, personal</li>
+</ol>
+<h3 id="creating-an-agent">Creating an Agent<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#creating-an-agent" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="markdown" data-theme="github-light github-dark"><code data-language="markdown" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;"># .claude/agents/security-reviewer.md</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">---</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">name: security-reviewer</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">description: Security-focused code review</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">model: opus</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">tools: [Read, Bash]</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">---</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">You are a senior security engineer. Review code for:</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> Injection vulnerabilities (SQL, XSS, command injection)</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> Authentication/authorization flaws</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> Secrets in code</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> Unsafe deserialization</span></span></code></pre></figure>
+<p>Invoke via: <code>@security-reviewer review the auth module</code></p>
+<h3 id="dynamic-agents-via-cli">Dynamic Agents via CLI<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#dynamic-agents-via-cli" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<pre><code>terminal(command=&quot;claude --agents '{\&quot;reviewer\&quot;: {\&quot;description\&quot;: \&quot;Reviews code\&quot;, \&quot;prompt\&quot;: \&quot;You are a code reviewer focused on performance\&quot;}}' -p 'Use @reviewer to check auth.py'&quot;, timeout=120)
+</code></pre>
+<p>Claude can orchestrate multiple agents: “Use @db-expert to optimize queries, then @security to audit the changes.”</p>
+<h2 id="hooks--automation-on-events">Hooks — Automation on Events<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#hooks--automation-on-events" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Configure in <code>.claude/settings.json</code> (project) or <code>~/.claude/settings.json</code> (global):</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="json" data-theme="github-light github-dark"><code data-language="json" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">{</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">  &quot;hooks&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: {</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">    &quot;PostToolUse&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [{</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">      &quot;matcher&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Write(*.py)&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">      &quot;hooks&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [{</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">&quot;type&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;command&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">&quot;command&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;ruff check --fix $CLAUDE_FILE_PATHS&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}]</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    }],</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">    &quot;PreToolUse&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [{</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">      &quot;matcher&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Bash&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">      &quot;hooks&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [{</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">&quot;type&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;command&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">&quot;command&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;if echo </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">\&quot;</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">$CLAUDE_TOOL_INPUT</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">\&quot;</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> | grep -q 'rm -rf'; then echo 'Blocked!' &amp;&amp; exit 2; fi&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}]</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    }],</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">    &quot;Stop&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [{</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">      &quot;hooks&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [{</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">&quot;type&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;command&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">&quot;command&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;echo 'Claude finished a response' >> /tmp/claude-activity.log&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}]</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    }]</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  }</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}</span></span></code></pre></figure>
+<h3 id="all-8-hook-types">All 8 Hook Types<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#all-8-hook-types" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Hook</th><th>When it fires</th><th>Common use</th></tr></thead><tbody><tr><td><code>UserPromptSubmit</code></td><td>Before Claude processes a user prompt</td><td>Input validation, logging</td></tr><tr><td><code>PreToolUse</code></td><td>Before tool execution</td><td>Security gates, block dangerous commands (exit 2 = block)</td></tr><tr><td><code>PostToolUse</code></td><td>After a tool finishes</td><td>Auto-format code, run linters</td></tr><tr><td><code>Notification</code></td><td>On permission requests or input waits</td><td>Desktop notifications, alerts</td></tr><tr><td><code>Stop</code></td><td>When Claude finishes a response</td><td>Completion logging, status updates</td></tr><tr><td><code>SubagentStop</code></td><td>When a subagent completes</td><td>Agent orchestration</td></tr><tr><td><code>PreCompact</code></td><td>Before context memory is cleared</td><td>Backup session transcripts</td></tr><tr><td><code>SessionStart</code></td><td>When a session begins</td><td>Load dev context (e.g., <code>git status</code>)</td></tr></tbody></table></div>
+<h3 id="hook-environment-variables">Hook Environment Variables<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#hook-environment-variables" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Variable</th><th>Content</th></tr></thead><tbody><tr><td><code>CLAUDE_PROJECT_DIR</code></td><td>Current project path</td></tr><tr><td><code>CLAUDE_FILE_PATHS</code></td><td>Files being modified</td></tr><tr><td><code>CLAUDE_TOOL_INPUT</code></td><td>Tool parameters as JSON</td></tr></tbody></table></div>
+<h3 id="security-hook-examples">Security Hook Examples<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#security-hook-examples" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="json" data-theme="github-light github-dark"><code data-language="json" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">{</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">  &quot;PreToolUse&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [{</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">    &quot;matcher&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Bash&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">    &quot;hooks&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [{</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">&quot;type&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;command&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">&quot;command&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;if echo </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">\&quot;</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">$CLAUDE_TOOL_INPUT</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">\&quot;</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> | grep -qE 'rm -rf|git push.*--force|:(){ :|:&amp; };:'; then echo 'Dangerous command blocked!' &amp;&amp; exit 2; fi&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}]</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  }]</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}</span></span></code></pre></figure>
+<h2 id="mcp-integration">MCP Integration<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mcp-integration" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Add external tool servers for databases, APIs, and services:</p>
+<pre><code># GitHub integration
+terminal(command=&quot;claude mcp add -s user github -- npx @modelcontextprotocol/server-github&quot;, timeout=30)
+
+# PostgreSQL queries
+terminal(command=&quot;claude mcp add -s local postgres -- npx @anthropic-ai/server-postgres --connection-string postgresql://localhost/mydb&quot;, timeout=30)
+
+# Puppeteer for web testing
+terminal(command=&quot;claude mcp add puppeteer -- npx @anthropic-ai/server-puppeteer&quot;, timeout=30)
+</code></pre>
+<h3 id="mcp-scopes">MCP Scopes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mcp-scopes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Flag</th><th>Scope</th><th>Storage</th></tr></thead><tbody><tr><td><code>-s user</code></td><td>Global (all projects)</td><td><code>~/.claude.json</code></td></tr><tr><td><code>-s local</code></td><td>This project (personal)</td><td><code>.claude/settings.local.json</code> (gitignored)</td></tr><tr><td><code>-s project</code></td><td>This project (team-shared)</td><td><code>.claude/settings.json</code> (git-tracked)</td></tr></tbody></table></div>
+<h3 id="mcp-in-printci-mode">MCP in Print/CI Mode<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mcp-in-printci-mode" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<pre><code>terminal(command=&quot;claude --bare -p 'Query database' --mcp-config mcp-servers.json --strict-mcp-config&quot;, timeout=60)
+</code></pre>
+<p><code>--strict-mcp-config</code> ignores all MCP servers except those from <code>--mcp-config</code>.</p>
+<p>Reference MCP resources in chat: <code>@github:issue://123</code></p>
+<h3 id="mcp-limits--tuning">MCP Limits &amp; Tuning<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mcp-limits--tuning" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Tool descriptions:</strong> 2KB cap per server for tool descriptions and server instructions</li>
+<li><strong>Result size:</strong> Default capped; use <code>maxResultSizeChars</code> annotation to allow up to <strong>500K</strong> characters for large outputs</li>
+<li><strong>Output tokens:</strong> <code>export MAX_MCP_OUTPUT_TOKENS=50000</code> — cap output from MCP servers to prevent context flooding</li>
+<li><strong>Transports:</strong> <code>stdio</code> (local process), <code>http</code> (remote), <code>sse</code> (server-sent events)</li>
+</ul>
+<h2 id="monitoring-interactive-sessions">Monitoring Interactive Sessions<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#monitoring-interactive-sessions" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="reading-the-tui-status">Reading the TUI Status<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#reading-the-tui-status" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<pre><code># Periodic capture to check if Claude is still working or waiting for input
+terminal(command=&quot;tmux capture-pane -t dev -p -S -10&quot;)
+</code></pre>
+<p>Look for these indicators:</p>
+<ul>
+<li><code>❯</code> at bottom = waiting for your input (Claude is done or asking a question)</li>
+<li><code>●</code> lines = Claude is actively using tools (reading, writing, running commands)</li>
+<li><code>⏵⏵ bypass permissions on</code> = status bar showing permissions mode</li>
+<li><code>◐ medium · /effort</code> = current effort level in status bar</li>
+<li><code>ctrl+o to expand</code> = tool output was truncated (can be expanded interactively)</li>
+</ul>
+<h3 id="context-window-health">Context Window Health<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#context-window-health" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Use <code>/context</code> in interactive mode to see a colored grid of context usage. Key thresholds:</p>
+<ul>
+<li><strong>&lt; 70%</strong> — Normal operation, full precision</li>
+<li><strong>70-85%</strong> — Precision starts dropping, consider <code>/compact</code></li>
+<li><strong>> 85%</strong> — Hallucination risk spikes significantly, use <code>/compact</code> or <code>/clear</code></li>
+</ul>
+<h2 id="environment-variables">Environment Variables<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#environment-variables" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Variable</th><th>Effect</th></tr></thead><tbody><tr><td><code>ANTHROPIC_API_KEY</code></td><td>API key for authentication (alternative to OAuth)</td></tr><tr><td><code>ANTHROPIC_AUTH_TOKEN</code></td><td>API key alias (used by some proxy/transit services; functionally equivalent to ANTHROPIC_API_KEY)</td></tr><tr><td><code>ANTHROPIC_BASE_URL</code></td><td>Custom API base URL for proxy/transit services (e.g., <code>https://aicodestudy.com</code>). Set alongside <code>ANTHROPIC_AUTH_TOKEN</code>.</td></tr><tr><td><code>CLAUDE_CODE_EFFORT_LEVEL</code></td><td>Default effort: <code>low</code>, <code>medium</code>, <code>high</code>, <code>max</code>, or <code>auto</code></td></tr><tr><td><code>MAX_THINKING_TOKENS</code></td><td>Cap thinking tokens (set to <code>0</code> to disable thinking entirely)</td></tr><tr><td><code>MAX_MCP_OUTPUT_TOKENS</code></td><td>Cap output from MCP servers (default varies; set e.g., <code>50000</code>)</td></tr><tr><td><code>CLAUDE_CODE_NO_FLICKER=1</code></td><td>Enable alt-screen rendering to eliminate terminal flicker</td></tr><tr><td><code>CLAUDE_CODE_SUBPROCESS_ENV_SCRUB</code></td><td>Strip credentials from sub-processes for security</td></tr></tbody></table></div>
+<h2 id="cost--performance-tips">Cost &amp; Performance Tips<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#cost--performance-tips" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ol>
+<li><strong>Use <code>--max-turns</code></strong> in print mode to prevent runaway loops. Start with 5-10 for most tasks.</li>
+<li><strong>Use <code>--max-budget-usd</code></strong> for cost caps. Note: minimum ~$0.05 for system prompt cache creation.</li>
+<li><strong>Use <code>--effort low</code></strong> for simple tasks (faster, cheaper). <code>high</code> or <code>max</code> for complex reasoning.</li>
+<li><strong>Use <code>--bare</code></strong> for CI/scripting to skip plugin/hook discovery overhead.</li>
+<li><strong>Use <code>--allowedTools</code></strong> to restrict to only what’s needed (e.g., <code>Read</code> only for reviews).</li>
+<li><strong>Use <code>/compact</code></strong> in interactive sessions when context gets large.</li>
+<li><strong>Pipe input</strong> instead of having Claude read files when you just need analysis of known content.</li>
+<li><strong>Use <code>--model haiku</code></strong> for simple tasks (cheaper) and <code>--model opus</code> for complex multi-step work.</li>
+<li><strong>Use <code>--fallback-model haiku</code></strong> in print mode to gracefully handle model overload.</li>
+<li><strong>Start new sessions for distinct tasks</strong> — sessions last 5 hours; fresh context is more efficient.</li>
+<li><strong>Use <code>--no-session-persistence</code></strong> in CI to avoid accumulating saved sessions on disk.</li>
+</ol>
+<h2 id="pitfalls--gotchas">Pitfalls &amp; Gotchas<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#pitfalls--gotchas" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ol>
+<li><strong>Interactive mode REQUIRES tmux</strong> — Claude Code is a full TUI app. Using <code>pty=true</code> alone in Hermes terminal works but tmux gives you <code>capture-pane</code> for monitoring and <code>send-keys</code> for input, which is essential for orchestration.</li>
+<li><strong><code>--dangerously-skip-permissions</code> dialog defaults to “No, exit”</strong> — you must send Down then Enter to accept. Print mode (<code>-p</code>) skips this entirely.</li>
+<li><strong><code>--max-budget-usd</code> minimum is ~$0.05</strong> — system prompt cache creation alone costs this much. Setting lower will error immediately.</li>
+<li><strong><code>--max-turns</code> is print-mode only</strong> — ignored in interactive sessions.</li>
+<li><strong>Claude may use <code>python</code> instead of <code>python3</code></strong> — on systems without a <code>python</code> symlink, Claude’s bash commands will fail on first try but it self-corrects.</li>
+<li><strong>Session resumption requires same directory</strong> — <code>--continue</code> finds the most recent session for the current working directory.</li>
+<li><strong><code>--json-schema</code> needs enough <code>--max-turns</code></strong> — Claude must read files before producing structured output, which takes multiple turns.</li>
+<li><strong>Trust dialog only appears once per directory</strong> — first-time only, then cached.</li>
+<li><strong>Background tmux sessions persist</strong> — always clean up with <code>tmux kill-session -t &lt;name></code> when done.</li>
+<li><strong>Slash commands (like <code>/commit</code>) only work in interactive mode</strong> — in <code>-p</code> mode, describe the task in natural language instead.</li>
+<li><strong><code>--bare</code> skips OAuth</strong> — requires <code>ANTHROPIC_API_KEY</code> env var or an <code>apiKeyHelper</code> in settings.</li>
+<li><strong>Context degradation is real</strong> — AI output quality measurably degrades above 70% context window usage. Monitor with <code>/context</code> and proactively <code>/compact</code>.</li>
+<li><strong>Proxy/transit services may limit image context</strong> — services like aicodestudy.com reject requests with too many images per turn (400: “upstream rejected the request as improperly formed”). Limit to 3 frames per <code>claude -p</code> call. Use the batch script (<code>scripts/batch_frame_analyzer.py</code>) for multi-frame video analysis. The error is a proxy-side rejection, not a Claude API error — reducing batch size fixes it.</li>
+</ol>
+<h2 id="rules-for-hermes-agents">Rules for Hermes Agents<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#rules-for-hermes-agents" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ol>
+<li><strong>Prefer print mode (<code>-p</code>) for single tasks</strong> — cleaner, no dialog handling, structured output</li>
+<li><strong>Use tmux for multi-turn interactive work</strong> — the only reliable way to orchestrate the TUI</li>
+<li><strong>Always set <code>workdir</code></strong> — keep Claude focused on the right project directory</li>
+<li><strong>Set <code>--max-turns</code> in print mode</strong> — prevents infinite loops and runaway costs</li>
+<li><strong>Monitor tmux sessions</strong> — use <code>tmux capture-pane -t &lt;session> -p -S -50</code> to check progress</li>
+<li><strong>Look for the <code>❯</code> prompt</strong> — indicates Claude is waiting for input (done or asking a question)</li>
+<li><strong>Clean up tmux sessions</strong> — kill them when done to avoid resource leaks</li>
+<li><strong>Report results to user</strong> — after completion, summarize what Claude did and what changed</li>
+<li><strong>Don’t kill slow sessions</strong> — Claude may be doing multi-step work; check progress instead</li>
+<li><strong>Use <code>--allowedTools</code></strong> — restrict capabilities to what the task actually needs</li>
+</ol></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>关系图谱</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-8" aria-expanded="true"><h3>目录</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#claude-code" data-for="claude-code">claude-code</a></li><li class="depth-0"><a href="#claude-code--hermes-orchestration-guide" data-for="claude-code--hermes-orchestration-guide">Claude Code — Hermes Orchestration Guide</a></li><li class="depth-1"><a href="#prerequisites" data-for="prerequisites">Prerequisites</a></li><li class="depth-1"><a href="#two-orchestration-modes" data-for="two-orchestration-modes">Two Orchestration Modes</a></li><li class="depth-2"><a href="#mode-1-print-mode--p--non-interactive-preferred-for-most-tasks" data-for="mode-1-print-mode--p--non-interactive-preferred-for-most-tasks">Mode 1: Print Mode (-p) — Non-Interactive (PREFERRED for most tasks)</a></li><li class="depth-2"><a href="#mode-2-interactive-pty-via-tmux--multi-turn-sessions" data-for="mode-2-interactive-pty-via-tmux--multi-turn-sessions">Mode 2: Interactive PTY via tmux — Multi-Turn Sessions</a></li><li class="depth-1"><a href="#pty-dialog-handling-critical-for-interactive-mode" data-for="pty-dialog-handling-critical-for-interactive-mode">PTY Dialog Handling (CRITICAL for Interactive Mode)</a></li><li class="depth-2"><a href="#dialog-1-workspace-trust-first-visit-to-a-directory" data-for="dialog-1-workspace-trust-first-visit-to-a-directory">Dialog 1: Workspace Trust (first visit to a directory)</a></li><li class="depth-2"><a href="#dialog-2-bypass-permissions-warning-only-with-dangerously-skip-permissions" data-for="dialog-2-bypass-permissions-warning-only-with-dangerously-skip-permissions">Dialog 2: Bypass Permissions Warning (only with —dangerously-skip-permissions)</a></li><li class="depth-2"><a href="#robust-dialog-handling-pattern" data-for="robust-dialog-handling-pattern">Robust Dialog Handling Pattern</a></li><li class="depth-1"><a href="#cli-subcommands" data-for="cli-subcommands">CLI Subcommands</a></li><li class="depth-1"><a href="#print-mode-deep-dive" data-for="print-mode-deep-dive">Print Mode Deep Dive</a></li><li class="depth-2"><a href="#structured-json-output" data-for="structured-json-output">Structured JSON Output</a></li><li class="depth-2"><a href="#streaming-json-output" data-for="streaming-json-output">Streaming JSON Output</a></li><li class="depth-2"><a href="#bidirectional-streaming" data-for="bidirectional-streaming">Bidirectional Streaming</a></li><li class="depth-2"><a href="#piped-input" data-for="piped-input">Piped Input</a></li><li class="depth-2"><a href="#json-schema-for-structured-extraction" data-for="json-schema-for-structured-extraction">JSON Schema for Structured Extraction</a></li><li class="depth-2"><a href="#session-continuation" data-for="session-continuation">Session Continuation</a></li><li class="depth-2"><a href="#bare-mode-for-ciscripting" data-for="bare-mode-for-ciscripting">Bare Mode for CI/Scripting</a></li><li class="depth-2"><a href="#fallback-model-for-overload" data-for="fallback-model-for-overload">Fallback Model for Overload</a></li><li class="depth-1"><a href="#complete-cli-flags-reference" data-for="complete-cli-flags-reference">Complete CLI Flags Reference</a></li><li class="depth-2"><a href="#session--environment" data-for="session--environment">Session &amp; Environment</a></li><li class="depth-2"><a href="#model--performance" data-for="model--performance">Model &amp; Performance</a></li><li class="depth-2"><a href="#permission--safety" data-for="permission--safety">Permission &amp; Safety</a></li><li class="depth-2"><a href="#output--input-format" data-for="output--input-format">Output &amp; Input Format</a></li><li class="depth-2"><a href="#system-prompt--context" data-for="system-prompt--context">System Prompt &amp; Context</a></li><li class="depth-2"><a href="#debugging" data-for="debugging">Debugging</a></li><li class="depth-2"><a href="#agent-teams" data-for="agent-teams">Agent Teams</a></li><li class="depth-2"><a href="#tool-name-syntax-for-allowedtools--disallowedtools" data-for="tool-name-syntax-for-allowedtools--disallowedtools">Tool Name Syntax for —allowedTools / —disallowedTools</a></li><li class="depth-1"><a href="#settings--configuration" data-for="settings--configuration">Settings &amp; Configuration</a></li><li class="depth-2"><a href="#settings-hierarchy-highest-to-lowest-priority" data-for="settings-hierarchy-highest-to-lowest-priority">Settings Hierarchy (highest to lowest priority)</a></li><li class="depth-2"><a href="#permissions-in-settings" data-for="permissions-in-settings">Permissions in Settings</a></li><li class="depth-2"><a href="#memory-files-claudemd-hierarchy" data-for="memory-files-claudemd-hierarchy">Memory Files (CLAUDE.md) Hierarchy</a></li><li class="depth-1"><a href="#interactive-session-slash-commands" data-for="interactive-session-slash-commands">Interactive Session: Slash Commands</a></li><li class="depth-2"><a href="#session--context" data-for="session--context">Session &amp; Context</a></li><li class="depth-2"><a href="#development--review" data-for="development--review">Development &amp; Review</a></li><li class="depth-2"><a href="#configuration--tools" data-for="configuration--tools">Configuration &amp; Tools</a></li><li class="depth-2"><a href="#custom-slash-commands" data-for="custom-slash-commands">Custom Slash Commands</a></li><li class="depth-2"><a href="#skills-natural-language-invocation" data-for="skills-natural-language-invocation">Skills (Natural Language Invocation)</a></li><li class="depth-1"><a href="#interactive-session-keyboard-shortcuts" data-for="interactive-session-keyboard-shortcuts">Interactive Session: Keyboard Shortcuts</a></li><li class="depth-2"><a href="#general-controls" data-for="general-controls">General Controls</a></li><li class="depth-2"><a href="#mode-toggles" data-for="mode-toggles">Mode Toggles</a></li><li class="depth-2"><a href="#multiline-input" data-for="multiline-input">Multiline Input</a></li><li class="depth-2"><a href="#input-prefixes" data-for="input-prefixes">Input Prefixes</a></li><li class="depth-2"><a href="#pro-tip-ultrathink" data-for="pro-tip-ultrathink">Pro Tip: “ultrathink”</a></li><li class="depth-1"><a href="#vision--image-batch-processing" data-for="vision--image-batch-processing">Vision / Image Batch Processing</a></li><li class="depth-2"><a href="#batch-script" data-for="batch-script">Batch Script</a></li><li class="depth-2"><a href="#manual-batch-invocation" data-for="manual-batch-invocation">Manual Batch Invocation</a></li><li class="depth-2"><a href="#image-size-tips" data-for="image-size-tips">Image Size Tips</a></li><li class="depth-2"><a href="#quick-review-print-mode" data-for="quick-review-print-mode">Quick Review (Print Mode)</a></li><li class="depth-2"><a href="#deep-review-interactive--worktree" data-for="deep-review-interactive--worktree">Deep Review (Interactive + Worktree)</a></li><li class="depth-2"><a href="#pr-review-from-number" data-for="pr-review-from-number">PR Review from Number</a></li><li class="depth-2"><a href="#claude-worktree-with-tmux" data-for="claude-worktree-with-tmux">Claude Worktree with tmux</a></li><li class="depth-1"><a href="#parallel-claude-instances" data-for="parallel-claude-instances">Parallel Claude Instances</a></li><li class="depth-1"><a href="#claudemd--project-context-file" data-for="claudemd--project-context-file">CLAUDE.md — Project Context File</a></li><li class="depth-2"><a href="#rules-directory-modular-claudemd" data-for="rules-directory-modular-claudemd">Rules Directory (Modular CLAUDE.md)</a></li><li class="depth-2"><a href="#auto-memory" data-for="auto-memory">Auto-Memory</a></li><li class="depth-1"><a href="#custom-subagents" data-for="custom-subagents">Custom Subagents</a></li><li class="depth-2"><a href="#agent-location-priority" data-for="agent-location-priority">Agent Location Priority</a></li><li class="depth-2"><a href="#creating-an-agent" data-for="creating-an-agent">Creating an Agent</a></li><li class="depth-2"><a href="#dynamic-agents-via-cli" data-for="dynamic-agents-via-cli">Dynamic Agents via CLI</a></li><li class="depth-1"><a href="#hooks--automation-on-events" data-for="hooks--automation-on-events">Hooks — Automation on Events</a></li><li class="depth-2"><a href="#all-8-hook-types" data-for="all-8-hook-types">All 8 Hook Types</a></li><li class="depth-2"><a href="#hook-environment-variables" data-for="hook-environment-variables">Hook Environment Variables</a></li><li class="depth-2"><a href="#security-hook-examples" data-for="security-hook-examples">Security Hook Examples</a></li><li class="depth-1"><a href="#mcp-integration" data-for="mcp-integration">MCP Integration</a></li><li class="depth-2"><a href="#mcp-scopes" data-for="mcp-scopes">MCP Scopes</a></li><li class="depth-2"><a href="#mcp-in-printci-mode" data-for="mcp-in-printci-mode">MCP in Print/CI Mode</a></li><li class="depth-2"><a href="#mcp-limits--tuning" data-for="mcp-limits--tuning">MCP Limits &amp; Tuning</a></li><li class="depth-1"><a href="#monitoring-interactive-sessions" data-for="monitoring-interactive-sessions">Monitoring Interactive Sessions</a></li><li class="depth-2"><a href="#reading-the-tui-status" data-for="reading-the-tui-status">Reading the TUI Status</a></li><li class="depth-2"><a href="#context-window-health" data-for="context-window-health">Context Window Health</a></li><li class="depth-1"><a href="#environment-variables" data-for="environment-variables">Environment Variables</a></li><li class="depth-1"><a href="#cost--performance-tips" data-for="cost--performance-tips">Cost &amp; Performance Tips</a></li><li class="depth-1"><a href="#pitfalls--gotchas" data-for="pitfalls--gotchas">Pitfalls &amp; Gotchas</a></li><li class="depth-1"><a href="#rules-for-hermes-agents" data-for="rules-for-hermes-agents">Rules for Hermes Agents</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../postscript.js" type="module" data-persist="true"></script></html>
